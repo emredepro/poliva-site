@@ -3,21 +3,7 @@ import React from 'react';
 // Este é o componente da sua página Inicial
 export default function Inicio() {
   return (
-    Excelente, Pøliva! Estamos chegando na estética exata. O ajuste do vídeo (enquadrar o topo) é um detalhe técnico de "foco visual" que resolvemos com uma linha de CSS, e o filtro de 15% vai dar aquela profundidade sem esconder o movimento.
-
-Como seu Tech Lead, aqui está o código refinado com:
-
-Menu e Título: Tudo em caixa baixa (lowercase).
-
-Título: Removi o ponto final, diminuí o tracking (espaçamento) para ficar mais coeso e mantive o tamanho 6xl.
-
-Vídeo: Usei object-top para priorizar a parte superior do enquadramento e adicionei o filtro de 15% (overlay).
-
-🛠️ Código de Ajuste Fino (index.js)
-JavaScript
-export default function Inicio() {
-  return (
-    <div className="min-h-screen bg-black text-white overflow-x-hidden font-sans" style={{ fontFamily: "'Avant Garde', 'Astonpoliz', sans-serif" }}>
+    <div className="min-h-screen bg-black text-white overflow-x-hidden" style={{ fontFamily: "'Avant Garde', 'Astonpoliz', sans-serif" }}>
       
       {/* 1. FILTRO DE SOBREPOSIÇÃO (15% DE PRETO) */}
       <div className="fixed inset-0 bg-black/15 z-0 pointer-events-none"></div>
@@ -47,14 +33,14 @@ export default function Inicio() {
       <main className="relative pt-44 pb-48 px-6 flex flex-col items-center max-w-5xl mx-auto text-center z-10">
         
         {/* 4. TÍTULO CAIXA BAIXA - SEM PONTO - ESPAÇAMENTO REDUZIDO */}
-        <h1 className="text-4xl md:text-6xl font-bold tracking-[-0.02em] mb-10 leading-[1.1] lowercase">
+        <h1 className="text-4xl md:text-6xl font-bold tracking-tight mb-10 leading-[1.1] lowercase">
           música que desperta <br/>
           <span className="text-purple-600/80">show que vira portal</span>
         </h1>
 
-        {/* 5. CITAÇÃO */}
+        {/* 5. CITAÇÃO (CORRIGIDA PARA NÃO DAR ERRO) */}
         <div className="max-w-lg mb-16 italic text-zinc-400 text-sm md:text-base leading-relaxed border-l-2 border-purple-900/50 pl-8 text-left mx-auto">
-          "a música não é apenas entretenimento; ela é portal. não é só sobre tocar música, é sobre atravessá-la. eu faço músicas e também canto músicas que transformam a mim e a outras pessoas"
+          &quot;a música não é apenas entretenimento; ela é portal. não é só sobre tocar música, é sobre atravessá-la. eu faço músicas e também canto músicas que transformam a mim e a outras pessoas&quot;
           <span className="block not-italic text-purple-600 font-bold mt-4 lowercase tracking-[0.3em] text-[10px]">— poliva soham</span>
         </div>
 
