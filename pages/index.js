@@ -5,7 +5,7 @@ export default function Inicio() {
   return (
     <div style={{ position: 'relative', minHeight: '100vh', backgroundColor: 'black', color: 'white', overflowX: 'hidden', fontFamily: "'Avant Garde', sans-serif" }}>
       
-      {/* 1. O VÍDEO - FORÇADO PARA APARECER (Z-INDEX 0) */}
+      {/* 1. SISTEMA DE VÍDEO (REVELADO NO FUNDO) */}
       <div style={{ position: 'fixed', inset: 0, zIndex: 0 }}>
         <video 
           autoPlay 
@@ -16,16 +16,14 @@ export default function Inicio() {
         >
           <source src="/video-home-loop.mp4" type="video/mp4" />
         </video>
-        {/* FILTRO DE 30% PARA LEITURA */}
         <div style={{ position: 'absolute', inset: 0, backgroundColor: 'rgba(0,0,0,0.3)', pointerEvents: 'none' }}></div>
       </div>
 
-      {/* 2. CONTEÚDO - TUDO COM Z-INDEX 10 PARA FICAR NA FRENTE DO VÍDEO */}
       <div style={{ position: 'relative', zIndex: 10 }}>
         
-        {/* MENU - CAIXA ALTA, 11px, JUNTO */}
+        {/* MENU - 11px, UPPERCASE, COM ESPAÇAMENTO ELEGANTE (0.2em) */}
         <nav style={{ position: 'fixed', top: 0, width: '100%', backgroundColor: 'rgba(0,0,0,0.5)', backdropFilter: 'blur(10px)', borderBottom: '1px solid rgba(255,255,255,0.05)', padding: '20px 0' }}>
-          <div style={{ display: 'flex', justifyContent: 'center', gap: '25px', fontSize: '11px', letterSpacing: '-0.02em', textTransform: 'uppercase', fontWeight: 600 }}>
+          <div style={{ display: 'flex', justifyContent: 'center', gap: '30px', fontSize: '11px', letterSpacing: '0.2em', textTransform: 'uppercase', fontWeight: 600 }}>
             <a href="#" style={{ color: '#a855f7' }}>iníciø</a>
             <a href="#">søbre</a>
             <a href="#">shøws</a>
@@ -35,24 +33,20 @@ export default function Inicio() {
           </div>
         </nav>
 
-        <main style={{ 
-    fontSize: 'clamp(2rem, 8vw, 4rem)', 
-    fontWeight: 'bold', 
-    letterSpacing: '-0.05em', 
-    marginBottom: '40px', 
-    lineHeight: '1.1' 
-    // textTransform: 'lowercase' <- REMOVIDO PARA ACEITAR AS MAIÚSCULAS
-  }}
->
-  Música que desperta <br/>
-  <span style={{ color: 'rgba(168, 85, 247, 0.8)' }}>
-    Show que vira portal,
-  </span>
+        <main style={{ paddingTop: '180px', paddingBottom: '150px', maxWidth: '1000px', margin: '0 auto', textAlign: 'center', paddingLeft: '20px', paddingRight: '20px' }}>
+          
+          {/* TÍTULO CORRIGIDO - VÍRGULA DEPOIS DE 'desperta' */}
+          <h1 style={{ fontSize: 'clamp(2rem, 8vw, 4rem)', fontWeight: 'bold', letterSpacing: '-0.05em', marginBottom: '40px', lineHeight: '1.1' }}>
+            Música que desperta, <br/>
+            <span style={{ color: 'rgba(168, 85, 247, 0.8)' }}>
+              Show que vira portal
+            </span>
           </h1>
 
-          <div style={{ maxWidth: '500px', margin: '0 auto 60px', fontStyle: 'italic', color: '#a1a1aa', fontSize: '15px', lineHeight: '1.6', borderLeft: '2px solid rgba(126, 34, 206, 0.5)', paddingLeft: '30px', textAlign: 'left', letterSpacing: '0.05em', textTransform: 'lowercase' }}>
+          {/* CITAÇÃO COM INICIAIS MAIÚSCULAS EM POLIVA SOHAM */}
+          <div style={{ maxWidth: '500px', margin: '0 auto 60px', fontStyle: 'italic', color: '#a1a1aa', fontSize: '15px', lineHeight: '1.6', borderLeft: '2px solid rgba(126, 34, 206, 0.5)', paddingLeft: '30px', textAlign: 'left', letterSpacing: '0.05em' }}>
             &quot;a música não é apenas entretenimento; ela é portal. não é só sobre tocar música, é sobre atravessá-la. eu faço músicas e também canto músicas que transformam a mim e a outras pessoas&quot;
-            <span style={{ display: 'block', fontStyle: 'normal', color: '#a855f7', fontWeight: 'bold', marginTop: '16px', letterSpacing: '0.4em', fontSize: '11px', textTransform: 'none' }}>
+            <span style={{ display: 'block', fontStyle: 'normal', color: '#a855f7', fontWeight: 'bold', marginTop: '16px', letterSpacing: '0.4em', fontSize: '11px' }}>
               — Poliva Soham
             </span>
           </div>
@@ -63,7 +57,7 @@ export default function Inicio() {
         </main>
       </div>
 
-      {/* 3. RODAPÉ FIXO */}
+      {/* RODAPÉ FIXED */}
       <footer style={{ position: 'fixed', bottom: 0, width: '100%', zIndex: 100, backgroundColor: 'rgba(0,0,0,0.9)', backdropFilter: 'blur(20px)', borderTop: '1px solid rgba(255,255,255,0.05)', padding: '20px 40px' }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', maxWidth: '1200px', margin: '0 auto' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
