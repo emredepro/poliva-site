@@ -35,11 +35,19 @@ export default function Inicio() {
           </div>
         </nav>
 
-        <main style={{ paddingTop: '180px', paddingBottom: '150px', maxWidth: '1000px', margin: '0 auto', textAlign: 'center', paddingLeft: '20px', paddingRight: '20px' }}>
-          
-          <h1 style={{ fontSize: 'clamp(2rem, 8vw, 4rem)', fontWeight: 'bold', letterSpacing: '-0.05em', marginBottom: '40px', lineHeight: '1.1', textTransform: 'lowercase' }}>
-            música que desperta <br/>
-            <span style={{ color: 'rgba(168, 85, 247, 0.8)' }}>show que vira portal</span>
+        <main style={{ 
+    fontSize: 'clamp(2rem, 8vw, 4rem)', 
+    fontWeight: 'bold', 
+    letterSpacing: '-0.05em', 
+    marginBottom: '40px', 
+    lineHeight: '1.1' 
+    // textTransform: 'lowercase' <- REMOVIDO PARA ACEITAR AS MAIÚSCULAS
+  }}
+>
+  Música que desperta <br/>
+  <span style={{ color: 'rgba(168, 85, 247, 0.8)' }}>
+    Show que vira portal,
+  </span>
           </h1>
 
           <div style={{ maxWidth: '500px', margin: '0 auto 60px', fontStyle: 'italic', color: '#a1a1aa', fontSize: '15px', lineHeight: '1.6', borderLeft: '2px solid rgba(126, 34, 206, 0.5)', paddingLeft: '30px', textAlign: 'left', letterSpacing: '0.05em', textTransform: 'lowercase' }}>
