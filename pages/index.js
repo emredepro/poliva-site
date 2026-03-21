@@ -5,50 +5,60 @@ export default function Inicio() {
   return (
     <div className="relative min-h-screen text-white overflow-x-hidden" style={{ fontFamily: "'Avant Garde', sans-serif", backgroundColor: 'black' }}>
       
-      {/* 1. CAMADA DE VÍDEO (FORÇADA NO FUNDO) */}
+      {/* 1. CAMADA DE VÍDEO (ENQUADRAMENTO 1/4 E FILTRO) */}
       <div style={{ position: 'fixed', inset: 0, zIndex: -10, backgroundColor: 'black' }}>
         <video 
           autoPlay 
           muted 
           loop 
           playsInline 
-          style={{ width: '100%', height: '100%', objectPosition: 'top', objectFit: 'cover', opacity: 0.4 }}
+          style={{ 
+            width: '100%', 
+            height: '100%', 
+            objectFit: 'cover', 
+            objectPosition: 'center 25%', // SOBE O VÍDEO PARA 1/4 DE ALTURA
+            opacity: 0.4 
+          }}
         >
           <source src="/video-home-loop.mp4" type="video/mp4" />
         </video>
-        {/* FILTRO 15% */}
-        <div style={{ position: 'absolute', inset: 0, backgroundColor: 'rgba(0,0,0,0.15)', pointerEvents: 'none' }}></div>
+        {/* FILTRO ESCURO 30% PARA LEITURA */}
+        <div style={{ position: 'absolute', inset: 0, backgroundColor: 'rgba(0,0,0,0.3)', pointerEvents: 'none' }}></div>
       </div>
 
-      {/* 2. MENU - MAIOR E EM CAIXA BAIXA */}
-      <nav className="fixed top-0 w-full z-50 bg-black/20 backdrop-blur-lg border-b border-white/5 py-5">
-        <div className="flex justify-center gap-10 text-[14px] lowercase tracking-[0.3em] font-light opacity-90">
+      {/* 2. MENU - MAIOR, CAIXA BAIXA E COM NOVA ABA */}
+      <nav className="fixed top-0 w-full z-50 bg-black/30 backdrop-blur-lg border-b border-white/5 py-6">
+        <div className="flex justify-center gap-10 text-[16px] lowercase tracking-[0.3em] font-light opacity-100">
           <a href="#" className="hover:text-purple-400 transition">iníciø</a>
           <a href="#" className="hover:text-purple-400 transition">søbre</a>
           <a href="#" className="hover:text-purple-400 transition">shøws</a>
+          <a href="#" className="hover:text-purple-400 transition whitespace-nowrap">singles & álbuns</a>
           <a href="#" className="hover:text-purple-400 transition">agenda</a>
           <a href="#" className="hover:text-purple-400 transition">cøntatø</a>
         </div>
       </nav>
 
-      <main className="relative pt-44 pb-48 px-6 flex flex-col items-center max-w-5xl mx-auto text-center z-10">
+      <main className="relative pt-48 pb-48 px-6 flex flex-col items-center max-w-5xl mx-auto text-center z-10">
         
-        {/* 3. TÍTULO - CAIXA BAIXA E TRACKING-TIGHTER */}
+        {/* 3. TÍTULO */}
         <h1 className="text-4xl md:text-6xl font-bold tracking-tighter mb-10 leading-[1.1] lowercase">
           música que desperta <br/>
           <span className="text-purple-600/80">show que vira portal</span>
         </h1>
 
-        {/* 4. CITAÇÃO - ASSINATURA CORRIGIDA (NOME PRÓPRIO) */}
-        <div className="max-w-lg mb-16 italic text-zinc-400 text-sm md:text-base leading-relaxed border-l-2 border-purple-900/50 pl-8 text-left mx-auto tracking-widest lowercase">
+        {/* 4. CITAÇÃO - ASSINATURA BLINDADA (POLIVA SOHAM) */}
+        <div className="max-w-lg mb-16 italic text-zinc-300 text-sm md:text-base leading-relaxed border-l-2 border-purple-900/50 pl-8 text-left mx-auto tracking-widest lowercase">
           &quot;a música não é apenas entretenimento; ela é portal. não é só sobre tocar música, é sobre atravessá-la. eu faço músicas e também canto músicas que transformam a mim e a outras pessoas&quot;
-          <span className="block not-italic text-purple-600 font-bold mt-4 tracking-[0.4em] text-[11px]" style={{ textTransform: 'none' }}>
+          <span 
+            className="block not-italic text-purple-500 font-bold mt-4 tracking-[0.4em] text-[12px]" 
+            style={{ textTransform: 'none !important', display: 'block' }}
+          >
             — Poliva Soham
           </span>
         </div>
 
         {/* 5. PLAYER YOUTUBE */}
-        <div className="w-full max-w-2xl aspect-video bg-zinc-950/40 rounded border border-white/10 flex items-center justify-center mb-10 shadow-2xl backdrop-blur-sm">
+        <div className="w-full max-w-2xl aspect-video bg-zinc-950/50 rounded border border-white/10 flex items-center justify-center mb-10 shadow-2xl backdrop-blur-sm">
            <p className="text-zinc-700 tracking-[0.6em] lowercase text-[10px] font-light">[ player vídeo de ativação ]</p>
         </div>
 
