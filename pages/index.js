@@ -12,7 +12,7 @@ export default function Inicio() {
       fontFamily: "'Avant Garde', sans-serif" 
     }}>
       
-      {/* 1. SISTEMA DE VÍDEO - POSICIONAMENTO DO MEIO PARA O TOPO (-20%) */}
+      {/* 1. SISTEMA DE VÍDEO - POSICIONAMENTO -10% E OPACIDADE 0.3 */}
       <div style={{ 
         position: 'fixed', 
         inset: 0, 
@@ -29,10 +29,10 @@ export default function Inicio() {
             position: 'absolute',
             width: '100%', 
             height: '140%', 
-            top: '-20%',    // AJUSTE: RECUADO PARA -20% CONFORME SOLICITADO
+            top: '-10%',    // AJUSTE: RECUADO PARA -10%
             left: 0,
             objectFit: 'cover', 
-            opacity: 0.6 
+            opacity: 0.3 
           }}
         >
           <source src="/video-home-loop.mp4" type="video/mp4" />
@@ -42,12 +42,12 @@ export default function Inicio() {
       {/* 2. CONTEÚDO SOBRE O VÍDEO */}
       <div style={{ position: 'relative', zIndex: 10 }}>
         
-        {/* MENU - CAIXA ALTA, 11px, ESPAÇAMENTO 0.2em, 6 ABAS */}
+        {/* MENU - CAIXA ALTA, 11px, ESPAÇAMENTO 0.2em */}
         <nav style={{ 
           position: 'fixed', 
           top: 0, 
           width: '100%', 
-          backgroundColor: 'rgba(0,0,0,0.5)', 
+          backgroundColor: 'rgba(0,0,0,0.6)', 
           backdropFilter: 'blur(10px)', 
           borderBottom: '1px solid rgba(255,255,255,0.05)', 
           padding: '20px 0' 
@@ -80,7 +80,6 @@ export default function Inicio() {
           paddingRight: '20px' 
         }}>
           
-          {/* TÍTULO - INICIAIS MAIÚSCULAS E VÍRGULA EM "desperta," */}
           <h1 style={{ 
             fontSize: 'clamp(2.5rem, 8vw, 4.5rem)', 
             fontWeight: 'bold', 
@@ -94,7 +93,6 @@ export default function Inicio() {
             </span>
           </h1>
 
-          {/* CITAÇÃO - POLIVA SOHAM PRESERVADO */}
           <div style={{ 
             maxWidth: '500px', 
             margin: '0 auto 60px', 
@@ -123,12 +121,11 @@ export default function Inicio() {
             </span>
           </div>
 
-          {/* PLAYER YOUTUBE */}
           <div style={{ 
             width: '100%', 
             maxWidth: '640px', 
             aspectRatio: '16/9', 
-            backgroundColor: 'rgba(9, 9, 11, 0.6)', 
+            backgroundColor: 'rgba(9, 9, 11, 0.7)', 
             border: '1px solid rgba(255,255,255,0.05)', 
             borderRadius: '4px', 
             display: 'flex', 
@@ -145,13 +142,12 @@ export default function Inicio() {
         </main>
       </div>
 
-      {/* RODAPÉ */}
       <footer style={{ 
         position: 'fixed', 
         bottom: 0, 
         width: '100%', 
         zIndex: 100, 
-        backgroundColor: 'rgba(0,0,0,0.9)', 
+        backgroundColor: 'rgba(0,0,0,0.95)', 
         backdropFilter: 'blur(20px)', 
         borderTop: '1px solid rgba(255,255,255,0.05)', 
         padding: '20px 40px' 
