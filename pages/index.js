@@ -5,16 +5,15 @@ export default function Inicio() {
   return (
     <div style={{ position: 'relative', minHeight: '100vh', backgroundColor: 'black', color: 'white', overflowX: 'hidden', fontFamily: "'Avant Garde', sans-serif" }}>
       
-      {/* 1. SISTEMA DE VÍDEO (REVELADO E ENQUADRADO NO TOPO) */}
+      {/* 1. SISTEMA DE VÍDEO (AJUSTE DOS "2 DEDOS" PARA CIMA) */}
       <div style={{ 
         position: 'fixed', 
         top: 0, 
         left: 0, 
         width: '100%', 
-        height: '55vh', // AUMENTADO PARA DAR MAIS ÁREA VISÍVEL
+        height: '60vh', 
         zIndex: 0,
-        overflow: 'hidden',
-        backgroundColor: 'black' // COR DE SEGURANÇA SE O VÍDEO FALHAR
+        overflow: 'hidden'
       }}>
         <video 
           autoPlay 
@@ -25,26 +24,18 @@ export default function Inicio() {
             width: '100%', 
             height: '100%', 
             objectFit: 'cover', 
-            objectPosition: 'center 15%', // PUXA O FOCO MAIS PARA CIMA
-            opacity: 0.6 // UM POUCO MAIS ACESO PARA REVELAR DETALHES
+            objectPosition: 'center 5%', // AJUSTE PRECISO: SUBIU OS "2 DEDOS"
+            opacity: 0.6 
           }}
         >
           <source src="/video-home-loop.mp4" type="video/mp4" />
         </video>
-        {/* FILTRO CORRIGIDO: TRANSPARENTE NO TOPO, ESCURO NA BASE */}
-        <div style={{ 
-          position: 'absolute', 
-          inset: 0, 
-          // GRADIENTE LIMPO NO TOPO (0%), SÓ ESCURECE NA BASE (100%)
-          background: 'linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 60%, rgba(0,0,0,1) 100%)',
-          pointerEvents: 'none' 
-        }}></div>
       </div>
 
       <div style={{ position: 'relative', zIndex: 10 }}>
         
         {/* MENU - 11px, UPPERCASE, ESPAÇAMENTO 0.2em */}
-        <nav style={{ position: 'fixed', top: 0, width: '100%', backgroundColor: 'rgba(0,0,0,0.4)', backdropFilter: 'blur(10px)', borderBottom: '1px solid rgba(255,255,255,0.05)', padding: '20px 0' }}>
+        <nav style={{ position: 'fixed', top: 0, width: '100%', backgroundColor: 'rgba(0,0,0,0.5)', backdropFilter: 'blur(10px)', borderBottom: '1px solid rgba(255,255,255,0.05)', padding: '20px 0' }}>
           <div style={{ display: 'flex', justifyContent: 'center', gap: '30px', fontSize: '11px', letterSpacing: '0.2em', textTransform: 'uppercase', fontWeight: 600 }}>
             <a href="#" style={{ color: '#a855f7' }}>iníciø</a>
             <a href="#">søbre</a>
@@ -57,7 +48,6 @@ export default function Inicio() {
 
         <main style={{ paddingTop: '220px', paddingBottom: '150px', maxWidth: '1000px', margin: '0 auto', textAlign: 'center', paddingLeft: '20px', paddingRight: '20px' }}>
           
-          {/* TÍTULO CORRIGIDO - VÍRGULA EM 'desperta' */}
           <h1 style={{ fontSize: 'clamp(2rem, 8vw, 4rem)', fontWeight: 'bold', letterSpacing: '-0.05em', marginBottom: '40px', lineHeight: '1.1' }}>
             Música que desperta, <br/>
             <span style={{ color: 'rgba(168, 85, 247, 0.8)' }}>
@@ -66,7 +56,7 @@ export default function Inicio() {
           </h1>
 
           <div style={{ maxWidth: '500px', margin: '0 auto 60px', fontStyle: 'italic', color: '#a1a1aa', fontSize: '15px', lineHeight: '1.6', borderLeft: '2px solid rgba(126, 34, 206, 0.5)', paddingLeft: '30px', textAlign: 'left', letterSpacing: '0.05em' }}>
-            &quot;a música não é apenas entretenimento; ela é portal. não é só sobre tocar música, é sobre atravessá-la. eu faço músicas e também canto músicas que transformam a mim e a outras people&quot;
+            &quot;a música não é apenas entretenimento; ela é portal. não é só sobre tocar música, é sobre atravessá-la. eu faço músicas e também canto músicas que transformam a mim e a outras pessoas&quot;
             <span style={{ display: 'block', fontStyle: 'normal', color: '#a855f7', fontWeight: 'bold', marginTop: '16px', letterSpacing: '0.4em', fontSize: '11px' }}>
               — Poliva Soham
             </span>
@@ -78,6 +68,7 @@ export default function Inicio() {
         </main>
       </div>
 
+      {/* RODAPÉ */}
       <footer style={{ position: 'fixed', bottom: 0, width: '100%', zIndex: 100, backgroundColor: 'rgba(0,0,0,0.9)', backdropFilter: 'blur(20px)', borderTop: '1px solid rgba(255,255,255,0.05)', padding: '20px 40px' }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', maxWidth: '1200px', margin: '0 auto' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
