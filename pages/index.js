@@ -3,68 +3,69 @@ import React from 'react';
 // Este é o componente da sua página Inicial
 export default function Inicio() {
   return (
-    <div className="bg-black text-white min-h-screen">
+    <div className="min-h-screen bg-black text-white font-sans overflow-x-hidden">
       
-      {/* MENU COM IDENTIDADE ø */}
-      <nav className="fixed top-0 w-full z-50 p-6 flex justify-center space-x-8 bg-black/50 backdrop-blur-md text-xs tracking-[0.3em] uppercase">
-        <a href="/" className="text-purple-500">iníciø</a>
-        <a href="/sobre" className="hover:text-purple-400">søbre pøliva</a>
-        <a href="/shows" className="hover:text-purple-400">shøws aø vivø</a>
-        <a href="/musica" className="hover:text-purple-400">singles & álbuns</a>
-        <a href="/agenda" className="hover:text-purple-400">agenda</a>
-        <a href="/contato" className="hover:text-purple-400">cøntatø</a>
+      {/* 0. VÍDEO DE FUNDO (RITUAL 8s) */}
+      <video 
+        autoPlay 
+        muted 
+        loop 
+        playsInline 
+        className="fixed top-0 left-0 w-full h-full object-cover -z-10 opacity-40"
+      >
+        <source src="/video-home-loop.mp4" type="video/mp4" />
+      </video>
+
+      {/* 1. MENU COM VIDRO FUMÊ (TRANSPARENTE) */}
+      <nav className="fixed top-0 w-full z-50 bg-black/40 backdrop-blur-md border-b border-white/10 py-4">
+        <div className="flex justify-center gap-8 text-[10px] uppercase tracking-[0.3em] font-light">
+          <a href="#" className="text-purple-500">iníciø</a>
+          <a href="#" className="hover:text-purple-400 transition">søbre pøliva</a>
+          <a href="#" className="hover:text-purple-400 transition">shøws</a>
+          <a href="#" className="hover:text-purple-400 transition">agenda</a>
+          <a href="#" className="hover:text-purple-400 transition">cøntatø</a>
+        </div>
       </nav>
 
-      {/* HERO SECTION: O VÍDEO LOOP 8s */}
-      <section className="relative h-screen flex items-center justify-center">
-        <div className="absolute inset-0 bg-black/60 z-10"></div>
-        <video autoPlay loop muted playsInline className="absolute inset-0 w-full h-full object-cover opacity-50">
-          <source src="/video-home-loop.mp4" type="video/mp4" />
-        </video>
+      <main className="relative pt-40 pb-40 px-6 flex flex-col items-center max-w-5xl mx-auto text-center">
         
-        <div className="relative z-20 text-center px-4">
-          <h1 className="text-6xl md:text-8xl font-light tracking-[0.4em] mb-4">pøliva</h1>
-          <p className="italic text-gray-400 tracking-widest text-sm md:text-base max-w-2xl mx-auto">
-            Música que desperta. Show que vira portal: sommelier de hits que eletrizam o palco
-          </p>
+        {/* 2. TÍTULO IMPACTANTE (BOLD) */}
+        <h1 className="text-4xl md:text-7xl font-bold tracking-tighter mb-12 leading-tight uppercase">
+          Música que desperta. <br/>
+          <span className="text-purple-600">Show que vira portal:</span> <br/>
+          sommelier de hits que eletrizam o palco
+        </h1>
+
+        {/* 3. CITAÇÃO ESTILO ESCRITORA (MENOR E ABAIXO DO TÍTULO) */}
+        <div className="max-w-2xl mb-24 italic text-zinc-400 text-sm md:text-lg leading-relaxed border-l-2 border-purple-500/50 pl-8 text-left">
+          "a música não é apenas entretenimento; ela é portal. não é só sobre tocar música, é sobre atravessá-la. Eu faço músicas e também canto músicas que transformam a mim e a outras pessoas"
+          <span className="block not-italic text-purple-500 font-bold mt-4 uppercase tracking-[0.4em] text-[10px]">— Poliva Soham</span>
         </div>
 
-        {/* SÍMBOLO DA PØLIVA (BOTÃO DE FREQUÊNCIA) */}
-        <button className="fixed bottom-32 right-10 z-50 group flex flex-col items-center">
-          <span className="text-[10px] tracking-widest mb-2 opacity-0 group-hover:opacity-100 transition-opacity">432Hz</span>
-          <div className="w-14 h-14 bg-purple-900/40 rounded-full flex items-center justify-center border border-purple-500/50 hover:scale-110 transition-transform">
-            {/* Aqui entrará o seu arquivo de símbolo em SVG ou PNG */}
-            <span className="text-xl">ø</span> 
-          </div>
-        </button>
-      </section>
-
-      {/* BLOCO: pølivessense, o show */}
-      <section className="py-24 bg-zinc-900 px-8">
-        <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-16 items-center">
-          <div className="aspect-video bg-black flex items-center justify-center border border-white/10">
-            <p className="text-gray-500 text-sm tracking-widest">[ PLAYER YOUTUBE AQUI ]</p>
-          </div>
-          <div className="space-y-8">
-            <p className="text-2xl md:text-3xl italic font-extralight leading-relaxed">
-              "a música não é apenas entretenimento; ela é portal. não é só sobre tocar música, é sobre atravessá-la. Eu faço músicas e também canto músicas que transformam a mim e a outras pessoas"
-            </p>
-            <p className="text-purple-500 tracking-[0.3em] text-sm uppercase">— Poliva Soham</p>
-          </div>
+        {/* 4. PLAYER YOUTUBE CENTRALIZADO */}
+        <div className="w-full max-w-4xl aspect-video bg-zinc-900/40 rounded-sm border border-white/10 flex items-center justify-center mb-20 shadow-2xl shadow-purple-900/20">
+           <p className="text-zinc-600 tracking-[0.5em] uppercase text-[10px]">[ Player do Vídeo de Ativação ]</p>
         </div>
-      </section>
 
-      {/* GLOBAL PLAYER (RODAPÉ FIXO) */}
-      <footer className="fixed bottom-0 w-full bg-zinc-950 border-t border-white/5 p-4 z-[100] flex items-center justify-between px-10">
-        <div className="flex items-center space-x-4">
-          <div className="w-12 h-12 bg-zinc-800"></div>
-          <div>
-            <p className="text-xs font-bold tracking-widest">DEPRESSA</p>
-            <p className="text-[10px] text-gray-500">pøliva</p>
+      </main>
+
+      {/* 5. PLAYER DE RODAPÉ (ESTILO PREMIUM) */}
+      <footer className="fixed bottom-0 w-full bg-zinc-950/90 backdrop-blur-xl border-t border-white/5 p-4 z-50">
+        <div className="max-w-7xl mx-auto flex items-center justify-between px-4">
+          <div className="flex items-center gap-4">
+            <div className="w-12 h-12 bg-purple-950/40 border border-purple-500/20 rounded-sm flex items-center justify-center">
+               <span className="text-purple-500 text-xs">ø</span>
+            </div>
+            <div>
+              <h4 className="text-xs font-bold tracking-widest uppercase">DEPRESSA</h4>
+              <p className="text-[10px] text-zinc-500 tracking-wider">pøliva • 16 de Abril</p>
+            </div>
           </div>
-        </div>
-        <div className="text-gray-400 text-xs">
-          01:24 / 03:45
+          <div className="hidden md:block text-[10px] tracking-[0.3em] text-zinc-500">01:24 / 03:45</div>
+          <div className="flex items-center gap-6">
+             <span className="text-[10px] tracking-widest text-zinc-600">432Hz</span>
+             <div className="text-lg text-purple-500">ø</div>
+          </div>
         </div>
       </footer>
     </div>
