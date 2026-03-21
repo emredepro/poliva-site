@@ -3,14 +3,22 @@ import React from 'react';
 // Este é o componente da sua página Inicial
 export default function Inicio() {
   return (
-    <div style={{ position: 'relative', minHeight: '100vh', backgroundColor: 'black', color: 'white', overflowX: 'hidden', fontFamily: "'Avant Garde', sans-serif" }}>
+    <div style={{ 
+      position: 'relative', 
+      minHeight: '100vh', 
+      backgroundColor: 'black', 
+      color: 'white', 
+      overflowX: 'hidden', 
+      fontFamily: "'Avant Garde', sans-serif" 
+    }}>
       
-      {/* 1. SISTEMA DE VÍDEO - SEM "QUADRADO" E COM PUXADA PARA CIMA */}
+      {/* 1. SISTEMA DE VÍDEO - POSICIONAMENTO DO MEIO PARA O TOPO (-35%) */}
       <div style={{ 
         position: 'fixed', 
-        inset: 0, // OCUPA TUDO PARA SUMIR O QUADRADO PRETO
-        zIndex: 0,
-        backgroundColor: 'black'
+        inset: 0, 
+        zIndex: 0, 
+        backgroundColor: 'black',
+        overflow: 'hidden' 
       }}>
         <video 
           autoPlay 
@@ -18,11 +26,12 @@ export default function Inicio() {
           loop 
           playsInline 
           style={{ 
+            position: 'absolute',
             width: '100%', 
-            height: '100%', 
+            height: '140%', // CRIAMOS UMA "SOBRA" DE IMAGEM
+            top: '-35%',    // PUXA O MEIO DO VÍDEO PARA A ALTURA DO TOPO
+            left: 0,
             objectFit: 'cover', 
-            objectPosition: 'center 0%', // COLA NO TOPO
-            transform: 'scale(1.1) translateY(-5%)', // PUXA A IMAGEM "2 DEDOS" PARA CIMA ALÉM DO LIMITE
             opacity: 0.6 
           }}
         >
@@ -30,11 +39,28 @@ export default function Inicio() {
         </video>
       </div>
 
+      {/* 2. CONTEÚDO SOBRE O VÍDEO */}
       <div style={{ position: 'relative', zIndex: 10 }}>
         
-        {/* MENU - 11px, UPPERCASE, ESPAÇAMENTO 0.2em */}
-        <nav style={{ position: 'fixed', top: 0, width: '100%', backgroundColor: 'rgba(0,0,0,0.5)', backdropFilter: 'blur(10px)', borderBottom: '1px solid rgba(255,255,255,0.05)', padding: '20px 0' }}>
-          <div style={{ display: 'flex', justifyContent: 'center', gap: '30px', fontSize: '11px', letterSpacing: '0.2em', textTransform: 'uppercase', fontWeight: 600 }}>
+        {/* MENU - CAIXA ALTA, 11px, ESPAÇAMENTO 0.2em, 6 ABAS */}
+        <nav style={{ 
+          position: 'fixed', 
+          top: 0, 
+          width: '100%', 
+          backgroundColor: 'rgba(0,0,0,0.5)', 
+          backdropFilter: 'blur(10px)', 
+          borderBottom: '1px solid rgba(255,255,255,0.05)', 
+          padding: '20px 0' 
+        }}>
+          <div style={{ 
+            display: 'flex', 
+            justifyContent: 'center', 
+            gap: '30px', 
+            fontSize: '11px', 
+            letterSpacing: '0.2em', 
+            textTransform: 'uppercase', 
+            fontWeight: 600 
+          }}>
             <a href="#" style={{ color: '#a855f7' }}>iníciø</a>
             <a href="#">søbre</a>
             <a href="#">shøws</a>
@@ -44,30 +70,99 @@ export default function Inicio() {
           </div>
         </nav>
 
-        <main style={{ paddingTop: '220px', paddingBottom: '150px', maxWidth: '1000px', margin: '0 auto', textAlign: 'center', paddingLeft: '20px', paddingRight: '20px' }}>
+        <main style={{ 
+          paddingTop: '180px', 
+          paddingBottom: '150px', 
+          maxWidth: '1000px', 
+          margin: '0 auto', 
+          textAlign: 'center', 
+          paddingLeft: '20px', 
+          paddingRight: '20px' 
+        }}>
           
-          <h1 style={{ fontSize: 'clamp(2.5rem, 8vw, 4.5rem)', fontWeight: 'bold', letterSpacing: '-0.05em', marginBottom: '40px', lineHeight: '1.1' }}>
+          {/* TÍTULO - INICIAIS MAIÚSCULAS E VÍRGULA EM "desperta," */}
+          <h1 style={{ 
+            fontSize: 'clamp(2.5rem, 8vw, 4.5rem)', 
+            fontWeight: 'bold', 
+            letterSpacing: '-0.05em', 
+            marginBottom: '40px', 
+            lineHeight: '1.1' 
+          }}>
             Música que desperta, <br/>
             <span style={{ color: 'rgba(168, 85, 247, 0.8)' }}>
               Show que vira portal
             </span>
           </h1>
 
-          <div style={{ maxWidth: '500px', margin: '0 auto 60px', fontStyle: 'italic', color: '#a1a1aa', fontSize: '15px', lineHeight: '1.6', borderLeft: '2px solid rgba(126, 34, 206, 0.5)', paddingLeft: '30px', textAlign: 'left', letterSpacing: '0.05em' }}>
+          {/* CITAÇÃO - POLIVA SOHAM PRESERVADO */}
+          <div style={{ 
+            maxWidth: '500px', 
+            margin: '0 auto 60px', 
+            fontStyle: 'italic', 
+            color: '#a1a1aa', 
+            fontSize: '15px', 
+            lineHeight: '1.6', 
+            borderLeft: '2px solid rgba(126, 34, 206, 0.5)', 
+            paddingLeft: '30px', 
+            textAlign: 'left', 
+            letterSpacing: '0.05em',
+            textTransform: 'lowercase'
+          }}>
             &quot;a música não é apenas entretenimento; ela é portal. não é só sobre tocar música, é sobre atravessá-la. eu faço músicas e também canto músicas que transformam a mim e a outras pessoas&quot;
-            <span style={{ display: 'block', fontStyle: 'normal', color: '#a855f7', fontWeight: 'bold', marginTop: '16px', letterSpacing: '0.4em', fontSize: '11px' }}>
+            <span style={{ 
+              display: 'block', 
+              fontStyle: 'normal', 
+              color: '#a855f7', 
+              fontWeight: 'bold', 
+              marginTop: '16px', 
+              letterSpacing: '0.4em', 
+              fontSize: '11px', 
+              textTransform: 'none' 
+            }}>
               — Poliva Soham
             </span>
           </div>
 
-          <div style={{ width: '100%', maxWidth: '640px', aspectRatio: '16/9', backgroundColor: 'rgba(9, 9, 11, 0.6)', border: '1px solid rgba(255,255,255,0.05)', borderRadius: '4px', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 40px', boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.7)', backdropFilter: 'blur(4px)' }}>
-             <p style={{ color: '#3f3f46', letterSpacing: '0.6em', textTransform: 'lowercase', fontSize: '10px' }}>[ player vídeo de ativação ]</p>
+          {/* PLAYER YOUTUBE */}
+          <div style={{ 
+            width: '100%', 
+            maxWidth: '640px', 
+            aspectRatio: '16/9', 
+            backgroundColor: 'rgba(9, 9, 11, 0.6)', 
+            border: '1px solid rgba(255,255,255,0.05)', 
+            borderRadius: '4px', 
+            display: 'flex', 
+            alignItems: 'center', 
+            justifyContent: 'center', 
+            margin: '0 auto 40px', 
+            boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.7)', 
+            backdropFilter: 'blur(4px)' 
+          }}>
+             <p style={{ color: '#3f3f46', letterSpacing: '0.6em', textTransform: 'lowercase', fontSize: '10px' }}>
+               [ player vídeo de ativação ]
+             </p>
           </div>
         </main>
       </div>
 
-      <footer style={{ position: 'fixed', bottom: 0, width: '100%', zIndex: 100, backgroundColor: 'rgba(0,0,0,0.9)', backdropFilter: 'blur(20px)', borderTop: '1px solid rgba(255,255,255,0.05)', padding: '20px 40px' }}>
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', maxWidth: '1200px', margin: '0 auto' }}>
+      {/* RODAPÉ */}
+      <footer style={{ 
+        position: 'fixed', 
+        bottom: 0, 
+        width: '100%', 
+        zIndex: 100, 
+        backgroundColor: 'rgba(0,0,0,0.9)', 
+        backdropFilter: 'blur(20px)', 
+        borderTop: '1px solid rgba(255,255,255,0.05)', 
+        padding: '20px 40px' 
+      }}>
+        <div style={{ 
+          display: 'flex', 
+          justifyContent: 'space-between', 
+          alignItems: 'center', 
+          maxWidth: '1200px', 
+          margin: '0 auto' 
+        }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
             <img src="/simbolo-poliva.png" alt="pøliva" style={{ width: '40px', height: '40px', objectFit: 'contain' }} />
             <div>
