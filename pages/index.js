@@ -12,7 +12,7 @@ export default function Inicio() {
       fontFamily: "'Avant Garde', sans-serif" 
     }}>
       
-      {/* 1. SISTEMA DE VÍDEO - POSICIONAMENTO DO MEIO PARA O TOPO (-35%) */}
+      {/* 1. SISTEMA DE VÍDEO - POSICIONAMENTO DO MEIO PARA O TOPO (-20%) */}
       <div style={{ 
         position: 'fixed', 
         inset: 0, 
@@ -28,8 +28,8 @@ export default function Inicio() {
           style={{ 
             position: 'absolute',
             width: '100%', 
-            height: '140%', // CRIAMOS UMA "SOBRA" DE IMAGEM
-            top: '-35%',    // PUXA O MEIO DO VÍDEO PARA A ALTURA DO TOPO
+            height: '140%', 
+            top: '-20%',    // AJUSTE: RECUADO PARA -20% CONFORME SOLICITADO
             left: 0,
             objectFit: 'cover', 
             opacity: 0.6 
