@@ -5,15 +5,16 @@ export default function Inicio() {
   return (
     <div style={{ position: 'relative', minHeight: '100vh', backgroundColor: 'black', color: 'white', overflowX: 'hidden', fontFamily: "'Avant Garde', sans-serif" }}>
       
-      {/* 1. SISTEMA DE VÍDEO - AGORA LIMITADO A 1/4 DA TELA (TIPO BANNER) */}
+      {/* 1. SISTEMA DE VÍDEO (REVELADO E ENQUADRADO NO TOPO) */}
       <div style={{ 
         position: 'fixed', 
         top: 0, 
         left: 0, 
         width: '100%', 
-        height: '45vh', // LIMITA A ALTURA PARA QUASE METADE/UM QUARTO DA TELA VISÍVEL
+        height: '55vh', // AUMENTADO PARA DAR MAIS ÁREA VISÍVEL
         zIndex: 0,
-        overflow: 'hidden'
+        overflow: 'hidden',
+        backgroundColor: 'black' // COR DE SEGURANÇA SE O VÍDEO FALHAR
       }}>
         <video 
           autoPlay 
@@ -24,17 +25,18 @@ export default function Inicio() {
             width: '100%', 
             height: '100%', 
             objectFit: 'cover', 
-            objectPosition: 'center 20%', // MANTÉM O ENQUADRAMENTO NO TOPO
-            opacity: 0.5 
+            objectPosition: 'center 15%', // PUXA O FOCO MAIS PARA CIMA
+            opacity: 0.6 // UM POUCO MAIS ACESO PARA REVELAR DETALHES
           }}
         >
           <source src="/video-home-loop.mp4" type="video/mp4" />
         </video>
-        {/* GRADIENTE PARA O VÍDEO FUNDIR COM O PRETO EMBAIXO */}
+        {/* FILTRO CORRIGIDO: TRANSPARENTE NO TOPO, ESCURO NA BASE */}
         <div style={{ 
           position: 'absolute', 
           inset: 0, 
-          background: 'linear-gradient(to bottom, rgba(0,0,0,0.2) 0%, rgba(0,0,0,1) 100%)',
+          // GRADIENTE LIMPO NO TOPO (0%), SÓ ESCURECE NA BASE (100%)
+          background: 'linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 60%, rgba(0,0,0,1) 100%)',
           pointerEvents: 'none' 
         }}></div>
       </div>
@@ -42,7 +44,7 @@ export default function Inicio() {
       <div style={{ position: 'relative', zIndex: 10 }}>
         
         {/* MENU - 11px, UPPERCASE, ESPAÇAMENTO 0.2em */}
-        <nav style={{ position: 'fixed', top: 0, width: '100%', backgroundColor: 'rgba(0,0,0,0.6)', backdropFilter: 'blur(10px)', borderBottom: '1px solid rgba(255,255,255,0.05)', padding: '20px 0' }}>
+        <nav style={{ position: 'fixed', top: 0, width: '100%', backgroundColor: 'rgba(0,0,0,0.4)', backdropFilter: 'blur(10px)', borderBottom: '1px solid rgba(255,255,255,0.05)', padding: '20px 0' }}>
           <div style={{ display: 'flex', justifyContent: 'center', gap: '30px', fontSize: '11px', letterSpacing: '0.2em', textTransform: 'uppercase', fontWeight: 600 }}>
             <a href="#" style={{ color: '#a855f7' }}>iníciø</a>
             <a href="#">søbre</a>
@@ -64,7 +66,7 @@ export default function Inicio() {
           </h1>
 
           <div style={{ maxWidth: '500px', margin: '0 auto 60px', fontStyle: 'italic', color: '#a1a1aa', fontSize: '15px', lineHeight: '1.6', borderLeft: '2px solid rgba(126, 34, 206, 0.5)', paddingLeft: '30px', textAlign: 'left', letterSpacing: '0.05em' }}>
-            &quot;a música não é apenas entretenimento; ela é portal. não é só sobre tocar música, é sobre atravessá-la. eu faço músicas e também canto músicas que transformam a mim e a outras pessoas&quot;
+            &quot;a música não é apenas entretenimento; ela é portal. não é só sobre tocar música, é sobre atravessá-la. eu faço músicas e também canto músicas que transformam a mim e a outras people&quot;
             <span style={{ display: 'block', fontStyle: 'normal', color: '#a855f7', fontWeight: 'bold', marginTop: '16px', letterSpacing: '0.4em', fontSize: '11px' }}>
               — Poliva Soham
             </span>
