@@ -5,15 +5,12 @@ export default function Inicio() {
   return (
     <div style={{ position: 'relative', minHeight: '100vh', backgroundColor: 'black', color: 'white', overflowX: 'hidden', fontFamily: "'Avant Garde', sans-serif" }}>
       
-      {/* 1. SISTEMA DE VÍDEO (AJUSTE DOS "2 DEDOS" PARA CIMA) */}
+      {/* 1. SISTEMA DE VÍDEO - SEM "QUADRADO" E COM PUXADA PARA CIMA */}
       <div style={{ 
         position: 'fixed', 
-        top: 0, 
-        left: 0, 
-        width: '100%', 
-        height: '60vh', 
+        inset: 0, // OCUPA TUDO PARA SUMIR O QUADRADO PRETO
         zIndex: 0,
-        overflow: 'hidden'
+        backgroundColor: 'black'
       }}>
         <video 
           autoPlay 
@@ -24,7 +21,8 @@ export default function Inicio() {
             width: '100%', 
             height: '100%', 
             objectFit: 'cover', 
-            objectPosition: 'center 5%', // AJUSTE PRECISO: SUBIU OS "2 DEDOS"
+            objectPosition: 'center 0%', // COLA NO TOPO
+            transform: 'scale(1.1) translateY(-5%)', // PUXA A IMAGEM "2 DEDOS" PARA CIMA ALÉM DO LIMITE
             opacity: 0.6 
           }}
         >
@@ -48,7 +46,7 @@ export default function Inicio() {
 
         <main style={{ paddingTop: '220px', paddingBottom: '150px', maxWidth: '1000px', margin: '0 auto', textAlign: 'center', paddingLeft: '20px', paddingRight: '20px' }}>
           
-          <h1 style={{ fontSize: 'clamp(2rem, 8vw, 4rem)', fontWeight: 'bold', letterSpacing: '-0.05em', marginBottom: '40px', lineHeight: '1.1' }}>
+          <h1 style={{ fontSize: 'clamp(2.5rem, 8vw, 4.5rem)', fontWeight: 'bold', letterSpacing: '-0.05em', marginBottom: '40px', lineHeight: '1.1' }}>
             Música que desperta, <br/>
             <span style={{ color: 'rgba(168, 85, 247, 0.8)' }}>
               Show que vira portal
@@ -62,13 +60,12 @@ export default function Inicio() {
             </span>
           </div>
 
-          <div style={{ width: '100%', maxWidth: '640px', aspectRatio: '16/9', backgroundColor: 'rgba(9, 9, 11, 0.6)', border: '1px solid rgba(255,255,255,0.05)', borderRadius: '4px', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 40px', boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.5)', backdropFilter: 'blur(4px)' }}>
+          <div style={{ width: '100%', maxWidth: '640px', aspectRatio: '16/9', backgroundColor: 'rgba(9, 9, 11, 0.6)', border: '1px solid rgba(255,255,255,0.05)', borderRadius: '4px', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 40px', boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.7)', backdropFilter: 'blur(4px)' }}>
              <p style={{ color: '#3f3f46', letterSpacing: '0.6em', textTransform: 'lowercase', fontSize: '10px' }}>[ player vídeo de ativação ]</p>
           </div>
         </main>
       </div>
 
-      {/* RODAPÉ */}
       <footer style={{ position: 'fixed', bottom: 0, width: '100%', zIndex: 100, backgroundColor: 'rgba(0,0,0,0.9)', backdropFilter: 'blur(20px)', borderTop: '1px solid rgba(255,255,255,0.05)', padding: '20px 40px' }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', maxWidth: '1200px', margin: '0 auto' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
