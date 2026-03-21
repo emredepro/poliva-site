@@ -1,0 +1,27 @@
+{
+  "name": "poliva-site",
+  "version": "1.0.0",
+  "description": "Site oficial do projeto pøliva",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/emredepro/poliva-site.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/emredepro/poliva-site/issues"
+  },
+  "homepage": "https://github.com/emredepro/poliva-site#readme",
+  "dependencies": {
+    "lucide-react": "^0.577.0",
+    "next": "^16.2.1",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4"
+  }
+}
