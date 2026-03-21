@@ -3,11 +3,21 @@ import React from 'react';
 // Este é o componente da sua página Inicial
 export default function Inicio() {
   return (
-    <div className="relative min-h-screen text-white overflow-x-hidden" style={{ fontFamily: "'Avant Garde', sans-serif", backgroundColor: 'black' }}>
+    <div style={{ 
+      backgroundColor: 'black', 
+      minHeight: '100vh', 
+      color: 'white', 
+      overflowX: 'hidden', 
+      fontFamily: "'Avant Garde', sans-serif" 
+    }}>
       
-      {/* 1. SISTEMA DE FUNDO (VÍDEO + FILTRO) */}
-      <div style={{ position: 'fixed', inset: 0, zIndex: -10 }}>
-        {/* O VÍDEO */}
+      {/* 1. SISTEMA DE VÍDEO BLINDADO (Z-INDEX NEGATIVO) */}
+      <div style={{ 
+        position: 'fixed', 
+        inset: 0, 
+        zIndex: 0, 
+        backgroundColor: 'black' 
+      }}>
         <video 
           autoPlay 
           muted 
@@ -17,13 +27,13 @@ export default function Inicio() {
             width: '100%', 
             height: '100%', 
             objectFit: 'cover', 
-            objectPosition: 'center 20%', // SOBE O VÍDEO PARA O TOPO
-            opacity: 0.5 
+            objectPosition: 'center 20%', 
+            opacity: 0.4 
           }}
         >
           <source src="/video-home-loop.mp4" type="video/mp4" />
         </video>
-        {/* O FILTRO ESCURO (30% de opacidade para leitura) */}
+        {/* FILTRO DE LEITURA 30% */}
         <div style={{ 
           position: 'absolute', 
           inset: 0, 
@@ -32,62 +42,94 @@ export default function Inicio() {
         }}></div>
       </div>
 
-      {/* 2. MENU - 6 ABAS E FONTE 18px (MAIOR) */}
-      <nav className="fixed top-0 w-full z-50 bg-black/40 backdrop-blur-xl border-b border-white/5 py-6">
-        <div className="flex justify-center items-center gap-8 text-[18px] lowercase tracking-[0.3em] font-light">
-          <a href="#" className="hover:text-purple-400 transition">iníciø</a>
-          <a href="#" className="hover:text-purple-400 transition">søbre</a>
-          <a href="#" className="hover:text-purple-400 transition">shøws</a>
-          <a href="#" className="hover:text-purple-400 transition whitespace-nowrap">singles & álbuns</a>
-          <a href="#" className="hover:text-purple-400 transition">agenda</a>
-          <a href="#" className="hover:text-purple-400 transition">cøntatø</a>
+      {/* 2. MENU - 16px E LETRAS MAIS JUNTAS (TRACKING-WIDE) */}
+      <nav style={{ 
+        position: 'fixed', 
+        top: 0, 
+        width: '100%', 
+        zIndex: 100, 
+        backgroundColor: 'rgba(0,0,0,0.4)', 
+        backdropFilter: 'blur(10px)', 
+        borderBottom: '1px solid rgba(255,255,255,0.05)',
+        padding: '24px 0'
+      }}>
+        <div style={{ 
+          display: 'flex', 
+          justifyContent: 'center', 
+          gap: '30px', 
+          fontSize: '16px', 
+          letterSpacing: '0.15em', 
+          textTransform: 'lowercase', 
+          fontWeight: 300 
+        }}>
+          <a href="#" style={{ color: '#a855f7' }}>iníciø</a>
+          <a href="#">søbre</a>
+          <a href="#">shøws</a>
+          <a href="#" style={{ whiteSpace: 'nowrap' }}>singles & álbuns</a>
+          <a href="#">agenda</a>
+          <a href="#">cøntatø</a>
         </div>
       </nav>
 
-      <main className="relative pt-56 pb-48 px-6 flex flex-col items-center max-w-5xl mx-auto text-center z-10">
+      <main style={{ 
+        position: 'relative', 
+        zIndex: 10, 
+        paddingTop: '180px', 
+        paddingBottom: '150px', 
+        maxWidth: '1000px', 
+        margin: '0 auto', 
+        textAlign: 'center' 
+      }}>
         
-        {/* 3. TÍTULO */}
         <h1 className="text-4xl md:text-6xl font-bold tracking-tighter mb-10 leading-[1.1] lowercase">
           música que desperta <br/>
           <span className="text-purple-600/80">show que vira portal</span>
         </h1>
 
-        {/* 4. CITAÇÃO - POLIVA SOHAM COM INICIAIS MAIÚSCULAS FORÇADAS */}
         <div className="max-w-lg mb-16 italic text-zinc-300 text-sm md:text-base leading-relaxed border-l-2 border-purple-900/50 pl-8 text-left mx-auto tracking-widest lowercase">
           &quot;a música não é apenas entretenimento; ela é portal. não é só sobre tocar música, é sobre atravessá-la. eu faço músicas e também canto músicas que transformam a mim e a outras pessoas&quot;
-          <span 
-            className="block not-italic text-purple-500 font-bold mt-4 tracking-[0.4em] text-[12px]" 
-            style={{ textTransform: 'none', display: 'block' }}
-          >
+          <span style={{ 
+            display: 'block', 
+            fontStyle: 'normal', 
+            color: '#a855f7', 
+            fontWeight: 'bold', 
+            marginTop: '16px', 
+            letterSpacing: '0.4em', 
+            fontSize: '12px',
+            textTransform: 'none' // FORÇA AS INICIAIS MAIÚSCULAS
+          }}>
             — Poliva Soham
           </span>
         </div>
 
-        {/* 5. PLAYER YOUTUBE */}
-        <div className="w-full max-w-2xl aspect-video bg-zinc-950/60 rounded border border-white/10 flex items-center justify-center mb-10 shadow-2xl backdrop-blur-sm">
+        <div className="w-full max-w-2xl aspect-video bg-zinc-950/60 rounded border border-white/10 flex items-center justify-center mb-10 shadow-2xl backdrop-blur-sm mx-auto">
            <p className="text-zinc-700 tracking-[0.6em] lowercase text-[10px] font-light">[ player vídeo de ativação ]</p>
         </div>
 
       </main>
 
-      {/* 6. PLAYER DE RODAPÉ */}
-      <footer className="fixed bottom-0 w-full bg-black/90 backdrop-blur-2xl border-t border-white/5 p-6 z-50">
-        <div className="max-w-7xl mx-auto flex items-center justify-between px-6">
-          <div className="flex items-center gap-5">
-            <img 
-              src="/simbolo-poliva.png" 
-              alt="pøliva" 
-              className="w-12 h-12 object-contain brightness-110"
-              onError={(e) => { e.target.style.display = 'none'; }} 
-            />
+      {/* 3. RODAPÉ */}
+      <footer style={{ 
+        position: 'fixed', 
+        bottom: 0, 
+        width: '100%', 
+        zIndex: 100, 
+        backgroundColor: 'rgba(0,0,0,0.85)', 
+        backdropFilter: 'blur(20px)', 
+        borderTop: '1px solid rgba(255,255,255,0.05)',
+        padding: '20px 40px'
+      }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
+            <img src="/simbolo-poliva.png" alt="pøliva" style={{ width: '40px', height: '40px', objectFit: 'contain' }} />
             <div>
-              <h4 className="text-[12px] font-bold tracking-[0.2em] lowercase">depressa</h4>
-              <p className="text-[10px] text-zinc-500 tracking-widest mt-0.5 lowercase">pøliva • 16 de abril</p>
+              <h4 style={{ fontSize: '11px', fontWeight: 'bold', letterSpacing: '0.2em', textTransform: 'lowercase', margin: 0 }}>depressa</h4>
+              <p style={{ fontSize: '10px', color: '#71717a', letterSpacing: '0.1em', textTransform: 'lowercase', margin: 0 }}>pøliva • 16 de abril</p>
             </div>
           </div>
-          <div className="flex items-center gap-8">
-             <span className="text-[10px] tracking-[0.3em] text-zinc-600 hidden md:block lowercase font-light">432hz</span>
-             <div className="text-2xl text-purple-600 font-bold tracking-tighter">ø</div>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '30px' }}>
+             <span style={{ fontSize: '10px', letterSpacing: '0.3em', color: '#52525b', textTransform: 'lowercase' }}>432hz</span>
+             <div style={{ fontSize: '24px', color: '#a855f7', fontWeight: 'bold' }}>ø</div>
           </div>
         </div>
       </footer>
