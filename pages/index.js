@@ -1,4 +1,4 @@
-// POLIVESSENSE VERSION 2.1.0 - FIX RADIO AUTO-PLAY ON NAV
+// POLIVESSENSE VERSION 2.2.0 - ADD SENSORY ANIMATIONS ON HOVER
 import React, { useState, useEffect, useRef } from 'react';
 import Head from 'next/head';
 
@@ -25,7 +25,7 @@ export default function Inicio() {
     { title: "rock matinal para começar bem o dia", img: "/capa-playlist-3.jpg", link: "https://open.spotify.com/playlist/6LUj7CsEjuncERS7NDaXHx?si=7fef215cd7a344b8" }
   ];
 
-  // Preloader
+  // Preloader e Progress
   useEffect(() => {
     const interval = setInterval(() => {
       setProgress(prev => {
@@ -36,7 +36,7 @@ export default function Inicio() {
     return () => clearInterval(interval);
   }, []);
 
-  // Carrossel Playlists
+  // Carrossel Automático
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % playlists.length);
@@ -44,7 +44,7 @@ export default function Inicio() {
     return () => clearInterval(timer);
   }, [playlists.length]);
 
-  // EFEITO CRÍTICO: Dispara o play sempre que a Track mudar, se o player estiver em estado 'Playing'
+  // Sincronia de Áudio
   useEffect(() => {
     if (isPlaying && audioRef.current) {
       audioRef.current.play().catch(err => console.log("Autoplay blocked by browser", err));
@@ -62,12 +62,12 @@ export default function Inicio() {
 
   const nextTrack = () => {
     setCurrentTrack((prev) => (prev + 1) % tracks.length);
-    setIsPlaying(true); // Garante que o estado mude para tocando
+    setIsPlaying(true);
   };
 
   const prevTrack = () => {
     setCurrentTrack((prev) => (prev === 0 ? tracks.length - 1 : prev - 1));
-    setIsPlaying(true); // Garante que o estado mude para tocando
+    setIsPlaying(true);
   };
 
   return (
@@ -105,23 +105,26 @@ export default function Inicio() {
               <div className={`line ${isMenuOpen ? 'open' : ''}`}></div>
             </button>
             <div className={`nav-links ${isMenuOpen ? 'mobile-open' : ''}`}>
-              <a href="#" onClick={() => setIsMenuOpen(false)}>iníciø</a>
-              <a href="#" onClick={() => setIsMenuOpen(false)}>søbre pøliva</a>
-              <a href="#" onClick={() => setIsMenuOpen(false)}>shøws aø vivø</a>
-              <a href="#" onClick={() => setIsMenuOpen(false)}>singles & álbuns</a>
-              <a href="#" onClick={() => setIsMenuOpen(false)}>agenda</a>
-              <a href="#" onClick={() => setIsMenuOpen(false)}>cøntatø</a>
+              <a href="#">iníciø</a>
+              <a href="#">søbre pøliva</a>
+              <a href="#">shøws aø vivø</a>
+              <a href="#">singles & álbuns</a>
+              <a href="#">agenda</a>
+              <a href="#">cøntatø</a>
             </div>
           </div>
         </nav>
 
         <main className="main-scroll">
           <section className="hero-section">
-            <h1 className="hero-title" style={{ marginBottom: '80px' }}>
-              Música que desperta, <br/>
+            {/* ANIMAÇÃO APLICADA NO TÍTULO */}
+            <h1 className="hero-title anim-on-hover" style={{ marginBottom: '80px' }}>
+              <span>Música que desperta, </span><br/>
               <span style={{ color: '#a855f7' }}>Show que vira portal</span>
             </h1>
-            <div className="citation responsiva">
+            
+            {/* ANIMAÇÃO APLICADA NA CITAÇÃO COMPLETA */}
+            <div className="citation responsiva anim-on-hover">
               <p>
                 "A música não é apenas entretenimento; ela é portal. Não é só sobre tocar música, é sobre atravessá-la. 
                 Eu faço músicas e também canto músicas que transformam a mim e a outras pessoas"
@@ -131,7 +134,8 @@ export default function Inicio() {
           </section>
 
           <section className="section-block spacer-lg">
-            <div className="brutal-header mobile-boost">
+            {/* ANIMAÇÃO APLICADA NO TÍTULO DO BLOCO */}
+            <div className="brutal-header mobile-boost anim-on-hover">
               <h2>pølivessense, o show:</h2>
               <p className="bold-sub">assista abaixo na íntegra</p>
             </div>
@@ -141,7 +145,8 @@ export default function Inicio() {
           </section>
 
           <section className="section-block spacer-lg">
-             <div className="brutal-header mobile-boost">
+            {/* ANIMAÇÃO APLICADA NO TÍTULO DO BLOCO */}
+             <div className="brutal-header mobile-boost anim-on-hover">
                 <h3>playlists para as melhores ocasiões:</h3>
                 <p className="bold-sub">o que o seu momento pede?</p>
              </div>
@@ -209,6 +214,7 @@ export default function Inicio() {
       </div>
 
       <style jsx global>{`
+        /* [ESTILOS COMPLETOS PRESERVADOS] */
         .preloader { position: fixed; inset: 0; background: black; z-index: 2000; display: flex; align-items: center; justify-content: center; }
         .loader-box { width: 220px; text-align: center; display: flex; flex-direction: column; align-items: center; }
         .bar-bg { width: 100%; height: 2px; background: #111; margin: 15px 0; }
@@ -247,13 +253,22 @@ export default function Inicio() {
 
         .main-scroll { padding-top: 250px; text-align: center; max-width: 1200px; margin: 0 auto; }
         .hero-title { font-size: clamp(2.2rem, 8vw, 4.5rem); font-weight: bold; line-height: 1.1; }
-        .citation.responsiva { max-width: 600px; margin: 0 auto; border-left: 2px solid #a855f7; padding-left: 40px; text-align: left; font-style: italic; color: #a1a1aa; font-size: clamp(16px, 4vw, 18px); line-height: 1.7; }
-        .author { font-style: normal; color: #a855f7; font-weight: bold; font-size: 11px; }
+        
+        /* CITAÇÃO RESPONSIVA PARA MOBILE */
+        .citation.responsiva { max-width: 90%; margin: 0 auto; border-left: 2px solid #a855f7; padding-left: 5vw; text-align: left; font-style: italic; color: #a1a1aa; font-size: clamp(14px, 4vw, 18px); line-height: 1.7; overflow-wrap: break-word; }
+        .author { display: block; font-style: normal; color: #a855f7; font-weight: bold; font-size: 11px; letter-spacing: 0.4em; }
 
         .spacer-lg { margin-top: 180px; }
         .section-block { padding: 0 20px; }
+        
+        /* AJUSTE BRUTALISTA MOBILE +10% */
         .brutal-header h2, .brutal-header h3 { font-size: clamp(1.1rem, 4vw, 1.8rem); font-weight: bold; text-transform: lowercase; line-height: 1; margin: 0; }
         .bold-sub { font-size: clamp(1rem, 3.3vw, 1.6rem); font-weight: bold; color: #a855f7; margin-top: 5px; text-transform: lowercase; line-height: 1; }
+
+        @media (max-width: 600px) {
+           .mobile-boost h2, .mobile-boost h3 { font-size: 1.3rem !important; }
+           .mobile-boost .bold-sub { font-size: 1.15rem !important; }
+        }
 
         .video-player { width: 100%; max-width: 540px; margin: 60px auto; aspect-ratio: 16/9; box-shadow: 0 50px 100px rgba(0,0,0,0.9); }
         .video-player iframe { width: 100%; height: 100%; border-radius: 4px; }
@@ -269,9 +284,10 @@ export default function Inicio() {
 
         .footer-black { background: black; border-top: 1px solid #111; padding: 80px 20px 150px; text-align: center; margin-top: 150px; }
         .footer-heading { fontSize: 22px; fontWeight: bold; text-transform: uppercase; margin-bottom: 25px; }
+        .phone-line { font-weight: bold; margin-top: 10px; color: white; }
         .copyright-line { margin-top: 60px; font-size: 10px; color: #444; }
 
-        .radio-bar { position: fixed; bottom: 0; width: 100%; background: #050505; padding: 15px 40px; border-top: 1px solid #111; z-index: 1100; }
+        .radio-bar { position: fixed; bottom: 0; width: 100%; background: #050505; padding: 15px 40px; border-top: 1px solid #111; z-index: 1000; }
         .radio-inner { max-width: 1400px; margin: 0 auto; display: flex; align-items: center; gap: 50px; }
         .radio-controls { display: flex; align-items: center; gap: 25px; }
         .radio-nav-btn { background: none; border: none; color: #a855f7; cursor: pointer; display: flex; flex-direction: column; align-items: center; }
@@ -282,12 +298,26 @@ export default function Inicio() {
 
         .radio-display { flex: 1; text-align: left; overflow: hidden; }
         .marquee-box { width: 280px; overflow: hidden; white-space: nowrap; margin-bottom: 5px; border-bottom: 1px solid rgba(168, 85, 247, 0.1); }
-        .marquee-content { display: inline-block; padding-left: 20%; font-size: 13px; font-weight: bold; letter-spacing: 0.05em; }
+        .marquee-content { display: inline-block; padding-left: 20%; font-size: 13px; font-weight: bold; text-transform: lowercase; letter-spacing: 0.05em; }
+        .marquee-content:first-letter { text-transform: uppercase; }
         .marquee-content.running { animation: marquee 15s linear infinite; }
 
         .status-label { font-size: 11px; color: white; text-transform: lowercase; }
         @keyframes marquee { 0% { transform: translate(0, 0); } 100% { transform: translate(-100%, 0); } }
-        .wa-btn { position: fixed; bottom: 120px; right: 30px; width: 50px; z-index: 1000; }
+        .wa-btn { position: fixed; bottom: 120px; right: 30px; width: 50px; z-index: 500; }
+
+        /* NOVA LÓGICA DE ANIMAÇÃO SENSORIAL */
+        .anim-on-hover { 
+          opacity: 0; 
+          transform: translateY(30px); /* Começa 30px abaixo */
+          transition: transform 1s cubic-bezier(0.23, 1, 0.32, 1), opacity 1s ease; /*cubic-bezier dá o efeito suave e elástico */
+        }
+        
+        /* Quando o mouse entra na seção que contém o texto animado */
+        section:hover .anim-on-hover { 
+          opacity: 1; 
+          transform: translateY(0); /* Sobe para a posição original */
+        }
       `}</style>
     </div>
   );
