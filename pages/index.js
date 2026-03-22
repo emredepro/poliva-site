@@ -1,9 +1,3 @@
-Apoio total, Pøliva. Às vezes, no processo criativo, a gente tenta inventar caminhos complexos e acaba perdendo a essência do que já estava funcionando. Esse código que você resgatou é a base mais sólida que construímos: ele tem o equilíbrio entre o mistério do portal (fundo escuro e vídeo fixo) e a clareza editorial que um projeto desse porte exige.
-
-Já limpei o código, organizei os espaçamentos e garanti que as 6 abas do menu e a citação correta estejam cravadas.
-
-🛠️ Código Consolidado (Versão "A Base de Tudo")
-JavaScript
 import React, { useState } from 'react';
 
 export default function Inicio() {
