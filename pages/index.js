@@ -1,4 +1,4 @@
-// POLIVESSENSE VERSION 2.3.1 - PERSISTENT ANIMATIONS + FOOTER FIX
+// POLIVESSENSE VERSION 2.3.2 - FINAL HOME POLISH
 import React, { useState, useEffect, useRef } from 'react';
 import Head from 'next/head';
 
@@ -94,12 +94,12 @@ export default function Inicio() {
           <div className="nav-container">
             <img src="/logo-poliva.png" alt="Logo" className="nav-logo" />
             <div className="nav-links">
-              <a href="#">iníciø</a>
-              <a href="#">søbre pøliva</a>
-              <a href="#">shøws aø vivø</a>
-              <a href="#">singles & álbuns</a>
-              <a href="#">agenda</a>
-              <a href="#">cøntatø</a>
+              <a href="#" className="nav-item">iníciø</a>
+              <a href="#" className="nav-item">søbre pøliva</a>
+              <a href="#" className="nav-item">shøws aø vivø</a>
+              <a href="#" className="nav-item">singles & álbuns</a>
+              <a href="#" className="nav-item">agenda</a>
+              <a href="#" className="nav-item">cøntatø</a>
             </div>
           </div>
         </nav>
@@ -125,11 +125,11 @@ export default function Inicio() {
               <p className="bold-sub">assista abaixo na íntegra</p>
             </div>
             <div className="video-player interactive-zoom">
-               <iframe src="https://www.youtube.com/embed/4PbdupC3wrg" frameBorder="0" allowFullScreen></iframe>
+               <iframe src="https://www.youtube.com/embed/4PbdupC3wrg?vq=hd1080&rel=0" frameBorder="0" allowFullScreen></iframe>
             </div>
           </section>
 
-          <section className="section-block spacer-lg">
+          <section className="section-block spacer-lg" style={{ marginBottom: '200px' }}>
              <div className="brutal-header mobile-boost anim-fade-up">
                 <h3>playlists para as melhores ocasiões:</h3>
                 <p className="bold-sub">o que o seu momento pede?</p>
@@ -157,7 +157,6 @@ export default function Inicio() {
           <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" />
         </a>
 
-        {/* RODAPÉ AJUSTADO PARA NÃO SER COBERTO PELA RÁDIO */}
         <footer className="footer-black">
           <div className="footer-content anim-fade-up">
             <h4 className="footer-heading">cøntatø</h4>
@@ -192,13 +191,14 @@ export default function Inicio() {
                   {tracks[currentTrack].name}
                 </p>
               </div>
-              <span className="status-label" style={{ color: 'white' }}>você está ouvindo</span>
+              <span className="status-label" style={{ color: 'white', fontSize: '9px' }}>você está ouvindo</span>
             </div>
           </div>
         </div>
       </div>
 
       <style jsx global>{`
+        /* [ESTILOS DE BASE] */
         .preloader { position: fixed; inset: 0; background: black; z-index: 2000; display: flex; align-items: center; justify-content: center; }
         .loader-box { width: 220px; text-align: center; display: flex; flex-direction: column; align-items: center; }
         .bar-bg { width: 100%; height: 2px; background: #111; margin: 15px 0; }
@@ -214,7 +214,11 @@ export default function Inicio() {
         .nav-container { max-width: 1400px; margin: 0 auto; display: flex; justify-content: center; align-items: center; position: relative; min-height: 50px; }
         .nav-logo { width: 110px; position: absolute; left: 0; }
         .nav-links { display: flex; gap: 40px; font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; font-weight: bold; }
-        .nav-links a { color: white; text-decoration: none; transition: 0.3s; }
+        
+        /* AJUSTE MENU: HOVER E CLICK */
+        .nav-item { color: white; text-decoration: none; transition: 0.3s ease; cursor: pointer; }
+        .nav-item:hover { color: #a855f7 !important; }
+        .nav-item:active { color: white !important; transform: scale(0.95); }
 
         .main-scroll { padding-top: 250px; text-align: center; max-width: 1200px; margin: 0 auto; }
         .hero-title { font-size: clamp(2.2rem, 8vw, 4.5rem); font-weight: bold; line-height: 1.1; }
@@ -226,20 +230,18 @@ export default function Inicio() {
         .brutal-header h2, .brutal-header h3 { font-size: clamp(1.1rem, 4vw, 1.8rem); font-weight: bold; text-transform: lowercase; line-height: 1; margin: 0; }
         .bold-sub { font-size: clamp(1rem, 3.3vw, 1.6rem); font-weight: bold; color: #a855f7; margin-top: 5px; text-transform: lowercase; line-height: 1; }
 
-        .video-player { width: 100%; max-width: 540px; margin: 60px auto; aspect-ratio: 16/9; box-shadow: 0 50px 100px rgba(0,0,0,0.9); transition: 0.4s ease; }
+        .video-player { width: 100%; max-width: 540px; margin: 60px auto; aspect-ratio: 16/9; box-shadow: 0 50px 100px rgba(0,0,0,0.9); transition: 0.4s ease; background: black; }
         .video-player iframe { width: 100%; height: 100%; border-radius: 4px; }
 
         .carousel-main { display: flex; align-items: center; justify-content: center; gap: 40px; margin-top: 60px; }
         .car-viewport { width: 350px; overflow: hidden; }
         .car-track { display: flex; transition: 0.8s ease; }
         .car-item { min-width: 100%; }
-        .playlist-card-content { display: flex; flex-direction: column; align-items: center; }
         .playlist-img { width: 100%; aspect-ratio: 1/1; border-radius: 4px; border: 1px solid #111; margin-bottom: 40px; }
         .ouca-btn { background: none; border: 1px solid #a855f7; color: #a855f7; font-size: 16px; padding: 15px 35px; cursor: pointer; font-weight: bold; text-transform: lowercase; transition: 0.3s ease; }
         .car-btn { background: none; border: none; color: white; font-size: 50px; cursor: pointer; opacity: 0.3; transition: 0.3s; }
 
-        /* AJUSTE NO RODAPÉ: PADDING BOTTOM EXTRA PARA NÃO ENCAVALAR COM A RÁDIO */
-        .footer-black { background: black; border-top: 1px solid #111; padding: 100px 20px 180px; text-align: center; margin-top: 150px; }
+        .footer-black { background: black; border-top: 1px solid #111; padding: 100px 20px 200px; text-align: center; margin-top: 150px; }
         .footer-heading { font-size: 22px; font-weight: bold; text-transform: uppercase; margin-bottom: 25px; }
         .copyright-line { margin-top: 60px; font-size: 10px; color: #444; }
 
@@ -260,7 +262,6 @@ export default function Inicio() {
         @keyframes marquee { 0% { transform: translate(0, 0); } 100% { transform: translate(-100%, 0); } }
         .wa-btn { position: fixed; bottom: 120px; right: 30px; width: 50px; z-index: 1000; transition: 0.3s ease; }
 
-        /* ANIMAÇÃO "REVEAL AND STAY" */
         .anim-fade-up {
           opacity: 0;
           transform: translateY(40px);
@@ -273,10 +274,7 @@ export default function Inicio() {
         }
 
         @keyframes revealStay {
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
+          to { opacity: 1; transform: translateY(0); }
         }
 
         .interactive-zoom:hover { transform: scale(1.08); filter: brightness(1.2); }
