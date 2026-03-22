@@ -1,3 +1,4 @@
+// POLIVESSENSE VERSION 1.0.999 - FORCE CACHE RESET
 import React, { useState, useEffect, useRef } from 'react';
 import Head from 'next/head';
 
@@ -51,9 +52,9 @@ export default function Inicio() {
     <div style={{ backgroundColor: 'black', minHeight: '100vh', color: 'white', overflowX: 'hidden', fontFamily: "'Avant Garde', sans-serif" }}>
       <Head>
         <title>pøliva | pølivessense</title>
-        {/* NÍVEL MÁXIMO DE FORÇA PARA O FAVICON */}
-        <link rel="icon" href="/favicon.ico?v=999" />
-        <link rel="apple-touch-icon" href="/favicon.ico?v=999" />
+        {/* HACK DE DATA PARA O FAVICON NUNCA MAIS FICAR PRESO EM CACHE */}
+        <link rel="icon" href={`/favicon.ico?v=${new Date().getTime()}`} />
+        <link rel="apple-touch-icon" href={`/favicon.ico?v=${new Date().getTime()}`} />
       </Head>
 
       <audio ref={audioRef} src={tracks[currentTrack].file} onEnded={() => setCurrentTrack(prev => (prev + 1) % 4)} />
@@ -188,7 +189,6 @@ export default function Inicio() {
       </div>
 
       <style jsx global>{`
-        /* ESTILOS REFORÇADOS */
         .preloader { position: fixed; inset: 0; background: black; z-index: 2000; display: flex; align-items: center; justify-content: center; }
         .loader-box { width: 220px; text-align: center; display: flex; flex-direction: column; align-items: center; }
         .bar-bg { width: 100%; height: 2px; background: #111; margin: 15px 0; }
