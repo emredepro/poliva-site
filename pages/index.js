@@ -1,4 +1,4 @@
-// VERSÃO DO PORTAL: 2.0.1 - FORCE REBUILD LETREIRO
+// POLIVESSENSE VERSION 2.1.0 - FIX RADIO AUTO-PLAY ON NAV
 import React, { useState, useEffect, useRef } from 'react';
 import Head from 'next/head';
 
@@ -25,6 +25,7 @@ export default function Inicio() {
     { title: "rock matinal para começar bem o dia", img: "/capa-playlist-3.jpg", link: "https://open.spotify.com/playlist/6LUj7CsEjuncERS7NDaXHx?si=7fef215cd7a344b8" }
   ];
 
+  // Preloader
   useEffect(() => {
     const interval = setInterval(() => {
       setProgress(prev => {
@@ -35,6 +36,7 @@ export default function Inicio() {
     return () => clearInterval(interval);
   }, []);
 
+  // Carrossel Playlists
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % playlists.length);
@@ -42,10 +44,30 @@ export default function Inicio() {
     return () => clearInterval(timer);
   }, [playlists.length]);
 
+  // EFEITO CRÍTICO: Dispara o play sempre que a Track mudar, se o player estiver em estado 'Playing'
+  useEffect(() => {
+    if (isPlaying && audioRef.current) {
+      audioRef.current.play().catch(err => console.log("Autoplay blocked by browser", err));
+    }
+  }, [currentTrack]);
+
   const togglePlay = () => {
-    if (isPlaying) audioRef.current.pause();
-    else audioRef.current.play();
+    if (isPlaying) {
+      audioRef.current.pause();
+    } else {
+      audioRef.current.play();
+    }
     setIsPlaying(!isPlaying);
+  };
+
+  const nextTrack = () => {
+    setCurrentTrack((prev) => (prev + 1) % tracks.length);
+    setIsPlaying(true); // Garante que o estado mude para tocando
+  };
+
+  const prevTrack = () => {
+    setCurrentTrack((prev) => (prev === 0 ? tracks.length - 1 : prev - 1));
+    setIsPlaying(true); // Garante que o estado mude para tocando
   };
 
   return (
@@ -55,7 +77,7 @@ export default function Inicio() {
         <link rel="icon" href={`/favicon.ico?v=${new Date().getTime()}`} />
       </Head>
 
-      <audio ref={audioRef} src={tracks[currentTrack].file} onEnded={() => setCurrentTrack(prev => (prev + 1) % 4)} />
+      <audio ref={audioRef} src={tracks[currentTrack].file} onEnded={nextTrack} />
 
       {loading && (
         <div className="preloader">
@@ -104,7 +126,7 @@ export default function Inicio() {
                 "A música não é apenas entretenimento; ela é portal. Não é só sobre tocar música, é sobre atravessá-la. 
                 Eu faço músicas e também canto músicas que transformam a mim e a outras pessoas"
               </p>
-              <span className="author" style={{ marginTop: '8px', letterSpacing: '0.05em', display: 'block' }}>— Poliva Soham</span>
+              <span className="author" style={{ marginTop: '5px', letterSpacing: '0.05em', display: 'block' }}>— Poliva Soham</span>
             </div>
           </section>
 
@@ -124,7 +146,7 @@ export default function Inicio() {
                 <p className="bold-sub">o que o seu momento pede?</p>
              </div>
              <div className="carousel-main">
-                <button className="car-btn" onClick={() => setCurrentIndex(prev => (prev === 0 ? 2 : prev - 1))}>‹</button>
+                <button className="car-btn" onClick={prevTrack}>‹</button>
                 <div className="car-viewport">
                   <div className="car-track" style={{ transform: `translateX(-${currentIndex * 100}%)` }}>
                     {playlists.map((item, index) => (
@@ -137,7 +159,7 @@ export default function Inicio() {
                     ))}
                   </div>
                 </div>
-                <button className="car-btn" onClick={() => setCurrentIndex(prev => (prev + 1) % 3)}>›</button>
+                <button className="car-btn" onClick={nextTrack}>›</button>
              </div>
           </section>
         </main>
@@ -162,14 +184,14 @@ export default function Inicio() {
         <div className="radio-bar">
           <div className="radio-inner">
             <div className="radio-controls">
-              <button onClick={() => setCurrentTrack(prev => (prev === 0 ? 3 : prev - 1))} className="radio-nav-btn">
+              <button onClick={prevTrack} className="radio-nav-btn">
                 <span>«</span><small>voltar</small>
               </button>
               <div className="play-circle" onClick={togglePlay}>
                 <img src="/simbolo-poliva.png" alt="Play" style={{ opacity: isPlaying ? 1 : 0.6 }} />
                 <span className="play-label">{isPlaying ? 'pausar' : 'dê o play'}</span>
               </div>
-              <button onClick={() => setCurrentTrack(prev => (prev + 1) % 4)} className="radio-nav-btn">
+              <button onClick={nextTrack} className="radio-nav-btn">
                 <span>»</span><small>avançar</small>
               </button>
             </div>
@@ -187,7 +209,6 @@ export default function Inicio() {
       </div>
 
       <style jsx global>{`
-        /* [MANTENDO OS ESTILOS QUE JÁ ESTÃO FUNCIONANDO] */
         .preloader { position: fixed; inset: 0; background: black; z-index: 2000; display: flex; align-items: center; justify-content: center; }
         .loader-box { width: 220px; text-align: center; display: flex; flex-direction: column; align-items: center; }
         .bar-bg { width: 100%; height: 2px; background: #111; margin: 15px 0; }
@@ -244,12 +265,13 @@ export default function Inicio() {
         .playlist-card-content { display: flex; flex-direction: column; align-items: center; }
         .playlist-img { width: 100%; aspect-ratio: 1/1; border-radius: 4px; border: 1px solid #111; margin-bottom: 40px; }
         .ouca-btn { background: none; border: 1px solid #a855f7; color: #a855f7; font-size: 16px; padding: 15px 35px; cursor: pointer; font-weight: bold; text-transform: lowercase; }
+        .car-btn { background: none; border: none; color: white; font-size: 50px; cursor: pointer; opacity: 0.3; }
 
         .footer-black { background: black; border-top: 1px solid #111; padding: 80px 20px 150px; text-align: center; margin-top: 150px; }
         .footer-heading { fontSize: 22px; fontWeight: bold; text-transform: uppercase; margin-bottom: 25px; }
         .copyright-line { margin-top: 60px; font-size: 10px; color: #444; }
 
-        .radio-bar { position: fixed; bottom: 0; width: 100%; background: #050505; padding: 15px 40px; border-top: 1px solid #111; z-index: 1000; }
+        .radio-bar { position: fixed; bottom: 0; width: 100%; background: #050505; padding: 15px 40px; border-top: 1px solid #111; z-index: 1100; }
         .radio-inner { max-width: 1400px; margin: 0 auto; display: flex; align-items: center; gap: 50px; }
         .radio-controls { display: flex; align-items: center; gap: 25px; }
         .radio-nav-btn { background: none; border: none; color: #a855f7; cursor: pointer; display: flex; flex-direction: column; align-items: center; }
@@ -261,11 +283,11 @@ export default function Inicio() {
         .radio-display { flex: 1; text-align: left; overflow: hidden; }
         .marquee-box { width: 280px; overflow: hidden; white-space: nowrap; margin-bottom: 5px; border-bottom: 1px solid rgba(168, 85, 247, 0.1); }
         .marquee-content { display: inline-block; padding-left: 20%; font-size: 13px; font-weight: bold; letter-spacing: 0.05em; }
-        /* REMOVI O ESTILO QUE FORÇAVA MINÚSCULO AQUI */
         .marquee-content.running { animation: marquee 15s linear infinite; }
 
+        .status-label { font-size: 11px; color: white; text-transform: lowercase; }
         @keyframes marquee { 0% { transform: translate(0, 0); } 100% { transform: translate(-100%, 0); } }
-        .wa-btn { position: fixed; bottom: 120px; right: 30px; width: 50px; z-index: 500; }
+        .wa-btn { position: fixed; bottom: 120px; right: 30px; width: 50px; z-index: 1000; }
       `}</style>
     </div>
   );
