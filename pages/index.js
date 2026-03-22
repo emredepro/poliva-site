@@ -26,7 +26,7 @@ export default function Inicio() {
     const interval = setInterval(() => {
       setProgress(prev => {
         if (prev >= 100) { clearInterval(interval); setTimeout(() => setLoading(false), 800); return 100; }
-        return prev + 5;
+        return prev + 4;
       });
     }, 30);
     return () => clearInterval(interval);
@@ -56,7 +56,7 @@ export default function Inicio() {
 
       {loading && (
         <div className="preloader">
-          <img src="/simbolo-inicio.png" alt="Ø" className="pulse" style={{ width: '80px', marginBottom: '20px' }} />
+          <img src="/simbolo-inicio.png" alt="Ø" className="pulse" style={{ width: '60px', marginBottom: '20px' }} />
           <div className="bar-bg"><div className="bar-fill" style={{ width: `${progress}%` }}></div></div>
         </div>
       )}
@@ -74,59 +74,57 @@ export default function Inicio() {
             <div className="nav-links">
               <a href="#" className="nav-item">iníciø</a>
               <a href="#" className="nav-item">søbre pøliva</a>
-              <a href="#" className="nav-item">shøws aø vivø</a>
-              <a href="#" className="nav-item">singles & álbuns</a>
               <a href="#" className="nav-item">agenda</a>
               <a href="#" className="nav-item">cøntatø</a>
             </div>
           </div>
         </nav>
 
-        <main className="main-scroll">
-          <section className="hero">
-            <h1 className="anim-auto">Música que desperta, <br/><span style={{ color: '#a855f7' }}>Show que vira portal</span></h1>
+        <main className="main-content">
+          <section className="hero anim-auto">
+            <h1>Música que desperta, <br/><span style={{ color: '#a855f7' }}>Show que vira portal</span></h1>
           </section>
 
-          <section className="video-section">
-            <div className="video-box anim-auto">
+          <section className="video-section anim-auto">
+            <div className="video-box">
                <iframe src="https://www.youtube.com/embed/4PbdupC3wrg?vq=hd1080&rel=0" frameBorder="0" allowFullScreen></iframe>
             </div>
           </section>
 
-          <section className="playlists-section">
-             <div className="carousel anim-auto">
+          <section className="playlists-section anim-auto" style={{ marginBottom: '150px' }}>
+             <div className="carousel">
                 <img src={playlists[currentIndex].img} className="playlist-img" />
-                <button className="ouca-btn" onClick={() => window.open(playlists[currentIndex].link, '_blank')}>ouça aqui</button>
+                <button className="ouca-btn interactive-zoom" onClick={() => window.open(playlists[currentIndex].link, '_blank')}>ouça aqui</button>
              </div>
           </section>
         </main>
 
-        <a href="https://wa.me/message/L5OXQTU6PDIFF1" target="_blank" className="wa-btn">
+        <a href="https://wa.me/message/L5OXQTU6PDIFF1" target="_blank" className="wa-btn-fixed">
           <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WA" />
         </a>
 
         <footer className="footer-black">
-          <div className="anim-auto">
-            <h4>cøntatø</h4>
-            <p>contato@polivaoficial.com.br</p>
-            <p>22 98802-3803</p>
-            <p style={{ marginTop: '20px', opacity: 0.3 }}>pøliva© 2026</p>
-          </div>
+            <div className="anim-auto">
+                <h4 style={{ color: '#a855f7', textTransform: 'uppercase' }}>cøntatø</h4>
+                <p>contato@polivaoficial.com.br</p>
+                <p>22 98802-3803</p>
+                <p style={{ marginTop: '40px', fontSize: '10px', opacity: 0.4 }}>pøliva© 2026</p>
+            </div>
         </footer>
 
         <div className="radio-bar">
           <div className="radio-inner">
             <div className="controls">
               <button onClick={() => setCurrentTrack(prev => (prev === 0 ? 3 : prev - 1))}>«</button>
-              <div className="play-btn" onClick={togglePlay}>
+              <div className="play-trigger" onClick={togglePlay}>
                 <img src="/simbolo-poliva.png" style={{ opacity: isPlaying ? 1 : 0.6 }} />
-                <span>{isPlaying ? 'pausar' : 'dê o play'}</span>
+                <span>{isPlaying ? 'pausar' : 'play'}</span>
               </div>
               <button onClick={() => setCurrentTrack(prev => (prev + 1) % 4)}>»</button>
             </div>
-            <div className="info">
+            <div className="radio-info">
               <div className="marquee"><p className={isPlaying ? 'moving' : ''}>{tracks[currentTrack].name}</p></div>
-              <small>você está ouvindo</small>
+              <small className="listening-label">você está ouvindo</small>
             </div>
           </div>
         </div>
@@ -137,43 +135,45 @@ export default function Inicio() {
         .bar-bg { width: 200px; height: 2px; background: #111; }
         .bar-fill { height: 100%; background: #a855f7; }
 
-        .navbar { position: fixed; top: 0; width: 100%; background: rgba(0,0,0,0.9); padding: 20px; z-index: 5000; }
+        .navbar { position: fixed; top: 0; width: 100%; background: rgba(0,0,0,0.95); padding: 20px 40px; z-index: 5000; border-bottom: 1px solid #111; }
         .nav-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
         .nav-logo { width: 100px; }
-        .nav-item { color: white; text-decoration: none; font-size: 11px; font-weight: bold; text-transform: uppercase; transition: 0.3s; }
-        .nav-item:hover { color: #a855f7; }
-        .nav-item:active { color: white; }
+        .nav-item { color: white; text-decoration: none; font-size: 11px; font-weight: bold; text-transform: uppercase; transition: 0.3s; padding: 5px 10px; }
+        .nav-item:hover { color: #a855f7 !important; }
+        .nav-item:active { color: white !important; }
 
         .video-background { position: fixed; inset: 0; z-index: -1; }
-        .main-scroll { padding: 150px 20px 200px; text-align: center; }
+        .main-content { padding: 180px 20px 100px; text-align: center; }
         
-        .video-box { width: 100%; max-width: 600px; margin: 50px auto; aspect-ratio: 16/9; background: #000; box-shadow: 0 30px 60px rgba(0,0,0,0.8); }
-        .video-box iframe { width: 100%; height: 100%; }
+        .video-box { width: 100%; max-width: 580px; margin: 40px auto; aspect-ratio: 16/9; background: #000; box-shadow: 0 40px 80px rgba(0,0,0,0.8); }
+        .video-box iframe { width: 100%; height: 100%; border: none; }
 
-        .wa-btn { position: fixed; bottom: 120px; right: 30px; width: 50px; z-index: 8000; }
+        .playlist-img { width: 300px; height: 300px; border-radius: 4px; border: 1px solid #111; margin: 40px auto; display: block; }
+        .ouca-btn { background: none; border: 1px solid #a855f7; color: #a855f7; padding: 12px 30px; cursor: pointer; font-weight: bold; text-transform: uppercase; font-size: 12px; }
 
-        .footer-black { background: black !important; padding: 100px 20px 200px; border-top: 1px solid #111; }
+        .footer-black { background: black !important; padding: 80px 20px 200px; border-top: 1px solid #111; }
+        .wa-btn-fixed { position: fixed; bottom: 120px; right: 30px; width: 50px; z-index: 8000; }
 
         .radio-bar { position: fixed; bottom: 0; width: 100%; background: #080808; padding: 15px 30px; border-top: 1px solid #a855f733; z-index: 9000; }
-        .radio-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; }
-        .controls { display: flex; align-items: center; gap: 20px; }
-        .controls button { background: none; border: none; color: #a855f7; font-size: 20px; }
-        .play-btn { text-align: center; cursor: pointer; }
-        .play-btn img { width: 30px; display: block; margin: 0 auto; }
-        .play-btn span { font-size: 8px; color: #a855f7; text-transform: uppercase; font-weight: bold; }
+        .radio-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 30px; }
+        .controls { display: flex; align-items: center; gap: 15px; }
+        .controls button { background: none; border: none; color: #a855f7; font-size: 22px; cursor: pointer; }
+        .play-trigger { text-align: center; cursor: pointer; min-width: 60px; }
+        .play-trigger img { width: 25px; display: block; margin: 0 auto; }
+        .play-trigger span { font-size: 8px; color: #a855f7; text-transform: uppercase; font-weight: bold; }
         
-        .info { flex: 1; margin-left: 30px; overflow: hidden; }
-        .marquee { width: 100%; overflow: hidden; border-bottom: 1px solid #222; padding-bottom: 5px; }
-        .marquee p { white-space: nowrap; font-weight: bold; font-size: 14px; }
+        .radio-info { flex: 1; overflow: hidden; text-align: left; }
+        .marquee { width: 100%; overflow: hidden; border-bottom: 1px solid #222; padding-bottom: 4px; margin-bottom: 4px; }
+        .marquee p { white-space: nowrap; font-weight: bold; font-size: 13px; display: inline-block; padding-left: 10%; }
         .moving { animation: marquee 15s linear infinite; }
-        @keyframes marquee { 0% { transform: translateX(100%); } 100% { transform: translateX(-100%); } }
-        small { font-size: 9px !important; color: #666; }
+        @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-100%); } }
+        .listening-label { font-size: 9px !important; color: #666; text-transform: lowercase; }
 
-        .anim-auto { opacity: 0; transform: translateY(20px); animation: reveal 0.8s ease forwards; }
+        .anim-auto { opacity: 0; transform: translateY(20px); animation: reveal 0.5s ease forwards; }
         @keyframes reveal { to { opacity: 1; transform: translateY(0); } }
-        
         .hidden { opacity: 0; }
         .visible { opacity: 1; transition: 1s; }
+        .interactive-zoom:hover { transform: scale(1.05); transition: 0.3s; }
         .pulse { animation: pulse 2s infinite; }
       `}</style>
     </div>
