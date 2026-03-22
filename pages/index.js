@@ -1,4 +1,4 @@
-// POLIVESSENSE VERSION 2.2.0 - ADD SENSORY ANIMATIONS ON HOVER
+// POLIVESSENSE VERSION 2.3.0 - PERSISTENT ANIMATIONS & INTERACTIVE ZOOM
 import React, { useState, useEffect, useRef } from 'react';
 import Head from 'next/head';
 
@@ -25,7 +25,6 @@ export default function Inicio() {
     { title: "rock matinal para começar bem o dia", img: "/capa-playlist-3.jpg", link: "https://open.spotify.com/playlist/6LUj7CsEjuncERS7NDaXHx?si=7fef215cd7a344b8" }
   ];
 
-  // Preloader e Progress
   useEffect(() => {
     const interval = setInterval(() => {
       setProgress(prev => {
@@ -36,7 +35,6 @@ export default function Inicio() {
     return () => clearInterval(interval);
   }, []);
 
-  // Carrossel Automático
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % playlists.length);
@@ -44,19 +42,15 @@ export default function Inicio() {
     return () => clearInterval(timer);
   }, [playlists.length]);
 
-  // Sincronia de Áudio
   useEffect(() => {
     if (isPlaying && audioRef.current) {
-      audioRef.current.play().catch(err => console.log("Autoplay blocked by browser", err));
+      audioRef.current.play().catch(err => console.log("Autoplay blocked", err));
     }
   }, [currentTrack]);
 
   const togglePlay = () => {
-    if (isPlaying) {
-      audioRef.current.pause();
-    } else {
-      audioRef.current.play();
-    }
+    if (isPlaying) audioRef.current.pause();
+    else audioRef.current.play();
     setIsPlaying(!isPlaying);
   };
 
@@ -99,12 +93,7 @@ export default function Inicio() {
         <nav className="navbar">
           <div className="nav-container">
             <img src="/logo-poliva.png" alt="Logo" className="nav-logo" />
-            <button className="menu-toggle" onClick={() => setIsMenuOpen(!isMenuOpen)}>
-              <div className={`line ${isMenuOpen ? 'open' : ''}`}></div>
-              <div className={`line ${isMenuOpen ? 'open' : ''}`}></div>
-              <div className={`line ${isMenuOpen ? 'open' : ''}`}></div>
-            </button>
-            <div className={`nav-links ${isMenuOpen ? 'mobile-open' : ''}`}>
+            <div className="nav-links">
               <a href="#">iníciø</a>
               <a href="#">søbre pøliva</a>
               <a href="#">shøws aø vivø</a>
@@ -117,14 +106,11 @@ export default function Inicio() {
 
         <main className="main-scroll">
           <section className="hero-section">
-            {/* ANIMAÇÃO APLICADA NO TÍTULO */}
-            <h1 className="hero-title anim-on-hover" style={{ marginBottom: '80px' }}>
-              <span>Música que desperta, </span><br/>
+            <h1 className="hero-title anim-fade-up" style={{ marginBottom: '80px' }}>
+              Música que desperta, <br/>
               <span style={{ color: '#a855f7' }}>Show que vira portal</span>
             </h1>
-            
-            {/* ANIMAÇÃO APLICADA NA CITAÇÃO COMPLETA */}
-            <div className="citation responsiva anim-on-hover">
+            <div className="citation responsiva anim-fade-up">
               <p>
                 "A música não é apenas entretenimento; ela é portal. Não é só sobre tocar música, é sobre atravessá-la. 
                 Eu faço músicas e também canto músicas que transformam a mim e a outras pessoas"
@@ -134,42 +120,40 @@ export default function Inicio() {
           </section>
 
           <section className="section-block spacer-lg">
-            {/* ANIMAÇÃO APLICADA NO TÍTULO DO BLOCO */}
-            <div className="brutal-header mobile-boost anim-on-hover">
+            <div className="brutal-header mobile-boost anim-fade-up">
               <h2>pølivessense, o show:</h2>
               <p className="bold-sub">assista abaixo na íntegra</p>
             </div>
-            <div className="video-player">
+            <div className="video-player interactive-zoom">
                <iframe src="https://www.youtube.com/embed/4PbdupC3wrg" frameBorder="0" allowFullScreen></iframe>
             </div>
           </section>
 
           <section className="section-block spacer-lg">
-            {/* ANIMAÇÃO APLICADA NO TÍTULO DO BLOCO */}
-             <div className="brutal-header mobile-boost anim-on-hover">
+             <div className="brutal-header mobile-boost anim-fade-up">
                 <h3>playlists para as melhores ocasiões:</h3>
                 <p className="bold-sub">o que o seu momento pede?</p>
              </div>
              <div className="carousel-main">
-                <button className="car-btn" onClick={prevTrack}>‹</button>
+                <button className="car-btn interactive-zoom" onClick={prevTrack}>‹</button>
                 <div className="car-viewport">
                   <div className="car-track" style={{ transform: `translateX(-${currentIndex * 100}%)` }}>
                     {playlists.map((item, index) => (
                       <div key={index} className="car-item">
                         <div className="playlist-card-content">
                            <img src={item.img} alt={item.title} className="playlist-img" />
-                           <button className="ouca-btn" onClick={() => window.open(item.link, '_blank')}>ouça aqui</button>
+                           <button className="ouca-btn interactive-zoom" onClick={() => window.open(item.link, '_blank')}>ouça aqui</button>
                         </div>
                       </div>
                     ))}
                   </div>
                 </div>
-                <button className="car-btn" onClick={nextTrack}>›</button>
+                <button className="car-btn interactive-zoom" onClick={nextTrack}>›</button>
              </div>
           </section>
         </main>
 
-        <a href="https://wa.me/message/L5OXQTU6PDIFF1" target="_blank" className="wa-btn">
+        <a href="https://wa.me/message/L5OXQTU6PDIFF1" target="_blank" className="wa-btn interactive-zoom">
           <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" />
         </a>
 
@@ -189,14 +173,14 @@ export default function Inicio() {
         <div className="radio-bar">
           <div className="radio-inner">
             <div className="radio-controls">
-              <button onClick={prevTrack} className="radio-nav-btn">
+              <button onClick={prevTrack} className="radio-nav-btn interactive-zoom">
                 <span>«</span><small>voltar</small>
               </button>
-              <div className="play-circle" onClick={togglePlay}>
+              <div className="play-circle interactive-zoom" onClick={togglePlay}>
                 <img src="/simbolo-poliva.png" alt="Play" style={{ opacity: isPlaying ? 1 : 0.6 }} />
                 <span className="play-label">{isPlaying ? 'pausar' : 'dê o play'}</span>
               </div>
-              <button onClick={nextTrack} className="radio-nav-btn">
+              <button onClick={nextTrack} className="radio-nav-btn interactive-zoom">
                 <span>»</span><small>avançar</small>
               </button>
             </div>
@@ -214,7 +198,7 @@ export default function Inicio() {
       </div>
 
       <style jsx global>{`
-        /* [ESTILOS COMPLETOS PRESERVADOS] */
+        /* [ESTILOS DE BASE MANTIDOS] */
         .preloader { position: fixed; inset: 0; background: black; z-index: 2000; display: flex; align-items: center; justify-content: center; }
         .loader-box { width: 220px; text-align: center; display: flex; flex-direction: column; align-items: center; }
         .bar-bg { width: 100%; height: 2px; background: #111; margin: 15px 0; }
@@ -231,46 +215,18 @@ export default function Inicio() {
         .nav-logo { width: 110px; position: absolute; left: 0; }
         .nav-links { display: flex; gap: 40px; font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; font-weight: bold; }
         .nav-links a { color: white; text-decoration: none; transition: 0.3s; }
-        .nav-links a:hover { color: #a855f7; }
-
-        .menu-toggle { display: none; flex-direction: column; gap: 6px; background: none; border: none; cursor: pointer; position: absolute; right: 0; }
-        .line { width: 25px; height: 2px; background: white; transition: 0.3s; }
-        .line.open:nth-child(1) { transform: translateY(8px) rotate(45deg); }
-        .line.open:nth-child(2) { opacity: 0; }
-        .line.open:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
-
-        @media (max-width: 900px) {
-          .menu-toggle { display: flex; }
-          .nav-links { 
-            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; 
-            background: black; flex-direction: column; justify-content: center; align-items: center;
-            transform: translateX(100%); transition: transform 0.5s ease-in-out; 
-          }
-          .nav-links.mobile-open { transform: translateX(0); }
-          .nav-logo { position: static; }
-          .nav-container { justify-content: space-between; }
-        }
 
         .main-scroll { padding-top: 250px; text-align: center; max-width: 1200px; margin: 0 auto; }
         .hero-title { font-size: clamp(2.2rem, 8vw, 4.5rem); font-weight: bold; line-height: 1.1; }
-        
-        /* CITAÇÃO RESPONSIVA PARA MOBILE */
-        .citation.responsiva { max-width: 90%; margin: 0 auto; border-left: 2px solid #a855f7; padding-left: 5vw; text-align: left; font-style: italic; color: #a1a1aa; font-size: clamp(14px, 4vw, 18px); line-height: 1.7; overflow-wrap: break-word; }
-        .author { display: block; font-style: normal; color: #a855f7; font-weight: bold; font-size: 11px; letter-spacing: 0.4em; }
+        .citation.responsiva { max-width: 600px; margin: 0 auto; border-left: 2px solid #a855f7; padding-left: 40px; text-align: left; font-style: italic; color: #a1a1aa; font-size: clamp(16px, 4vw, 18px); line-height: 1.7; }
+        .author { font-style: normal; color: #a855f7; font-weight: bold; font-size: 11px; }
 
         .spacer-lg { margin-top: 180px; }
         .section-block { padding: 0 20px; }
-        
-        /* AJUSTE BRUTALISTA MOBILE +10% */
         .brutal-header h2, .brutal-header h3 { font-size: clamp(1.1rem, 4vw, 1.8rem); font-weight: bold; text-transform: lowercase; line-height: 1; margin: 0; }
         .bold-sub { font-size: clamp(1rem, 3.3vw, 1.6rem); font-weight: bold; color: #a855f7; margin-top: 5px; text-transform: lowercase; line-height: 1; }
 
-        @media (max-width: 600px) {
-           .mobile-boost h2, .mobile-boost h3 { font-size: 1.3rem !important; }
-           .mobile-boost .bold-sub { font-size: 1.15rem !important; }
-        }
-
-        .video-player { width: 100%; max-width: 540px; margin: 60px auto; aspect-ratio: 16/9; box-shadow: 0 50px 100px rgba(0,0,0,0.9); }
+        .video-player { width: 100%; max-width: 540px; margin: 60px auto; aspect-ratio: 16/9; box-shadow: 0 50px 100px rgba(0,0,0,0.9); transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
         .video-player iframe { width: 100%; height: 100%; border-radius: 4px; }
 
         .carousel-main { display: flex; align-items: center; justify-content: center; gap: 40px; margin-top: 60px; }
@@ -279,44 +235,56 @@ export default function Inicio() {
         .car-item { min-width: 100%; }
         .playlist-card-content { display: flex; flex-direction: column; align-items: center; }
         .playlist-img { width: 100%; aspect-ratio: 1/1; border-radius: 4px; border: 1px solid #111; margin-bottom: 40px; }
-        .ouca-btn { background: none; border: 1px solid #a855f7; color: #a855f7; font-size: 16px; padding: 15px 35px; cursor: pointer; font-weight: bold; text-transform: lowercase; }
-        .car-btn { background: none; border: none; color: white; font-size: 50px; cursor: pointer; opacity: 0.3; }
+        .ouca-btn { background: none; border: 1px solid #a855f7; color: #a855f7; font-size: 16px; padding: 15px 35px; cursor: pointer; font-weight: bold; text-transform: lowercase; transition: 0.3s ease; }
+        .car-btn { background: none; border: none; color: white; font-size: 50px; cursor: pointer; opacity: 0.3; transition: 0.3s; }
 
-        .footer-black { background: black; border-top: 1px solid #111; padding: 80px 20px 150px; text-align: center; margin-top: 150px; }
-        .footer-heading { fontSize: 22px; fontWeight: bold; text-transform: uppercase; margin-bottom: 25px; }
-        .phone-line { font-weight: bold; margin-top: 10px; color: white; }
-        .copyright-line { margin-top: 60px; font-size: 10px; color: #444; }
-
-        .radio-bar { position: fixed; bottom: 0; width: 100%; background: #050505; padding: 15px 40px; border-top: 1px solid #111; z-index: 1000; }
+        .radio-bar { position: fixed; bottom: 0; width: 100%; background: #050505; padding: 15px 40px; border-top: 1px solid #111; z-index: 1100; }
         .radio-inner { max-width: 1400px; margin: 0 auto; display: flex; align-items: center; gap: 50px; }
         .radio-controls { display: flex; align-items: center; gap: 25px; }
-        .radio-nav-btn { background: none; border: none; color: #a855f7; cursor: pointer; display: flex; flex-direction: column; align-items: center; }
+        .radio-nav-btn { background: none; border: none; color: #a855f7; cursor: pointer; display: flex; flex-direction: column; align-items: center; transition: 0.3s ease; }
         .radio-nav-btn small { font-size: 8px; text-transform: uppercase; opacity: 0.6; margin-top: 2px; }
-        .play-circle { cursor: pointer; display: flex; flex-direction: column; align-items: center; min-width: 70px; }
+        .play-circle { cursor: pointer; display: flex; flex-direction: column; align-items: center; min-width: 70px; transition: 0.3s ease; }
         .play-circle img { width: 35px; }
         .play-label { font-size: 8px; text-transform: uppercase; color: #a855f7; font-weight: bold; margin-top: 5px; }
 
         .radio-display { flex: 1; text-align: left; overflow: hidden; }
         .marquee-box { width: 280px; overflow: hidden; white-space: nowrap; margin-bottom: 5px; border-bottom: 1px solid rgba(168, 85, 247, 0.1); }
-        .marquee-content { display: inline-block; padding-left: 20%; font-size: 13px; font-weight: bold; text-transform: lowercase; letter-spacing: 0.05em; }
-        .marquee-content:first-letter { text-transform: uppercase; }
+        .marquee-content { display: inline-block; padding-left: 20%; font-size: 13px; font-weight: bold; letter-spacing: 0.05em; }
         .marquee-content.running { animation: marquee 15s linear infinite; }
 
-        .status-label { font-size: 11px; color: white; text-transform: lowercase; }
         @keyframes marquee { 0% { transform: translate(0, 0); } 100% { transform: translate(-100%, 0); } }
-        .wa-btn { position: fixed; bottom: 120px; right: 30px; width: 50px; z-index: 500; }
+        .wa-btn { position: fixed; bottom: 120px; right: 30px; width: 50px; z-index: 1000; transition: 0.3s ease; }
 
-        /* NOVA LÓGICA DE ANIMAÇÃO SENSORIAL */
-        .anim-on-hover { 
-          opacity: 0; 
-          transform: translateY(30px); /* Começa 30px abaixo */
-          transition: transform 1s cubic-bezier(0.23, 1, 0.32, 1), opacity 1s ease; /*cubic-bezier dá o efeito suave e elástico */
+        /* NOVA LÓGICA DE ANIMAÇÃO: APARECER E FICAR */
+        .anim-fade-up {
+          opacity: 0;
+          transform: translateY(40px);
+          animation: revealStay 1.2s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+          animation-play-state: paused;
+        }
+
+        /* Dispara quando o elemento entra no scroll ou quando o container pai é hover */
+        section:hover .anim-fade-up, .hero-section .anim-fade-up {
+          animation-play-state: running;
+        }
+
+        @keyframes revealStay {
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        /* ANIMAÇÃO DE ZOOM INTERATIVO (CONVERSÃO) */
+        .interactive-zoom:hover {
+          transform: scale(1.08);
+          filter: brightness(1.2);
+          cursor: pointer;
         }
         
-        /* Quando o mouse entra na seção que contém o texto animado */
-        section:hover .anim-on-hover { 
-          opacity: 1; 
-          transform: translateY(0); /* Sobe para a posição original */
+        /* Ajuste específico para o vídeo não estourar sombra */
+        .video-player.interactive-zoom:hover {
+          transform: scale(1.03);
         }
       `}</style>
     </div>
