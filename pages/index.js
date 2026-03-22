@@ -51,9 +51,9 @@ export default function Inicio() {
     <div style={{ backgroundColor: 'black', minHeight: '100vh', color: 'white', overflowX: 'hidden', fontFamily: "'Avant Garde', sans-serif" }}>
       <Head>
         <title>pøliva | pølivessense</title>
-        {/* FORCEI O FAVICON COM VERSÃO PARA LIMPAR CACHE */}
-        <link rel="icon" type="image/x-icon" href="/favicon.ico?v=7" />
-        <link rel="shortcut icon" href="/favicon.ico?v=7" />
+        {/* NÍVEL MÁXIMO DE FORÇA PARA O FAVICON */}
+        <link rel="icon" href="/favicon.ico?v=999" />
+        <link rel="apple-touch-icon" href="/favicon.ico?v=999" />
       </Head>
 
       <audio ref={audioRef} src={tracks[currentTrack].file} onEnded={() => setCurrentTrack(prev => (prev + 1) % 4)} />
@@ -75,7 +75,6 @@ export default function Inicio() {
       </div>
 
       <div className={`page-content ${loading ? 'hidden' : 'visible'}`}>
-        
         <nav className="navbar">
           <div className="nav-container">
             <img src="/logo-poliva.png" alt="Logo" className="nav-logo" />
@@ -106,7 +105,7 @@ export default function Inicio() {
                 "A música não é apenas entretenimento; ela é portal. Não é só sobre tocar música, é sobre atravessá-la. 
                 Eu faço músicas e também canto músicas que transformam a mim e a outras pessoas"
               </p>
-              <span className="author" style={{ marginTop: '8px', letterSpacing: '0.12em' }}>— Poliva Soham</span>
+              <span className="author" style={{ marginTop: '5px', letterSpacing: '0.05em', display: 'block' }}>— Poliva Soham</span>
             </div>
           </section>
 
@@ -189,8 +188,8 @@ export default function Inicio() {
       </div>
 
       <style jsx global>{`
-        /* [ESTILOS OTIMIZADOS E BLINDADOS] */
-        .preloader { position: fixed; inset: 0; background: black; z-index: 1000; display: flex; align-items: center; justify-content: center; }
+        /* ESTILOS REFORÇADOS */
+        .preloader { position: fixed; inset: 0; background: black; z-index: 2000; display: flex; align-items: center; justify-content: center; }
         .loader-box { width: 220px; text-align: center; display: flex; flex-direction: column; align-items: center; }
         .bar-bg { width: 100%; height: 2px; background: #111; margin: 15px 0; }
         .bar-fill { height: 100%; background: #a855f7; transition: width 0.1s; }
@@ -201,14 +200,14 @@ export default function Inicio() {
         .page-content { position: relative; z-index: 10; transition: opacity 1.5s ease; }
         .page-content.hidden { opacity: 0; }
 
-        .navbar { position: fixed; top: 0; width: 100%; background: rgba(0,0,0,0.95); padding: 25px 40px; z-index: 900; border-bottom: 1px solid #111; }
+        .navbar { position: fixed; top: 0; width: 100%; background: rgba(0,0,0,0.95); padding: 25px 40px; z-index: 1000; border-bottom: 1px solid #111; }
         .nav-container { max-width: 1400px; margin: 0 auto; display: flex; justify-content: center; align-items: center; position: relative; min-height: 50px; }
         .nav-logo { width: 110px; position: absolute; left: 0; }
         .nav-links { display: flex; gap: 40px; font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; font-weight: bold; }
         .nav-links a { color: white; text-decoration: none; transition: 0.3s; }
         .nav-links a:hover { color: #a855f7; }
 
-        .menu-toggle { display: none; flex-direction: column; gap: 6px; background: none; border: none; cursor: pointer; position: absolute; right: 0; z-index: 1000; }
+        .menu-toggle { display: none; flex-direction: column; gap: 6px; background: none; border: none; cursor: pointer; position: absolute; right: 0; }
         .line { width: 25px; height: 2px; background: white; transition: 0.3s; }
         .line.open:nth-child(1) { transform: translateY(8px) rotate(45deg); }
         .line.open:nth-child(2) { opacity: 0; }
@@ -228,8 +227,8 @@ export default function Inicio() {
 
         .main-scroll { padding-top: 250px; text-align: center; max-width: 1200px; margin: 0 auto; }
         .hero-title { font-size: clamp(2.2rem, 8vw, 4.5rem); font-weight: bold; line-height: 1.1; }
-        .citation.responsiva { max-width: 600px; margin: 0 auto; border-left: 2px solid #a855f7; padding-left: 40px; text-align: left; font-style: italic; color: #a1a1aa; font-size: clamp(16px, 4vw, 18px); line-height: 1.7; overflow-wrap: break-word; }
-        .author { display: block; font-style: normal; color: #a855f7; font-weight: bold; font-size: 11px; }
+        .citation.responsiva { max-width: 600px; margin: 0 auto; border-left: 2px solid #a855f7; padding-left: 40px; text-align: left; font-style: italic; color: #a1a1aa; font-size: clamp(16px, 4vw, 18px); line-height: 1.7; }
+        .author { font-style: normal; color: #a855f7; font-weight: bold; font-size: 11px; }
 
         .spacer-lg { margin-top: 180px; }
         .section-block { padding: 0 20px; }
@@ -246,14 +245,12 @@ export default function Inicio() {
         .playlist-card-content { display: flex; flex-direction: column; align-items: center; }
         .playlist-img { width: 100%; aspect-ratio: 1/1; border-radius: 4px; border: 1px solid #111; margin-bottom: 40px; }
         .ouca-btn { background: none; border: 1px solid #a855f7; color: #a855f7; font-size: 16px; padding: 15px 35px; cursor: pointer; font-weight: bold; text-transform: lowercase; }
-        .car-btn { background: none; border: none; color: white; font-size: 50px; cursor: pointer; opacity: 0.3; }
 
         .footer-black { background: black; border-top: 1px solid #111; padding: 80px 20px 150px; text-align: center; margin-top: 150px; }
         .footer-heading { fontSize: 22px; fontWeight: bold; text-transform: uppercase; margin-bottom: 25px; }
-        .phone-line { font-weight: bold; margin-top: 10px; color: white; }
         .copyright-line { margin-top: 60px; font-size: 10px; color: #444; }
 
-        .radio-bar { position: fixed; bottom: 0; width: 100%; background: #050505; padding: 15px 40px; border-top: 1px solid #111; z-index: 1000; }
+        .radio-bar { position: fixed; bottom: 0; width: 100%; background: #050505; padding: 15px 40px; border-top: 1px solid #111; z-index: 1100; }
         .radio-inner { max-width: 1400px; margin: 0 auto; display: flex; align-items: center; gap: 50px; }
         .radio-controls { display: flex; align-items: center; gap: 25px; }
         .radio-nav-btn { background: none; border: none; color: #a855f7; cursor: pointer; display: flex; flex-direction: column; align-items: center; }
@@ -265,11 +262,12 @@ export default function Inicio() {
         .radio-display { flex: 1; text-align: left; overflow: hidden; }
         .marquee-box { width: 280px; overflow: hidden; white-space: nowrap; margin-bottom: 5px; border-bottom: 1px solid rgba(168, 85, 247, 0.1); }
         .marquee-content { display: inline-block; padding-left: 20%; font-size: 13px; font-weight: bold; text-transform: lowercase; letter-spacing: 0.05em; }
+        .marquee-content:first-letter { text-transform: uppercase; }
         .marquee-content.running { animation: marquee 15s linear infinite; }
 
         .status-label { font-size: 11px; color: white; text-transform: lowercase; }
         @keyframes marquee { 0% { transform: translate(0, 0); } 100% { transform: translate(-100%, 0); } }
-        .wa-btn { position: fixed; bottom: 120px; right: 30px; width: 50px; z-index: 500; }
+        .wa-btn { position: fixed; bottom: 120px; right: 30px; width: 50px; z-index: 1000; }
       `}</style>
     </div>
   );
