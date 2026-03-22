@@ -12,10 +12,10 @@ export default function Inicio() {
   const audioRef = useRef(null);
 
   const tracks = [
-    { file: "/ha-mar.mp3", name: "Há Mar - pøliva ft. bruno morpheo ft. bruno perrone ft. lucão freitas" }, // Iniciais Maiúsculas
-    { file: "/Depressa.mp3", name: "Depressa - pøliva" }, // D Maiúsculo
-    { file: "/OTT.mp3", name: "OTT - pøliva ft. bruno morpheo ft. daniel filgueiras" }, // Sigla em Caixa Alta
-    { file: "/TOQES.mp3", name: "TOQES - pøliva ft. morpheo ft. daniel filgueiras" } // Sigla em Caixa Alta
+    { file: "/ha-mar.mp3", name: "Há Mar - pøliva ft. bruno morpheo ft. bruno perrone ft. lucão freitas" },
+    { file: "/Depressa.mp3", name: "Depressa - pøliva" },
+    { file: "/OTT.mp3", name: "OTT - pøliva ft. bruno morpheo ft. daniel filgueiras" },
+    { file: "/TOQES.mp3", name: "TOQES - pøliva ft. morpheo ft. daniel filgueiras" }
   ];
 
   const playlists = [
@@ -51,7 +51,9 @@ export default function Inicio() {
     <div style={{ backgroundColor: 'black', minHeight: '100vh', color: 'white', overflowX: 'hidden', fontFamily: "'Avant Garde', sans-serif" }}>
       <Head>
         <title>pøliva | pølivessense</title>
-        <link rel="icon" href="/favicon.ico?v=6" />
+        {/* FORCEI O FAVICON COM VERSÃO PARA LIMPAR CACHE */}
+        <link rel="icon" type="image/x-icon" href="/favicon.ico?v=7" />
+        <link rel="shortcut icon" href="/favicon.ico?v=7" />
       </Head>
 
       <audio ref={audioRef} src={tracks[currentTrack].file} onEnded={() => setCurrentTrack(prev => (prev + 1) % 4)} />
@@ -187,7 +189,7 @@ export default function Inicio() {
       </div>
 
       <style jsx global>{`
-        /* [ESTILOS PRESERVADOS] */
+        /* [ESTILOS OTIMIZADOS E BLINDADOS] */
         .preloader { position: fixed; inset: 0; background: black; z-index: 1000; display: flex; align-items: center; justify-content: center; }
         .loader-box { width: 220px; text-align: center; display: flex; flex-direction: column; align-items: center; }
         .bar-bg { width: 100%; height: 2px; background: #111; margin: 15px 0; }
@@ -205,6 +207,12 @@ export default function Inicio() {
         .nav-links { display: flex; gap: 40px; font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; font-weight: bold; }
         .nav-links a { color: white; text-decoration: none; transition: 0.3s; }
         .nav-links a:hover { color: #a855f7; }
+
+        .menu-toggle { display: none; flex-direction: column; gap: 6px; background: none; border: none; cursor: pointer; position: absolute; right: 0; z-index: 1000; }
+        .line { width: 25px; height: 2px; background: white; transition: 0.3s; }
+        .line.open:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+        .line.open:nth-child(2) { opacity: 0; }
+        .line.open:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
 
         @media (max-width: 900px) {
           .menu-toggle { display: flex; }
@@ -257,7 +265,6 @@ export default function Inicio() {
         .radio-display { flex: 1; text-align: left; overflow: hidden; }
         .marquee-box { width: 280px; overflow: hidden; white-space: nowrap; margin-bottom: 5px; border-bottom: 1px solid rgba(168, 85, 247, 0.1); }
         .marquee-content { display: inline-block; padding-left: 20%; font-size: 13px; font-weight: bold; text-transform: lowercase; letter-spacing: 0.05em; }
-        .marquee-content:first-letter { text-transform: uppercase; }
         .marquee-content.running { animation: marquee 15s linear infinite; }
 
         .status-label { font-size: 11px; color: white; text-transform: lowercase; }
