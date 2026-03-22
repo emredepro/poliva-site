@@ -14,8 +14,8 @@ export default function Inicio() {
   const tracks = [
     { file: "/ha-mar.mp3", name: "Há mar - pøliva ft. bruno morpheo ft. bruno perrone ft. lucão freitas" },
     { file: "/Depressa.mp3", name: "Depressa - pøliva" },
-    { file: "/OTT.mp3", name: "Ott - pøliva ft. bruno morpheo ft. daniel filgueiras" },
-    { file: "/TOQES.mp3", name: "Toqes - pøliva ft. morpheo ft. daniel filgueiras" }
+    { file: "/OTT.mp3", name: "OTT - pøliva ft. bruno morpheo ft. daniel filgueiras" }, // CAIXA ALTA
+    { file: "/TOQES.mp3", name: "TOQES - pøliva ft. morpheo ft. daniel filgueiras" } // CAIXA ALTA
   ];
 
   const playlists = [
@@ -104,7 +104,7 @@ export default function Inicio() {
                 "A música não é apenas entretenimento; ela é portal. Não é só sobre tocar música, é sobre atravessá-la. 
                 Eu faço músicas e também canto músicas que transformam a mim e a outras pessoas"
               </p>
-              <span className="author">— Poliva Soham</span>
+              <span className="author" style={{ marginTop: '8px' }}>— Poliva Soham</span>
             </div>
           </section>
 
@@ -187,7 +187,7 @@ export default function Inicio() {
       </div>
 
       <style jsx global>{`
-        /* [ESTILOS MANTIDOS CONFORME VERSÃO ANTERIOR COM CORREÇÕES] */
+        /* [ESTILOS ANTERIORES PRESERVADOS] */
         .preloader { position: fixed; inset: 0; background: black; z-index: 1000; display: flex; align-items: center; justify-content: center; }
         .loader-box { width: 220px; text-align: center; display: flex; flex-direction: column; align-items: center; }
         .bar-bg { width: 100%; height: 2px; background: #111; margin: 15px 0; }
@@ -220,19 +220,17 @@ export default function Inicio() {
             transform: translateX(100%); transition: transform 0.5s ease-in-out; 
           }
           .nav-links.mobile-open { transform: translateX(0); }
-          .nav-logo { position: static; margin-bottom: 0; }
+          .nav-logo { position: static; }
           .nav-container { justify-content: space-between; }
         }
 
         .main-scroll { padding-top: 250px; text-align: center; max-width: 1200px; margin: 0 auto; }
         .hero-title { font-size: clamp(2.2rem, 8vw, 4.5rem); font-weight: bold; line-height: 1.1; }
-        
         .citation.responsiva { max-width: 600px; margin: 0 auto; border-left: 2px solid #a855f7; padding-left: 40px; text-align: left; font-style: italic; color: #a1a1aa; font-size: clamp(16px, 4vw, 18px); line-height: 1.7; overflow-wrap: break-word; }
-        .author { display: block; font-style: normal; color: #a855f7; font-weight: bold; margin-top: 20px; font-size: 11px; letter-spacing: 0.4em; }
+        .author { display: block; font-style: normal; color: #a855f7; font-weight: bold; font-size: 11px; letter-spacing: 0.4em; }
 
         .spacer-lg { margin-top: 180px; }
         .section-block { padding: 0 20px; }
-        
         .brutal-header h2, .brutal-header h3 { font-size: clamp(1.1rem, 4vw, 1.8rem); font-weight: bold; text-transform: lowercase; line-height: 1; margin: 0; }
         .bold-sub { font-size: clamp(1rem, 3.3vw, 1.6rem); font-weight: bold; color: #a855f7; margin-top: 5px; text-transform: lowercase; line-height: 1; }
 
@@ -265,7 +263,6 @@ export default function Inicio() {
         .radio-display { flex: 1; text-align: left; overflow: hidden; }
         .marquee-box { width: 280px; overflow: hidden; white-space: nowrap; margin-bottom: 5px; border-bottom: 1px solid rgba(168, 85, 247, 0.1); }
         .marquee-content { display: inline-block; padding-left: 20%; font-size: 13px; font-weight: bold; text-transform: lowercase; letter-spacing: 0.05em; }
-        .marquee-content:first-letter { text-transform: uppercase; }
         .marquee-content.running { animation: marquee 15s linear infinite; }
 
         .status-label { font-size: 11px; color: white; text-transform: lowercase; }
