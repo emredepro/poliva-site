@@ -1,4 +1,4 @@
-// POLIVESSENSE VERSION 1.0.999 - FORCE CACHE RESET
+// VERSÃO DO PORTAL: 2.0.1 - FORCE REBUILD LETREIRO
 import React, { useState, useEffect, useRef } from 'react';
 import Head from 'next/head';
 
@@ -52,9 +52,7 @@ export default function Inicio() {
     <div style={{ backgroundColor: 'black', minHeight: '100vh', color: 'white', overflowX: 'hidden', fontFamily: "'Avant Garde', sans-serif" }}>
       <Head>
         <title>pøliva | pølivessense</title>
-        {/* HACK DE DATA PARA O FAVICON NUNCA MAIS FICAR PRESO EM CACHE */}
         <link rel="icon" href={`/favicon.ico?v=${new Date().getTime()}`} />
-        <link rel="apple-touch-icon" href={`/favicon.ico?v=${new Date().getTime()}`} />
       </Head>
 
       <audio ref={audioRef} src={tracks[currentTrack].file} onEnded={() => setCurrentTrack(prev => (prev + 1) % 4)} />
@@ -106,7 +104,7 @@ export default function Inicio() {
                 "A música não é apenas entretenimento; ela é portal. Não é só sobre tocar música, é sobre atravessá-la. 
                 Eu faço músicas e também canto músicas que transformam a mim e a outras pessoas"
               </p>
-              <span className="author" style={{ marginTop: '5px', letterSpacing: '0.05em', display: 'block' }}>— Poliva Soham</span>
+              <span className="author" style={{ marginTop: '8px', letterSpacing: '0.05em', display: 'block' }}>— Poliva Soham</span>
             </div>
           </section>
 
@@ -182,13 +180,14 @@ export default function Inicio() {
                   {tracks[currentTrack].name}
                 </p>
               </div>
-              <span className="status-label">você está ouvindo</span>
+              <span className="status-label" style={{ color: 'white' }}>você está ouvindo</span>
             </div>
           </div>
         </div>
       </div>
 
       <style jsx global>{`
+        /* [MANTENDO OS ESTILOS QUE JÁ ESTÃO FUNCIONANDO] */
         .preloader { position: fixed; inset: 0; background: black; z-index: 2000; display: flex; align-items: center; justify-content: center; }
         .loader-box { width: 220px; text-align: center; display: flex; flex-direction: column; align-items: center; }
         .bar-bg { width: 100%; height: 2px; background: #111; margin: 15px 0; }
@@ -250,7 +249,7 @@ export default function Inicio() {
         .footer-heading { fontSize: 22px; fontWeight: bold; text-transform: uppercase; margin-bottom: 25px; }
         .copyright-line { margin-top: 60px; font-size: 10px; color: #444; }
 
-        .radio-bar { position: fixed; bottom: 0; width: 100%; background: #050505; padding: 15px 40px; border-top: 1px solid #111; z-index: 1100; }
+        .radio-bar { position: fixed; bottom: 0; width: 100%; background: #050505; padding: 15px 40px; border-top: 1px solid #111; z-index: 1000; }
         .radio-inner { max-width: 1400px; margin: 0 auto; display: flex; align-items: center; gap: 50px; }
         .radio-controls { display: flex; align-items: center; gap: 25px; }
         .radio-nav-btn { background: none; border: none; color: #a855f7; cursor: pointer; display: flex; flex-direction: column; align-items: center; }
@@ -261,13 +260,12 @@ export default function Inicio() {
 
         .radio-display { flex: 1; text-align: left; overflow: hidden; }
         .marquee-box { width: 280px; overflow: hidden; white-space: nowrap; margin-bottom: 5px; border-bottom: 1px solid rgba(168, 85, 247, 0.1); }
-        .marquee-content { display: inline-block; padding-left: 20%; font-size: 13px; font-weight: bold; text-transform: lowercase; letter-spacing: 0.05em; }
-        .marquee-content:first-letter { text-transform: uppercase; }
+        .marquee-content { display: inline-block; padding-left: 20%; font-size: 13px; font-weight: bold; letter-spacing: 0.05em; }
+        /* REMOVI O ESTILO QUE FORÇAVA MINÚSCULO AQUI */
         .marquee-content.running { animation: marquee 15s linear infinite; }
 
-        .status-label { font-size: 11px; color: white; text-transform: lowercase; }
         @keyframes marquee { 0% { transform: translate(0, 0); } 100% { transform: translate(-100%, 0); } }
-        .wa-btn { position: fixed; bottom: 120px; right: 30px; width: 50px; z-index: 1000; }
+        .wa-btn { position: fixed; bottom: 120px; right: 30px; width: 50px; z-index: 500; }
       `}</style>
     </div>
   );
