@@ -10,26 +10,25 @@ export default function Inicio() {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   return (
-    <div className="firewatch-wrapper">
+    <div style={{ backgroundColor: 'black', color: 'white', minHeight: '100vh', fontFamily: "'Avant Garde', sans-serif" }}>
       
-      {/* CAMADA 0: O CÉU/FUNDO (INFINITO) */}
-      <div className="parallax-layer layer-back">
-        <video autoPlay muted loop playsInline className="video-bg">
+      {/* 1. FUNDO FIXO (O PORTAL) - SEM CORTES, SÓ PROFUNDIDADE VISUAL */}
+      <div style={{ position: 'fixed', inset: 0, zIndex: 0 }}>
+        <video autoPlay muted loop playsInline style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 0.35 }}>
           <source src="/video-home-loop.mp4" type="video/mp4" />
         </video>
-        <div className="vignette-overlay"></div>
+        <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(circle, transparent 20%, black 120%)' }}></div>
       </div>
 
-      {/* CAMADA 1: O CONTEÚDO (FLUTUANTE NO MEIO) */}
-      <div className="parallax-layer layer-base">
+      <div style={{ position: 'relative', zIndex: 10 }}>
         
-        {/* MENU COM 6 ABAS CORRETAS - ESTILO EDITORIAL */}
-        <nav className="nav-portal">
-          <div className="nav-logo">
-            <img src="/logo-poliva.png" alt="Logo" />
+        {/* 2. MENU EDITORIAL - 6 ABAS CORRETAS */}
+        <nav style={{ position: 'fixed', top: 0, width: '100%', backgroundColor: 'rgba(0,0,0,0.8)', backdropFilter: 'blur(20px)', borderBottom: '1px solid rgba(255,255,255,0.05)', padding: '20px 0', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 100 }}>
+          <div style={{ position: 'absolute', left: '20%', transform: 'translateX(-50%)' }}>
+            <img src="/logo-poliva.png" alt="Logo" style={{ width: '110px' }} />
           </div>
-          <div className="nav-links">
-            <a href="#" className="nav-item active">iníciø</a>
+          <div style={{ display: 'flex', gap: '30px', fontSize: '11px', letterSpacing: '0.2em', textTransform: 'uppercase', fontWeight: 600 }}>
+            <a href="#" className="nav-item">iníciø</a>
             <a href="#" className="nav-item">søbre pøliva</a>
             <a href="#" className="nav-item">shøws aø vivø</a>
             <a href="#" className="nav-item">singles & álbuns</a>
@@ -38,174 +37,97 @@ export default function Inicio() {
           </div>
         </nav>
 
-        <main className="main-portal">
+        <main style={{ paddingTop: '220px', textAlign: 'center', maxWidth: '1200px', margin: '0 auto', paddingLeft: '20px', paddingRight: '20px' }}>
           
-          <section className="hero">
-            <h1 className="title-3d">
+          {/* HERO - ALINHAMENTO LIMPO */}
+          <section style={{ marginBottom: '140px' }}>
+            <h1 style={{ fontSize: 'clamp(2.5rem, 8vw, 4.5rem)', fontWeight: 'bold', lineHeight: '1.1', marginBottom: '40px', letterSpacing: '-0.02em' }}>
               Música que desperta, <br/>
-              <span className="purple-glow">Show que vira portal</span>
+              <span style={{ color: '#a855f7' }}>Show que vira portal</span>
             </h1>
 
-            <div className="quote-portal">
+            <div style={{ maxWidth: '650px', margin: '0 auto', textAlign: 'left', borderLeft: '2px solid #a855f7', paddingLeft: '30px', color: '#a1a1aa', fontSize: '17px', lineHeight: '1.7', fontStyle: 'italic' }}>
               <p>&quot;A música não é apenas entretenimento; ela é portal. Não é só sobre tocar música, é sobre atravessá-la. Eu faço músicas e também canto músicas que transformam a mim e a outras pessoas&quot;</p>
-              <span className="author">— Poliva Soham</span>
+              <span style={{ display: 'block', fontStyle: 'normal', color: '#a855f7', fontWeight: 'bold', marginTop: '20px', letterSpacing: '0.4em', fontSize: '11px', textTransform: 'uppercase' }}>— Poliva Soham</span>
             </div>
           </section>
 
-          <section className="showcase">
-            <div className="glass-box-portal">
-              <h2 className="box-title">pølivessense, o show:</h2>
-              <p className="box-subtitle">assista abaixo na íntegra</p>
+          {/* CAIXA DO SHOW - DESIGN "GLASS" MODERNO */}
+          <section style={{ marginBottom: '160px' }}>
+            <div style={{ maxWidth: '750px', margin: '0 auto 40px', padding: '50px', background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(168, 85, 247, 0.2)', borderRadius: '4px', backdropFilter: 'blur(10px)' }}>
+              <h2 style={{ fontSize: '24px', fontWeight: 'bold', marginBottom: '10px', letterSpacing: '0.1em' }}>pølivessense, o show:</h2>
+              <p style={{ fontSize: '12px', textTransform: 'uppercase', color: '#a855f7', letterSpacing: '0.4em' }}>assista abaixo na íntegra</p>
             </div>
-            <div className="player-3d">
-               <iframe src="https://www.youtube.com/embed/ID_DO_VIDEO" frameBorder="0" allowFullScreen></iframe>
+
+            <div style={{ width: '100%', maxWidth: '612px', aspectRatio: '16/9', margin: '0 auto', boxShadow: '0 40px 100px rgba(0,0,0,0.8)', overflow: 'hidden', borderRadius: '4px' }}>
+               <iframe width="100%" height="100%" src="https://www.youtube.com/embed/ID_DO_VIDEO" frameBorder="0" allowFullScreen></iframe>
             </div>
           </section>
 
-          <section className="playlists-portal">
-            <div className="playlist-text">
-               <h3>playlists para as melhores ocasiões:</h3>
-               <p className="accent">o que o seu momento pede?</p>
-            </div>
+          {/* CARROSSEL PLAYLISTS - DINÂMICO E LIMPO */}
+          <section style={{ marginBottom: '180px' }}>
+             <div style={{ marginBottom: '50px' }}>
+                <h3 style={{ fontSize: '18px', fontWeight: 'bold', textTransform: 'uppercase', letterSpacing: '0.2em' }}>playlists para as melhores ocasiões:</h3>
+                <p style={{ fontSize: '16px', color: '#a855f7', marginTop: '10px' }}>o que o seu momento pede?</p>
+             </div>
 
-            <div className="dots-nav">
-              {playlists.map((_, i) => (
-                <button key={i} onClick={() => setCurrentIndex(i)} className={currentIndex === i ? 'dot active' : 'dot'} />
-              ))}
-            </div>
+             <div style={{ display: 'flex', justifyContent: 'center', gap: '15px', marginBottom: '40px' }}>
+                {playlists.map((_, i) => (
+                  <button key={i} onClick={() => setCurrentIndex(i)} style={{ width: '10px', height: '10px', borderRadius: '50%', border: 'none', cursor: 'pointer', backgroundColor: currentIndex === i ? '#a855f7' : '#333', transition: '0.3s' }} />
+                ))}
+             </div>
 
-            <div className="slider-portal" style={{ transform: `translateX(-${currentIndex * 100}%)` }}>
-              {playlists.map((item, index) => (
-                <div key={index} className="slide-unit">
-                  <div className="card-mini">
-                    <img src={item.img} alt={item.title} />
-                    <button className="btn-portal">OUÇA AQUI</button>
-                  </div>
+             <div style={{ position: 'relative', overflow: 'hidden', width: '100%' }}>
+                <div style={{ display: 'flex', transition: 'transform 0.7s cubic-bezier(0.23, 1, 0.32, 1)', transform: `translateX(-${currentIndex * 100}%)` }}>
+                  {playlists.map((item, index) => (
+                    <div key={index} style={{ minWidth: '100%', display: 'flex', justifyContent: 'center' }}>
+                      <div style={{ width: '182px', textAlign: 'center' }}>
+                         <img src={item.img} style={{ width: '100%', aspectRatio: '1/1', objectFit: 'cover', borderRadius: '4px', marginBottom: '25px', border: '1px solid rgba(255,255,255,0.05)' }} />
+                         <button style={{ background: 'none', border: '1px solid #a855f7', color: '#a855f7', fontSize: '10px', padding: '12px 24px', cursor: 'pointer', letterSpacing: '0.2em', fontWeight: 'bold' }}>OUÇA AQUI</button>
+                      </div>
+                    </div>
+                  ))}
                 </div>
-              ))}
-            </div>
+             </div>
           </section>
+        </main>
 
-          <footer className="footer-portal">
-             <h4 className="footer-header">cøntatø</h4>
-             <div className="footer-body">
+        {/* RODAPÉ PRETO RENDE À BASE */}
+        <footer style={{ backgroundColor: 'black', borderTop: '1px solid rgba(255,255,255,0.05)', padding: '80px 20px 140px' }}>
+           <div style={{ maxWidth: '1100px', margin: '0 auto', textAlign: 'center' }}>
+              <h4 style={{ fontSize: '20px', fontWeight: 'bold', textTransform: 'uppercase', marginBottom: '20px', letterSpacing: '0.1em' }}>cøntatø</h4>
+              <div style={{ fontSize: '14px', lineHeight: '1.8', color: '#ccc' }}>
                 <p>para shøws e parcerias</p>
                 <p>e-mail: contato@polivaoficial.com.br</p>
                 <p>redes sociais: @polivaoficial</p>
-                <p className="phone">telefone: 22 98802-3803</p>
-             </div>
-             <p className="rights">pøliva© 2026. Todos os direitos reservados.</p>
-          </footer>
-        </main>
+                <p style={{ marginTop: '15px', fontWeight: 'bold', color: 'white', fontSize: '16px' }}>telefone: 22 98802-3803</p>
+              </div>
+              <p style={{ marginTop: '80px', fontSize: '10px', color: 'rgba(255,255,255,0.3)', letterSpacing: '0.1em' }}>pøliva© 2026. Todos os direitos reservados.</p>
+           </div>
+        </footer>
 
-        {/* PLAYER FIXO */}
-        <div className="player-bar-fixed">
-          <div className="p-inner">
-            <div className="p-song">
-              <img src="/simbolo-poliva.png" alt="Ø" />
-              <div>
-                <strong>depressa</strong>
-                <small>pøliva • 16 de abril</small>
+        {/* PLAYER FIXO - ESTÁVEL E SEM CORTES */}
+        <div style={{ position: 'fixed', bottom: 0, width: '100%', zIndex: 100, backgroundColor: 'rgba(0,0,0,0.95)', backdropFilter: 'blur(30px)', borderTop: '1px solid rgba(255,255,255,0.05)', padding: '15px 40px' }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', maxWidth: '1200px', margin: '0 auto' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
+              <img src="/simbolo-poliva.png" alt="Logo" style={{ width: '40px', height: '40px' }} />
+              <div style={{ textAlign: 'left' }}>
+                <strong style={{ fontSize: '12px', display: 'block', textTransform: 'lowercase' }}>depressa</strong>
+                <small style={{ fontSize: '10px', color: '#71717a' }}>pøliva • 16 de abril</small>
               </div>
             </div>
-            <div className="p-meta">
-               <span>432hz</span>
-               <div className="p-icon">ø</div>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '30px' }}>
+               <span style={{ fontSize: '10px', letterSpacing: '0.3em', color: '#52525b' }}>432hz</span>
+               <div style={{ fontSize: '24px', color: '#a855f7', fontWeight: 'bold' }}>ø</div>
             </div>
           </div>
         </div>
       </div>
 
       <style jsx global>{`
-        /* O MOTOR 3D ESTILO FIREWATCH */
-        .firewatch-wrapper {
-          height: 100vh;
-          overflow-x: hidden;
-          overflow-y: auto;
-          perspective: 10px; /* Profundidade do Portal */
-          background: #000;
-        }
-
-        .parallax-layer {
-          position: absolute;
-          top: 0; left: 0; right: 0; bottom: 0;
-        }
-
-        /* Camada do Fundo (Vídeo) - Fica longe e escala */
-        .layer-back {
-          transform: translateZ(-10px) scale(2.1);
-          z-index: 1;
-        }
-
-        /* Camada Base (Conteúdo) - Fica no plano frontal */
-        .layer-base {
-          transform: translateZ(0);
-          z-index: 2;
-          display: flex;
-          flex-direction: column;
-        }
-
-        .video-bg { width: 100%; height: 100%; object-fit: cover; opacity: 0.3; }
-        .vignette-overlay { position: absolute; inset: 0; background: radial-gradient(circle, transparent 20%, black 100%); }
-
-        /* NAV EDITORIAL */
-        .nav-portal { position: fixed; top: 0; width: 100%; height: 100px; display: flex; align-items: center; justify-content: center; background: rgba(0,0,0,0.8); backdrop-filter: blur(20px); z-index: 1000; border-bottom: 1px solid rgba(255,255,255,0.05); }
-        .nav-logo { position: absolute; left: 20%; transform: translateX(-50%); }
-        .nav-logo img { width: 110px; }
-        .nav-links { display: flex; gap: 40px; font-size: 11px; letter-spacing: 0.25em; text-transform: uppercase; font-weight: 700; }
-        .nav-item { color: #fff; text-decoration: none; transition: 0.4s; padding-bottom: 8px; border-bottom: 2px solid transparent; }
-        .nav-item:hover, .nav-item.active { color: #a855f7; border-bottom-color: #a855f7; }
-
-        /* MAIN */
-        .main-portal { padding-top: 250px; text-align: center; }
-        .hero { margin-bottom: 150px; padding: 0 20px; }
-        .title-3d { font-size: clamp(3rem, 10vw, 5.5rem); font-weight: 900; line-height: 1; letter-spacing: -0.05em; margin-bottom: 50px; }
-        .purple-glow { color: #a855f7; text-shadow: 0 0 30px rgba(168,85,247,0.3); }
-        .quote-portal { max-width: 700px; margin: 0 auto; text-align: left; border-left: 3px solid #a855f7; padding-left: 40px; font-style: italic; color: #ccc; font-size: 18px; line-height: 1.8; }
-        .author { display: block; font-style: normal; color: #a855f7; font-weight: bold; margin-top: 20px; letter-spacing: 0.4em; font-size: 12px; }
-
-        /* SHOWCASE BOX */
-        .showcase { margin-bottom: 200px; padding: 0 20px; }
-        .glass-box-portal { max-width: 850px; margin: 0 auto 40px; padding: 60px; background: rgba(255,255,255,0.02); border: 1px solid rgba(168,85,247,0.2); border-radius: 4px; backdrop-filter: blur(10px); transition: 0.5s cubic-bezier(0.2, 1, 0.3, 1); }
-        .glass-box-portal:hover { transform: translateY(-10px) scale(1.02); border-color: #a855f7; background: rgba(168,85,247,0.05); }
-        .box-title { font-size: 28px; font-weight: bold; margin-bottom: 15px; }
-        .box-subtitle { font-size: 14px; text-transform: uppercase; color: #a855f7; letter-spacing: 0.5em; }
-        .player-3d { max-width: 612px; margin: 0 auto; aspect-ratio: 16/9; box-shadow: 0 50px 100px -20px rgba(0,0,0,1); }
-        .player-3d iframe { width: 100%; height: 100%; border-radius: 2px; }
-
-        /* PLAYLISTS SLIDER */
-        .playlists-portal { width: 100%; overflow: hidden; margin-bottom: 200px; }
-        .playlist-text { margin-bottom: 60px; }
-        .playlist-text h3 { font-size: 22px; text-transform: uppercase; letter-spacing: 0.2em; font-weight: 800; }
-        .accent { font-size: 20px; color: #a855f7; margin-top: 10px; }
-        .dots-nav { display: flex; justify-content: center; gap: 20px; margin-bottom: 50px; }
-        .dot { width: 12px; height: 12px; border-radius: 50%; background: #333; border: none; cursor: pointer; transition: 0.4s; }
-        .dot.active { background: #a855f7; transform: scale(1.3); box-shadow: 0 0 15px #a855f7; }
-        .slider-portal { display: flex; transition: 1s cubic-bezier(0.2, 1, 0.2, 1); }
-        .slide-unit { min-width: 100%; display: flex; justify-content: center; }
-        .card-mini { width: 182px; text-align: center; }
-        .card-mini img { width: 100%; aspect-ratio: 1/1; object-fit: cover; border: 1px solid rgba(255,255,255,0.1); margin-bottom: 30px; transition: 0.6s; }
-        .card-mini:hover img { transform: rotate(-2deg) scale(1.05); border-color: #a855f7; }
-        .btn-portal { background: none; border: 1px solid #a855f7; color: #a855f7; font-size: 11px; padding: 12px 25px; cursor: pointer; letter-spacing: 0.3em; font-weight: 700; transition: 0.3s; }
-        .btn-portal:hover { background: #a855f7; color: #fff; }
-
-        /* FOOTER */
-        .footer-portal { background: #000; border-top: 1px solid rgba(255,255,255,0.05); padding: 100px 20px 180px; }
-        .footer-header { font-size: 24px; font-weight: 900; text-transform: uppercase; margin-bottom: 30px; letter-spacing: 0.1em; }
-        .footer-body { font-size: 15px; color: #999; line-height: 2; }
-        .phone { color: #fff; font-weight: 800; margin-top: 20px; font-size: 18px; }
-        .rights { margin-top: 80px; font-size: 11px; color: #444; letter-spacing: 0.1em; }
-
-        /* PLAYER FIXO */
-        .player-bar-fixed { position: fixed; bottom: 0; width: 100%; height: 85px; background: rgba(0,0,0,0.95); backdrop-filter: blur(30px); border-top: 1px solid rgba(255,255,255,0.05); z-index: 2000; display: flex; align-items: center; padding: 0 50px; }
-        .p-inner { width: 100%; max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
-        .p-song { display: flex; align-items: center; gap: 20px; }
-        .p-song img { width: 45px; height: 45px; }
-        .p-song strong { display: block; font-size: 13px; text-transform: lowercase; }
-        .p-song small { color: #666; font-size: 11px; }
-        .p-meta { display: flex; align-items: center; gap: 30px; }
-        .p-meta span { font-size: 11px; color: #444; letter-spacing: 0.2em; }
-        .p-icon { font-size: 26px; color: #a855f7; font-weight: 900; }
+        .nav-item { color: white; text-decoration: none; transition: 0.3s; padding-bottom: 5px; border-bottom: 1px solid transparent; }
+        .nav-item:hover { color: #a855f7; border-bottom-color: #a855f7; }
+        main button:hover { background: #a855f7 !important; color: white !important; }
       `}</style>
     </div>
   );
