@@ -12,10 +12,10 @@ export default function Inicio() {
   const audioRef = useRef(null);
 
   const tracks = [
-    { file: "/ha-mar.mp3", name: "Há mar - pøliva ft. bruno morpheo ft. bruno perrone ft. lucão freitas" },
-    { file: "/Depressa.mp3", name: "Depressa - pøliva" },
-    { file: "/OTT.mp3", name: "OTT - pøliva ft. bruno morpheo ft. daniel filgueiras" }, // CAIXA ALTA
-    { file: "/TOQES.mp3", name: "TOQES - pøliva ft. morpheo ft. daniel filgueiras" } // CAIXA ALTA
+    { file: "/ha-mar.mp3", name: "Há Mar - pøliva ft. bruno morpheo ft. bruno perrone ft. lucão freitas" }, // Iniciais Maiúsculas
+    { file: "/Depressa.mp3", name: "Depressa - pøliva" }, // D Maiúsculo
+    { file: "/OTT.mp3", name: "OTT - pøliva ft. bruno morpheo ft. daniel filgueiras" }, // Sigla em Caixa Alta
+    { file: "/TOQES.mp3", name: "TOQES - pøliva ft. morpheo ft. daniel filgueiras" } // Sigla em Caixa Alta
   ];
 
   const playlists = [
@@ -51,7 +51,7 @@ export default function Inicio() {
     <div style={{ backgroundColor: 'black', minHeight: '100vh', color: 'white', overflowX: 'hidden', fontFamily: "'Avant Garde', sans-serif" }}>
       <Head>
         <title>pøliva | pølivessense</title>
-        <link rel="icon" href="/favicon.ico?v=4" />
+        <link rel="icon" href="/favicon.ico?v=6" />
       </Head>
 
       <audio ref={audioRef} src={tracks[currentTrack].file} onEnded={() => setCurrentTrack(prev => (prev + 1) % 4)} />
@@ -104,7 +104,7 @@ export default function Inicio() {
                 "A música não é apenas entretenimento; ela é portal. Não é só sobre tocar música, é sobre atravessá-la. 
                 Eu faço músicas e também canto músicas que transformam a mim e a outras pessoas"
               </p>
-              <span className="author" style={{ marginTop: '8px' }}>— Poliva Soham</span>
+              <span className="author" style={{ marginTop: '8px', letterSpacing: '0.12em' }}>— Poliva Soham</span>
             </div>
           </section>
 
@@ -187,7 +187,7 @@ export default function Inicio() {
       </div>
 
       <style jsx global>{`
-        /* [ESTILOS ANTERIORES PRESERVADOS] */
+        /* [ESTILOS PRESERVADOS] */
         .preloader { position: fixed; inset: 0; background: black; z-index: 1000; display: flex; align-items: center; justify-content: center; }
         .loader-box { width: 220px; text-align: center; display: flex; flex-direction: column; align-items: center; }
         .bar-bg { width: 100%; height: 2px; background: #111; margin: 15px 0; }
@@ -206,12 +206,6 @@ export default function Inicio() {
         .nav-links a { color: white; text-decoration: none; transition: 0.3s; }
         .nav-links a:hover { color: #a855f7; }
 
-        .menu-toggle { display: none; flex-direction: column; gap: 6px; background: none; border: none; cursor: pointer; position: absolute; right: 0; z-index: 1000; }
-        .line { width: 25px; height: 2px; background: white; transition: 0.3s; }
-        .line.open:nth-child(1) { transform: translateY(8px) rotate(45deg); }
-        .line.open:nth-child(2) { opacity: 0; }
-        .line.open:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
-
         @media (max-width: 900px) {
           .menu-toggle { display: flex; }
           .nav-links { 
@@ -227,7 +221,7 @@ export default function Inicio() {
         .main-scroll { padding-top: 250px; text-align: center; max-width: 1200px; margin: 0 auto; }
         .hero-title { font-size: clamp(2.2rem, 8vw, 4.5rem); font-weight: bold; line-height: 1.1; }
         .citation.responsiva { max-width: 600px; margin: 0 auto; border-left: 2px solid #a855f7; padding-left: 40px; text-align: left; font-style: italic; color: #a1a1aa; font-size: clamp(16px, 4vw, 18px); line-height: 1.7; overflow-wrap: break-word; }
-        .author { display: block; font-style: normal; color: #a855f7; font-weight: bold; font-size: 11px; letter-spacing: 0.4em; }
+        .author { display: block; font-style: normal; color: #a855f7; font-weight: bold; font-size: 11px; }
 
         .spacer-lg { margin-top: 180px; }
         .section-block { padding: 0 20px; }
@@ -263,6 +257,7 @@ export default function Inicio() {
         .radio-display { flex: 1; text-align: left; overflow: hidden; }
         .marquee-box { width: 280px; overflow: hidden; white-space: nowrap; margin-bottom: 5px; border-bottom: 1px solid rgba(168, 85, 247, 0.1); }
         .marquee-content { display: inline-block; padding-left: 20%; font-size: 13px; font-weight: bold; text-transform: lowercase; letter-spacing: 0.05em; }
+        .marquee-content:first-letter { text-transform: uppercase; }
         .marquee-content.running { animation: marquee 15s linear infinite; }
 
         .status-label { font-size: 11px; color: white; text-transform: lowercase; }
