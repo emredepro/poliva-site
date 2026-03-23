@@ -38,9 +38,9 @@ function MyApp({ Component, pageProps }) {
     <>
       <audio ref={audioRef} src={tracks[currentTrack].file} onEnded={nextTrack} />
       
-      <Component {...pageProps} />
+      <Component {...pageProps} isPlaying={isPlaying} togglePlay={togglePlay} nextTrack={nextTrack} prevTrack={prevTrack} currentTrack={currentTrack} tracks={tracks} />
 
-      {/* RÁDIO BAR - EXATAMENTE IGUAL À VERSÃO 2.5.5 */}
+      {/* RADIO BAR - EXATAMENTE IGUAL À SUA VERSÃO 2.5.5 */}
       <div className="radio-bar">
         <div className="radio-inner">
           <div className="radio-controls">
@@ -71,7 +71,7 @@ function MyApp({ Component, pageProps }) {
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { background: black; margin: 0; padding: 0; overflow-x: hidden; }
 
-        .radio-bar { position: fixed; bottom: 0; width: 100%; background: #050505; padding: 15px 40px; border-top: 1px solid #111; z-index: 1100; }
+        .radio-bar { position: fixed; bottom: 0; width: 100%; background: #050505; padding: 15px 40px; border-top: 1px solid #111; z-index: 9999; }
         .radio-inner { max-width: 1400px; margin: 0 auto; display: flex; align-items: center; gap: 50px; }
         .radio-controls { display: flex; align-items: center; gap: 25px; }
         .radio-nav-btn { background: none; border: none; color: #a855f7; cursor: pointer; display: flex; flex-direction: column; align-items: center; transition: 0.3s ease; }
@@ -86,7 +86,7 @@ function MyApp({ Component, pageProps }) {
         .marquee-content.running { animation: marquee 15s linear infinite; }
 
         @keyframes marquee { 0% { transform: translate(0, 0); } 100% { transform: translate(-100%, 0); } }
-        .interactive-zoom:hover { transform: scale(1.08); filter: brightness(1.2); }
+        .interactive-zoom:hover { transform: scale(1.08); filter: brightness(1.2); transition: 0.3s; }
       `}</style>
     </>
   );

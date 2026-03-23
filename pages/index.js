@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Head from 'next/head';
 
-export default function Inicio() {
+export default function Inicio({ isPlaying, togglePlay, nextTrack, prevTrack, currentTrack, tracks }) {
   const [loading, setLoading] = useState(true);
   const [progress, setProgress] = useState(0);
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -58,13 +58,11 @@ export default function Inicio() {
         <nav className="navbar">
           <div className="nav-container">
             <img src="/logo-poliva.png" alt="Logo" className="nav-logo" />
-            
             <div className={`hamburger ${isMenuOpen ? 'open' : ''}`} onClick={() => setIsMenuOpen(!isMenuOpen)}>
               <span></span><span></span><span></span>
             </div>
-
             <div className={`nav-links ${isMenuOpen ? 'active' : ''}`}>
-              <a href="#" className="nav-item" onClick={() => setIsMenuOpen(false)}>iníciø</a>
+              <a href="#" className="nav-item">iníciø</a>
               <a href="/sobre" className="nav-item" onClick={() => setIsMenuOpen(false)}>søbre pøliva</a>
               <a href="#" className="nav-item" onClick={() => setIsMenuOpen(false)}>shøws aø vivø</a>
               <a href="#" className="nav-item" onClick={() => setIsMenuOpen(false)}>singles & álbuns</a>
@@ -94,7 +92,6 @@ export default function Inicio() {
               <h2>pølivessense, o show:</h2>
               <p className="bold-sub">assista abaixo na íntegra</p>
             </div>
-            
             <div className="video-player interactive-zoom">
                {!showVideo ? (
                  <div className="video-cover" onClick={() => setShowVideo(true)}>
@@ -113,6 +110,7 @@ export default function Inicio() {
                 <p className="bold-sub">o que o seu momento pede?</p>
              </div>
              <div className="carousel-main">
+                <button className="car-btn interactive-zoom" onClick={prevTrack}>‹</button>
                 <div className="car-viewport">
                   <div className="car-track" style={{ transform: `translateX(-${currentIndex * 100}%)` }}>
                     {playlists.map((item, index) => (
@@ -125,6 +123,7 @@ export default function Inicio() {
                     ))}
                   </div>
                 </div>
+                <button className="car-btn interactive-zoom" onClick={nextTrack}>›</button>
              </div>
           </section>
         </main>
@@ -174,7 +173,11 @@ export default function Inicio() {
           .hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
           .hamburger.open span:nth-child(2) { opacity: 0; }
           .hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
-          .nav-links { position: fixed; top: 0; right: -100%; width: 100%; height: 100vh; background: black; flex-direction: column; align-items: center; justify-content: center; transition: 0.5s ease-in-out; gap: 30px; }
+          .nav-links {
+            position: fixed; top: 0; right: -100%; width: 100%; height: 100vh;
+            background: black; flex-direction: column; align-items: center; justify-content: center;
+            transition: 0.5s ease-in-out; gap: 30px;
+          }
           .nav-links.active { right: 0; }
         }
 
@@ -197,6 +200,7 @@ export default function Inicio() {
         .car-item { min-width: 100%; }
         .playlist-img { width: 100%; aspect-ratio: 1/1; border-radius: 4px; border: 1px solid #111; margin-bottom: 40px; }
         .ouca-btn { background: none; border: 1px solid #a855f7; color: #a855f7; font-size: 16px; padding: 15px 35px; cursor: pointer; font-weight: bold; text-transform: lowercase; transition: 0.3s ease; }
+        .car-btn { background: none; border: none; color: white; font-size: 50px; cursor: pointer; opacity: 0.3; transition: 0.3s; }
 
         .footer-black { background: black; border-top: 1px solid #111; padding: 80px 20px 150px; text-align: center; margin-top: 150px; }
         .copyright-line { margin-top: 40px; font-size: 10px; color: #444; }
