@@ -43,31 +43,33 @@ export default function Sobre() {
         </div>
       </nav>
 
-      {/* CAPA AJUSTADA - ALTURA 65vh E CENTRALIZAÇÃO TOTAL (object-position: center 50%) */}
+      {/* WHATSAPP GLOBAL - FIXO NO CANTO */}
+      <a href="https://wa.me/SEUNUMEROAQUI" target="_blank" rel="noopener noreferrer" className="whatsapp-global">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" />
+      </a>
+
+      {/* CAPA AJUSTADA - center 60% */}
       <header className="sobre-capa anim-fade-in">
         <img src="/foto-sobre.jpg" alt="Pøliva Capa" className="img-full" />
       </header>
 
-      <main className="content-wrapper fondo-preto-chapado">
+      <main className="content-wrapper">
         <section className="section-block section-text anim-fade-up">
           <p className="desc-unificada">
             pøliva é a experiência sensorial em forma de música, unindo a distorção do rock com marcações tribais na frequência musical. Entre o autoral e os clássicos que todo mundo canta junto, o show vira ritual.
           </p>
-          
           <p className="citacao-it-unificada">
             “é intensidade, presença e catarse. é música para sentir e vibrar, não para passar batido.”
           </p>
-
           <p className="desc-unificada">
             com influências do rock, pop, soul e MPB, pøliva leva para suas apresentações ao vivo um setlist com a força de sua identidade autoral, dialogando com grandes hinos de refrões inesquecíveis e conduzindo o público da emoção ao épico em ondas crescentes até a catarse. Suas performances misturam intensidade, entrega e uma energia pulsante que conecta diretamente com a plateia. O resultado é uma experiência que equilibra profundidade, força e momentos coletivos de explosão e canto.
           </p>
         </section>
 
         <section className="section-block section-marcos anim-fade-up">
-          <div className="brutal-header mobile-boost spacer-títulos">
+          <div className="brutal-header spacer-títulos">
             <h2>principais marcøs na carreira:</h2>
           </div>
-          
           <p className="citacao-it-branca">"Tudo começa pela intensão do desejo. E então se cocria com o primeiro passo!"</p>
           
           <div className="sub-capa-container interactive-zoom">
@@ -76,7 +78,7 @@ export default function Sobre() {
 
           <ul className="lista-dinamica">
             {marcos.map((marco, index) => (
-              <li key={index} className="marco-item">
+              <li key={index} className="marco-item interactive-zoom">
                 <span className="bullet">Ø</span>
                 <p>{renderText(marco.text)}</p>
               </li>
@@ -85,17 +87,16 @@ export default function Sobre() {
         </section>
 
         <section className="section-block section-live anim-fade-up" style={{ paddingBottom: '220px' }}>
-          <div className="brutal-header mobile-boost spacer-títulos">
+          <div className="brutal-header spacer-títulos">
             <h2>live sessiøn:</h2>
           </div>
-          
           <p className="citacao-it-branca">suas músicas já alcançaram milhares de pessoas na internet</p>
           
           <div className="players-grid">
-            <div className="player-box side-left">
+            <div className="player-box side-left interactive-zoom">
               <iframe src="https://www.youtube.com/embed/qu4wbU7hji4" frameBorder="0" allowFullScreen></iframe>
             </div>
-            <div className="player-box side-right">
+            <div className="player-box side-right interactive-zoom">
               <iframe src="https://www.youtube.com/embed/b3tHfwI1R2k" frameBorder="0" allowFullScreen></iframe>
             </div>
           </div>
@@ -103,15 +104,8 @@ export default function Sobre() {
       </main>
 
       <style jsx>{`
-        /* IDENTIDADE VISUAL LIMPA E FONTES v2.5.5 */
-        .sobre-page { 
-          background: black; 
-          min-height: 100vh; 
-          color: white; 
-          overflow-x: hidden; 
-          font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-        }
-
+        .sobre-page { background: black; min-height: 100vh; color: white; overflow-x: hidden; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+        
         .navbar { position: fixed; top: 0; width: 100%; background: rgba(0,0,0,0.95); padding: 25px 40px; z-index: 3000; border-bottom: 1px solid #111; }
         .nav-container { max-width: 1400px; margin: 0 auto; display: flex; justify-content: center; align-items: center; position: relative; }
         .nav-logo { width: 110px; position: absolute; left: 0; }
@@ -119,51 +113,38 @@ export default function Sobre() {
         .nav-item { color: white; text-decoration: none; transition: 0.3s; }
         .nav-item:hover, .active-link { color: #a855f7 !important; }
 
-        /* CAPA AJUSTADA (65vh E object-position: center 50%) */
+        /* WHATSAPP */
+        .whatsapp-global { position: fixed; bottom: 100px; right: 30px; z-index: 5000; transition: 0.3s; width: 50px; }
+        .whatsapp-global:hover { transform: scale(1.1); filter: brightness(1.2); }
+
+        /* CAPA center 60% */
         .sobre-capa { width: 100%; height: 65vh; overflow: hidden; margin-top: 80px; }
-        .img-full { width: 100%; height: 100%; object-fit: cover; object-position: center 50%; filter: grayscale(30%); }
+        .img-full { width: 100%; height: 100%; object-fit: cover; object-position: center 60%; filter: grayscale(30%); }
 
         .content-wrapper { max-width: 1100px; margin: 0 auto; padding: 0 20px; text-align: center; }
-        .fondo-preto-chapado { background: black; padding-top: 80px; }
-        
-        /* AJUSTES DE FONTES UNIFICADAS (18px) */
         .desc-unificada { font-size: 18px; line-height: 1.6; margin-bottom: 30px; font-weight: 300; color: #ccc; }
         .citacao-it-unificada { font-size: 18px; font-style: italic; color: #a855f7; margin-bottom: 30px; }
-        
-        /* CITAÇÕES DE APOIO v2.5.5 */
         .citacao-it-branca { font-size: 16px; font-style: italic; color: white; opacity: 0.8; margin-bottom: 60px; text-align: center; display: block; text-transform: lowercase; }
 
-        /* HEADER BRUTALISTA AMPLIADO PARA 25.5px */
-        .brutal-header { text-align: center; }
-        .brutal-header h2 { font-size: 25.5px; font-weight: bold; text-transform: lowercase; letter-spacing: 0; color: white; line-height: 1; }
-        
-        /* ESPAÇO MAIOR E AMISTOSO ANTES DO TÍTULO */
+        .brutal-header h2 { font-size: 25.5px; font-weight: bold; text-transform: lowercase; color: white; }
         .spacer-títulos { margin-top: 150px; margin-bottom: 15px; }
 
         .sub-capa-container { width: 100%; max-width: 800px; margin: 0 auto 80px; border: 1px solid #222; overflow: hidden; }
         .img-sub-capa { width: 100%; display: block; }
 
         .lista-dinamica { list-style: none; max-width: 800px; margin: 0 auto 100px; text-align: left; }
-        .marco-item { display: flex; gap: 20px; margin-bottom: 25px; align-items: flex-start; }
+        .marco-item { display: flex; gap: 20px; margin-bottom: 25px; align-items: flex-start; transition: 0.4s ease; padding: 10px; }
         .bullet { color: #a855f7; font-weight: bold; font-size: 20px; }
-        
-        /* A ANIMAÇÃO v2.5.5 */
-        .marco-item {
-          opacity: 0;
-          transform: translateX(-40px);
-          animation: revealList 0.4s forwards;
-        }
-
-        @keyframes revealList {
-          to { opacity: 1; transform: translateX(0); }
-        }
-
         .marco-item p { font-size: 17px; line-height: 1.5; color: #ccc; font-weight: 300; }
         .marco-item p strong { font-weight: 900; }
 
+        /* PLAYERS VIDEO */
         .players-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 40px; }
-        .player-box { width: 100%; aspect-ratio: 16/9; background: #0a0a0a; border: 1px solid #111; position: relative; overflow: hidden; }
-        .player-box iframe { width: 100%; height: 100%; position: absolute; inset: 0; }
+        .player-box { width: 100%; aspect-ratio: 16/9; background: #0a0a0a; border: 1px solid #111; overflow: hidden; transition: 0.4s ease; }
+        .player-box iframe { width: 100%; height: 100%; }
+
+        /* ANIMAÇÃO DE HOVER (IGUAL À HOME) */
+        .interactive-zoom:hover { transform: scale(1.03); filter: brightness(1.2); box-shadow: 0 0 20px rgba(168, 85, 247, 0.2); }
 
         .hamburger { display: none; cursor: pointer; position: absolute; right: 0; }
         .hamburger span { display: block; width: 25px; height: 2px; background: white; margin: 5px 0; transition: 0.4s; }
@@ -173,15 +154,13 @@ export default function Sobre() {
           .nav-links { position: fixed; top: 0; right: -100%; width: 100%; height: 100vh; background: black; flex-direction: column; align-items: center; justify-content: center; transition: 0.5s; gap: 30px; }
           .nav-links.active { right: 0; }
           .players-grid { grid-template-columns: 1fr; }
-          .spacer-títulos { margin-top: 100px; }
+          .whatsapp-global { bottom: 120px; }
         }
 
-        /* ANIMAÇÕES GLOBAIS v2.5.5 */
         .anim-fade-up { opacity: 0; transform: translateY(40px); animation: revealUp 0.8s forwards; }
         .anim-fade-in { opacity: 0; animation: fadeIn 1.5s forwards; }
         @keyframes revealUp { to { opacity: 1; transform: translateY(0); } }
         @keyframes fadeIn { to { opacity: 1; } }
-        .interactive-zoom:hover { transform: scale(1.02); transition: 0.5s; }
       `}</style>
     </div>
   );
