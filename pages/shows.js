@@ -54,23 +54,18 @@ export default function Shows() {
           <p className="desc-ajustado">
             <strong style={{ color: 'white' }}>O SHOW: COM ATÉ 2 HORAS DE VOLTAGEM MÁXIMA</strong>, é desenhado em experiência contínua e explosiva em um fluxo de energia implacável, onde o ritmo dita a regra e o envolvimento do público não tem trégua. É intensidade do primeiro ao último acorde.
           </p>
-
           <p className="desc-ajustado">
             Como uma legítima sommelier de hits que eletrizam o palco, pøliva entrega um show energético, festivo, intenso e explosivo, que carrega o rock na veia. Reunindo em seu repertório influências marcantes de artistas como Pitty, Pearl Jam, AC/DC, Paralamas do Sucesso, Kings Of Leon, Paramore, Rita Lee, Amy Winehouse, Beatles, Raul Seixas, Evanescense, Foo Fighters, Charlie Brown Jr., Deep Purple, Bon Jovi e muito mais! 
           </p>
-
           <p className="desc-ajustado">
             Um projeto flexível, adaptável a qualquer espaço que suporte a pressão. No formato principal, chega com o time completo: voz, violão, guitarras cortantes, baixo pulsante e bateria de alto impacto.
           </p>
-
           <p className="desc-ajustado">
             Transformando clássicos em confissões gritadas a plenos pulmões. É a trilha sonora perfeita para quem busca experiências intensas e não apenas entretenimento raso.
           </p>
-
           <p className="desc-ajustado">
             O público não vai para o evento para ser espectador. Ele vai para sentir, vibrar, gritar e silenciar. Sai do show diferente de como entrou.
           </p>
-
           <p className="desc-ajustado">
             De festivais a ambientes de motociclistas, de palcos urbanos a refúgios culturais. Onde houver necessidade de força, expressão e transformação através da música, a pøliva cria o encontro.
           </p>
@@ -85,15 +80,15 @@ export default function Shows() {
           </a>
         </section>
 
-        {/* FEEDBACK COM CARDS BRANCOS E ALINHAMENTO SUPERIOR */}
+        {/* FEEDBACK COM CARDS BRANCOS RETANGULARES */}
         <section className="section-block anim-fade-up">
           <div className="brutal-header spacer-void">
             <h2>cømø øs fãs reagem:</h2>
           </div>
           <div className="feed-grid-cards">
             {depoimentos.map((name, index) => (
-              <div key={index} className="white-card interactive-zoom">
-                <img src={`/${name}.png`} alt="" className="img-inside-card" />
+              <div key={index} className="white-card-rect interactive-zoom">
+                <img src={`/${name}.png`} alt="" className="img-inside-rect" />
               </div>
             ))}
           </div>
@@ -137,62 +132,48 @@ export default function Shows() {
         
         .shows-capa { width: 100%; height: 65vh; overflow: hidden; margin-top: 80px; margin-bottom: 50px; }
         .img-full { width: 100%; height: 100%; object-fit: cover; object-position: center 40%; filter: grayscale(20%); }
-        
         .content-wrapper { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
-        
-        .desc-ajustado { 
-          font-size: 18px; 
-          line-height: 1.6; 
-          margin-bottom: 45px; 
-          font-weight: 300; 
-          color: #ccc; 
-          text-align: justify; 
-          hyphens: auto;
-        }
-        
+        .desc-ajustado { font-size: 18px; line-height: 1.6; margin-bottom: 45px; font-weight: 300; color: #ccc; text-align: justify; hyphens: auto; }
         .cta-buttons { display: flex; justify-content: center; gap: 30px; margin: 50px 0 80px; }
         .btn-shows { background: none; border: 1px solid #a855f7; color: white; padding: 15px 30px; text-decoration: none; font-weight: bold; font-size: 16px; transition: 0.3s; display: flex; align-items: center; gap: 10px; }
         .btn-shows:hover { background: #a855f7; color: black; }
-        
         .brutal-header { text-align: center; }
         .brutal-header h2 { font-size: 25.5px; font-weight: bold; text-transform: lowercase; color: white; }
         .spacer-void { margin-top: 100px; margin-bottom: 40px; }
         
-        /* CSS DOS CARDS BRANCOS */
+        /* CSS DOS RETÂNGULOS BRANCOS (REDUZIDO) */
         .feed-grid-cards { 
           display: grid; 
           grid-template-columns: 1fr 1fr; 
           gap: 15px 10px; 
           max-width: 800px; 
           margin: 0 auto; 
-          align-items: start; /* GARANTE ALINHAMENTO SUPERIOR */
+          align-items: start;
         }
         
-        .white-card { 
+        .white-card-rect { 
           background: white; 
           display: flex; 
           justify-content: center; 
           align-items: center; 
-          height: 380px; /* ALTURA FIXA PARA UNIFORMIDADE */
-          padding: 15px;
+          height: 180px; /* ALTURA REDUZIDA PARA FORMATO RETANGULAR */
+          padding: 10px;
           border: 1px solid #ddd;
           overflow: hidden;
         }
 
-        .img-inside-card { 
+        .img-inside-rect { 
           max-width: 100%; 
           max-height: 100%; 
           display: block; 
-          object-fit: contain; /* RESPEITA O PIXEL SEM PUXAR */
+          object-fit: contain; 
         }
         
         .reels-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5cm 1.5cm; max-width: 900px; margin: 0 auto; }
         .reel-box { width: 100%; aspect-ratio: 9/16; background: #050505; border: 1px solid #111; overflow: hidden; }
         .reel-box iframe { width: 100%; height: 100%; }
-        
         .registros-list { display: flex; flex-direction: column; align-items: center; gap: 40px; }
         .registro-img { width: 100%; max-width: 800px; height: auto; border: 1px solid #111; display: block; }
-        
         .hamburger { display: none; cursor: pointer; z-index: 4000; position: absolute; right: 0; }
         .hamburger span { display: block; width: 25px; height: 2px; background: white; margin: 5px 0; transition: 0.4s; }
         
@@ -201,7 +182,7 @@ export default function Shows() {
           .nav-links { position: fixed; top: 0; right: -100%; width: 100%; height: 100vh; background: black; flex-direction: column; align-items: center; justify-content: center; transition: 0.5s; }
           .nav-links.active { right: 0; }
           .feed-grid-cards, .reels-grid { grid-template-columns: 1fr; gap: 20px; }
-          .white-card { height: 320px; }
+          .white-card-rect { height: 150px; } /* Ajuste mobile */
           .cta-buttons { flex-direction: column; align-items: center; }
           .desc-ajustado { text-align: left; }
         }
