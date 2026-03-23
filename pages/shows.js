@@ -58,16 +58,16 @@ export default function Shows() {
             <span style={{ fontWeight: 'bold', color: 'white', textTransform: 'uppercase' }}>O SHOW: COM ATÉ 2 HORAS DE VOLTAGEM MÁXIMA</span>, é desenhado em experiência contínua e explosiva em um fluxo de energia implacável, onde o ritmo dita a regra e o envolvimento do público não tem trégua. É intensidade do primeiro ao último acorde.
           </p>
           <p className="desc-normal">
-            Como uma legítima sommelier de hits que eletrizam o palco, pøliva entrega um show energético, festivo, intenso e explosivo, focado no impacto emocional e na conexão direta com o público. No palco, não existe barreira; existe verdade, presença real e uma entrega que beira o impossível.
+            Como uma legítima sommelier de hits que eletrizam o palco, pøliva entrega um show energético, festivo, intenso e explosivo, que carrega o rock na veia. Reunindo em seu repertório influências marcantes de artistas como Pitty, Pearl Jam, AC/DC, Paralamas do Sucesso, Kings Of Leon, Paramore, Rita Lee, Amy Winehouse, Beatles, Raul Seixas, Evanescense, Foo Fighters, Charlie Brown Jr., Deep Purple, Bon Jovi e muito mais!
           </p>
           <p className="desc-normal">
             Um projeto flexível, adaptável a qualquer espaço que suporte a pressão. No formato principal, chega com o time completo: voz, violão, guitarras cortantes, baixo pulsante e bateria de alto impacto.
           </p>
           <p className="desc-normal">
-            Do público jovem ao adulto que carrega o rock na veia, a música da pøliva é refúgio e explosão. Reunindo in seu repertório influências marcantes de artistas como Pitty, Pearl Jam, AC/DC, Paralamas do Sucesso, Kings Of Leon, Paramore, Rita Lee, Amy Winehouse, Beatles, Raul Seixas, Evanescense, Foo Fighters, Charlie Brown Jr., Deep Purple, Bon Jovi e muito mais! Transformando clássicos em confissões gritadas a plenos pulmões. É a trilha sonora perfeita para quem busca experiências intensas e não apenas entretenimento raso.
+            Transformando clássicos em confissões gritadas a plenos pulmões. É a trilha sonora perfeita para quem busca experiências intensas e não apenas entretenimento raso.
           </p>
           <p className="desc-normal">
-            O público não vai para o evento para ser espectador. Eles vão para sentir, vibrar, gritar e silenciar. Eles atravessam emoções e saem do show diferentes de como entraram. São pessoas que farejam verdade à distância e valorizam a entrega de quem deixa a alma no palco.
+            O público não vai para o evento para ser espectador. Ele vai para sentir, vibrar, gritar e silenciar. Sai do show diferente de como entrou.
           </p>
           <p className="desc-normal">
             De festivais a ambientes de motociclistas, de palcos urbanos a refúgios culturais. Onde houver necessidade de força, expressão e transformação através da música, a pøliva cria o encontro.
@@ -83,15 +83,15 @@ export default function Shows() {
           </a>
         </section>
 
-        {/* FEEDBACK - MODO BRUTALISTA ORIGINAL (PIXEL RESPECTIVO) */}
+        {/* FEEDBACK - MODO ALINHAMENTO SUPERIOR (TOP-BLOCADO) */}
         <section className="section-block anim-fade-up">
           <div className="brutal-header spacer-void">
             <h2>cømø øs fãs reagem:</h2>
           </div>
-          <div className="feed-grid-brutal">
+          <div className="feed-grid-top-aligned">
             {depoimentos.map((name, index) => (
-              <div key={index} className="feed-item-raw interactive-zoom">
-                <img src={`/${name}.png`} alt="" className="img-raw" />
+              <div key={index} className="feed-item-vøid interactive-zoom">
+                <img src={`/${name}.png`} alt="" className="img-vøid" />
               </div>
             ))}
           </div>
@@ -146,25 +146,31 @@ export default function Shows() {
         .brutal-header h2 { font-size: 25.5px; font-weight: bold; text-transform: lowercase; color: white; }
         .spacer-void { margin-top: 80px; margin-bottom: 40px; }
         
-        /* GRADE BRUTALISTA ORIGINAL - SEM PUXAR IMAGEM */
-        .feed-grid-brutal { display: grid; grid-template-columns: 1fr 1fr; gap: 3px 5px; max-width: 800px; margin: 0 auto; }
+        /* GRADE ALINHAMENTO SUPERIOR (TOP-BLOCADO) */
+        .feed-grid-top-aligned { 
+          display: grid; 
+          grid-template-columns: 1fr 1fr; 
+          gap: 3px 5px; 
+          max-width: 800px; 
+          margin: 0 auto; 
+          align-items: start; /* CRAVA TUDO NO TOPO */
+        }
         
-        .feed-item-raw { 
+        .feed-item-vøid { 
           display: flex; 
-          align-items: center; 
           justify-content: center; 
           width: 100%; 
-          /* Remove molduras e fundos antigos */
           background: none;
           border: none;
+          min-height: 0; /* NÃO FORÇA ALTURA MINIMA */
         }
 
-        .img-raw { 
+        .img-vøid { 
           max-width: 100%; 
           height: auto; 
-          /* Garante o pixel respectivo sem object-fit */
           display: block; 
           transition: 0.3s ease;
+          object-fit: contain; /* MANTEM PROPORÇÃO SEM ESTICAR */
         }
         
         /* GAP ALTURA 1.5CM PARA REELS */
@@ -182,7 +188,7 @@ export default function Shows() {
           .hamburger { display: block; }
           .nav-links { position: fixed; top: 0; right: -100%; width: 100%; height: 100vh; background: black; flex-direction: column; align-items: center; justify-content: center; transition: 0.5s; }
           .nav-links.active { right: 0; }
-          .feed-grid-brutal, .reels-grid { grid-template-columns: 1fr; gap: 20px; }
+          .feed-grid-top-aligned, .reels-grid { grid-template-columns: 1fr; gap: 20px; }
           .cta-buttons { flex-direction: column; align-items: center; }
         }
         
