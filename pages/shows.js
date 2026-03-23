@@ -85,14 +85,15 @@ export default function Shows() {
           </a>
         </section>
 
+        {/* FEEDBACK COM CARDS BRANCOS E ALINHAMENTO SUPERIOR */}
         <section className="section-block anim-fade-up">
           <div className="brutal-header spacer-void">
             <h2>cømø øs fãs reagem:</h2>
           </div>
-          <div className="feed-grid-top-aligned">
+          <div className="feed-grid-cards">
             {depoimentos.map((name, index) => (
-              <div key={index} className="feed-item-vøid interactive-zoom">
-                <img src={`/${name}.png`} alt="" className="img-vøid" />
+              <div key={index} className="white-card interactive-zoom">
+                <img src={`/${name}.png`} alt="" className="img-inside-card" />
               </div>
             ))}
           </div>
@@ -139,7 +140,6 @@ export default function Shows() {
         
         .content-wrapper { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
         
-        /* TEXTO AJUSTADO (JUSTIFICADO) */
         .desc-ajustado { 
           font-size: 18px; 
           line-height: 1.6; 
@@ -158,17 +158,33 @@ export default function Shows() {
         .brutal-header h2 { font-size: 25.5px; font-weight: bold; text-transform: lowercase; color: white; }
         .spacer-void { margin-top: 100px; margin-bottom: 40px; }
         
-        .feed-grid-top-aligned { 
+        /* CSS DOS CARDS BRANCOS */
+        .feed-grid-cards { 
           display: grid; 
           grid-template-columns: 1fr 1fr; 
-          gap: 3px 5px; 
+          gap: 15px 10px; 
           max-width: 800px; 
           margin: 0 auto; 
-          align-items: start;
+          align-items: start; /* GARANTE ALINHAMENTO SUPERIOR */
         }
         
-        .feed-item-vøid { display: flex; justify-content: center; width: 100%; }
-        .img-vøid { max-width: 100%; height: auto; display: block; }
+        .white-card { 
+          background: white; 
+          display: flex; 
+          justify-content: center; 
+          align-items: center; 
+          height: 380px; /* ALTURA FIXA PARA UNIFORMIDADE */
+          padding: 15px;
+          border: 1px solid #ddd;
+          overflow: hidden;
+        }
+
+        .img-inside-card { 
+          max-width: 100%; 
+          max-height: 100%; 
+          display: block; 
+          object-fit: contain; /* RESPEITA O PIXEL SEM PUXAR */
+        }
         
         .reels-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5cm 1.5cm; max-width: 900px; margin: 0 auto; }
         .reel-box { width: 100%; aspect-ratio: 9/16; background: #050505; border: 1px solid #111; overflow: hidden; }
@@ -184,9 +200,10 @@ export default function Shows() {
           .hamburger { display: block; }
           .nav-links { position: fixed; top: 0; right: -100%; width: 100%; height: 100vh; background: black; flex-direction: column; align-items: center; justify-content: center; transition: 0.5s; }
           .nav-links.active { right: 0; }
-          .feed-grid-top-aligned, .reels-grid { grid-template-columns: 1fr; gap: 20px; }
+          .feed-grid-cards, .reels-grid { grid-template-columns: 1fr; gap: 20px; }
+          .white-card { height: 320px; }
           .cta-buttons { flex-direction: column; align-items: center; }
-          .desc-ajustado { text-align: left; } /* No mobile, justificado às vezes fica ruim de ler, optei por left mas você pode mudar */
+          .desc-ajustado { text-align: left; }
         }
         
         .interactive-zoom:hover { transform: scale(1.02); filter: brightness(1.1); transition: 0.3s ease; }
