@@ -26,12 +26,17 @@ export default function Sobre() {
         <title>søbre | pølivessense</title>
       </Head>
 
+      {/* NAVBAR CORRIGIDA PARA MOBILE */}
       <nav className="navbar">
         <div className="nav-container">
-          <a href="/"><img src="/logo-poliva.png" alt="Logo" className="nav-logo" /></a>
+          <a href="/" className="nav-logo-link">
+            <img src="/logo-poliva.png" alt="Logo" className="nav-logo" />
+          </a>
+          
           <div className={`hamburger ${isMenuOpen ? 'open' : ''}`} onClick={() => setIsMenuOpen(!isMenuOpen)}>
             <span></span><span></span><span></span>
           </div>
+
           <div className={`nav-links ${isMenuOpen ? 'active' : ''}`}>
             <a href="/" className="nav-item">iníciø</a>
             <a href="/sobre" className="nav-item active-link">søbre pøliva</a>
@@ -43,18 +48,17 @@ export default function Sobre() {
         </div>
       </nav>
 
-      {/* WHATSAPP GLOBAL - FIXO NO CANTO */}
-      <a href="https://wa.me/SEUNUMEROAQUI" target="_blank" rel="noopener noreferrer" className="whatsapp-global">
+      {/* WHATSAPP FIXO */}
+      <a href="https://wa.me/message/L5OXQTU6PDIFF1" target="_blank" rel="noopener noreferrer" className="wa-global interactive-zoom">
         <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" />
       </a>
 
-      {/* CAPA AJUSTADA - center 60% */}
       <header className="sobre-capa anim-fade-in">
         <img src="/foto-sobre.jpg" alt="Pøliva Capa" className="img-full" />
       </header>
 
       <main className="content-wrapper">
-        <section className="section-block section-text anim-fade-up">
+        <section className="section-text anim-fade-up">
           <p className="desc-unificada">
             pøliva é a experiência sensorial em forma de música, unindo a distorção do rock com marcações tribais na frequência musical. Entre o autoral e os clássicos que todo mundo canta junto, o show vira ritual.
           </p>
@@ -66,14 +70,14 @@ export default function Sobre() {
           </p>
         </section>
 
-        <section className="section-block section-marcos anim-fade-up">
-          <div className="brutal-header spacer-títulos">
+        <section className="section-block anim-fade-up">
+          <div className="brutal-header spacer-vøid">
             <h2>principais marcøs na carreira:</h2>
           </div>
-          <p className="citacao-it-branca">"Tudo começa pela intensão do desejo. E então se cocria com o primeiro passo!"</p>
+          <p className="citacao-it-branca">"tudo começa pela intensão do desejo. e então se cocria com o primeiro passo!"</p>
           
           <div className="sub-capa-container interactive-zoom">
-            <img src="/foto-sobre2.jpg" alt="Pøliva Marcøs" className="img-sub-capa" />
+            <img src="/foto-sobre2.jpg" alt="Sub Capa" className="img-sub-capa" />
           </div>
 
           <ul className="lista-dinamica">
@@ -86,8 +90,8 @@ export default function Sobre() {
           </ul>
         </section>
 
-        <section className="section-block section-live anim-fade-up" style={{ paddingBottom: '220px' }}>
-          <div className="brutal-header spacer-títulos">
+        <section className="section-block anim-fade-up" style={{ paddingBottom: '200px' }}>
+          <div className="brutal-header spacer-vøid">
             <h2>live sessiøn:</h2>
           </div>
           <p className="citacao-it-branca">suas músicas já alcançaram milhares de pessoas na internet</p>
@@ -104,61 +108,67 @@ export default function Sobre() {
       </main>
 
       <style jsx>{`
-        .sobre-page { background: black; min-height: 100vh; color: white; overflow-x: hidden; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+        .sobre-page { background: black; min-height: 100vh; color: white; overflow-x: hidden; font-family: -apple-system, system-ui, sans-serif; }
         
-        .navbar { position: fixed; top: 0; width: 100%; background: rgba(0,0,0,0.95); padding: 25px 40px; z-index: 3000; border-bottom: 1px solid #111; }
-        .nav-container { max-width: 1400px; margin: 0 auto; display: flex; justify-content: center; align-items: center; position: relative; }
-        .nav-logo { width: 110px; position: absolute; left: 0; }
-        .nav-links { display: flex; gap: 40px; font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; font-weight: bold; }
+        /* NAVBAR FIX */
+        .navbar { position: fixed; top: 0; width: 100%; background: rgba(0,0,0,0.95); padding: 20px 40px; z-index: 4000; border-bottom: 1px solid #111; }
+        .nav-container { max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; position: relative; width: 100%; }
+        .nav-logo { width: 100px; display: block; }
+        .nav-links { display: flex; gap: 35px; font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; font-weight: bold; }
         .nav-item { color: white; text-decoration: none; transition: 0.3s; }
         .nav-item:hover, .active-link { color: #a855f7 !important; }
 
-        /* WHATSAPP */
-        .whatsapp-global { position: fixed; bottom: 100px; right: 30px; z-index: 5000; transition: 0.3s; width: 50px; }
-        .whatsapp-global:hover { transform: scale(1.1); filter: brightness(1.2); }
+        .wa-global { position: fixed; bottom: 120px; right: 25px; z-index: 5000; width: 50px; }
 
-        /* CAPA center 60% */
-        .sobre-capa { width: 100%; height: 65vh; overflow: hidden; margin-top: 80px; }
-        .img-full { width: 100%; height: 100%; object-fit: cover; object-position: center 60%; filter: grayscale(30%); }
+        /* CAPA - object-position center 60% + respiro inferior */
+        .sobre-capa { width: 100%; height: 65vh; overflow: hidden; margin-top: 80px; margin-bottom: 50px; }
+        .img-full { width: 100%; height: 100%; object-fit: cover; object-position: center 60%; filter: grayscale(20%); }
 
-        .content-wrapper { max-width: 1100px; margin: 0 auto; padding: 0 20px; text-align: center; }
+        .content-wrapper { max-width: 1000px; margin: 0 auto; padding: 0 20px; text-align: center; }
+        
         .desc-unificada { font-size: 18px; line-height: 1.6; margin-bottom: 30px; font-weight: 300; color: #ccc; }
         .citacao-it-unificada { font-size: 18px; font-style: italic; color: #a855f7; margin-bottom: 30px; }
-        .citacao-it-branca { font-size: 16px; font-style: italic; color: white; opacity: 0.8; margin-bottom: 60px; text-align: center; display: block; text-transform: lowercase; }
+        .citacao-it-branca { font-size: 15px; font-style: italic; color: white; opacity: 0.7; margin-bottom: 50px; text-align: center; display: block; }
 
         .brutal-header h2 { font-size: 25.5px; font-weight: bold; text-transform: lowercase; color: white; }
-        .spacer-títulos { margin-top: 150px; margin-bottom: 15px; }
+        
+        /* DIMINUINDO O VÁCUO */
+        .spacer-vøid { margin-top: 80px; margin-bottom: 15px; }
 
-        .sub-capa-container { width: 100%; max-width: 800px; margin: 0 auto 80px; border: 1px solid #222; overflow: hidden; }
+        .sub-capa-container { width: 100%; max-width: 800px; margin: 0 auto 60px; border: 1px solid #222; overflow: hidden; }
         .img-sub-capa { width: 100%; display: block; }
 
-        .lista-dinamica { list-style: none; max-width: 800px; margin: 0 auto 100px; text-align: left; }
-        .marco-item { display: flex; gap: 20px; margin-bottom: 25px; align-items: flex-start; transition: 0.4s ease; padding: 10px; }
-        .bullet { color: #a855f7; font-weight: bold; font-size: 20px; }
-        .marco-item p { font-size: 17px; line-height: 1.5; color: #ccc; font-weight: 300; }
-        .marco-item p strong { font-weight: 900; }
+        .lista-dinamica { list-style: none; max-width: 800px; margin: 0 auto 80px; text-align: left; }
+        .marco-item { display: flex; gap: 15px; margin-bottom: 20px; align-items: flex-start; padding: 5px; transition: 0.3s; }
+        .bullet { color: #a855f7; font-weight: bold; font-size: 18px; }
+        .marco-item p { font-size: 16px; line-height: 1.5; color: #ccc; }
 
-        /* PLAYERS VIDEO */
-        .players-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 40px; }
-        .player-box { width: 100%; aspect-ratio: 16/9; background: #0a0a0a; border: 1px solid #111; overflow: hidden; transition: 0.4s ease; }
+        .players-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .player-box { width: 100%; aspect-ratio: 16/9; background: #050505; border: 1px solid #111; }
         .player-box iframe { width: 100%; height: 100%; }
 
-        /* ANIMAÇÃO DE HOVER (IGUAL À HOME) */
-        .interactive-zoom:hover { transform: scale(1.03); filter: brightness(1.2); box-shadow: 0 0 20px rgba(168, 85, 247, 0.2); }
-
-        .hamburger { display: none; cursor: pointer; position: absolute; right: 0; }
+        .hamburger { display: none; cursor: pointer; z-index: 5000; }
         .hamburger span { display: block; width: 25px; height: 2px; background: white; margin: 5px 0; transition: 0.4s; }
 
         @media (max-width: 1024px) {
-          .hamburger { display: block; }
-          .nav-links { position: fixed; top: 0; right: -100%; width: 100%; height: 100vh; background: black; flex-direction: column; align-items: center; justify-content: center; transition: 0.5s; gap: 30px; }
+          .navbar { padding: 15px 25px; }
+          .hamburger { display: block; position: absolute; right: 0; top: 50%; transform: translateY(-50%); }
+          .nav-logo { width: 85px; }
+          .nav-links { 
+            position: fixed; top: 0; right: -100%; width: 100%; height: 100vh; 
+            background: black; flex-direction: column; align-items: center; 
+            justify-content: center; transition: 0.5s; gap: 25px; 
+          }
           .nav-links.active { right: 0; }
           .players-grid { grid-template-columns: 1fr; }
-          .whatsapp-global { bottom: 120px; }
+          .spacer-vøid { margin-top: 60px; }
+          .sobre-capa { height: 50vh; margin-top: 70px; }
+          .desc-unificada, .citacao-it-unificada { font-size: 16px; }
         }
 
-        .anim-fade-up { opacity: 0; transform: translateY(40px); animation: revealUp 0.8s forwards; }
-        .anim-fade-in { opacity: 0; animation: fadeIn 1.5s forwards; }
+        .interactive-zoom:hover { transform: scale(1.02); filter: brightness(1.1); transition: 0.3s ease; }
+        .anim-fade-up { opacity: 0; transform: translateY(30px); animation: revealUp 0.6s forwards; }
+        .anim-fade-in { opacity: 0; animation: fadeIn 1.2s forwards; }
         @keyframes revealUp { to { opacity: 1; transform: translateY(0); } }
         @keyframes fadeIn { to { opacity: 1; } }
       `}</style>
