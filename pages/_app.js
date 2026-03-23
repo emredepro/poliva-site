@@ -12,6 +12,7 @@ export default function MyApp({ Component, pageProps }) {
     { file: "/TOQES.mp3", name: "TOQES - pøliva ft. morpheo ft. daniel filgueiras" }
   ];
 
+  // Sincroniza o play quando troca a track
   useEffect(() => {
     if (isPlaying && audioRef.current) {
       audioRef.current.play().catch(err => console.log("Autoplay blocked", err));
@@ -38,9 +39,10 @@ export default function MyApp({ Component, pageProps }) {
     <>
       <audio ref={audioRef} src={tracks[currentTrack].file} onEnded={nextTrack} />
       
+      {/* Passa as funções para a Home e outras páginas usarem nos botões delas */}
       <Component {...pageProps} nextTrack={nextTrack} prevTrack={prevTrack} />
 
-      {/* RADIO BAR - EXATAMENTE IGUAL À SUA VERSÃO 2.5.5 */}
+      {/* RADIO BAR - ESTRUTURA v2.5.5 TOTALMENTE GLOBAL */}
       <div className="radio-bar">
         <div className="radio-inner">
           <div className="radio-controls">
@@ -62,32 +64,61 @@ export default function MyApp({ Component, pageProps }) {
                 {tracks[currentTrack].name}
               </p>
             </div>
-            <span className="status-label" style={{ color: 'white', fontSize: '9px' }}>você está ouvindo</span>
+            <span className="status-label">você está ouvindo</span>
           </div>
         </div>
       </div>
 
       <style jsx global>{`
-        /* CSS GLOBAL EXTRAÍDO DA VERSÃO 2.5.5 */
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { background: black; margin: 0; padding: 0; overflow-x: hidden; }
+        /* RESET E FONTE QUE ESTAVA FALTANDO */
+        * { 
+          box-sizing: border-box; 
+          margin: 0; 
+          padding: 0; 
+          font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
 
-        .radio-bar { position: fixed; bottom: 0; width: 100%; background: #050505; padding: 15px 40px; border-top: 1px solid #111; z-index: 1100; }
+        body { background: black; margin: 0; padding: 0; overflow-x: hidden; color: white; }
+
+        /* PLAYER GLOBAL STYLING */
+        .radio-bar { position: fixed; bottom: 0; width: 100%; background: #050505; padding: 15px 40px; border-top: 1px solid #111; z-index: 9999; }
         .radio-inner { max-width: 1400px; margin: 0 auto; display: flex; align-items: center; gap: 50px; }
         .radio-controls { display: flex; align-items: center; gap: 25px; }
+        
         .radio-nav-btn { background: none; border: none; color: #a855f7; cursor: pointer; display: flex; flex-direction: column; align-items: center; transition: 0.3s ease; }
         .radio-nav-btn small { font-size: 8px; text-transform: uppercase; opacity: 0.6; margin-top: 2px; }
+        
         .play-circle { cursor: pointer; display: flex; flex-direction: column; align-items: center; min-width: 70px; transition: 0.3s ease; }
         .play-circle img { width: 35px; }
         .play-label { font-size: 8px; text-transform: uppercase; color: #a855f7; font-weight: bold; margin-top: 5px; }
 
         .radio-display { flex: 1; text-align: left; overflow: hidden; }
-        .marquee-box { width: 280px; overflow: hidden; white-space: nowrap; margin-bottom: 5px; border-bottom: 1px solid rgba(168, 85, 247, 0.1); }
-        .marquee-content { display: inline-block; padding-left: 20%; font-size: 13px; font-weight: bold; letter-spacing: 0.05em; }
+        .marquee-box { width: 350px; overflow: hidden; white-space: nowrap; margin-bottom: 5px; border-bottom: 1px solid rgba(168, 85, 247, 0.1); }
+        
+        /* COR DO TEXTO E FONTE DO DISPLAY */
+        .marquee-content { 
+          display: inline-block; 
+          padding-left: 10%; 
+          font-size: 13px; 
+          font-weight: bold; 
+          letter-spacing: 0.05em; 
+          color: white; 
+        }
+        
         .marquee-content.running { animation: marquee 15s linear infinite; }
+        .status-label { color: white; font-size: 9px; display: block; margin-top: 2px; opacity: 0.8; text-transform: lowercase; }
 
         @keyframes marquee { 0% { transform: translate(0, 0); } 100% { transform: translate(-100%, 0); } }
-        .interactive-zoom:hover { transform: scale(1.08); filter: brightness(1.2); }
+        
+        .interactive-zoom:hover { transform: scale(1.08); filter: brightness(1.2); transition: 0.3s; }
+
+        /* AJUSTES MOBILE PARA A RÁDIO */
+        @media (max-width: 768px) {
+          .radio-bar { padding: 15px 20px; }
+          .radio-inner { gap: 20px; }
+          .marquee-box { width: 180px; }
+          .radio-nav-btn span { font-size: 20px; }
+        }
       `}</style>
     </>
   );
