@@ -43,21 +43,13 @@ export default function Sobre() {
         </div>
       </nav>
 
-      {/* VÍDEO LOOP DE FUNDO (Puxado do layout v2.5.5) */}
-      <div className="video-bg-content">
-        <video autoPlay muted loop playsInline>
-          <source src="/video-home-loop.mp4" type="video/mp4" />
-        </video>
-      </div>
-
-      {/* CAPA AJUSTADA - SOBE MAIS A FOTO (object-position: center 35%) */}
+      {/* CAPA AJUSTADA - ALTURA 65vh E CENTRALIZAÇÃO TOTAL (object-position: center 50%) */}
       <header className="sobre-capa anim-fade-in">
         <img src="/foto-sobre.jpg" alt="Pøliva Capa" className="img-full" />
       </header>
 
-      <main className="main-sobre">
-        {/* BLOCO TEXTUAL - FUNDO PRETO CHAPADO */}
-        <section className="section-block section-text anim-fade-up fondo-preto-chapado">
+      <main className="content-wrapper fondo-preto-chapado">
+        <section className="section-block section-text anim-fade-up">
           <p className="desc-unificada">
             pøliva é a experiência sensorial em forma de música, unindo a distorção do rock com marcações tribais na frequência musical. Entre o autoral e os clássicos que todo mundo canta junto, o show vira ritual.
           </p>
@@ -71,8 +63,7 @@ export default function Sobre() {
           </p>
         </section>
 
-        {/* BLOCO MARCOS - FUNDO DINÂMICO (VÊ O VÍDEO ATRÁS) */}
-        <section className="section-block section-marcos anim-fade-up fondo-dinamico">
+        <section className="section-block section-marcos anim-fade-up">
           <div className="brutal-header mobile-boost spacer-títulos">
             <h2>principais marcøs na carreira:</h2>
           </div>
@@ -93,8 +84,7 @@ export default function Sobre() {
           </ul>
         </section>
 
-        {/* BLOCO LIVE SESSION - FUNDO DINÂMICO (VÊ O VÍDEO ATRÁS) */}
-        <section className="section-block section-live anim-fade-up fondo-dinamico" style={{ paddingBottom: '220px' }}>
+        <section className="section-block section-live anim-fade-up" style={{ paddingBottom: '220px' }}>
           <div className="brutal-header mobile-boost spacer-títulos">
             <h2>live sessiøn:</h2>
           </div>
@@ -112,22 +102,15 @@ export default function Sobre() {
         </section>
       </main>
 
-      <style jsx global>{`
-        /* RESET v2.5.5 E FONTE LIMPA NO * PARA IDENTIDADE VISUAL */
-        * { 
-          box-sizing: border-box; 
-          margin: 0; 
-          padding: 0; 
+      <style jsx>{`
+        /* IDENTIDADE VISUAL LIMPA E FONTES v2.5.5 */
+        .sobre-page { 
+          background: black; 
+          min-height: 100vh; 
+          color: white; 
+          overflow-x: hidden; 
           font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
         }
-
-        body { background: black; margin: 0; padding: 0; overflow-x: hidden; color: white; }
-
-        .sobre-page { position: relative; z-index: 10; }
-
-        /* VÍDEO LOOP DE FUNDO (A alma v2.5.5) */
-        .video-bg-content { position: fixed; inset: 0; z-index: -1; width: 100%; height: 100%; overflow: hidden; opacity: 0.25; }
-        .video-bg-content video { width: 100%; height: 100%; object-fit: cover; }
 
         .navbar { position: fixed; top: 0; width: 100%; background: rgba(0,0,0,0.95); padding: 25px 40px; z-index: 3000; border-bottom: 1px solid #111; }
         .nav-container { max-width: 1400px; margin: 0 auto; display: flex; justify-content: center; align-items: center; position: relative; }
@@ -136,16 +119,19 @@ export default function Sobre() {
         .nav-item { color: white; text-decoration: none; transition: 0.3s; }
         .nav-item:hover, .active-link { color: #a855f7 !important; }
 
-        /* CAPA AJUSTADA - SUBIU A FOTO E CENTRALIZOU (object-position: center 35%) */
+        /* CAPA AJUSTADA (65vh E object-position: center 50%) */
         .sobre-capa { width: 100%; height: 65vh; overflow: hidden; margin-top: 80px; }
-        .img-full { width: 100%; height: 100%; object-fit: cover; object-position: center 35%; filter: grayscale(30%); }
+        .img-full { width: 100%; height: 100%; object-fit: cover; object-position: center 50%; filter: grayscale(30%); }
 
-        .main-sobre { max-width: 1100px; margin: 0 auto; text-align: center; position: relative; z-index: 20; }
+        .content-wrapper { max-width: 1100px; margin: 0 auto; padding: 0 20px; text-align: center; }
+        .fondo-preto-chapado { background: black; padding-top: 80px; }
         
-        /* AJUSTES DE FONTES v2.5.5 (18px) */
+        /* AJUSTES DE FONTES UNIFICADAS (18px) */
         .desc-unificada { font-size: 18px; line-height: 1.6; margin-bottom: 30px; font-weight: 300; color: #ccc; }
         .citacao-it-unificada { font-size: 18px; font-style: italic; color: #a855f7; margin-bottom: 30px; }
-        .citacao-it-branca { font-size: 16px; font-style: italic; color: white; opacity: 0.8; margin-bottom: 60px; text-align: center; display: block; }
+        
+        /* CITAÇÕES DE APOIO v2.5.5 */
+        .citacao-it-branca { font-size: 16px; font-style: italic; color: white; opacity: 0.8; margin-bottom: 60px; text-align: center; display: block; text-transform: lowercase; }
 
         /* HEADER BRUTALISTA AMPLIADO PARA 25.5px */
         .brutal-header { text-align: center; }
@@ -154,16 +140,6 @@ export default function Sobre() {
         /* ESPAÇO MAIOR E AMISTOSO ANTES DO TÍTULO */
         .spacer-títulos { margin-top: 150px; margin-bottom: 15px; }
 
-        /* TÉCNICA DE FUNDO DINÂMICO PARA DAR MOVIMENTO */
-        .fondo-preto-chapado { background: black; padding: 80px 20px 0; }
-        
-        /* Degradê nas bordas para o texto não sumir */
-        .fondo-dinamico { 
-          background: linear-gradient(to bottom, black 0%, transparent 15%, transparent 85%, black 100%);
-          padding: 0 20px; 
-          position: relative;
-        }
-
         .sub-capa-container { width: 100%; max-width: 800px; margin: 0 auto 80px; border: 1px solid #222; overflow: hidden; }
         .img-sub-capa { width: 100%; display: block; }
 
@@ -171,16 +147,15 @@ export default function Sobre() {
         .marco-item { display: flex; gap: 20px; margin-bottom: 25px; align-items: flex-start; }
         .bullet { color: #a855f7; font-weight: bold; font-size: 20px; }
         
-        /* A ANIMAÇÃO Ø DEVOLVIDA PARA A LISTA */
+        /* A ANIMAÇÃO v2.5.5 */
         .marco-item {
           opacity: 0;
           transform: translateX(-40px);
-          animation: revealList Ø.4s forwards;
+          animation: revealList 0.4s forwards;
         }
 
-        /* ANIMAÇÃO DINÂMICA (Ø tirado da animação) */
         @keyframes revealList {
-          to { opacity: 1; transform: translateX(Ø); }
+          to { opacity: 1; transform: translateX(0); }
         }
 
         .marco-item p { font-size: 17px; line-height: 1.5; color: #ccc; font-weight: 300; }
@@ -188,7 +163,7 @@ export default function Sobre() {
 
         .players-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 40px; }
         .player-box { width: 100%; aspect-ratio: 16/9; background: #0a0a0a; border: 1px solid #111; position: relative; overflow: hidden; }
-        .player-box iframe { width: 100%; height: 100%; position: absolute; inset: Ø; }
+        .player-box iframe { width: 100%; height: 100%; position: absolute; inset: 0; }
 
         .hamburger { display: none; cursor: pointer; position: absolute; right: 0; }
         .hamburger span { display: block; width: 25px; height: 2px; background: white; margin: 5px 0; transition: 0.4s; }
@@ -198,16 +173,15 @@ export default function Sobre() {
           .nav-links { position: fixed; top: 0; right: -100%; width: 100%; height: 100vh; background: black; flex-direction: column; align-items: center; justify-content: center; transition: 0.5s; gap: 30px; }
           .nav-links.active { right: 0; }
           .players-grid { grid-template-columns: 1fr; }
-          .fondo-preto-chapado, .fondo-dinamico { padding-left: 10px; padding-right: 10px; }
           .spacer-títulos { margin-top: 100px; }
         }
 
         /* ANIMAÇÕES GLOBAIS v2.5.5 */
-        .anim-fade-up { opacity: 0; transform: translateY(40px); animation: revealUp Ø.8s forwards; }
+        .anim-fade-up { opacity: 0; transform: translateY(40px); animation: revealUp 0.8s forwards; }
         .anim-fade-in { opacity: 0; animation: fadeIn 1.5s forwards; }
-        @keyframes revealUp { to { opacity: 1; transform: translateY(Ø); } }
+        @keyframes revealUp { to { opacity: 1; transform: translateY(0); } }
         @keyframes fadeIn { to { opacity: 1; } }
-        .interactive-zoom:hover { transform: scale(1.02); transition: Ø.5s; }
+        .interactive-zoom:hover { transform: scale(1.02); transition: 0.5s; }
       `}</style>
     </div>
   );
