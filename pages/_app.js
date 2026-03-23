@@ -40,7 +40,7 @@ function MyApp({ Component, pageProps }) {
       
       <Component {...pageProps} />
 
-      {/* RADIO BAR REPLICADA EXATAMENTE DA VERSÃO 2.5.5 */}
+      {/* RÁDIO BAR - EXATAMENTE IGUAL À VERSÃO 2.5.5 */}
       <div className="radio-bar">
         <div className="radio-inner">
           <div className="radio-controls">
@@ -68,11 +68,10 @@ function MyApp({ Component, pageProps }) {
       </div>
 
       <style jsx global>{`
-        /* RESET DE SEGURANÇA PARA NÃO DESCONFIGURAR A HOME */
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { background: black; margin: 0; padding: 0; overflow-x: hidden; }
 
-        .radio-bar { position: fixed; bottom: 0; width: 100%; background: #050505; padding: 15px 40px; border-top: 1px solid #111; z-index: 9999; }
+        .radio-bar { position: fixed; bottom: 0; width: 100%; background: #050505; padding: 15px 40px; border-top: 1px solid #111; z-index: 1100; }
         .radio-inner { max-width: 1400px; margin: 0 auto; display: flex; align-items: center; gap: 50px; }
         .radio-controls { display: flex; align-items: center; gap: 25px; }
         .radio-nav-btn { background: none; border: none; color: #a855f7; cursor: pointer; display: flex; flex-direction: column; align-items: center; transition: 0.3s ease; }

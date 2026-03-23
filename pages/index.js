@@ -1,4 +1,3 @@
-// POLIVESSENSE VERSION 2.6.0 - HOME BLINDADA (ESTRUTURA INTEGRAL SEM PLAYER)
 import React, { useState, useEffect } from 'react';
 import Head from 'next/head';
 
@@ -65,7 +64,7 @@ export default function Inicio() {
             </div>
 
             <div className={`nav-links ${isMenuOpen ? 'active' : ''}`}>
-              <a href="/" className="nav-item">iníciø</a>
+              <a href="#" className="nav-item" onClick={() => setIsMenuOpen(false)}>iníciø</a>
               <a href="/sobre" className="nav-item" onClick={() => setIsMenuOpen(false)}>søbre pøliva</a>
               <a href="#" className="nav-item" onClick={() => setIsMenuOpen(false)}>shøws aø vivø</a>
               <a href="#" className="nav-item" onClick={() => setIsMenuOpen(false)}>singles & álbuns</a>
@@ -149,9 +148,6 @@ export default function Inicio() {
       </div>
 
       <style jsx global>{`
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { background: black; margin: 0; padding: 0; overflow-x: hidden; }
-
         .preloader { position: fixed; inset: 0; background: black; z-index: 9999; display: flex; align-items: center; justify-content: center; }
         .loader-box { width: 220px; text-align: center; display: flex; flex-direction: column; align-items: center; }
         .bar-bg { width: 100%; height: 2px; background: #111; margin: 15px 0; }
@@ -167,10 +163,8 @@ export default function Inicio() {
         .nav-container { max-width: 1400px; margin: 0 auto; display: flex; justify-content: center; align-items: center; position: relative; min-height: 50px; }
         .nav-logo { width: 110px; position: absolute; left: 0; }
         .nav-links { display: flex; gap: 40px; font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; font-weight: bold; }
-       
         .nav-item { color: white; text-decoration: none; transition: 0.3s ease; cursor: pointer; }
         .nav-item:hover { color: #a855f7 !important; }
-        .nav-item:active { color: white !important; transform: scale(0.95); }
 
         .hamburger { display: none; cursor: pointer; z-index: 4000; position: absolute; right: 0; }
         .hamburger span { display: block; width: 25px; height: 2px; background: white; margin: 5px 0; transition: 0.4s; }
@@ -180,11 +174,7 @@ export default function Inicio() {
           .hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
           .hamburger.open span:nth-child(2) { opacity: 0; }
           .hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
-          .nav-links {
-            position: fixed; top: 0; right: -100%; width: 100%; height: 100vh;
-            background: black; flex-direction: column; align-items: center; justify-content: center;
-            transition: 0.5s ease-in-out;
-          }
+          .nav-links { position: fixed; top: 0; right: -100%; width: 100%; height: 100vh; background: black; flex-direction: column; align-items: center; justify-content: center; transition: 0.5s ease-in-out; gap: 30px; }
           .nav-links.active { right: 0; }
         }
 
@@ -194,10 +184,6 @@ export default function Inicio() {
         .author { font-style: normal; color: #a855f7; font-weight: bold; font-size: 11px; }
 
         .spacer-lg { margin-top: 180px; }
-        .section-block { padding: 0 20px; }
-        .brutal-header h2, .brutal-header h3 { font-size: clamp(1.1rem, 4vw, 1.8rem); font-weight: bold; text-transform: lowercase; line-height: 1; margin: 0; }
-        .bold-sub { font-size: clamp(1rem, 3.3vw, 1.6rem); font-weight: bold; color: #a855f7; margin-top: 5px; text-transform: lowercase; line-height: 1; }
-
         .video-player { width: 100%; max-width: 540px; margin: 60px auto; aspect-ratio: 16/9; box-shadow: 0 50px 100px rgba(0,0,0,0.9); background: black; position: relative; overflow: hidden; }
         .video-player iframe { width: 100%; height: 100%; border-radius: 4px; }
         .video-cover { width: 100%; height: 100%; cursor: pointer; position: relative; }
@@ -205,7 +191,7 @@ export default function Inicio() {
         .play-overlay { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; background: rgba(0,0,0,0.2); transition: 0.3s; }
         .play-triangle { width: 0; height: 0; border-style: solid; border-width: 25px 0 25px 45px; border-color: transparent transparent transparent #ffffff; }
 
-        .carousel-main { display: flex; align-items: center; justify-content: center; gap: 40px; margin-top: 60px; }
+        .carousel-main { display: flex; align-items: center; justify-content: center; margin-top: 60px; }
         .car-viewport { width: 350px; overflow: hidden; }
         .car-track { display: flex; transition: 0.8s ease; }
         .car-item { min-width: 100%; }
@@ -216,19 +202,9 @@ export default function Inicio() {
         .copyright-line { margin-top: 40px; font-size: 10px; color: #444; }
 
         .wa-btn { position: fixed; bottom: 120px; right: 30px; width: 50px; z-index: 1000; transition: 0.3s ease; }
-
-        .anim-fade-up {
-          opacity: 0;
-          transform: translateY(40px);
-          animation: revealStay 0.4s ease-out forwards;
-        }
-
-        @keyframes revealStay {
-          to { opacity: 1; transform: translateY(0); }
-        }
-
-        .interactive-zoom:hover { transform: scale(1.08); filter: brightness(1.2); }
-        .video-player.interactive-zoom:hover { transform: scale(1.03); }
+        .anim-fade-up { opacity: 0; transform: translateY(40px); animation: revealStay 0.4s forwards; }
+        @keyframes revealStay { to { opacity: 1; transform: translateY(0); } }
+        .interactive-zoom:hover { transform: scale(1.08); filter: brightness(1.2); transition: 0.3s; }
       `}</style>
     </div>
   );
