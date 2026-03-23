@@ -1,5 +1,4 @@
 import React, { useState, useRef, useEffect } from 'react';
-import '../styles/globals.css';
 
 function MyApp({ Component, pageProps }) {
   const [currentTrack, setCurrentTrack] = useState(0);
@@ -23,7 +22,7 @@ function MyApp({ Component, pageProps }) {
     <>
       <audio ref={audioRef} src={tracks[currentTrack].file} onEnded={() => setCurrentTrack((prev) => (prev + 1) % tracks.length)} />
       
-      {/* Aqui carrega a Home, o Sobre, etc. */}
+      {/* Componente que renderiza as páginas (Home, Sobre, etc) */}
       <Component {...pageProps} />
 
       {/* RÁDIO GLOBAL (TRAVADA NO SITE TODO) */}
@@ -47,6 +46,10 @@ function MyApp({ Component, pageProps }) {
       </div>
 
       <style jsx global>{`
+        /* Reset básico que o globals.css faria, agora direto aqui */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { background: black; margin: 0; padding: 0; overflow-x: hidden; }
+
         .radio-bar { position: fixed; bottom: 0; width: 100%; background: #050505; padding: 15px 40px; border-top: 1px solid #111; z-index: 9999; }
         .radio-inner { max-width: 1400px; margin: 0 auto; display: flex; align-items: center; gap: 50px; }
         .radio-controls { display: flex; align-items: center; gap: 25px; }
