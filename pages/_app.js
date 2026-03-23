@@ -40,7 +40,7 @@ export default function MyApp({ Component, pageProps }) {
       
       <Component {...pageProps} nextTrack={nextTrack} prevTrack={prevTrack} />
 
-      {/* RADIO BAR - EXATAMENTE IGUAL À VERSÃO 2.5.5 */}
+      {/* RADIO BAR - EXATAMENTE IGUAL À SUA VERSÃO 2.5.5 */}
       <div className="radio-bar">
         <div className="radio-inner">
           <div className="radio-controls">
@@ -68,6 +68,7 @@ export default function MyApp({ Component, pageProps }) {
       </div>
 
       <style jsx global>{`
+        /* CSS GLOBAL EXTRAÍDO DA VERSÃO 2.5.5 */
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { background: black; margin: 0; padding: 0; overflow-x: hidden; }
 

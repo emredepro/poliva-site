@@ -1,3 +1,4 @@
+// POLIVESSENSE VERSION 2.5.5 - STABLE HD + SHORT FOOTER + MOBILE HAMBURGER (HOME COMPONENT)
 import React, { useState, useEffect } from 'react';
 import Head from 'next/head';
 
@@ -58,11 +59,13 @@ export default function Inicio({ nextTrack, prevTrack }) {
         <nav className="navbar">
           <div className="nav-container">
             <img src="/logo-poliva.png" alt="Logo" className="nav-logo" />
+            
             <div className={`hamburger ${isMenuOpen ? 'open' : ''}`} onClick={() => setIsMenuOpen(!isMenuOpen)}>
               <span></span><span></span><span></span>
             </div>
+
             <div className={`nav-links ${isMenuOpen ? 'active' : ''}`}>
-              <a href="#" className="nav-item">iníciø</a>
+              <a href="#" className="nav-item" onClick={() => setIsMenuOpen(false)}>iníciø</a>
               <a href="/sobre" className="nav-item" onClick={() => setIsMenuOpen(false)}>søbre pøliva</a>
               <a href="#" className="nav-item" onClick={() => setIsMenuOpen(false)}>shøws aø vivø</a>
               <a href="#" className="nav-item" onClick={() => setIsMenuOpen(false)}>singles & álbuns</a>
@@ -79,7 +82,10 @@ export default function Inicio({ nextTrack, prevTrack }) {
               <span style={{ color: '#a855f7' }}>Show que vira portal</span>
             </h1>
             <div className="citation responsiva anim-fade-up">
-              <p>"A música não é apenas entretenimento; ela é portal. Não é só sobre tocar música, é sobre atravessá-la."</p>
+              <p>
+                "A música não é apenas entretenimento; ela é portal. Não é só sobre tocar música, é sobre atravessá-la.
+                Eu faço músicas e também canto músicas que transformam a mim e a outras pessoas"
+              </p>
               <span className="author" style={{ marginTop: '5px', letterSpacing: '0.05em', display: 'block' }}>— Poliva Soham</span>
             </div>
           </section>
@@ -89,6 +95,7 @@ export default function Inicio({ nextTrack, prevTrack }) {
               <h2>pølivessense, o show:</h2>
               <p className="bold-sub">assista abaixo na íntegra</p>
             </div>
+            
             <div className="video-player interactive-zoom">
                {!showVideo ? (
                  <div className="video-cover" onClick={() => setShowVideo(true)}>
@@ -159,8 +166,10 @@ export default function Inicio({ nextTrack, prevTrack }) {
         .nav-container { max-width: 1400px; margin: 0 auto; display: flex; justify-content: center; align-items: center; position: relative; min-height: 50px; }
         .nav-logo { width: 110px; position: absolute; left: 0; }
         .nav-links { display: flex; gap: 40px; font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; font-weight: bold; }
+       
         .nav-item { color: white; text-decoration: none; transition: 0.3s ease; cursor: pointer; }
         .nav-item:hover { color: #a855f7 !important; }
+        .nav-item:active { color: white !important; transform: scale(0.95); }
 
         .hamburger { display: none; cursor: pointer; z-index: 4000; position: absolute; right: 0; }
         .hamburger span { display: block; width: 25px; height: 2px; background: white; margin: 5px 0; transition: 0.4s; }
@@ -170,7 +179,11 @@ export default function Inicio({ nextTrack, prevTrack }) {
           .hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
           .hamburger.open span:nth-child(2) { opacity: 0; }
           .hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
-          .nav-links { position: fixed; top: 0; right: -100%; width: 100%; height: 100vh; background: black; flex-direction: column; align-items: center; justify-content: center; transition: 0.5s ease-in-out; }
+          .nav-links {
+            position: fixed; top: 0; right: -100%; width: 100%; height: 100vh;
+            background: black; flex-direction: column; align-items: center; justify-content: center;
+            transition: 0.5s ease-in-out;
+          }
           .nav-links.active { right: 0; }
         }
 
@@ -180,14 +193,18 @@ export default function Inicio({ nextTrack, prevTrack }) {
         .author { font-style: normal; color: #a855f7; font-weight: bold; font-size: 11px; }
 
         .spacer-lg { margin-top: 180px; }
+        .section-block { padding: 0 20px; }
+        .brutal-header h2, .brutal-header h3 { font-size: clamp(1.1rem, 4vw, 1.8rem); font-weight: bold; text-transform: lowercase; line-height: 1; margin: 0; }
+        .bold-sub { font-size: clamp(1rem, 3.3vw, 1.6rem); font-weight: bold; color: #a855f7; margin-top: 5px; text-transform: lowercase; line-height: 1; }
+
         .video-player { width: 100%; max-width: 540px; margin: 60px auto; aspect-ratio: 16/9; box-shadow: 0 50px 100px rgba(0,0,0,0.9); background: black; position: relative; overflow: hidden; }
         .video-player iframe { width: 100%; height: 100%; border-radius: 4px; }
         .video-cover { width: 100%; height: 100%; cursor: pointer; position: relative; }
         .yt-thumb-hd { width: 100%; height: 100%; object-fit: cover; }
-        .play-overlay { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; background: rgba(0,0,0,0.2); }
+        .play-overlay { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; background: rgba(0,0,0,0.2); transition: 0.3s; }
         .play-triangle { width: 0; height: 0; border-style: solid; border-width: 25px 0 25px 45px; border-color: transparent transparent transparent #ffffff; }
 
-        .carousel-main { display: flex; align-items: center; justify-content: center; margin-top: 60px; }
+        .carousel-main { display: flex; align-items: center; justify-content: center; gap: 40px; margin-top: 60px; }
         .car-viewport { width: 350px; overflow: hidden; }
         .car-track { display: flex; transition: 0.8s ease; }
         .car-item { min-width: 100%; }
@@ -195,13 +212,15 @@ export default function Inicio({ nextTrack, prevTrack }) {
         .ouca-btn { background: none; border: 1px solid #a855f7; color: #a855f7; font-size: 16px; padding: 15px 35px; cursor: pointer; font-weight: bold; text-transform: lowercase; transition: 0.3s ease; }
         .car-btn { background: none; border: none; color: white; font-size: 50px; cursor: pointer; opacity: 0.3; transition: 0.3s; }
 
-        .footer-black { background: black; border-top: 1px solid #111; padding: 80px 20px 150px; text-align: center; margin-top: 150px; }
+        .footer-black { background: black; border-top: 1px solid #111; padding: 80px 20px 120px; text-align: center; margin-top: 150px; }
+        .footer-heading { font-size: 22px; font-weight: bold; text-transform: uppercase; margin-bottom: 25px; }
         .copyright-line { margin-top: 40px; font-size: 10px; color: #444; }
 
         .wa-btn { position: fixed; bottom: 120px; right: 30px; width: 50px; z-index: 1000; transition: 0.3s ease; }
         .anim-fade-up { opacity: 0; transform: translateY(40px); animation: revealStay 0.4s ease-out forwards; }
         @keyframes revealStay { to { opacity: 1; transform: translateY(0); } }
         .interactive-zoom:hover { transform: scale(1.08); filter: brightness(1.2); }
+        .video-player.interactive-zoom:hover { transform: scale(1.03); }
       `}</style>
     </div>
   );
