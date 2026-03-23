@@ -104,20 +104,45 @@ export default function Sobre() {
       </main>
 
       <style jsx>{`
-        .sobre-page { background: black; min-height: 100vh; color: white; overflow-x: hidden; }
+        .sobre-page { 
+          background: black; 
+          min-height: 100vh; 
+          color: white; 
+          overflow-x: hidden; 
+          position: relative;
+          z-index: 1;
+        }
+
+        /* TEXTURA DE FUNDØ 0.1 */
+        .sobre-page::before {
+          content: "";
+          position: fixed;
+          top: 0; left: 0; width: 100%; height: 100%;
+          background-image: url('/patterns_poliva_simbolos-07.jpg');
+          background-size: cover;
+          background-position: center;
+          background-repeat: no-repeat;
+          background-attachment: fixed;
+          opacity: 0.1;
+          z-index: -1;
+          filter: grayscale(100%);
+        }
+
         .navbar { position: fixed; top: 0; width: 100%; background: rgba(0,0,0,0.95); padding: 25px 40px; z-index: 3000; border-bottom: 1px solid #111; }
         .nav-container { max-width: 1400px; margin: 0 auto; display: flex; justify-content: center; align-items: center; position: relative; min-height: 50px; }
         .nav-logo { width: 110px; position: absolute; left: 0; }
         .nav-links { display: flex; gap: 40px; font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; font-weight: bold; }
         .nav-item { color: white; text-decoration: none; transition: 0.3s ease; cursor: pointer; }
         .nav-item:hover, .active-link { color: #a855f7 !important; }
+
         .wa-global { position: fixed; bottom: 120px; right: 30px; z-index: 5000; width: 50px; }
+
         .sobre-capa { width: 100%; height: 65vh; overflow: hidden; margin-top: 80px; margin-bottom: 50px; }
         .img-full { width: 100%; height: 100%; object-fit: cover; object-position: center 60%; filter: grayscale(20%); }
 
-        .content-wrapper { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
+        .content-wrapper { max-width: 1000px; margin: 0 auto; padding: 0 20px; position: relative; z-index: 10; }
         
-        /* TEXTO AJUSTADO (JUSTIFICADO) */
+        /* TEXTO JUSTIFICADO */
         .desc-unificada { 
           font-size: 18px; 
           line-height: 1.6; 
@@ -130,8 +155,10 @@ export default function Sobre() {
 
         .citacao-it-unificada { font-size: 18px; font-style: italic; color: #a855f7; margin-bottom: 30px; text-align: center; }
         .citacao-it-branca { font-size: 15px; font-style: italic; color: white; opacity: 0.7; margin-bottom: 50px; text-align: center; display: block; }
+
         .brutal-header h2 { font-size: 25.5px; font-weight: bold; text-transform: lowercase; color: white; text-align: center; }
         .spacer-vøid { margin-top: 80px; margin-bottom: 15px; }
+
         .sub-capa-container { width: 100%; max-width: 800px; margin: 0 auto 60px; border: 1px solid #222; overflow: hidden; }
         .img-sub-capa { width: 100%; display: block; }
 
@@ -139,7 +166,7 @@ export default function Sobre() {
         .marco-item { display: flex; gap: 15px; margin-bottom: 20px; align-items: flex-start; transition: 0.3s; padding: 5px; }
         .bullet { color: #a855f7; font-weight: bold; font-size: 18px; }
         
-        /* MARCOS TAMBÉM JUSTIFICADOS */
+        /* MARCOS JUSTIFICADOS */
         .marco-item p { 
           font-size: 16px; 
           line-height: 1.5; 
@@ -166,7 +193,7 @@ export default function Sobre() {
           .players-grid { grid-template-columns: 1fr; }
           .spacer-vøid { margin-top: 60px; }
           .sobre-capa { height: 50vh; margin-top: 70px; }
-          .desc-unificada, .marco-item p { text-align: left; } /* Melhor legibilidade no mobile */
+          .desc-unificada, .marco-item p { text-align: left; }
         }
 
         .interactive-zoom:hover { transform: scale(1.02); filter: brightness(1.1); transition: 0.3s ease; }
