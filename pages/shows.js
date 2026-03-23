@@ -4,14 +4,12 @@ import Head from 'next/head';
 export default function Shows() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  // PADRÃO PNG CONFORME SEUS ARQUIVOS
   const depoimentos = [
     "feed41", "feed31", "feed39", "feed37", "feed33", 
     "feed30", "feed16", "feed13", "feed5", "feed8", 
     "feed1", "feed24", "feed18", "feed9", "feed43"
   ];
 
-  // FOTOS 2 A 6 SÃO JPG, FOTO 7 É .JPG (MAIÚSCULO)
   const registrosNormais = ["foto-show2", "foto-show3", "foto-show4", "foto-show5", "foto-show6"];
   const fotoSete = "foto-show7.JPG";
 
@@ -47,29 +45,33 @@ export default function Shows() {
         <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" />
       </a>
 
-      {/* CAPA - object-position center 40% */}
       <header className="shows-capa anim-fade-in">
         <img src="/foto-show1.jpg" alt="capa" className="img-full" />
       </header>
 
       <main className="content-wrapper">
         <section className="section-text anim-fade-up">
-          <p className="desc-normal">
-            <span style={{ fontWeight: 'bold', color: 'white', textTransform: 'uppercase' }}>O SHOW: COM ATÉ 2 HORAS DE VOLTAGEM MÁXIMA</span>, é desenhado em experiência contínua e explosiva em um fluxo de energia implacável, onde o ritmo dita a regra e o envolvimento do público não tem trégua. É intensidade do primeiro ao último acorde.
+          <p className="desc-ajustado">
+            <strong style={{ color: 'white' }}>O SHOW: COM ATÉ 2 HORAS DE VOLTAGEM MÁXIMA</strong>, é desenhado em experiência contínua e explosiva em um fluxo de energia implacável, onde o ritmo dita a regra e o envolvimento do público não tem trégua. É intensidade do primeiro ao último acorde.
           </p>
-          <p className="desc-normal">
-            Como uma legítima sommelier de hits que eletrizam o palco, pøliva entrega um show energético, festivo, intenso e explosivo, que carrega o rock na veia. Reunindo em seu repertório influências marcantes de artistas como Pitty, Pearl Jam, AC/DC, Paralamas do Sucesso, Kings Of Leon, Paramore, Rita Lee, Amy Winehouse, Beatles, Raul Seixas, Evanescense, Foo Fighters, Charlie Brown Jr., Deep Purple, Bon Jovi e muito mais!
+
+          <p className="desc-ajustado">
+            Como uma legítima sommelier de hits que eletrizam o palco, pøliva entrega um show energético, festivo, intenso e explosivo, que carrega o rock na veia. Reunindo em seu repertório influências marcantes de artistas como Pitty, Pearl Jam, AC/DC, Paralamas do Sucesso, Kings Of Leon, Paramore, Rita Lee, Amy Winehouse, Beatles, Raul Seixas, Evanescense, Foo Fighters, Charlie Brown Jr., Deep Purple, Bon Jovi e muito mais! 
           </p>
-          <p className="desc-normal">
+
+          <p className="desc-ajustado">
             Um projeto flexível, adaptável a qualquer espaço que suporte a pressão. No formato principal, chega com o time completo: voz, violão, guitarras cortantes, baixo pulsante e bateria de alto impacto.
           </p>
-          <p className="desc-normal">
+
+          <p className="desc-ajustado">
             Transformando clássicos em confissões gritadas a plenos pulmões. É a trilha sonora perfeita para quem busca experiências intensas e não apenas entretenimento raso.
           </p>
-          <p className="desc-normal">
+
+          <p className="desc-ajustado">
             O público não vai para o evento para ser espectador. Ele vai para sentir, vibrar, gritar e silenciar. Sai do show diferente de como entrou.
           </p>
-          <p className="desc-normal">
+
+          <p className="desc-ajustado">
             De festivais a ambientes de motociclistas, de palcos urbanos a refúgios culturais. Onde houver necessidade de força, expressão e transformação através da música, a pøliva cria o encontro.
           </p>
         </section>
@@ -83,7 +85,6 @@ export default function Shows() {
           </a>
         </section>
 
-        {/* FEEDBACK - MODO ALINHAMENTO SUPERIOR (TOP-BLOCADO) */}
         <section className="section-block anim-fade-up">
           <div className="brutal-header spacer-void">
             <h2>cømø øs fãs reagem:</h2>
@@ -118,7 +119,6 @@ export default function Shows() {
             {registrosNormais.map((img, index) => (
               <img key={index} src={`/${img}.jpg`} alt="" className="registro-img interactive-zoom" />
             ))}
-            {/* CHAMADA ESPECÍFICA PARA A FOTO 7 EM MAIÚSCULO */}
             <img src={`/${fotoSete}`} alt="" className="registro-img interactive-zoom" />
           </div>
         </section>
@@ -137,49 +137,45 @@ export default function Shows() {
         .shows-capa { width: 100%; height: 65vh; overflow: hidden; margin-top: 80px; margin-bottom: 50px; }
         .img-full { width: 100%; height: 100%; object-fit: cover; object-position: center 40%; filter: grayscale(20%); }
         
-        .content-wrapper { max-width: 1000px; margin: 0 auto; padding: 0 20px; text-align: center; }
-        .desc-normal { font-size: 18px; line-height: 1.6; margin-bottom: 30px; font-weight: 300; color: #ccc; }
-        .cta-buttons { display: flex; justify-content: center; gap: 30px; margin: 50px 0; }
+        .content-wrapper { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
+        
+        /* TEXTO AJUSTADO (JUSTIFICADO) */
+        .desc-ajustado { 
+          font-size: 18px; 
+          line-height: 1.6; 
+          margin-bottom: 45px; 
+          font-weight: 300; 
+          color: #ccc; 
+          text-align: justify; 
+          hyphens: auto;
+        }
+        
+        .cta-buttons { display: flex; justify-content: center; gap: 30px; margin: 50px 0 80px; }
         .btn-shows { background: none; border: 1px solid #a855f7; color: white; padding: 15px 30px; text-decoration: none; font-weight: bold; font-size: 16px; transition: 0.3s; display: flex; align-items: center; gap: 10px; }
         .btn-shows:hover { background: #a855f7; color: black; }
         
+        .brutal-header { text-align: center; }
         .brutal-header h2 { font-size: 25.5px; font-weight: bold; text-transform: lowercase; color: white; }
-        .spacer-void { margin-top: 80px; margin-bottom: 40px; }
+        .spacer-void { margin-top: 100px; margin-bottom: 40px; }
         
-        /* GRADE ALINHAMENTO SUPERIOR (TOP-BLOCADO) */
         .feed-grid-top-aligned { 
           display: grid; 
           grid-template-columns: 1fr 1fr; 
           gap: 3px 5px; 
           max-width: 800px; 
           margin: 0 auto; 
-          align-items: start; /* CRAVA TUDO NO TOPO */
+          align-items: start;
         }
         
-        .feed-item-vøid { 
-          display: flex; 
-          justify-content: center; 
-          width: 100%; 
-          background: none;
-          border: none;
-          min-height: 0; /* NÃO FORÇA ALTURA MINIMA */
-        }
-
-        .img-vøid { 
-          max-width: 100%; 
-          height: auto; 
-          display: block; 
-          transition: 0.3s ease;
-          object-fit: contain; /* MANTEM PROPORÇÃO SEM ESTICAR */
-        }
+        .feed-item-vøid { display: flex; justify-content: center; width: 100%; }
+        .img-vøid { max-width: 100%; height: auto; display: block; }
         
-        /* GAP ALTURA 1.5CM PARA REELS */
         .reels-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5cm 1.5cm; max-width: 900px; margin: 0 auto; }
         .reel-box { width: 100%; aspect-ratio: 9/16; background: #050505; border: 1px solid #111; overflow: hidden; }
         .reel-box iframe { width: 100%; height: 100%; }
         
         .registros-list { display: flex; flex-direction: column; align-items: center; gap: 40px; }
-        .registro-img { width: 100%; max-width: 800px; height: auto; border: 1px solid #111; display: block; background: #050505; }
+        .registro-img { width: 100%; max-width: 800px; height: auto; border: 1px solid #111; display: block; }
         
         .hamburger { display: none; cursor: pointer; z-index: 4000; position: absolute; right: 0; }
         .hamburger span { display: block; width: 25px; height: 2px; background: white; margin: 5px 0; transition: 0.4s; }
@@ -190,6 +186,7 @@ export default function Shows() {
           .nav-links.active { right: 0; }
           .feed-grid-top-aligned, .reels-grid { grid-template-columns: 1fr; gap: 20px; }
           .cta-buttons { flex-direction: column; align-items: center; }
+          .desc-ajustado { text-align: left; } /* No mobile, justificado às vezes fica ruim de ler, optei por left mas você pode mudar */
         }
         
         .interactive-zoom:hover { transform: scale(1.02); filter: brightness(1.1); transition: 0.3s ease; }
