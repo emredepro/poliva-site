@@ -4,14 +4,17 @@ import Head from 'next/head';
 export default function Shows() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+  // LISTA DE DEPOIMENTOS (2 COLUNAS)
   const depoimentos = [
     "feed41", "feed31", "feed39", "feed37", "feed33", 
     "feed30", "feed16", "feed13", "feed5", "feed8", 
     "feed1", "feed24", "feed18", "feed9", "feed43"
   ];
 
+  // LISTA DE REGISTROS (CENTRALIZADOS)
   const registros = ["foto-show2", "foto-show3", "foto-show4", "foto-show5", "foto-show6", "foto-show7"];
 
+  // IDS DOS REELS (INSTAGRAM)
   const reels = [
     "CY_l2MMhx9P", "DKkDoO8sfjU", "DBJY4baPXLA", 
     "DPXAq6cABg1", "DPCKeVEjfkQ", "CpvOR-CAAO5"
@@ -23,12 +26,15 @@ export default function Shows() {
         <title>shøws aø vivø | pølivessense</title>
       </Head>
 
+      {/* NAVBAR PADRÃO v2.5.5 - SINCRONIZADA */}
       <nav className="navbar">
         <div className="nav-container">
           <img src="/logo-poliva.png" alt="Logo" className="nav-logo" />
+          
           <div className={`hamburger ${isMenuOpen ? 'open' : ''}`} onClick={() => setIsMenuOpen(!isMenuOpen)}>
             <span></span><span></span><span></span>
           </div>
+
           <div className={`nav-links ${isMenuOpen ? 'active' : ''}`}>
             <a href="/" className="nav-item">iníciø</a>
             <a href="/sobre" className="nav-item">søbre pøliva</a>
@@ -40,8 +46,14 @@ export default function Shows() {
         </div>
       </nav>
 
+      {/* WHATSAPP GLOBAL */}
+      <a href="https://wa.me/message/L5OXQTU6PDIFF1" target="_blank" rel="noopener noreferrer" className="wa-global interactive-zoom">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" />
+      </a>
+
+      {/* CAPA - MESMA MEDIDA DA PÁGINA SOBRE (65vh / 60%) */}
       <header className="shows-capa anim-fade-in">
-        <img src="/foto-show1.jpg" alt="Pøliva Show" className="img-full" />
+        <img src="/foto-show1.jpg" alt="Pøliva Show Capa" className="img-full" />
       </header>
 
       <main className="content-wrapper">
@@ -66,6 +78,7 @@ export default function Shows() {
           </p>
         </section>
 
+        {/* BOTÕES MÍDIA KIT E RIDER */}
         <section className="cta-buttons anim-fade-up">
           <a href="https://drive.google.com/file/d/1lau05jJhOkS1DZowV_WpxpHfmMGvd6hR/view" target="_blank" className="btn-shows interactive-zoom">
             <span className="icon">📄</span> mídia kit
@@ -75,18 +88,20 @@ export default function Shows() {
           </a>
         </section>
 
-        <section className="section-feed anim-fade-up">
+        {/* FEEDBACK DOS FÃS - 2 COLUNAS */}
+        <section className="section-block anim-fade-up">
           <div className="brutal-header spacer-void">
             <h2>cømø øs fãs reagem:</h2>
           </div>
           <div className="feed-grid">
             {depoimentos.map((img, index) => (
-              <img key={index} src={`/${img}.jpg`} alt="Feedback" className="feed-img interactive-zoom" />
+              <img key={index} src={`/${img}.jpg`} alt="Feedback Fã" className="feed-img interactive-zoom" />
             ))}
           </div>
         </section>
 
-        <section className="section-videos anim-fade-up">
+        {/* VÍDEOS AO VIVO - REELS GRADE 2x3 */}
+        <section className="section-block anim-fade-up">
           <div className="brutal-header spacer-void">
             <h2>vídeøs aø vivø:</h2>
           </div>
@@ -99,27 +114,30 @@ export default function Shows() {
           </div>
         </section>
 
-        <section className="section-registros anim-fade-up" style={{ paddingBottom: '180px' }}>
+        {/* PRINCIPAIS REGISTROS - LISTA CENTRALIZADA */}
+        <section className="section-block anim-fade-up" style={{ paddingBottom: '220px' }}>
           <div className="brutal-header spacer-void">
             <h2>principais registrøs:</h2>
           </div>
           <div className="registros-list">
             {registros.map((img, index) => (
-              <img key={index} src={`/${img}.jpg`} alt="Show Registro" className="registro-img interactive-zoom" />
+              <img key={index} src={`/${img}.jpg`} alt="Registro Show" className="registro-img interactive-zoom" />
             ))}
           </div>
         </section>
       </main>
 
       <style jsx>{`
-        .shows-page { background: black; min-height: 100vh; color: white; overflow-x: hidden; }
+        .shows-page { background: black; min-height: 100vh; color: white; overflow-x: hidden; font-family: -apple-system, system-ui, sans-serif; }
         
-        .navbar { position: fixed; top: 0; width: 100%; background: rgba(0,0,0,0.95); padding: 25px 40px; z-index: 3000; border-bottom: 1px solid #111; }
+        .navbar { position: fixed; top: 0; width: 100%; background: rgba(0,0,0,0.95); padding: 25px 40px; z-index: 4000; border-bottom: 1px solid #111; }
         .nav-container { max-width: 1400px; margin: 0 auto; display: flex; justify-content: center; align-items: center; position: relative; min-height: 50px; }
         .nav-logo { width: 110px; position: absolute; left: 0; }
         .nav-links { display: flex; gap: 40px; font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; font-weight: bold; }
         .nav-item { color: white; text-decoration: none; transition: 0.3s ease; }
         .nav-item:hover, .active-link { color: #a855f7 !important; }
+
+        .wa-global { position: fixed; bottom: 120px; right: 30px; z-index: 5000; width: 50px; }
 
         .shows-capa { width: 100%; height: 65vh; overflow: hidden; margin-top: 80px; margin-bottom: 50px; }
         .img-full { width: 100%; height: 100%; object-fit: cover; object-position: center 60%; filter: grayscale(20%); }
@@ -136,7 +154,7 @@ export default function Shows() {
         .brutal-header h2 { font-size: 25.5px; font-weight: bold; text-transform: lowercase; color: white; }
         .spacer-void { margin-top: 80px; margin-bottom: 40px; }
 
-        /* GRID DEPOIMENTOS */
+        /* GRID DEPOIMENTOS - 3px altura / 5px largura */
         .feed-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3px 5px; max-width: 800px; margin: 0 auto; }
         .feed-img { width: 100%; height: auto; border: 1px solid #111; }
 
@@ -145,7 +163,7 @@ export default function Shows() {
         .reel-box { width: 100%; aspect-ratio: 9/16; background: #050505; border: 1px solid #111; overflow: hidden; }
         .reel-box iframe { width: 100%; height: 100%; }
 
-        /* REGISTROS */
+        /* REGISTROS CENTRALIZADOS */
         .registros-list { display: flex; flex-direction: column; align-items: center; gap: 40px; }
         .registro-img { width: 100%; max-width: 800px; height: auto; border: 1px solid #111; }
 
@@ -159,6 +177,7 @@ export default function Shows() {
           .nav-links.active { right: 0; }
           .feed-grid, .reels-grid { grid-template-columns: 1fr; }
           .cta-buttons { flex-direction: column; align-items: center; }
+          .shows-capa { height: 50vh; margin-top: 70px; }
         }
 
         .interactive-zoom:hover { transform: scale(1.02); filter: brightness(1.1); transition: 0.3s ease; }
