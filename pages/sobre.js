@@ -28,7 +28,6 @@ export default function Sobre() {
 
       <nav className="navbar">
         <div className="nav-container">
-          {/* LOGO TRAVADA EM 110px PARA SINCRONIA TOTAL */}
           <img src="/logo-poliva.png" alt="Logo" className="nav-logo" />
           
           <div className={`hamburger ${isMenuOpen ? 'open' : ''}`} onClick={() => setIsMenuOpen(!isMenuOpen)}>
@@ -38,7 +37,7 @@ export default function Sobre() {
           <div className={`nav-links ${isMenuOpen ? 'active' : ''}`}>
             <a href="/" className="nav-item">iníciø</a>
             <a href="/sobre" className="nav-item active-link">søbre pøliva</a>
-            <a href="#" className="nav-item">shøws aø vivø</a>
+            <a href="/shows" className="nav-item">shøws aø vivø</a>
             <a href="#" className="nav-item">singles & álbuns</a>
             <a href="#" className="nav-item">agenda</a>
             <a href="#" className="nav-item">cøntatø</a>
