@@ -1,24 +1,13 @@
-// POLIVESSENSE VERSION 2.5.5 - STABLE HD + SHORT FOOTER + MOBILE HAMBURGER
-import React, { useState, useEffect, useRef } from 'react';
+// POLIVESSENSE VERSION 2.5.5 - HOME BLINDADA (SEM PLAYER LOCAL)
+import React, { useState, useEffect } from 'react';
 import Head from 'next/head';
 
 export default function Inicio() {
   const [loading, setLoading] = useState(true);
   const [progress, setProgress] = useState(0);
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [isMenuOpen, setIsMenuOpen] = useState(false); // ESTADO DO MENU
-  const [currentTrack, setCurrentTrack] = useState(0);
-  const [isPlaying, setIsPlaying] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [showVideo, setShowVideo] = useState(false); 
-  
-  const audioRef = useRef(null);
-
-  const tracks = [
-    { file: "/ha-mar.mp3", name: "Há Mar - pøliva ft. bruno morpheo ft. bruno perrone ft. lucão freitas" },
-    { file: "/Depressa.mp3", name: "Depressa - pøliva" },
-    { file: "/OTT.mp3", name: "OTT - pøliva ft. bruno morpheo ft. daniel filgueiras" },
-    { file: "/TOQES.mp3", name: "TOQES - pøliva ft. morpheo ft. daniel filgueiras" }
-  ];
 
   const playlists = [
     { title: "4 horas de música para despertar o fim de semana", img: "/capa-playlist-1.jpg", link: "https://open.spotify.com/playlist/1gnK5FmRkt5nZpKBcRwoP3?si=78bb4a57403d4c21" },
@@ -43,36 +32,12 @@ export default function Inicio() {
     return () => clearInterval(timer);
   }, [playlists.length]);
 
-  useEffect(() => {
-    if (isPlaying && audioRef.current) {
-      audioRef.current.play().catch(err => console.log("Autoplay blocked", err));
-    }
-  }, [currentTrack]);
-
-  const togglePlay = () => {
-    if (isPlaying) audioRef.current.pause();
-    else audioRef.current.play();
-    setIsPlaying(!isPlaying);
-  };
-
-  const nextTrack = () => {
-    setCurrentTrack((prev) => (prev + 1) % tracks.length);
-    setIsPlaying(true);
-  };
-
-  const prevTrack = () => {
-    setCurrentTrack((prev) => (prev === 0 ? tracks.length - 1 : prev - 1));
-    setIsPlaying(true);
-  };
-
   return (
     <div style={{ backgroundColor: 'black', minHeight: '100vh', color: 'white', overflowX: 'hidden', fontFamily: "'Avant Garde', sans-serif" }}>
       <Head>
         <title>pøliva | pølivessense</title>
         <link rel="icon" href={`/favicon.ico?v=${new Date().getTime()}`} />
       </Head>
-
-      <audio ref={audioRef} src={tracks[currentTrack].file} onEnded={nextTrack} />
 
       {loading && (
         <div className="preloader">
@@ -94,15 +59,12 @@ export default function Inicio() {
         <nav className="navbar">
           <div className="nav-container">
             <img src="/logo-poliva.png" alt="Logo" className="nav-logo" />
-            
-            {/* ÍCONE HAMBÚRGUER MOBILE */}
             <div className={`hamburger ${isMenuOpen ? 'open' : ''}`} onClick={() => setIsMenuOpen(!isMenuOpen)}>
               <span></span><span></span><span></span>
             </div>
-
             <div className={`nav-links ${isMenuOpen ? 'active' : ''}`}>
               <a href="#" className="nav-item" onClick={() => setIsMenuOpen(false)}>iníciø</a>
-              <a href="#" className="nav-item" onClick={() => setIsMenuOpen(false)}>søbre pøliva</a>
+              <a href="/sobre" className="nav-item" onClick={() => setIsMenuOpen(false)}>søbre pøliva</a>
               <a href="#" className="nav-item" onClick={() => setIsMenuOpen(false)}>shøws aø vivø</a>
               <a href="#" className="nav-item" onClick={() => setIsMenuOpen(false)}>singles & álbuns</a>
               <a href="#" className="nav-item" onClick={() => setIsMenuOpen(false)}>agenda</a>
@@ -131,7 +93,6 @@ export default function Inicio() {
               <h2>pølivessense, o show:</h2>
               <p className="bold-sub">assista abaixo na íntegra</p>
             </div>
-            
             <div className="video-player interactive-zoom">
                {!showVideo ? (
                  <div className="video-cover" onClick={() => setShowVideo(true)}>
@@ -150,7 +111,6 @@ export default function Inicio() {
                 <p className="bold-sub">o que o seu momento pede?</p>
              </div>
              <div className="carousel-main">
-                <button className="car-btn interactive-zoom" onClick={prevTrack}>‹</button>
                 <div className="car-viewport">
                   <div className="car-track" style={{ transform: `translateX(-${currentIndex * 100}%)` }}>
                     {playlists.map((item, index) => (
@@ -163,7 +123,6 @@ export default function Inicio() {
                     ))}
                   </div>
                 </div>
-                <button className="car-btn interactive-zoom" onClick={nextTrack}>›</button>
              </div>
           </section>
         </main>
@@ -184,32 +143,6 @@ export default function Inicio() {
             <p className="copyright-line">pøliva© 2026. todos os direitos reservados.</p>
           </div>
         </footer>
-
-        <div className="radio-bar">
-          <div className="radio-inner">
-            <div className="radio-controls">
-              <button onClick={prevTrack} className="radio-nav-btn interactive-zoom">
-                <span>«</span><small>voltar</small>
-              </button>
-              <div className="play-circle interactive-zoom" onClick={togglePlay}>
-                <img src="/simbolo-poliva.png" alt="Play" style={{ opacity: isPlaying ? 1 : 0.6 }} />
-                <span className="play-label">{isPlaying ? 'pausar' : 'dê o play'}</span>
-              </div>
-              <button onClick={nextTrack} className="radio-nav-btn interactive-zoom">
-                <span>»</span><small>avançar</small>
-              </button>
-            </div>
-           
-            <div className="radio-display">
-              <div className="marquee-box">
-                <p className={`marquee-content ${isPlaying ? 'running' : 'paused'}`}>
-                  {tracks[currentTrack].name}
-                </p>
-              </div>
-              <span className="status-label" style={{ color: 'white', fontSize: '9px' }}>você está ouvindo</span>
-            </div>
-          </div>
-        </div>
       </div>
 
       <style jsx global>{`
@@ -228,12 +161,9 @@ export default function Inicio() {
         .nav-container { max-width: 1400px; margin: 0 auto; display: flex; justify-content: center; align-items: center; position: relative; min-height: 50px; }
         .nav-logo { width: 110px; position: absolute; left: 0; }
         .nav-links { display: flex; gap: 40px; font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; font-weight: bold; }
-       
         .nav-item { color: white; text-decoration: none; transition: 0.3s ease; cursor: pointer; }
         .nav-item:hover { color: #a855f7 !important; }
-        .nav-item:active { color: white !important; transform: scale(0.95); }
 
-        /* HAMBURGER */
         .hamburger { display: none; cursor: pointer; z-index: 4000; position: absolute; right: 0; }
         .hamburger span { display: block; width: 25px; height: 2px; background: white; margin: 5px 0; transition: 0.4s; }
 
@@ -242,12 +172,7 @@ export default function Inicio() {
           .hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
           .hamburger.open span:nth-child(2) { opacity: 0; }
           .hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
-
-          .nav-links {
-            position: fixed; top: 0; right: -100%; width: 100%; height: 100vh;
-            background: black; flex-direction: column; align-items: center; justify-content: center;
-            transition: 0.5s ease-in-out;
-          }
+          .nav-links { position: fixed; top: 0; right: -100%; width: 100%; height: 100vh; background: black; flex-direction: column; align-items: center; justify-content: center; transition: 0.5s ease-in-out; }
           .nav-links.active { right: 0; }
         }
 
@@ -257,16 +182,11 @@ export default function Inicio() {
         .author { font-style: normal; color: #a855f7; font-weight: bold; font-size: 11px; }
 
         .spacer-lg { margin-top: 180px; }
-        .section-block { padding: 0 20px; }
-        .brutal-header h2, .brutal-header h3 { font-size: clamp(1.1rem, 4vw, 1.8rem); font-weight: bold; text-transform: lowercase; line-height: 1; margin: 0; }
-        .bold-sub { font-size: clamp(1rem, 3.3vw, 1.6rem); font-weight: bold; color: #a855f7; margin-top: 5px; text-transform: lowercase; line-height: 1; }
-
         .video-player { width: 100%; max-width: 540px; margin: 60px auto; aspect-ratio: 16/9; box-shadow: 0 50px 100px rgba(0,0,0,0.9); background: black; position: relative; overflow: hidden; }
         .video-player iframe { width: 100%; height: 100%; border-radius: 4px; }
         .video-cover { width: 100%; height: 100%; cursor: pointer; position: relative; }
         .yt-thumb-hd { width: 100%; height: 100%; object-fit: cover; }
         .play-overlay { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; background: rgba(0,0,0,0.2); transition: 0.3s; }
-        .play-overlay:hover { background: rgba(168, 85, 247, 0.2); }
         .play-triangle { width: 0; height: 0; border-style: solid; border-width: 25px 0 25px 45px; border-color: transparent transparent transparent #ffffff; }
 
         .carousel-main { display: flex; align-items: center; justify-content: center; gap: 40px; margin-top: 60px; }
@@ -275,41 +195,14 @@ export default function Inicio() {
         .car-item { min-width: 100%; }
         .playlist-img { width: 100%; aspect-ratio: 1/1; border-radius: 4px; border: 1px solid #111; margin-bottom: 40px; }
         .ouca-btn { background: none; border: 1px solid #a855f7; color: #a855f7; font-size: 16px; padding: 15px 35px; cursor: pointer; font-weight: bold; text-transform: lowercase; transition: 0.3s ease; }
-        .car-btn { background: none; border: none; color: white; font-size: 50px; cursor: pointer; opacity: 0.3; transition: 0.3s; }
 
         .footer-black { background: black; border-top: 1px solid #111; padding: 80px 20px 120px; text-align: center; margin-top: 150px; }
-        .footer-heading { font-size: 22px; font-weight: bold; text-transform: uppercase; margin-bottom: 25px; }
         .copyright-line { margin-top: 40px; font-size: 10px; color: #444; }
 
-        .radio-bar { position: fixed; bottom: 0; width: 100%; background: #050505; padding: 15px 40px; border-top: 1px solid #111; z-index: 1100; }
-        .radio-inner { max-width: 1400px; margin: 0 auto; display: flex; align-items: center; gap: 50px; }
-        .radio-controls { display: flex; align-items: center; gap: 25px; }
-        .radio-nav-btn { background: none; border: none; color: #a855f7; cursor: pointer; display: flex; flex-direction: column; align-items: center; transition: 0.3s ease; }
-        .radio-nav-btn small { font-size: 8px; text-transform: uppercase; opacity: 0.6; margin-top: 2px; }
-        .play-circle { cursor: pointer; display: flex; flex-direction: column; align-items: center; min-width: 70px; transition: 0.3s ease; }
-        .play-circle img { width: 35px; }
-        .play-label { font-size: 8px; text-transform: uppercase; color: #a855f7; font-weight: bold; margin-top: 5px; }
-
-        .radio-display { flex: 1; text-align: left; overflow: hidden; }
-        .marquee-box { width: 280px; overflow: hidden; white-space: nowrap; margin-bottom: 5px; border-bottom: 1px solid rgba(168, 85, 247, 0.1); }
-        .marquee-content { display: inline-block; padding-left: 20%; font-size: 13px; font-weight: bold; letter-spacing: 0.05em; }
-        .marquee-content.running { animation: marquee 15s linear infinite; }
-
-        @keyframes marquee { 0% { transform: translate(0, 0); } 100% { transform: translate(-100%, 0); } }
         .wa-btn { position: fixed; bottom: 120px; right: 30px; width: 50px; z-index: 1000; transition: 0.3s ease; }
-
-        .anim-fade-up {
-          opacity: 0;
-          transform: translateY(40px);
-          animation: revealStay 0.4s ease-out forwards;
-        }
-
-        @keyframes revealStay {
-          to { opacity: 1; transform: translateY(0); }
-        }
-
+        .anim-fade-up { opacity: 0; transform: translateY(40px); animation: revealStay 0.4s ease-out forwards; }
+        @keyframes revealStay { to { opacity: 1; transform: translateY(0); } }
         .interactive-zoom:hover { transform: scale(1.08); filter: brightness(1.2); }
-        .video-player.interactive-zoom:hover { transform: scale(1.03); }
       `}</style>
     </div>
   );
