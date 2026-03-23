@@ -4,15 +4,18 @@ import Head from 'next/head';
 export default function Shows() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+  // DEPØIMENTØS - PADRÃO PNG
   const depoimentos = [
     "feed41", "feed31", "feed39", "feed37", "feed33", 
     "feed30", "feed16", "feed13", "feed5", "feed8", 
     "feed1", "feed24", "feed18", "feed9", "feed43"
   ];
 
+  // REGISTRØS - PADRÃO JPG E JPG MAIÚSCULØ PARA A FØTØ 7
   const registrosNormais = ["foto-show2", "foto-show3", "foto-show4", "foto-show5", "foto-show6"];
   const fotoSete = "foto-show7.JPG";
 
+  // REELS INSTAGRAM
   const reels = [
     "CY_l2MMhx9P", "DKkDoO8sfjU", "DBJY4baPXLA", 
     "DPXAq6cABg1", "DPCKeVEjfkQ", "CpvOR-CAAO5"
@@ -54,18 +57,23 @@ export default function Shows() {
           <p className="desc-ajustado">
             <strong style={{ color: 'white' }}>O SHOW: COM ATÉ 2 HORAS DE VOLTAGEM MÁXIMA</strong>, é desenhado em experiência contínua e explosiva em um fluxo de energia implacável, onde o ritmo dita a regra e o envolvimento do público não tem trégua. É intensidade do primeiro ao último acorde.
           </p>
+
           <p className="desc-ajustado">
             Como uma legítima sommelier de hits que eletrizam o palco, pøliva entrega um show energético, festivo, intenso e explosivo, que carrega o rock na veia. Reunindo em seu repertório influências marcantes de artistas como Pitty, Pearl Jam, AC/DC, Paralamas do Sucesso, Kings Of Leon, Paramore, Rita Lee, Amy Winehouse, Beatles, Raul Seixas, Evanescense, Foo Fighters, Charlie Brown Jr., Deep Purple, Bon Jovi e muito mais! 
           </p>
+
           <p className="desc-ajustado">
             Um projeto flexível, adaptável a qualquer espaço que suporte a pressão. No formato principal, chega com o time completo: voz, violão, guitarras cortantes, baixo pulsante e bateria de alto impacto.
           </p>
+
           <p className="desc-ajustado">
             Transformando clássicos em confissões gritadas a plenos pulmões. É a trilha sonora perfeita para quem busca experiências intensas e não apenas entretenimento raso.
           </p>
+
           <p className="desc-ajustado">
             O público não vai para o evento para ser espectador. Ele vai para sentir, vibrar, gritar e silenciar. Sai do show diferente de como entrou.
           </p>
+
           <p className="desc-ajustado">
             De festivais a ambientes de motociclistas, de palcos urbanos a refúgios culturais. Onde houver necessidade de força, expressão e transformação através da música, a pøliva cria o encontro.
           </p>
@@ -120,37 +128,29 @@ export default function Shows() {
       </main>
 
       <style jsx>{`
-        /* TESTE DE FUNDO COM PADRÃO E TRANSPARÊNCIA */
         .shows-page { 
           background: black; 
           min-height: 100vh; 
           color: white; 
           overflow-x: hidden; 
           font-family: -apple-system, system-ui, sans-serif; 
-          position: relative; /* Necessário para o pseudo-elemento */
-          z-index: 1; /* Garante que o conteúdo fique acima do fundo */
+          position: relative;
+          z-index: 1;
         }
 
+        /* TEXTURA DE FUNDØ 0.1 */
         .shows-page::before {
           content: "";
-          position: fixed; /* Fundo fixo ao rolar */
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-          
-          /* Imagem de Fundo pattern_poliva_simbolos-07.jpg */
+          position: fixed;
+          top: 0; left: 0; width: 100%; height: 100%;
           background-image: url('/patterns_poliva_simbolos-07.jpg');
           background-size: cover;
           background-position: center;
           background-repeat: no-repeat;
-          background-attachment: fixed; /* Paralaxe */
-          
-          /* Transparência de 70% (Opacity 0.3) */
-          opacity: 0.3; 
-          
-          z-index: -1; /* Fica atrás de todo o conteúdo */
-          filter: grayscale(100%); /* Mantém brutalista em P&B se a imagem tiver cor */
+          background-attachment: fixed;
+          opacity: 0.1;
+          z-index: -1;
+          filter: grayscale(100%);
         }
 
         .navbar { position: fixed; top: 0; width: 100%; background: rgba(0,0,0,0.95); padding: 25px 40px; z-index: 4000; border-bottom: 1px solid #111; }
@@ -159,19 +159,34 @@ export default function Shows() {
         .nav-links { display: flex; gap: 40px; font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; font-weight: bold; }
         .nav-item { color: white; text-decoration: none; transition: 0.3s ease; }
         .nav-item:hover, .active-link { color: #a855f7 !important; }
+        
         .wa-global { position: fixed; bottom: 120px; right: 30px; z-index: 5000; width: 50px; }
         
         .shows-capa { width: 100%; height: 65vh; overflow: hidden; margin-top: 80px; margin-bottom: 50px; }
         .img-full { width: 100%; height: 100%; object-fit: cover; object-position: center 40%; filter: grayscale(20%); }
+        
         .content-wrapper { max-width: 1000px; margin: 0 auto; padding: 0 20px; position: relative; z-index: 10; }
-        .desc-ajustado { font-size: 18px; line-height: 1.6; margin-bottom: 45px; font-weight: 300; color: #ccc; text-align: justify; hyphens: auto; }
+        
+        /* TEXTØ JUSTIFICADØ */
+        .desc-ajustado { 
+          font-size: 18px; 
+          line-height: 1.6; 
+          margin-bottom: 45px; 
+          font-weight: 300; 
+          color: #ccc; 
+          text-align: justify; 
+          hyphens: auto; 
+        }
+        
         .cta-buttons { display: flex; justify-content: center; gap: 30px; margin: 50px 0 80px; }
         .btn-shows { background: none; border: 1px solid #a855f7; color: white; padding: 15px 30px; text-decoration: none; font-weight: bold; font-size: 16px; transition: 0.3s; display: flex; align-items: center; gap: 10px; }
         .btn-shows:hover { background: #a855f7; color: black; }
+        
         .brutal-header { text-align: center; }
         .brutal-header h2 { font-size: 25.5px; font-weight: bold; text-transform: lowercase; color: white; }
         .spacer-void { margin-top: 100px; margin-bottom: 40px; }
         
+        /* CARDS BRANCØS SLIM 120PX */
         .feed-grid-cards { 
           display: grid; 
           grid-template-columns: 1fr 1fr; 
@@ -199,11 +214,14 @@ export default function Shows() {
           object-fit: contain; 
         }
         
+        /* REELS ALTURA 1.5CM */
         .reels-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5cm 1.5cm; max-width: 900px; margin: 0 auto; }
         .reel-box { width: 100%; aspect-ratio: 9/16; background: #050505; border: 1px solid #111; overflow: hidden; }
         .reel-box iframe { width: 100%; height: 100%; }
+        
         .registros-list { display: flex; flex-direction: column; align-items: center; gap: 40px; }
         .registro-img { width: 100%; max-width: 800px; height: auto; border: 1px solid #111; display: block; }
+        
         .hamburger { display: none; cursor: pointer; z-index: 4000; position: absolute; right: 0; }
         .hamburger span { display: block; width: 25px; height: 2px; background: white; margin: 5px 0; transition: 0.4s; }
         
