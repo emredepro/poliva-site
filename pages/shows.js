@@ -4,13 +4,16 @@ import Head from 'next/head';
 export default function Shows() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+  // PADRÃO PNG CONFORME SEUS ARQUIVOS
   const depoimentos = [
     "feed41", "feed31", "feed39", "feed37", "feed33", 
     "feed30", "feed16", "feed13", "feed5", "feed8", 
     "feed1", "feed24", "feed18", "feed9", "feed43"
   ];
 
-  const registros = ["foto-show2", "foto-show3", "foto-show4", "foto-show5", "foto-show6", "foto-show7"];
+  // FOTOS 2 A 6 SÃO JPG, FOTO 7 É .JPG (MAIÚSCULO)
+  const registrosNormais = ["foto-show2", "foto-show3", "foto-show4", "foto-show5", "foto-show6"];
+  const fotoSete = "foto-show7.JPG";
 
   const reels = [
     "CY_l2MMhx9P", "DKkDoO8sfjU", "DBJY4baPXLA", 
@@ -44,6 +47,7 @@ export default function Shows() {
         <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" />
       </a>
 
+      {/* CAPA - object-position center 40% */}
       <header className="shows-capa anim-fade-in">
         <img src="/foto-show1.jpg" alt="capa" className="img-full" />
       </header>
@@ -85,7 +89,7 @@ export default function Shows() {
           </div>
           <div className="feed-grid">
             {depoimentos.map((name, index) => (
-              <img key={index} src={`/${name}.jpg`} alt="" className="feed-img interactive-zoom" />
+              <img key={index} src={`/${name}.png`} alt="" className="feed-img interactive-zoom" />
             ))}
           </div>
         </section>
@@ -108,9 +112,11 @@ export default function Shows() {
             <h2>principais registrøs:</h2>
           </div>
           <div className="registros-list">
-            {registros.map((img, index) => (
+            {registrosNormais.map((img, index) => (
               <img key={index} src={`/${img}.jpg`} alt="" className="registro-img interactive-zoom" />
             ))}
+            {/* CHAMADA ESPECÍFICA PARA A FOTO 7 EM MAIÚSCULO */}
+            <img src={`/${fotoSete}`} alt="" className="registro-img interactive-zoom" />
           </div>
         </section>
       </main>
@@ -124,24 +130,33 @@ export default function Shows() {
         .nav-item { color: white; text-decoration: none; transition: 0.3s ease; }
         .nav-item:hover, .active-link { color: #a855f7 !important; }
         .wa-global { position: fixed; bottom: 120px; right: 30px; z-index: 5000; width: 50px; }
+        
         .shows-capa { width: 100%; height: 65vh; overflow: hidden; margin-top: 80px; margin-bottom: 50px; }
-        .img-full { width: 100%; height: 100%; object-fit: cover; object-position: center 30%; filter: grayscale(20%); }
+        .img-full { width: 100%; height: 100%; object-fit: cover; object-position: center 40%; filter: grayscale(20%); }
+        
         .content-wrapper { max-width: 1000px; margin: 0 auto; padding: 0 20px; text-align: center; }
         .desc-normal { font-size: 18px; line-height: 1.6; margin-bottom: 30px; font-weight: 300; color: #ccc; }
         .cta-buttons { display: flex; justify-content: center; gap: 30px; margin: 50px 0; }
         .btn-shows { background: none; border: 1px solid #a855f7; color: white; padding: 15px 30px; text-decoration: none; font-weight: bold; font-size: 16px; transition: 0.3s; display: flex; align-items: center; gap: 10px; }
         .btn-shows:hover { background: #a855f7; color: black; }
+        
         .brutal-header h2 { font-size: 25.5px; font-weight: bold; text-transform: lowercase; color: white; }
         .spacer-void { margin-top: 80px; margin-bottom: 40px; }
+        
         .feed-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3px 5px; max-width: 800px; margin: 0 auto; }
         .feed-img { width: 100%; height: auto; border: 1px solid #111; display: block; background: #050505; min-height: 150px; }
-        .reels-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px 1.5cm; max-width: 900px; margin: 0 auto; }
+        
+        /* GAP ALTURA 1.5CM */
+        .reels-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5cm 1.5cm; max-width: 900px; margin: 0 auto; }
         .reel-box { width: 100%; aspect-ratio: 9/16; background: #050505; border: 1px solid #111; overflow: hidden; }
         .reel-box iframe { width: 100%; height: 100%; }
+        
         .registros-list { display: flex; flex-direction: column; align-items: center; gap: 40px; }
         .registro-img { width: 100%; max-width: 800px; height: auto; border: 1px solid #111; display: block; background: #050505; }
+        
         .hamburger { display: none; cursor: pointer; z-index: 4000; position: absolute; right: 0; }
         .hamburger span { display: block; width: 25px; height: 2px; background: white; margin: 5px 0; transition: 0.4s; }
+        
         @media (max-width: 1024px) {
           .hamburger { display: block; }
           .nav-links { position: fixed; top: 0; right: -100%; width: 100%; height: 100vh; background: black; flex-direction: column; align-items: center; justify-content: center; transition: 0.5s; }
@@ -149,6 +164,7 @@ export default function Shows() {
           .feed-grid, .reels-grid { grid-template-columns: 1fr; gap: 20px; }
           .cta-buttons { flex-direction: column; align-items: center; }
         }
+        
         .interactive-zoom:hover { transform: scale(1.02); filter: brightness(1.1); transition: 0.3s ease; }
         .anim-fade-up { opacity: 0; transform: translateY(30px); animation: revealUp 0.6s forwards; }
         .anim-fade-in { opacity: 0; animation: fadeIn 1.2s forwards; }
