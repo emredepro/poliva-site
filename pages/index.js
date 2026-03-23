@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Head from 'next/head';
 
-export default function Inicio({ isPlaying, togglePlay, nextTrack, prevTrack, currentTrack, tracks }) {
+export default function Inicio({ nextTrack, prevTrack }) {
   const [loading, setLoading] = useState(true);
   const [progress, setProgress] = useState(0);
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -79,10 +79,7 @@ export default function Inicio({ isPlaying, togglePlay, nextTrack, prevTrack, cu
               <span style={{ color: '#a855f7' }}>Show que vira portal</span>
             </h1>
             <div className="citation responsiva anim-fade-up">
-              <p>
-                "A música não é apenas entretenimento; ela é portal. Não é só sobre tocar música, é sobre atravessá-la.
-                Eu faço músicas e também canto músicas que transformam a mim e a outras pessoas"
-              </p>
+              <p>"A música não é apenas entretenimento; ela é portal. Não é só sobre tocar música, é sobre atravessá-la."</p>
               <span className="author" style={{ marginTop: '5px', letterSpacing: '0.05em', display: 'block' }}>— Poliva Soham</span>
             </div>
           </section>
@@ -173,11 +170,7 @@ export default function Inicio({ isPlaying, togglePlay, nextTrack, prevTrack, cu
           .hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
           .hamburger.open span:nth-child(2) { opacity: 0; }
           .hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
-          .nav-links {
-            position: fixed; top: 0; right: -100%; width: 100%; height: 100vh;
-            background: black; flex-direction: column; align-items: center; justify-content: center;
-            transition: 0.5s ease-in-out; gap: 30px;
-          }
+          .nav-links { position: fixed; top: 0; right: -100%; width: 100%; height: 100vh; background: black; flex-direction: column; align-items: center; justify-content: center; transition: 0.5s ease-in-out; }
           .nav-links.active { right: 0; }
         }
 
@@ -191,7 +184,7 @@ export default function Inicio({ isPlaying, togglePlay, nextTrack, prevTrack, cu
         .video-player iframe { width: 100%; height: 100%; border-radius: 4px; }
         .video-cover { width: 100%; height: 100%; cursor: pointer; position: relative; }
         .yt-thumb-hd { width: 100%; height: 100%; object-fit: cover; }
-        .play-overlay { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; background: rgba(0,0,0,0.2); transition: 0.3s; }
+        .play-overlay { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; background: rgba(0,0,0,0.2); }
         .play-triangle { width: 0; height: 0; border-style: solid; border-width: 25px 0 25px 45px; border-color: transparent transparent transparent #ffffff; }
 
         .carousel-main { display: flex; align-items: center; justify-content: center; margin-top: 60px; }
@@ -206,9 +199,9 @@ export default function Inicio({ isPlaying, togglePlay, nextTrack, prevTrack, cu
         .copyright-line { margin-top: 40px; font-size: 10px; color: #444; }
 
         .wa-btn { position: fixed; bottom: 120px; right: 30px; width: 50px; z-index: 1000; transition: 0.3s ease; }
-        .anim-fade-up { opacity: 0; transform: translateY(40px); animation: revealStay 0.4s forwards; }
+        .anim-fade-up { opacity: 0; transform: translateY(40px); animation: revealStay 0.4s ease-out forwards; }
         @keyframes revealStay { to { opacity: 1; transform: translateY(0); } }
-        .interactive-zoom:hover { transform: scale(1.08); filter: brightness(1.2); transition: 0.3s; }
+        .interactive-zoom:hover { transform: scale(1.08); filter: brightness(1.2); }
       `}</style>
     </div>
   );
