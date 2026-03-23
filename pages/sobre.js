@@ -26,12 +26,9 @@ export default function Sobre() {
         <title>søbre | pølivessense</title>
       </Head>
 
-      {/* NAVBAR CORRIGIDA PARA MOBILE */}
       <nav className="navbar">
         <div className="nav-container">
-          <a href="/" className="nav-logo-link">
-            <img src="/logo-poliva.png" alt="Logo" className="nav-logo" />
-          </a>
+          <img src="/logo-poliva.png" alt="Logo" className="nav-logo" />
           
           <div className={`hamburger ${isMenuOpen ? 'open' : ''}`} onClick={() => setIsMenuOpen(!isMenuOpen)}>
             <span></span><span></span><span></span>
@@ -48,7 +45,6 @@ export default function Sobre() {
         </div>
       </nav>
 
-      {/* WHATSAPP FIXO */}
       <a href="https://wa.me/message/L5OXQTU6PDIFF1" target="_blank" rel="noopener noreferrer" className="wa-global interactive-zoom">
         <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" />
       </a>
@@ -108,38 +104,34 @@ export default function Sobre() {
       </main>
 
       <style jsx>{`
-        .sobre-page { background: black; min-height: 100vh; color: white; overflow-x: hidden; font-family: -apple-system, system-ui, sans-serif; }
+        .sobre-page { background: black; min-height: 100vh; color: white; overflow-x: hidden; }
         
-        /* NAVBAR FIX */
-        .navbar { position: fixed; top: 0; width: 100%; background: rgba(0,0,0,0.95); padding: 20px 40px; z-index: 4000; border-bottom: 1px solid #111; }
-        .nav-container { max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; position: relative; width: 100%; }
-        .nav-logo { width: 100px; display: block; }
-        .nav-links { display: flex; gap: 35px; font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; font-weight: bold; }
-        .nav-item { color: white; text-decoration: none; transition: 0.3s; }
+        /* NAVBAR v2.5.5 LOCK - IDENTICA À HOME */
+        .navbar { position: fixed; top: 0; width: 100%; background: rgba(0,0,0,0.95); padding: 25px 40px; z-index: 3000; border-bottom: 1px solid #111; }
+        .nav-container { max-width: 1400px; margin: 0 auto; display: flex; justify-content: center; align-items: center; position: relative; min-height: 50px; }
+        .nav-logo { width: 110px; position: absolute; left: 0; }
+        .nav-links { display: flex; gap: 40px; font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; font-weight: bold; }
+        .nav-item { color: white; text-decoration: none; transition: 0.3s ease; cursor: pointer; }
         .nav-item:hover, .active-link { color: #a855f7 !important; }
 
-        .wa-global { position: fixed; bottom: 120px; right: 25px; z-index: 5000; width: 50px; }
+        .wa-global { position: fixed; bottom: 120px; right: 30px; z-index: 5000; width: 50px; }
 
-        /* CAPA - object-position center 60% + respiro inferior */
         .sobre-capa { width: 100%; height: 65vh; overflow: hidden; margin-top: 80px; margin-bottom: 50px; }
         .img-full { width: 100%; height: 100%; object-fit: cover; object-position: center 60%; filter: grayscale(20%); }
 
         .content-wrapper { max-width: 1000px; margin: 0 auto; padding: 0 20px; text-align: center; }
-        
         .desc-unificada { font-size: 18px; line-height: 1.6; margin-bottom: 30px; font-weight: 300; color: #ccc; }
         .citacao-it-unificada { font-size: 18px; font-style: italic; color: #a855f7; margin-bottom: 30px; }
         .citacao-it-branca { font-size: 15px; font-style: italic; color: white; opacity: 0.7; margin-bottom: 50px; text-align: center; display: block; }
 
         .brutal-header h2 { font-size: 25.5px; font-weight: bold; text-transform: lowercase; color: white; }
-        
-        /* DIMINUINDO O VÁCUO */
         .spacer-vøid { margin-top: 80px; margin-bottom: 15px; }
 
         .sub-capa-container { width: 100%; max-width: 800px; margin: 0 auto 60px; border: 1px solid #222; overflow: hidden; }
         .img-sub-capa { width: 100%; display: block; }
 
         .lista-dinamica { list-style: none; max-width: 800px; margin: 0 auto 80px; text-align: left; }
-        .marco-item { display: flex; gap: 15px; margin-bottom: 20px; align-items: flex-start; padding: 5px; transition: 0.3s; }
+        .marco-item { display: flex; gap: 15px; margin-bottom: 20px; align-items: flex-start; transition: 0.3s; padding: 5px; }
         .bullet { color: #a855f7; font-weight: bold; font-size: 18px; }
         .marco-item p { font-size: 16px; line-height: 1.5; color: #ccc; }
 
@@ -147,23 +139,22 @@ export default function Sobre() {
         .player-box { width: 100%; aspect-ratio: 16/9; background: #050505; border: 1px solid #111; }
         .player-box iframe { width: 100%; height: 100%; }
 
-        .hamburger { display: none; cursor: pointer; z-index: 5000; }
+        /* HAMBURGER v2.5.5 LOCK */
+        .hamburger { display: none; cursor: pointer; z-index: 4000; position: absolute; right: 0; }
         .hamburger span { display: block; width: 25px; height: 2px; background: white; margin: 5px 0; transition: 0.4s; }
 
         @media (max-width: 1024px) {
-          .navbar { padding: 15px 25px; }
-          .hamburger { display: block; position: absolute; right: 0; top: 50%; transform: translateY(-50%); }
+          .hamburger { display: block; }
           .nav-logo { width: 85px; }
           .nav-links { 
             position: fixed; top: 0; right: -100%; width: 100%; height: 100vh; 
             background: black; flex-direction: column; align-items: center; 
-            justify-content: center; transition: 0.5s; gap: 25px; 
+            justify-content: center; transition: 0.5s; 
           }
           .nav-links.active { right: 0; }
           .players-grid { grid-template-columns: 1fr; }
           .spacer-vøid { margin-top: 60px; }
           .sobre-capa { height: 50vh; margin-top: 70px; }
-          .desc-unificada, .citacao-it-unificada { font-size: 16px; }
         }
 
         .interactive-zoom:hover { transform: scale(1.02); filter: brightness(1.1); transition: 0.3s ease; }
