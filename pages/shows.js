@@ -80,7 +80,6 @@ export default function Shows() {
           </a>
         </section>
 
-        {/* FEEDBACK COM CARDS BRANCOS SLIM (120PX) */}
         <section className="section-block anim-fade-up">
           <div className="brutal-header spacer-void">
             <h2>cømø øs fãs reagem:</h2>
@@ -121,7 +120,39 @@ export default function Shows() {
       </main>
 
       <style jsx>{`
-        .shows-page { background: black; min-height: 100vh; color: white; overflow-x: hidden; font-family: -apple-system, system-ui, sans-serif; }
+        /* TESTE DE FUNDO COM PADRÃO E TRANSPARÊNCIA */
+        .shows-page { 
+          background: black; 
+          min-height: 100vh; 
+          color: white; 
+          overflow-x: hidden; 
+          font-family: -apple-system, system-ui, sans-serif; 
+          position: relative; /* Necessário para o pseudo-elemento */
+          z-index: 1; /* Garante que o conteúdo fique acima do fundo */
+        }
+
+        .shows-page::before {
+          content: "";
+          position: fixed; /* Fundo fixo ao rolar */
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          
+          /* Imagem de Fundo pattern_poliva_simbolos-07.jpg */
+          background-image: url('/patterns_poliva_simbolos-07.jpg');
+          background-size: cover;
+          background-position: center;
+          background-repeat: no-repeat;
+          background-attachment: fixed; /* Paralaxe */
+          
+          /* Transparência de 70% (Opacity 0.3) */
+          opacity: 0.3; 
+          
+          z-index: -1; /* Fica atrás de todo o conteúdo */
+          filter: grayscale(100%); /* Mantém brutalista em P&B se a imagem tiver cor */
+        }
+
         .navbar { position: fixed; top: 0; width: 100%; background: rgba(0,0,0,0.95); padding: 25px 40px; z-index: 4000; border-bottom: 1px solid #111; }
         .nav-container { max-width: 1400px; margin: 0 auto; display: flex; justify-content: center; align-items: center; position: relative; min-height: 50px; }
         .nav-logo { width: 110px; position: absolute; left: 0; }
@@ -132,7 +163,7 @@ export default function Shows() {
         
         .shows-capa { width: 100%; height: 65vh; overflow: hidden; margin-top: 80px; margin-bottom: 50px; }
         .img-full { width: 100%; height: 100%; object-fit: cover; object-position: center 40%; filter: grayscale(20%); }
-        .content-wrapper { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
+        .content-wrapper { max-width: 1000px; margin: 0 auto; padding: 0 20px; position: relative; z-index: 10; }
         .desc-ajustado { font-size: 18px; line-height: 1.6; margin-bottom: 45px; font-weight: 300; color: #ccc; text-align: justify; hyphens: auto; }
         .cta-buttons { display: flex; justify-content: center; gap: 30px; margin: 50px 0 80px; }
         .btn-shows { background: none; border: 1px solid #a855f7; color: white; padding: 15px 30px; text-decoration: none; font-weight: bold; font-size: 16px; transition: 0.3s; display: flex; align-items: center; gap: 10px; }
@@ -141,7 +172,6 @@ export default function Shows() {
         .brutal-header h2 { font-size: 25.5px; font-weight: bold; text-transform: lowercase; color: white; }
         .spacer-void { margin-top: 100px; margin-bottom: 40px; }
         
-        /* CSS DOS RETÂNGULOS SLIM (120px) */
         .feed-grid-cards { 
           display: grid; 
           grid-template-columns: 1fr 1fr; 
@@ -156,7 +186,7 @@ export default function Shows() {
           display: flex; 
           justify-content: center; 
           align-items: center; 
-          height: 120px; /* CRAVADO EM 120PX */
+          height: 120px; 
           padding: 8px;
           border: 1px solid #ddd;
           overflow: hidden;
@@ -182,7 +212,7 @@ export default function Shows() {
           .nav-links { position: fixed; top: 0; right: -100%; width: 100%; height: 100vh; background: black; flex-direction: column; align-items: center; justify-content: center; transition: 0.5s; }
           .nav-links.active { right: 0; }
           .feed-grid-cards, .reels-grid { grid-template-columns: 1fr; gap: 20px; }
-          .white-card-slim { height: 100px; } /* Ajuste mobile para não ocupar muito */
+          .white-card-slim { height: 100px; }
           .cta-buttons { flex-direction: column; align-items: center; }
           .desc-ajustado { text-align: left; }
         }
