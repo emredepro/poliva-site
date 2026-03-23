@@ -1,4 +1,4 @@
-// POLIVESSENSE VERSION 2.5.0 - STABLE + MOBILE MENU
+// POLIVESSENSE VERSION 2.5.5 - FINAL STABLE + MOBILE MENU
 import React, { useState, useEffect, useRef } from 'react';
 import Head from 'next/head';
 
@@ -6,10 +6,10 @@ export default function Inicio() {
   const [loading, setLoading] = useState(true);
   const [progress, setProgress] = useState(0);
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [isMenuOpen, setIsMenuOpen] = useState(false); // Controle do Menu Mobile
+  const [isMenuOpen, setIsMenuOpen] = useState(false); // Gatilho do Menu
   const [currentTrack, setCurrentTrack] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
-  const [showVideo, setShowVideo] = useState(false);
+  const [showVideo, setShowVideo] = useState(false); 
   
   const audioRef = useRef(null);
 
@@ -95,12 +95,12 @@ export default function Inicio() {
           <div className="nav-container">
             <img src="/logo-poliva.png" alt="Logo" className="nav-logo" />
             
-            {/* MENU HAMBÚRGUER (MOBILE) */}
-            <button className={`menu-toggle ${isMenuOpen ? 'open' : ''}`} onClick={() => setIsMenuOpen(!isMenuOpen)}>
+            {/* BOTÃO HAMBÚRGUER */}
+            <button className={`hamburger ${isMenuOpen ? 'open' : ''}`} onClick={() => setIsMenuOpen(!isMenuOpen)}>
               <span></span><span></span><span></span>
             </button>
 
-            <div className={`nav-links ${isMenuOpen ? 'mobile-open' : ''}`}>
+            <div className={`nav-links ${isMenuOpen ? 'active' : ''}`}>
               <a href="#" className="nav-item" onClick={() => setIsMenuOpen(false)}>iníciø</a>
               <a href="#" className="nav-item" onClick={() => setIsMenuOpen(false)}>søbre pøliva</a>
               <a href="#" className="nav-item" onClick={() => setIsMenuOpen(false)}>shøws aø vivø</a>
@@ -213,9 +213,8 @@ export default function Inicio() {
       </div>
 
       <style jsx global>{`
-        .preloader { position: fixed; inset: 0; background: black; z-index: 5000; display: flex; align-items: center; justify-content: center; }
-        .loader-box { width: 220px; text-align: center; display: flex; flex-direction: column; align-items: center; }
-        .bar-bg { width: 100%; height: 2px; background: #111; margin: 15px 0; }
+        .preloader { position: fixed; inset: 0; background: black; z-index: 9000; display: flex; align-items: center; justify-content: center; }
+        .bar-bg { width: 220px; height: 2px; background: #111; margin: 15px 0; }
         .bar-fill { height: 100%; background: #a855f7; transition: width 0.1s; }
         .bar-pct { font-size: 10px; color: #a855f7; font-weight: bold; }
         .pulse { animation: pulse 2s infinite ease-in-out; }
@@ -224,28 +223,28 @@ export default function Inicio() {
         .page-content { position: relative; z-index: 10; transition: opacity 1.5s ease; }
         .page-content.hidden { opacity: 0; }
 
-        .navbar { position: fixed; top: 0; width: 100%; background: rgba(0,0,0,0.98); padding: 25px 40px; z-index: 4000; border-bottom: 1px solid #111; }
-        .nav-container { max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; position: relative; min-height: 50px; }
-        .nav-logo { width: 110px; z-index: 4001; }
+        .navbar { position: fixed; top: 0; width: 100%; background: rgba(0,0,0,0.95); padding: 25px 40px; z-index: 5000; border-bottom: 1px solid #111; }
+        .nav-container { max-width: 1400px; margin: 0 auto; display: flex; justify-content: center; align-items: center; position: relative; min-height: 50px; }
+        .nav-logo { width: 110px; position: absolute; left: 0; z-index: 5001; }
         .nav-links { display: flex; gap: 40px; font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; font-weight: bold; }
         .nav-item { color: white; text-decoration: none; transition: 0.3s ease; cursor: pointer; }
         .nav-item:hover { color: #a855f7 !important; }
 
-        /* MENU HAMBURGUER CSS */
-        .menu-toggle { display: none; flex-direction: column; gap: 6px; background: none; border: none; cursor: pointer; z-index: 4001; padding: 10px; }
-        .menu-toggle span { width: 30px; height: 2px; background: white; transition: 0.3s; }
+        /* HAMBURGER */
+        .hamburger { display: none; flex-direction: column; gap: 6px; background: none; border: none; cursor: pointer; z-index: 5001; position: absolute; right: 0; }
+        .hamburger span { width: 25px; height: 2px; background: white; transition: 0.3s; }
 
         @media (max-width: 1024px) {
-          .menu-toggle { display: flex; }
+          .hamburger { display: flex; }
+          .hamburger.open span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+          .hamburger.open span:nth-child(2) { opacity: 0; }
+          .hamburger.open span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
           .nav-links { 
-            position: fixed; top: 0; right: -100%; width: 100%; height: 100vh; 
-            background: black; flex-direction: column; align-items: center; justify-content: center; 
-            transition: 0.5s cubic-bezier(0.23, 1, 0.32, 1); gap: 30px; font-size: 18px;
+            position: fixed; top: 0; right: -100%; width: 100%; height: 100vh; background: black; 
+            flex-direction: column; align-items: center; justify-content: center; transition: 0.5s cubic-bezier(0.23, 1, 0.32, 1); 
+            gap: 25px; font-size: 16px; 
           }
-          .nav-links.mobile-open { right: 0; }
-          .menu-toggle.open span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
-          .menu-toggle.open span:nth-child(2) { opacity: 0; }
-          .menu-toggle.open span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+          .nav-links.active { right: 0; }
         }
 
         .main-scroll { padding-top: 250px; text-align: center; max-width: 1200px; margin: 0 auto; }
@@ -258,34 +257,27 @@ export default function Inicio() {
         .video-player iframe { width: 100%; height: 100%; border-radius: 4px; }
         .video-cover { width: 100%; height: 100%; cursor: pointer; position: relative; }
         .yt-thumb-hd { width: 100%; height: 100%; object-fit: cover; }
-        .play-overlay { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; background: rgba(0,0,0,0.2); }
-        .play-triangle { width: 0; height: 0; border-style: solid; border-width: 20px 0 20px 35px; border-color: transparent transparent transparent #ffffff; }
-
-        .carousel-main { display: flex; align-items: center; justify-content: center; gap: 40px; margin-top: 60px; }
-        .car-viewport { width: 350px; overflow: hidden; }
-        .car-track { display: flex; transition: 0.8s ease; }
-        .car-item { min-width: 100%; }
-        .playlist-img { width: 100%; aspect-ratio: 1/1; border-radius: 4px; border: 1px solid #111; margin-bottom: 40px; }
-        .ouca-btn { background: none; border: 1px solid #a855f7; color: #a855f7; font-size: 16px; padding: 15px 35px; cursor: pointer; font-weight: bold; text-transform: lowercase; }
+        .play-overlay { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; background: rgba(0,0,0,0.2); transition: 0.3s; }
+        .play-triangle { width: 0; height: 0; border-style: solid; border-width: 25px 0 25px 45px; border-color: transparent transparent transparent #ffffff; }
 
         .footer-black { background: black; border-top: 1px solid #111; padding: 80px 20px 120px; text-align: center; margin-top: 150px; }
         .copyright-line { margin-top: 40px; font-size: 10px; color: #444; }
 
-        .radio-bar { position: fixed; bottom: 0; width: 100%; background: #050505; padding: 15px 40px; border-top: 1px solid #111; z-index: 3000; }
+        .radio-bar { position: fixed; bottom: 0; width: 100%; background: #050505; padding: 15px 40px; border-top: 1px solid #111; z-index: 6000; }
         .radio-inner { max-width: 1400px; margin: 0 auto; display: flex; align-items: center; gap: 50px; }
         .radio-controls { display: flex; align-items: center; gap: 25px; }
         .radio-nav-btn { background: none; border: none; color: #a855f7; cursor: pointer; display: flex; flex-direction: column; align-items: center; transition: 0.3s ease; }
-        .play-circle { cursor: pointer; display: flex; flex-direction: column; align-items: center; min-width: 70px; }
+        .play-circle { cursor: pointer; display: flex; flex-direction: column; align-items: center; min-width: 70px; transition: 0.3s ease; }
         .play-circle img { width: 35px; }
         .play-label { font-size: 8px; text-transform: uppercase; color: #a855f7; font-weight: bold; margin-top: 5px; }
 
         .radio-display { flex: 1; text-align: left; overflow: hidden; }
         .marquee-box { width: 280px; overflow: hidden; white-space: nowrap; margin-bottom: 5px; border-bottom: 1px solid rgba(168, 85, 247, 0.1); }
-        .marquee-content { display: inline-block; padding-left: 20%; font-size: 13px; font-weight: bold; }
-        .running { animation: marquee 15s linear infinite; }
+        .marquee-content { display: inline-block; padding-left: 20%; font-size: 13px; font-weight: bold; letter-spacing: 0.05em; }
+        .marquee-content.running { animation: marquee 15s linear infinite; }
         @keyframes marquee { 0% { transform: translate(0, 0); } 100% { transform: translate(-100%, 0); } }
 
-        .wa-btn { position: fixed; bottom: 120px; right: 30px; width: 50px; z-index: 3500; }
+        .wa-btn { position: fixed; bottom: 120px; right: 30px; width: 50px; z-index: 7000; transition: 0.3s ease; }
         .anim-fade-up { opacity: 0; transform: translateY(40px); animation: revealStay 0.4s ease-out forwards; }
         @keyframes revealStay { to { opacity: 1; transform: translateY(0); } }
         .interactive-zoom:hover { transform: scale(1.08); filter: brightness(1.2); }
