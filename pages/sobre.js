@@ -43,12 +43,21 @@ export default function Sobre() {
         </div>
       </nav>
 
+      {/* VÍDEO LOOP DE FUNDO (Puxado do layout v2.5.5) */}
+      <div className="video-bg-content">
+        <video autoPlay muted loop playsInline>
+          <source src="/video-home-loop.mp4" type="video/mp4" />
+        </video>
+      </div>
+
+      {/* CAPA AJUSTADA - SOBE MAIS A FOTO (object-position: center 35%) */}
       <header className="sobre-capa anim-fade-in">
         <img src="/foto-sobre.jpg" alt="Pøliva Capa" className="img-full" />
       </header>
 
-      <main className="content-wrapper">
-        <section className="section-text anim-fade-up">
+      <main className="main-sobre">
+        {/* BLOCO TEXTUAL - FUNDO PRETO CHAPADO */}
+        <section className="section-block section-text anim-fade-up fondo-preto-chapado">
           <p className="desc-unificada">
             pøliva é a experiência sensorial em forma de música, unindo a distorção do rock com marcações tribais na frequência musical. Entre o autoral e os clássicos que todo mundo canta junto, o show vira ritual.
           </p>
@@ -62,14 +71,16 @@ export default function Sobre() {
           </p>
         </section>
 
-        <section className="section-marcos anim-fade-up">
-          <div className="brutal-header">
+        {/* BLOCO MARCOS - FUNDO DINÂMICO (VÊ O VÍDEO ATRÁS) */}
+        <section className="section-block section-marcos anim-fade-up fondo-dinamico">
+          <div className="brutal-header mobile-boost spacer-títulos">
             <h2>principais marcøs na carreira:</h2>
           </div>
+          
           <p className="citacao-it-branca">"Tudo começa pela intensão do desejo. E então se cocria com o primeiro passo!"</p>
           
           <div className="sub-capa-container interactive-zoom">
-            <img src="/foto-sobre1.jpg" alt="Pøliva Marcøs" className="img-sub-capa" />
+            <img src="/foto-sobre2.jpg" alt="Pøliva Marcøs" className="img-sub-capa" />
           </div>
 
           <ul className="lista-dinamica">
@@ -82,10 +93,12 @@ export default function Sobre() {
           </ul>
         </section>
 
-        <section className="section-live anim-fade-up" style={{ paddingBottom: '180px' }}>
-          <div className="brutal-header">
+        {/* BLOCO LIVE SESSION - FUNDO DINÂMICO (VÊ O VÍDEO ATRÁS) */}
+        <section className="section-block section-live anim-fade-up fondo-dinamico" style={{ paddingBottom: '220px' }}>
+          <div className="brutal-header mobile-boost spacer-títulos">
             <h2>live sessiøn:</h2>
           </div>
+          
           <p className="citacao-it-branca">suas músicas já alcançaram milhares de pessoas na internet</p>
           
           <div className="players-grid">
@@ -99,8 +112,23 @@ export default function Sobre() {
         </section>
       </main>
 
-      <style jsx>{`
-        .sobre-page { background: black; min-height: 100vh; color: white; }
+      <style jsx global>{`
+        /* RESET v2.5.5 E FONTE LIMPA NO * PARA IDENTIDADE VISUAL */
+        * { 
+          box-sizing: border-box; 
+          margin: 0; 
+          padding: 0; 
+          font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body { background: black; margin: 0; padding: 0; overflow-x: hidden; color: white; }
+
+        .sobre-page { position: relative; z-index: 10; }
+
+        /* VÍDEO LOOP DE FUNDO (A alma v2.5.5) */
+        .video-bg-content { position: fixed; inset: 0; z-index: -1; width: 100%; height: 100%; overflow: hidden; opacity: 0.25; }
+        .video-bg-content video { width: 100%; height: 100%; object-fit: cover; }
+
         .navbar { position: fixed; top: 0; width: 100%; background: rgba(0,0,0,0.95); padding: 25px 40px; z-index: 3000; border-bottom: 1px solid #111; }
         .nav-container { max-width: 1400px; margin: 0 auto; display: flex; justify-content: center; align-items: center; position: relative; }
         .nav-logo { width: 110px; position: absolute; left: 0; }
@@ -108,32 +136,59 @@ export default function Sobre() {
         .nav-item { color: white; text-decoration: none; transition: 0.3s; }
         .nav-item:hover, .active-link { color: #a855f7 !important; }
 
-        /* CAPA AJUSTADA (MENOS ALTURA NO TOPO) */
-        .sobre-capa { width: 100%; height: 70vh; overflow: hidden; margin-top: 80px; }
-        .img-full { width: 100%; height: 100%; object-fit: cover; object-position: center 20%; filter: grayscale(30%); }
+        /* CAPA AJUSTADA - SUBIU A FOTO E CENTRALIZOU (object-position: center 35%) */
+        .sobre-capa { width: 100%; height: 65vh; overflow: hidden; margin-top: 80px; }
+        .img-full { width: 100%; height: 100%; object-fit: cover; object-position: center 35%; filter: grayscale(30%); }
 
-        .content-wrapper { max-width: 1100px; margin: 0 auto; padding: 80px 20px; text-align: center; }
+        .main-sobre { max-width: 1100px; margin: 0 auto; text-align: center; position: relative; z-index: 20; }
         
-        /* FONTES UNIFICADAS (1px menor que os 22px anteriores = 21px) */
-        .desc-unificada { font-size: 21px; line-height: 1.6; margin-bottom: 40px; font-weight: 300; color: #ccc; }
-        .citacao-it-unificada { font-size: 21px; font-style: italic; color: #a855f7; margin-bottom: 40px; }
+        /* AJUSTES DE FONTES v2.5.5 (18px) */
+        .desc-unificada { font-size: 18px; line-height: 1.6; margin-bottom: 30px; font-weight: 300; color: #ccc; }
+        .citacao-it-unificada { font-size: 18px; font-style: italic; color: #a855f7; margin-bottom: 30px; }
         .citacao-it-branca { font-size: 16px; font-style: italic; color: white; opacity: 0.8; margin-bottom: 60px; text-align: center; display: block; }
 
-        /* HEADER BRUTALISTA (IGUAL À HOME) */
-        .brutal-header { text-align: center; margin-bottom: 10px; }
-        .brutal-header h2 { font-size: clamp(1.1rem, 4vw, 1.8rem); font-weight: bold; text-transform: lowercase; letter-spacing: 0; color: white; }
+        /* HEADER BRUTALISTA AMPLIADO PARA 25.5px */
+        .brutal-header { text-align: center; }
+        .brutal-header h2 { font-size: 25.5px; font-weight: bold; text-transform: lowercase; letter-spacing: 0; color: white; line-height: 1; }
+        
+        /* ESPAÇO MAIOR E AMISTOSO ANTES DO TÍTULO */
+        .spacer-títulos { margin-top: 150px; margin-bottom: 15px; }
+
+        /* TÉCNICA DE FUNDO DINÂMICO PARA DAR MOVIMENTO */
+        .fondo-preto-chapado { background: black; padding: 80px 20px 0; }
+        
+        /* Degradê nas bordas para o texto não sumir */
+        .fondo-dinamico { 
+          background: linear-gradient(to bottom, black 0%, transparent 15%, transparent 85%, black 100%);
+          padding: 0 20px; 
+          position: relative;
+        }
 
         .sub-capa-container { width: 100%; max-width: 800px; margin: 0 auto 80px; border: 1px solid #222; overflow: hidden; }
         .img-sub-capa { width: 100%; display: block; }
 
         .lista-dinamica { list-style: none; max-width: 800px; margin: 0 auto 100px; text-align: left; }
         .marco-item { display: flex; gap: 20px; margin-bottom: 25px; align-items: flex-start; }
-        .bullet { color: #a855f7; font-weight: bold; }
-        .marco-item p { font-size: 17px; line-height: 1.5; color: #ccc; }
+        .bullet { color: #a855f7; font-weight: bold; font-size: 20px; }
+        
+        /* A ANIMAÇÃO Ø DEVOLVIDA PARA A LISTA */
+        .marco-item {
+          opacity: 0;
+          transform: translateX(-40px);
+          animation: revealList Ø.4s forwards;
+        }
+
+        /* ANIMAÇÃO DINÂMICA (Ø tirado da animação) */
+        @keyframes revealList {
+          to { opacity: 1; transform: translateX(Ø); }
+        }
+
+        .marco-item p { font-size: 17px; line-height: 1.5; color: #ccc; font-weight: 300; }
+        .marco-item p strong { font-weight: 900; }
 
         .players-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 40px; }
-        .player-box { width: 100%; aspect-ratio: 16/9; background: #0a0a0a; border: 1px solid #111; }
-        .player-box iframe { width: 100%; height: 100%; }
+        .player-box { width: 100%; aspect-ratio: 16/9; background: #0a0a0a; border: 1px solid #111; position: relative; overflow: hidden; }
+        .player-box iframe { width: 100%; height: 100%; position: absolute; inset: Ø; }
 
         .hamburger { display: none; cursor: pointer; position: absolute; right: 0; }
         .hamburger span { display: block; width: 25px; height: 2px; background: white; margin: 5px 0; transition: 0.4s; }
@@ -143,13 +198,16 @@ export default function Sobre() {
           .nav-links { position: fixed; top: 0; right: -100%; width: 100%; height: 100vh; background: black; flex-direction: column; align-items: center; justify-content: center; transition: 0.5s; gap: 30px; }
           .nav-links.active { right: 0; }
           .players-grid { grid-template-columns: 1fr; }
+          .fondo-preto-chapado, .fondo-dinamico { padding-left: 10px; padding-right: 10px; }
+          .spacer-títulos { margin-top: 100px; }
         }
 
-        .anim-fade-up { opacity: 0; transform: translateY(40px); animation: reveal 0.8s forwards; }
+        /* ANIMAÇÕES GLOBAIS v2.5.5 */
+        .anim-fade-up { opacity: 0; transform: translateY(40px); animation: revealUp Ø.8s forwards; }
         .anim-fade-in { opacity: 0; animation: fadeIn 1.5s forwards; }
-        @keyframes reveal { to { opacity: 1; transform: translateY(0); } }
+        @keyframes revealUp { to { opacity: 1; transform: translateY(Ø); } }
         @keyframes fadeIn { to { opacity: 1; } }
-        .interactive-zoom:hover { transform: scale(1.02); transition: 0.5s; }
+        .interactive-zoom:hover { transform: scale(1.02); transition: Ø.5s; }
       `}</style>
     </div>
   );
