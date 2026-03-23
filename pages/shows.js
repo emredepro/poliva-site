@@ -64,7 +64,7 @@ export default function Shows() {
             Um projeto flexível, adaptável a qualquer espaço que suporte a pressão. No formato principal, chega com o time completo: voz, violão, guitarras cortantes, baixo pulsante e bateria de alto impacto.
           </p>
           <p className="desc-normal">
-            Do público jovem ao adulto que carrega o rock na veia, a música da pøliva é refúgio e explosão. Reunindo em seu repertório influências marcantes de artistas como Pitty, Pearl Jam, AC/DC, Paralamas do Sucesso, Kings Of Leon, Paramore, Rita Lee, Amy Winehouse, Beatles, Raul Seixas, Evanescense, Foo Fighters, Charlie Brown Jr., Deep Purple, Bon Jovi e muito mais! Transformando clássicos em confissões gritadas a plenos pulmões. É a trilha sonora perfeita para quem busca experiências intensas e não apenas entretenimento raso.
+            Do público jovem ao adulto que carrega o rock na veia, a música da pøliva é refúgio e explosão. Reunindo in seu repertório influências marcantes de artistas como Pitty, Pearl Jam, AC/DC, Paralamas do Sucesso, Kings Of Leon, Paramore, Rita Lee, Amy Winehouse, Beatles, Raul Seixas, Evanescense, Foo Fighters, Charlie Brown Jr., Deep Purple, Bon Jovi e muito mais! Transformando clássicos em confissões gritadas a plenos pulmões. É a trilha sonora perfeita para quem busca experiências intensas e não apenas entretenimento raso.
           </p>
           <p className="desc-normal">
             O público não vai para o evento para ser espectador. Eles vão para sentir, vibrar, gritar e silenciar. Eles atravessam emoções e saem do show diferentes de como entraram. São pessoas que farejam verdade à distância e valorizam a entrega de quem deixa a alma no palco.
@@ -83,13 +83,16 @@ export default function Shows() {
           </a>
         </section>
 
+        {/* FEEDBACK - MODO BRUTALISTA ORIGINAL (PIXEL RESPECTIVO) */}
         <section className="section-block anim-fade-up">
           <div className="brutal-header spacer-void">
             <h2>cømø øs fãs reagem:</h2>
           </div>
-          <div className="feed-grid">
+          <div className="feed-grid-brutal">
             {depoimentos.map((name, index) => (
-              <img key={index} src={`/${name}.png`} alt="" className="feed-img interactive-zoom" />
+              <div key={index} className="feed-item-raw interactive-zoom">
+                <img src={`/${name}.png`} alt="" className="img-raw" />
+              </div>
             ))}
           </div>
         </section>
@@ -143,10 +146,28 @@ export default function Shows() {
         .brutal-header h2 { font-size: 25.5px; font-weight: bold; text-transform: lowercase; color: white; }
         .spacer-void { margin-top: 80px; margin-bottom: 40px; }
         
-        .feed-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3px 5px; max-width: 800px; margin: 0 auto; }
-        .feed-img { width: 100%; height: auto; border: 1px solid #111; display: block; background: #050505; min-height: 150px; }
+        /* GRADE BRUTALISTA ORIGINAL - SEM PUXAR IMAGEM */
+        .feed-grid-brutal { display: grid; grid-template-columns: 1fr 1fr; gap: 3px 5px; max-width: 800px; margin: 0 auto; }
         
-        /* GAP ALTURA 1.5CM */
+        .feed-item-raw { 
+          display: flex; 
+          align-items: center; 
+          justify-content: center; 
+          width: 100%; 
+          /* Remove molduras e fundos antigos */
+          background: none;
+          border: none;
+        }
+
+        .img-raw { 
+          max-width: 100%; 
+          height: auto; 
+          /* Garante o pixel respectivo sem object-fit */
+          display: block; 
+          transition: 0.3s ease;
+        }
+        
+        /* GAP ALTURA 1.5CM PARA REELS */
         .reels-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5cm 1.5cm; max-width: 900px; margin: 0 auto; }
         .reel-box { width: 100%; aspect-ratio: 9/16; background: #050505; border: 1px solid #111; overflow: hidden; }
         .reel-box iframe { width: 100%; height: 100%; }
@@ -161,7 +182,7 @@ export default function Shows() {
           .hamburger { display: block; }
           .nav-links { position: fixed; top: 0; right: -100%; width: 100%; height: 100vh; background: black; flex-direction: column; align-items: center; justify-content: center; transition: 0.5s; }
           .nav-links.active { right: 0; }
-          .feed-grid, .reels-grid { grid-template-columns: 1fr; gap: 20px; }
+          .feed-grid-brutal, .reels-grid { grid-template-columns: 1fr; gap: 20px; }
           .cta-buttons { flex-direction: column; align-items: center; }
         }
         
