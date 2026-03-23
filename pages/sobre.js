@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Head from 'next/head';
 
-export default function Sobre({ nextTrack, prevTrack }) {
+export default function Sobre() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const marcos = [
@@ -15,7 +15,6 @@ export default function Sobre({ nextTrack, prevTrack }) {
     { text: "Banda de **abertura do show do músico** Esteban Tavares;" }
   ];
 
-  // Helper para renderizar negrito simples
   const renderText = (txt) => {
     const parts = txt.split('**');
     return parts.map((part, i) => i % 2 === 1 ? <strong key={i} style={{ color: '#a855f7' }}>{part}</strong> : part);
@@ -50,23 +49,27 @@ export default function Sobre({ nextTrack, prevTrack }) {
 
       <main className="content-wrapper">
         <section className="section-text anim-fade-up">
-          <p className="desc-principal">
+          <p className="desc-unificada">
             pøliva é a experiência sensorial em forma de música, unindo a distorção do rock com marcações tribais na frequência musical. Entre o autoral e os clássicos que todo mundo canta junto, o show vira ritual.
           </p>
-          <p className="citacao-it">
+          
+          <p className="citacao-it-unificada">
             “é intensidade, presença e catarse. é música para sentir e vibrar, não para passar batido.”
           </p>
-          <p className="desc-secundaria">
+
+          <p className="desc-unificada">
             com influências do rock, pop, soul e MPB, pøliva leva para suas apresentações ao vivo um setlist com a força de sua identidade autoral, dialogando com grandes hinos de refrões inesquecíveis e conduzindo o público da emoção ao épico em ondas crescentes até a catarse. Suas performances misturam intensidade, entrega e uma energia pulsante que conecta diretamente com a plateia. O resultado é uma experiência que equilibra profundidade, força e momentos coletivos de explosão e canto.
           </p>
         </section>
 
         <section className="section-marcos anim-fade-up">
-          <h2 className="titulo-sessao">principais marcøs na carreira</h2>
-          <p className="citacao-it small">"Tudo começa pela intensão do DESEJO. E então se cocria com o primeiro passo!"</p>
+          <div className="brutal-header">
+            <h2>principais marcøs na carreira:</h2>
+          </div>
+          <p className="citacao-it-branca">"Tudo começa pela intensão do desejo. E então se cocria com o primeiro passo!"</p>
           
           <div className="sub-capa-container interactive-zoom">
-            <img src="/foto-sobre.jpg" alt="Pøliva Marcøs" className="img-sub-capa" />
+            <img src="/foto-sobre1.jpg" alt="Pøliva Marcøs" className="img-sub-capa" />
           </div>
 
           <ul className="lista-dinamica">
@@ -80,17 +83,17 @@ export default function Sobre({ nextTrack, prevTrack }) {
         </section>
 
         <section className="section-live anim-fade-up" style={{ paddingBottom: '180px' }}>
-          <h2 className="titulo-sessao">live sessiøn</h2>
-          <p className="citacao-it" style={{ fontSize: '14px', marginBottom: '40px' }}>
-            suas músicas já alcançaram milhares de pessoas na internet
-          </p>
+          <div className="brutal-header">
+            <h2>live sessiøn:</h2>
+          </div>
+          <p className="citacao-it-branca">suas músicas já alcançaram milhares de pessoas na internet</p>
           
           <div className="players-grid">
             <div className="player-box side-left">
-              <iframe src="https://www.youtube.com/embed/4PbdupC3wrg" frameBorder="0" allowFullScreen></iframe>
+              <iframe src="https://www.youtube.com/embed/qu4wbU7hji4" frameBorder="0" allowFullScreen></iframe>
             </div>
             <div className="player-box side-right">
-              <iframe src="https://www.youtube.com/embed/4PbdupC3wrg" frameBorder="0" allowFullScreen></iframe>
+              <iframe src="https://www.youtube.com/embed/b3tHfwI1R2k" frameBorder="0" allowFullScreen></iframe>
             </div>
           </div>
         </section>
@@ -105,24 +108,26 @@ export default function Sobre({ nextTrack, prevTrack }) {
         .nav-item { color: white; text-decoration: none; transition: 0.3s; }
         .nav-item:hover, .active-link { color: #a855f7 !important; }
 
-        .sobre-capa { width: 100%; height: 80vh; overflow: hidden; margin-top: 80px; }
-        .img-full { width: 100%; height: 100%; object-fit: cover; filter: grayscale(30%); }
+        /* CAPA AJUSTADA (MENOS ALTURA NO TOPO) */
+        .sobre-capa { width: 100%; height: 70vh; overflow: hidden; margin-top: 80px; }
+        .img-full { width: 100%; height: 100%; object-fit: cover; object-position: center 20%; filter: grayscale(30%); }
 
-        .content-wrapper { max-width: 1100px; margin: 0 auto; padding: 80px 20px; }
+        .content-wrapper { max-width: 1100px; margin: 0 auto; padding: 80px 20px; text-align: center; }
         
-        .desc-principal { font-size: 22px; line-height: 1.6; margin-bottom: 40px; text-align: center; font-weight: 300; }
-        .citacao-it { font-style: italic; color: #a855f7; text-align: center; margin-bottom: 40px; font-size: 20px; letter-spacing: 0.02em; }
-        .desc-secundaria { font-size: 16px; line-height: 1.8; color: #a1a1aa; text-align: justify; margin-bottom: 100px; }
+        /* FONTES UNIFICADAS (1px menor que os 22px anteriores = 21px) */
+        .desc-unificada { font-size: 21px; line-height: 1.6; margin-bottom: 40px; font-weight: 300; color: #ccc; }
+        .citacao-it-unificada { font-size: 21px; font-style: italic; color: #a855f7; margin-bottom: 40px; }
+        .citacao-it-branca { font-size: 16px; font-style: italic; color: white; opacity: 0.8; margin-bottom: 60px; text-align: center; display: block; }
 
-        .titulo-sessao { font-size: 28px; text-transform: uppercase; letter-spacing: 0.2em; text-align: center; margin-bottom: 20px; font-weight: 900; }
-        .citacao-it.small { font-size: 16px; color: white; opacity: 0.7; margin-bottom: 60px; }
+        /* HEADER BRUTALISTA (IGUAL À HOME) */
+        .brutal-header { text-align: center; margin-bottom: 10px; }
+        .brutal-header h2 { font-size: clamp(1.1rem, 4vw, 1.8rem); font-weight: bold; text-transform: lowercase; letter-spacing: 0; color: white; }
 
         .sub-capa-container { width: 100%; max-width: 800px; margin: 0 auto 80px; border: 1px solid #222; overflow: hidden; }
-        .img-sub-capa { width: 100%; display: block; filter: contrast(1.1); }
+        .img-sub-capa { width: 100%; display: block; }
 
-        .lista-dinamica { list-style: none; max-width: 800px; margin: 0 auto 100px; }
-        .marco-item { display: flex; gap: 20px; margin-bottom: 25px; align-items: flex-start; transition: 0.3s; }
-        .marco-item:hover { transform: translateX(10px); }
+        .lista-dinamica { list-style: none; max-width: 800px; margin: 0 auto 100px; text-align: left; }
+        .marco-item { display: flex; gap: 20px; margin-bottom: 25px; align-items: flex-start; }
         .bullet { color: #a855f7; font-weight: bold; }
         .marco-item p { font-size: 17px; line-height: 1.5; color: #ccc; }
 
@@ -138,7 +143,6 @@ export default function Sobre({ nextTrack, prevTrack }) {
           .nav-links { position: fixed; top: 0; right: -100%; width: 100%; height: 100vh; background: black; flex-direction: column; align-items: center; justify-content: center; transition: 0.5s; gap: 30px; }
           .nav-links.active { right: 0; }
           .players-grid { grid-template-columns: 1fr; }
-          .titulo-sessao { font-size: 20px; }
         }
 
         .anim-fade-up { opacity: 0; transform: translateY(40px); animation: reveal 0.8s forwards; }
