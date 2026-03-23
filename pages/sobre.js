@@ -28,6 +28,7 @@ export default function Sobre() {
 
       <nav className="navbar">
         <div className="nav-container">
+          {/* LOGO TRAVADA EM 110px PARA SINCRONIA TOTAL */}
           <img src="/logo-poliva.png" alt="Logo" className="nav-logo" />
           
           <div className={`hamburger ${isMenuOpen ? 'open' : ''}`} onClick={() => setIsMenuOpen(!isMenuOpen)}>
@@ -106,10 +107,12 @@ export default function Sobre() {
       <style jsx>{`
         .sobre-page { background: black; min-height: 100vh; color: white; overflow-x: hidden; }
         
-        /* NAVBAR v2.5.5 LOCK - IDENTICA À HOME */
         .navbar { position: fixed; top: 0; width: 100%; background: rgba(0,0,0,0.95); padding: 25px 40px; z-index: 3000; border-bottom: 1px solid #111; }
         .nav-container { max-width: 1400px; margin: 0 auto; display: flex; justify-content: center; align-items: center; position: relative; min-height: 50px; }
+        
+        /* LOGO LOCK 110px */
         .nav-logo { width: 110px; position: absolute; left: 0; }
+        
         .nav-links { display: flex; gap: 40px; font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; font-weight: bold; }
         .nav-item { color: white; text-decoration: none; transition: 0.3s ease; cursor: pointer; }
         .nav-item:hover, .active-link { color: #a855f7 !important; }
@@ -130,7 +133,7 @@ export default function Sobre() {
         .sub-capa-container { width: 100%; max-width: 800px; margin: 0 auto 60px; border: 1px solid #222; overflow: hidden; }
         .img-sub-capa { width: 100%; display: block; }
 
-        .lista-dinamica { list-style: none; max-width: 800px; margin: 0 auto 80px; text-align: left; }
+        .lista-dinamica { list-style: none; max-width: 800px; margin: 0 auto 100px; text-align: left; }
         .marco-item { display: flex; gap: 15px; margin-bottom: 20px; align-items: flex-start; transition: 0.3s; padding: 5px; }
         .bullet { color: #a855f7; font-weight: bold; font-size: 18px; }
         .marco-item p { font-size: 16px; line-height: 1.5; color: #ccc; }
@@ -139,13 +142,12 @@ export default function Sobre() {
         .player-box { width: 100%; aspect-ratio: 16/9; background: #050505; border: 1px solid #111; }
         .player-box iframe { width: 100%; height: 100%; }
 
-        /* HAMBURGER v2.5.5 LOCK */
         .hamburger { display: none; cursor: pointer; z-index: 4000; position: absolute; right: 0; }
         .hamburger span { display: block; width: 25px; height: 2px; background: white; margin: 5px 0; transition: 0.4s; }
 
         @media (max-width: 1024px) {
           .hamburger { display: block; }
-          .nav-logo { width: 85px; }
+          /* REMOVIDO O REDUCTION DA LOGO NO MOBILE */
           .nav-links { 
             position: fixed; top: 0; right: -100%; width: 100%; height: 100vh; 
             background: black; flex-direction: column; align-items: center; 
