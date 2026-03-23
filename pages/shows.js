@@ -80,15 +80,15 @@ export default function Shows() {
           </a>
         </section>
 
-        {/* FEEDBACK COM CARDS BRANCOS RETANGULARES */}
+        {/* FEEDBACK COM CARDS BRANCOS SLIM (120PX) */}
         <section className="section-block anim-fade-up">
           <div className="brutal-header spacer-void">
             <h2>cømø øs fãs reagem:</h2>
           </div>
           <div className="feed-grid-cards">
             {depoimentos.map((name, index) => (
-              <div key={index} className="white-card-rect interactive-zoom">
-                <img src={`/${name}.png`} alt="" className="img-inside-rect" />
+              <div key={index} className="white-card-slim interactive-zoom">
+                <img src={`/${name}.png`} alt="" className="img-inside-slim" />
               </div>
             ))}
           </div>
@@ -141,7 +141,7 @@ export default function Shows() {
         .brutal-header h2 { font-size: 25.5px; font-weight: bold; text-transform: lowercase; color: white; }
         .spacer-void { margin-top: 100px; margin-bottom: 40px; }
         
-        /* CSS DOS RETÂNGULOS BRANCOS (REDUZIDO) */
+        /* CSS DOS RETÂNGULOS SLIM (120px) */
         .feed-grid-cards { 
           display: grid; 
           grid-template-columns: 1fr 1fr; 
@@ -151,18 +151,18 @@ export default function Shows() {
           align-items: start;
         }
         
-        .white-card-rect { 
+        .white-card-slim { 
           background: white; 
           display: flex; 
           justify-content: center; 
           align-items: center; 
-          height: 180px; /* ALTURA REDUZIDA PARA FORMATO RETANGULAR */
-          padding: 10px;
+          height: 120px; /* CRAVADO EM 120PX */
+          padding: 8px;
           border: 1px solid #ddd;
           overflow: hidden;
         }
 
-        .img-inside-rect { 
+        .img-inside-slim { 
           max-width: 100%; 
           max-height: 100%; 
           display: block; 
@@ -182,7 +182,7 @@ export default function Shows() {
           .nav-links { position: fixed; top: 0; right: -100%; width: 100%; height: 100vh; background: black; flex-direction: column; align-items: center; justify-content: center; transition: 0.5s; }
           .nav-links.active { right: 0; }
           .feed-grid-cards, .reels-grid { grid-template-columns: 1fr; gap: 20px; }
-          .white-card-rect { height: 150px; } /* Ajuste mobile */
+          .white-card-slim { height: 100px; } /* Ajuste mobile para não ocupar muito */
           .cta-buttons { flex-direction: column; align-items: center; }
           .desc-ajustado { text-align: left; }
         }
