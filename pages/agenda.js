@@ -27,14 +27,19 @@ export default function Agenda() {
         </div>
       </nav>
 
-      {/* WHATSAPP REINSERIDO */}
+      {/* WHATSAPP */}
       <a href="https://wa.me/message/L5OXQTU6PDIFF1" target="_blank" rel="noopener noreferrer" className="wa-global interactive-zoom">
         <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" />
       </a>
 
-      {/* CAPA COM ENQUADRAMENTO EM 45% */}
+      {/* CAPA - TENTANDO MINÚSCULO PARA COMPATIBILIDADE */}
       <header className="agenda-capa anim-fade-in">
-        <img src="/publico-show.JPG" alt="Público Pøliva" className="img-full" />
+        <img 
+          src="/publico-show.jpg" 
+          alt="Público Pøliva" 
+          className="img-full" 
+          onError={(e) => { e.target.src = "/publico-show.JPG" }}
+        />
       </header>
 
       <main className="content-wrapper">
@@ -43,8 +48,7 @@ export default function Agenda() {
             <h2>Atualizando</h2>
           </div>
           
-          {/* MAPA ÚNICO (DÊ UM ESPAÇO MAIOR AQUI) */}
-          <div className="mapa-container interactive-zoom" style={{ marginTop: '40px' }}>
+          <div className="mapa-container interactive-zoom">
             <img
               src="/mapa-brasil.png"
               alt="Mapa Brasil"
@@ -73,22 +77,19 @@ export default function Agenda() {
         .nav-item { color: white; text-decoration: none; transition: 0.3s ease; cursor: pointer; }
         .nav-item:hover, .active-link { color: #a855f7 !important; }
 
-        .wa-global { position: fixed; bottom: 120px; right: 30px; z-index: 5000; width: 50px; transition: 0.3s; }
+        .wa-global { position: fixed; bottom: 120px; right: 30px; z-index: 5000; width: 50px; }
 
-        /* AJUSTE DE CAPA - 45% */
         .agenda-capa { width: 100%; height: 65vh; overflow: hidden; margin-top: 80px; }
         .img-full { width: 100%; height: 100%; object-fit: cover; object-position: center 45%; filter: grayscale(20%); }
 
         .content-wrapper { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
         .brutal-header h2 { font-size: 25.5px; font-weight: bold; text-transform: lowercase; color: white; text-align: center; }
         
-        /* ESPAÇO ENTRE TÍTULO E MAPA */
         .spacer-void { margin-top: 100px; margin-bottom: 80px; }
 
         .mapa-container {
           width: 100%; max-width: 650px; margin: 0 auto;
           position: relative; cursor: pointer;
-          transition: 0.5s ease;
         }
         .mapa-imagem {
           width: 100%; height: auto;
@@ -118,14 +119,12 @@ export default function Agenda() {
           }
           .nav-links.active { right: 0; }
           .agenda-capa { height: 50vh; }
-          .mapa-imagem { filter: grayscale(0%) brightness(1); opacity: 0.9; }
         }
 
         .anim-fade-up { opacity: 0; transform: translateY(30px); animation: revealUp 0.6s forwards; }
         .anim-fade-in { opacity: 0; animation: fadeIn 1.2s forwards; }
         @keyframes revealUp { to { opacity: 1; transform: translateY(0); } }
         @keyframes fadeIn { to { opacity: 1; } }
-        .interactive-zoom:hover { transform: scale(1.03); filter: brightness(1.1); }
       `}</style>
     </div>
   );
