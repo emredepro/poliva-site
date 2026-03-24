@@ -46,7 +46,7 @@ export default function Singles() {
         <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" />
       </a>
 
-      {/* CAPA COM 65VH E POSICIONAMENTO SUBIDO (60%) */}
+      {/* CAPA COM 65VH E POSICIONAMENTO DA IMAGEM EM 65% */}
       <header className="main-capa-ajustada anim-fade-in">
         <img src="/depressa-novo.jpg" alt="Depressa Capa" className="img-crop-ajustada" />
       </header>
@@ -85,7 +85,6 @@ export default function Singles() {
           <div className="brutal-header center">
             <h2>Álbum</h2>
           </div>
-          {/* IMAGEM DO ÁLBUM TAMANHO PADRÃO (480px) */}
           <div className="album-art-box reduced interactive-zoom">
             <img src="/polivessense-album.jpg" alt="Álbum Polivessense" className="img-album" />
           </div>
@@ -103,11 +102,9 @@ export default function Singles() {
           <div className="brutal-header center">
             <h2>Depressa</h2>
           </div>
-          {/* IMAGEM DO SINGLE DEPRESSA NO MESMO TAMANHO QUE POLIVESSENSE (480px) */}
           <div className="album-art-box reduced interactive-zoom">
             <img src="/depressa-2026.jpg" alt="Depressa 2026" className="img-album" />
           </div>
-          {/* BOTAO CENTRALIZADO */}
           <div style={{ textAlign: 'center', marginTop: '30px' }}>
             <a href="#" className="ouca-btn-anim">Pré Save Aqui</a>
           </div>
@@ -120,7 +117,6 @@ export default function Singles() {
 
           <div className="letra-bloco">
             <h3>Depressa</h3>
-            {/* LETRAS JUSTIFICADAS AO MEIO */}
             <pre className="letra-justificada-centro">
               Dentro de mim sinto o tempo correr e a vontade de ver seu sorriso aqui.<br/>
               Perto de mim sinto o amor crescer e que pena não ter essa loucura em mim.<br/><br/>
@@ -171,7 +167,6 @@ export default function Singles() {
             </pre>
           </div>
 
-          {/* ESPAÇO ADICIONAL ANTES DO FINAL (padding-bottom aumentado) */}
           <div className="letra-bloco" style={{ paddingBottom: '250px' }}>
             <h3>Há Mar</h3>
             <pre className="letra-justificada-centro">
@@ -202,19 +197,15 @@ export default function Singles() {
         .nav-links { display: flex; gap: 40px; font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; font-weight: bold; }
         .nav-item { color: white; text-decoration: none; transition: 0.3s ease; }
         .nav-item:hover, .active-link { color: #a855f7 !important; }
-        .wa-global { position: fixed; bottom: 120px; right: 30px; z-index: 5000; width: 50px; }
 
         .main-capa-ajustada { width: 100%; height: 65vh; overflow: hidden; margin-top: 80px; }
-        .img-crop-ajustada { width: 100%; height: 100%; object-fit: cover; object-position: center 60%; filter: grayscale(20%); }
+        .img-crop-ajustada { width: 100%; height: 100%; object-fit: cover; object-position: center 65%; filter: grayscale(20%); }
 
         .content-wrapper { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
-        
         .brutal-header h2 { font-size: 32px; font-weight: bold; text-transform: lowercase; margin-top: 80px; margin-bottom: 30px; }
         .brutal-header.center { text-align: center; }
-        
         .desc-justificada { font-size: 18px; line-height: 1.6; margin-bottom: 50px; color: #ccc; text-align: justify; hyphens: auto; }
 
-        /* CARROSSEL */
         .carousel-full-width { width: 100vw; position: relative; left: 50%; right: 50%; margin-left: -50vw; margin-right: -50vw; overflow: hidden; margin-bottom: 100px; background: rgba(255,255,255,0.02); padding: 60px 0; }
         .carousel-container { max-width: 100%; position: relative; }
         .carousel-track { display: flex; transition: transform 0.8s cubic-bezier(0.65, 0, 0.35, 1); }
@@ -231,22 +222,19 @@ export default function Singles() {
         .prev { left: 50px; }
         .next { right: 50px; }
 
-        /* ALBUM E CAPAS IGUALADAS */
         .album-art-box { width: 100%; max-width: 600px; margin: 40px auto; border: 1px solid #222; transition: 0.4s; }
-        .album-art-box.reduced { max-width: 480px; } /* REDUZIDO EM 20% PARA IGUALAR DEPRESSA (600 - 120 = 480) */
+        .album-art-box.reduced { max-width: 480px; } 
         .img-album { width: 100%; display: block; }
 
-        /* LETRAS */
         .letra-bloco { margin-bottom: 80px; text-align: center; }
         .letra-bloco h3 { font-size: 20px; color: #a855f7; margin-bottom: 30px; text-transform: none; font-weight: bold; }
         .letra-bloco pre { font-family: inherit; font-size: 16px; line-height: 1.8; color: #aaa; white-space: pre-wrap; }
-        
-        /* JUSTIFICADO AO MEIO */
         .letra-justificada-centro { text-align: justify; text-align-last: center; max-width: 800px; margin: 0 auto; }
         
         .spacer-lg { margin-top: 150px; }
         .title-gold { color: #fff; border-bottom: 1px solid #a855f7; display: inline-block; padding-bottom: 10px; }
 
+        .wa-global { position: fixed; bottom: 120px; right: 30px; z-index: 5000; width: 50px; }
         .anim-fade-up { opacity: 0; transform: translateY(30px); animation: revealUp 0.6s forwards; }
         .anim-fade-in { opacity: 0; animation: fadeIn 1.2s forwards; }
         @keyframes revealUp { to { opacity: 1; transform: translateY(0); } }
