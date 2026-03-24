@@ -37,8 +37,8 @@ export default function Sobre() {
           <div className={`nav-links ${isMenuOpen ? 'active' : ''}`}>
             <a href="/" className="nav-item">iníciø</a>
             <a href="/sobre" className="nav-item active-link">søbre pøliva</a>
-            <a href="/shows" className="nav-item">shøws aø vivø</a>
-            {/* ATUALIZADO: LINK PARA /singles */}
+            {/* ATUALIZADO: LINK PARA /shows-ao-vivo */}
+            <a href="/shows-ao-vivo" className="nav-item">shøws aø vivø</a>
             <a href="/singles" className="nav-item">singles & álbuns</a>
             <a href="#" className="nav-item">agenda</a>
             <a href="#" className="nav-item">cøntatø</a>
@@ -63,7 +63,7 @@ export default function Sobre() {
             “é intensidade, presença e catarse. é música para sentir e vibrar, não para passar batido.”
           </p>
           <p className="desc-unificada">
-            com influências do rock, pop, soul e MPB, pøliva leva para suas apresentações ao vivo um setlist com a força de sua identidade autoral, dialogando com grandes hinos de refrões inesquecíveis e conduzindo o público da emoção ao épico em ondas crescentes até a catarse. Suas performances misturam intensidade, entrega e uma energia pulsante que conecta diretamente com a plateia. O resultado é uma experiência que equilibra profundidade, força e momentos coletivos de explosão e canto.
+            com influências do rock, pop, soul e MPB, pøliva leva para suas apresentações ao vivo um setlist com a força de sua identidade autoral, dialogando com grandes hinos de refrões inesquecíveis e conduzindo o público da emoção ao épico em ondas crescentes até a catarse. Suas performances misturam intensidade, entrega e uma energia pulsante que conecta diretamente com a plateia. O resultado é uma experiênia que equilibra profundidade, força e momentos coletivos de explosão e canto.
           </p>
         </section>
 
