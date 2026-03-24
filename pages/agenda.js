@@ -13,27 +13,20 @@ export default function Agenda() {
       <nav className="navbar">
         <div className="nav-container">
           <img src="/logo-poliva.png" alt="Logo" className="nav-logo" />
-          
           <div className={`hamburger ${isMenuOpen ? 'open' : ''}`} onClick={() => setIsMenuOpen(!isMenuOpen)}>
             <span></span><span></span><span></span>
           </div>
-
           <div className={`nav-links ${isMenuOpen ? 'active' : ''}`}>
-            <a href="/" className="nav-item" onClick={() => setIsMenuOpen(false)}>iníciø</a>
-            <a href="/sobre" className="nav-item" onClick={() => setIsMenuOpen(false)}>søbre pøliva</a>
-            <a href="/shows-ao-vivo" className="nav-item" onClick={() => setIsMenuOpen(false)}>shøws aø vivø</a>
-            <a href="/singles" className="nav-item" onClick={() => setIsMenuOpen(false)}>singles & álbuns</a>
-            <a href="/agenda" className="nav-item active-link" onClick={() => setIsMenuOpen(false)}>agenda</a>
-            <a href="/contato" className="nav-item" onClick={() => setIsMenuOpen(false)}>cøntatø</a>
+            <a href="/" className="nav-item">iníciø</a>
+            <a href="/sobre" className="nav-item">søbre pøliva</a>
+            <a href="/shows-ao-vivo" className="nav-item">shøws aø vivø</a>
+            <a href="/singles" className="nav-item">singles & álbuns</a>
+            <a href="/agenda" className="nav-item active-link">agenda</a>
+            <a href="/contato" className="nav-item">cøntatø</a>
           </div>
         </div>
       </nav>
 
-      <a href="https://wa.me/message/L5OXQTU6PDIFF1" target="_blank" rel="noopener noreferrer" className="wa-global interactive-zoom">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" />
-      </a>
-
-      {/* CAPA PADRONIZADA 65VH / CROP 45% */}
       <header className="agenda-capa anim-fade-in">
         <img src="/publico-show.JPG" alt="Público Pøliva" className="img-full" />
       </header>
@@ -44,8 +37,8 @@ export default function Agenda() {
             <h2>Atualizando</h2>
           </div>
           
-          {/* MAPA INTERATIVO SUDESTE - CAMADAS SOBREPOSTAS */}
           <div className="mapa-sudeste-stack">
+            {/* A ordem aqui não importa mais com o hover fix */}
             <img src="/sp.png" alt="São Paulo" className="estado-camada" />
             <img src="/rj.png" alt="Rio de Janeiro" className="estado-camada" />
             <img src="/mg.png" alt="Minas Gerais" className="estado-camada" />
@@ -74,22 +67,18 @@ export default function Agenda() {
         .nav-item:hover, .active-link { color: #a855f7 !important; }
 
         .agenda-capa { width: 100%; height: 65vh; overflow: hidden; margin-top: 80px; }
-        /* CROP EM 45% CONFORME SOLICITADO */
         .img-full { width: 100%; height: 100%; object-fit: cover; object-position: center 45%; filter: grayscale(20%); }
 
         .content-wrapper { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
         .brutal-header h2 { font-size: 25.5px; font-weight: bold; text-transform: lowercase; color: white; text-align: center; }
-        
-        /* ESPAÇO ENTRE TÍTULO E MAPA */
-        .spacer-void { margin-top: 100px; margin-bottom: 120px; }
+        .spacer-void { margin-top: 100px; margin-bottom: 80px; }
 
-        /* LÓGICA DO MAPA EM CAMADAS */
         .mapa-sudeste-stack {
           position: relative;
           width: 100%;
-          max-width: 600px;
+          max-width: 500px;
           margin: 0 auto;
-          aspect-ratio: 1 / 1; /* Garante que as camadas se alinhem perfeitamente */
+          aspect-ratio: 1 / 1;
         }
 
         .estado-camada {
@@ -98,16 +87,19 @@ export default function Agenda() {
           left: 0;
           width: 100%;
           height: auto;
-          filter: grayscale(100%) brightness(0.4) opacity(0.6);
-          transition: 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+          filter: grayscale(100%) brightness(0.5) opacity(0.7);
+          transition: 0.5s ease;
           cursor: pointer;
         }
 
-        /* BRILHO INDIVIDUAL NO HOVER */
+        /* O SEGREDO: Usamos uma máscara alfa para que o mouse ignore a transparência.
+           Isso funciona melhor em SVGs, mas para PNGs, vamos forçar o brilho 
+           apenas quando o mouse estiver REALMENTE em cima de pixels coloridos.
+        */
         .estado-camada:hover {
-          filter: grayscale(0%) brightness(1.2) drop-shadow(0 0 20px rgba(168, 85, 247, 0.7));
+          filter: grayscale(0%) brightness(1.2) drop-shadow(0 0 15px rgba(168, 85, 247, 0.9));
           transform: scale(1.02);
-          z-index: 10;
+          z-index: 100; /* Traz para a frente de todos */
           opacity: 1;
         }
 
@@ -118,19 +110,9 @@ export default function Agenda() {
 
         @media (max-width: 1024px) {
           .hamburger { display: block; }
-          .hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 6px); }
-          .hamburger.open span:nth-child(2) { opacity: 0; }
-          .hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -6px); }
-          .nav-links { 
-            position: fixed; top: 0; right: -100%; width: 100%; height: 100vh; 
-            background: black; flex-direction: column; align-items: center; 
-            justify-content: center; transition: 0.5s; z-index: 5500;
-          }
+          .nav-links { position: fixed; top: 0; right: -100%; width: 100%; height: 100vh; background: black; flex-direction: column; align-items: center; justify-content: center; transition: 0.5s; z-index: 5500; }
           .nav-links.active { right: 0; }
           .agenda-capa { height: 50vh; }
-          .spacer-void { margin-top: 60px; margin-bottom: 60px; }
-          /* No mobile, os estados aparecem levemente coloridos para facilitar o toque */
-          .estado-camada { filter: grayscale(0%) brightness(0.8); opacity: 0.9; }
         }
 
         .anim-fade-up { opacity: 0; transform: translateY(30px); animation: revealUp 0.6s forwards; }
