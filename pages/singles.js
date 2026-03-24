@@ -46,7 +46,7 @@ export default function Singles() {
         <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" />
       </a>
 
-      {/* CAPA COM 65VH E POSICIONAMENTO DA IMAGEM EM 65% */}
+      {/* CAPA COM 65VH E POSICIONAMENTO DA IMAGEM EM 55% */}
       <header className="main-capa-ajustada anim-fade-in">
         <img src="/depressa-novo.jpg" alt="Depressa Capa" className="img-crop-ajustada" />
       </header>
@@ -62,7 +62,7 @@ export default function Singles() {
           </p>
         </section>
 
-        {/* CARROSSEL */}
+        {/* CARROSSEL COM TÍTULOS CORRIGIDOS */}
         <section className="carousel-full-width anim-fade-up">
           <div className="carousel-container">
             <button className="nav-btn prev" onClick={() => setCurrentSlide(currentSlide === 0 ? singlesData.length - 1 : currentSlide - 1)}>‹</button>
@@ -89,12 +89,7 @@ export default function Singles() {
             <img src="/polivessense-album.jpg" alt="Álbum Polivessense" className="img-album" />
           </div>
           <p className="desc-justificada">
-            O álbum <strong>pølivessense (2026)</strong> marca o despertar do <strong>Rock Xamânico</strong> no cenário nacional. 
-            Este projeto conceitual, fundamentado nos 5 elementos e nas 7 Leis Herméticas, é o ponto onde o misticismo encontra a distorção 
-            para criar um "show-portal" visceral. O portal de entrada dessa jornada é o single <strong>"Depressa"</strong>, 
-            que personifica o elemento <strong>Éter</strong> e sela o rebranding oficial da artista em uma narrativa de morte do ego e renascimento da alma. 
-            Unindo a força dos tambores, a profundidade da poesia e o peso do rock alternativo, o álbum apresenta uma tracklist oficial composta por: 
-            <strong>Depressa (Single de Abertura), Se Tiver Vontade, fe-li-ci-da-de, Viver, Sonhos, OTT e Viver - Remix.</strong>
+            O álbum <strong>pølivessense (2026)</strong> marca o despertar do <strong>Rock Xamânico</strong> no cenário nacional. Este projeto conceitual, fundamentado nos 5 elementos e nas 7 Leis Herméticas, é o ponto onde o misticismo encontra a distorção para criar um "show-portal" visceral. O portal de entrada dessa jornada é o single <strong>"Depressa"</strong>, que personifica o elemento <strong>Éter</strong> e sela o rebranding oficial da artista em uma narrativa de morte do ego e renascimento da alma. Unindo a força dos tambores, a profundidade da poesia e o peso do rock alternativo, o álbum apresenta uma tracklist oficial composta por: <strong>Depressa (Single de Abertura), Se Tiver Vontade, fe-li-ci-da-de, Viver, Sonhos, OTT e Viver - Remix.</strong>
           </p>
         </section>
 
@@ -199,7 +194,7 @@ export default function Singles() {
         .nav-item:hover, .active-link { color: #a855f7 !important; }
 
         .main-capa-ajustada { width: 100%; height: 65vh; overflow: hidden; margin-top: 80px; }
-        .img-crop-ajustada { width: 100%; height: 100%; object-fit: cover; object-position: center 65%; filter: grayscale(20%); }
+        .img-crop-ajustada { width: 100%; height: 100%; object-fit: cover; object-position: center 55%; filter: grayscale(20%); }
 
         .content-wrapper { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
         .brutal-header h2 { font-size: 32px; font-weight: bold; text-transform: lowercase; margin-top: 80px; margin-bottom: 30px; }
@@ -210,7 +205,7 @@ export default function Singles() {
         .carousel-container { max-width: 100%; position: relative; }
         .carousel-track { display: flex; transition: transform 0.8s cubic-bezier(0.65, 0, 0.35, 1); }
         .carousel-slide { min-width: 100%; display: flex; flex-direction: column; align-items: center; }
-        .slide-title { font-size: 24px; font-weight: bold; margin-bottom: 25px; text-transform: uppercase; letter-spacing: 2px; }
+        .slide-title { font-size: 24px; font-weight: bold; margin-bottom: 25px; letter-spacing: 2px; }
         .capa-wrapper { width: 300px; aspect-ratio: 1/1; margin-bottom: 30px; box-shadow: 0 20px 50px rgba(0,0,0,0.5); }
         .capa-img { width: 100%; height: 100%; object-fit: cover; }
         
