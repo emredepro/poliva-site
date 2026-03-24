@@ -1,4 +1,4 @@
-// POLIVESSENSE VERSION 2.5.5 - STABLE HD + SHORT FOOTER + MOBILE HAMBURGER (HOME COMPONENT)
+// POLIVESSENSE VERSION 2.6.0 - STABLE HD + MOBILE NAV FIX + JUSTIFIED TEXT
 import React, { useState, useEffect } from 'react';
 import Head from 'next/head';
 
@@ -60,6 +60,7 @@ export default function Inicio({ nextTrack, prevTrack }) {
           <div className="nav-container">
             <img src="/logo-poliva.png" alt="Logo" className="nav-logo" />
            
+            {/* HAMBURGER CORRIGIDO COM Z-INDEX ALTO */}
             <div className={`hamburger ${isMenuOpen ? 'open' : ''}`} onClick={() => setIsMenuOpen(!isMenuOpen)}>
               <span></span><span></span><span></span>
             </div>
@@ -67,7 +68,6 @@ export default function Inicio({ nextTrack, prevTrack }) {
             <div className={`nav-links ${isMenuOpen ? 'active' : ''}`}>
               <a href="/" className="nav-item" onClick={() => setIsMenuOpen(false)}>iníciø</a>
               <a href="/sobre" className="nav-item" onClick={() => setIsMenuOpen(false)}>søbre pøliva</a>
-              {/* ATUALIZADO: LINK PARA /shows-ao-vivo */}
               <a href="/shows-ao-vivo" className="nav-item" onClick={() => setIsMenuOpen(false)}>shøws aø vivø</a>
               <a href="/singles" className="nav-item" onClick={() => setIsMenuOpen(false)}>singles & álbuns</a>
               <a href="#" className="nav-item" onClick={() => setIsMenuOpen(false)}>agenda</a>
@@ -83,11 +83,11 @@ export default function Inicio({ nextTrack, prevTrack }) {
               <span style={{ color: '#a855f7' }}>Show que vira portal</span>
             </h1>
             <div className="citation responsiva anim-fade-up">
-              <p>
+              <p className="justified-center-text">
                 "A música não é apenas entretenimento; ela é portal. Não é só sobre tocar música, é sobre atravessá-la.
                 Eu faço músicas e também canto músicas que transformam a mim e a outras pessoas"
               </p>
-              <span className="author" style={{ marginTop: '5px', letterSpacing: '0.05em', display: 'block' }}>— Poliva Soham</span>
+              <span className="author" style={{ marginTop: '15px', letterSpacing: '0.05em', display: 'block', textAlign: 'center' }}>— Poliva Soham</span>
             </div>
           </section>
 
@@ -163,34 +163,51 @@ export default function Inicio({ nextTrack, prevTrack }) {
         .page-content { position: relative; z-index: 10; transition: opacity 1.5s ease; }
         .page-content.hidden { opacity: 0; }
 
-        .navbar { position: fixed; top: 0; width: 100%; background: rgba(0,0,0,0.95); padding: 25px 40px; z-index: 3000; border-bottom: 1px solid #111; }
+        .navbar { position: fixed; top: 0; width: 100%; background: rgba(0,0,0,0.95); padding: 25px 40px; z-index: 4000; border-bottom: 1px solid #111; }
         .nav-container { max-width: 1400px; margin: 0 auto; display: flex; justify-content: center; align-items: center; position: relative; min-height: 50px; }
         .nav-logo { width: 110px; position: absolute; left: 0; }
         .nav-links { display: flex; gap: 40px; font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; font-weight: bold; }
        
         .nav-item { color: white; text-decoration: none; transition: 0.3s ease; cursor: pointer; }
         .nav-item:hover { color: #a855f7 !important; }
-        .nav-item:active { color: white !important; transform: scale(0.95); }
 
-        .hamburger { display: none; cursor: pointer; z-index: 4000; position: absolute; right: 0; }
-        .hamburger span { display: block; width: 25px; height: 2px; background: white; margin: 5px 0; transition: 0.4s; }
+        /* HAMBURGER MOBILE CORRIGIDO */
+        .hamburger { display: none; cursor: pointer; z-index: 6000; position: absolute; right: 0; width: 30px; height: 25px; }
+        .hamburger span { display: block; width: 100%; height: 2px; background: white; margin: 6px 0; transition: 0.4s; }
 
         @media (max-width: 1024px) {
           .hamburger { display: block; }
-          .hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+          .hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 6px); }
           .hamburger.open span:nth-child(2) { opacity: 0; }
-          .hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+          .hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -6px); }
+
           .nav-links {
             position: fixed; top: 0; right: -100%; width: 100%; height: 100vh;
             background: black; flex-direction: column; align-items: center; justify-content: center;
-            transition: 0.5s ease-in-out;
+            transition: 0.5s ease-in-out; z-index: 5500;
           }
           .nav-links.active { right: 0; }
         }
 
         .main-scroll { padding-top: 250px; text-align: center; max-width: 1200px; margin: 0 auto; }
         .hero-title { font-size: clamp(2.2rem, 8vw, 4.5rem); font-weight: bold; line-height: 1.1; }
-        .citation.responsiva { max-width: 600px; margin: 0 auto; border-left: 2px solid #a855f7; padding-left: 40px; text-align: left; font-style: italic; color: #a1a1aa; font-size: clamp(16px, 4vw, 18px); line-height: 1.7; }
+        
+        /* CITAÇÃO JUSTIFICADA AO MEIO */
+        .justified-center-text { 
+          text-align: justify; 
+          text-align-last: center; 
+          line-height: 1.8;
+          color: #a1a1aa;
+        }
+        .citation.responsiva { 
+          max-width: 600px; 
+          margin: 0 auto; 
+          border-left: 2px solid #a855f7; 
+          padding-left: 40px; 
+          font-style: italic; 
+          font-size: clamp(16px, 4vw, 18px); 
+        }
+
         .author { font-style: normal; color: #a855f7; font-weight: bold; font-size: 11px; }
 
         .spacer-lg { margin-top: 180px; }
@@ -222,6 +239,12 @@ export default function Inicio({ nextTrack, prevTrack }) {
         @keyframes revealStay { to { opacity: 1; transform: translateY(0); } }
         .interactive-zoom:hover { transform: scale(1.08); filter: brightness(1.2); }
         .video-player.interactive-zoom:hover { transform: scale(1.03); }
+
+        @media (max-width: 480px) {
+          .main-scroll { padding-top: 150px; }
+          .citation.responsiva { padding-left: 20px; }
+          .justified-center-text { text-align: center; } /* Em telas muito pequenas o justify pode criar espaços estranhos */
+        }
       `}</style>
     </div>
   );
