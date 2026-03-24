@@ -67,8 +67,8 @@ export default function Inicio({ nextTrack, prevTrack }) {
             <div className={`nav-links ${isMenuOpen ? 'active' : ''}`}>
               <a href="/" className="nav-item" onClick={() => setIsMenuOpen(false)}>iníciø</a>
               <a href="/sobre" className="nav-item" onClick={() => setIsMenuOpen(false)}>søbre pøliva</a>
-              <a href="/shows" className="nav-item" onClick={() => setIsMenuOpen(false)}>shøws aø vivø</a>
-              {/* ATUALIZADO: LINK PARA /singles */}
+              {/* ATUALIZADO: LINK PARA /shows-ao-vivo */}
+              <a href="/shows-ao-vivo" className="nav-item" onClick={() => setIsMenuOpen(false)}>shøws aø vivø</a>
               <a href="/singles" className="nav-item" onClick={() => setIsMenuOpen(false)}>singles & álbuns</a>
               <a href="#" className="nav-item" onClick={() => setIsMenuOpen(false)}>agenda</a>
               <a href="#" className="nav-item" onClick={() => setIsMenuOpen(false)}>cøntatø</a>
