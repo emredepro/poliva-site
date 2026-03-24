@@ -29,7 +29,6 @@ export default function Singles() {
         <div className="nav-container">
           <img src="/logo-poliva.png" alt="Logo" className="nav-logo" />
           
-          {/* HAMBURGER CORRIGIDO */}
           <div className={`hamburger ${isMenuOpen ? 'open' : ''}`} onClick={() => setIsMenuOpen(!isMenuOpen)}>
             <span></span><span></span><span></span>
           </div>
@@ -58,9 +57,10 @@ export default function Singles() {
           <div className="brutal-header center">
             <h2>Singles</h2>
           </div>
+          {/* TEXTO ATUALIZADO 1 */}
           <p className="desc-justificada">
-            A trajetória da pøliva iniciou-se na pureza da voz e do violão, onde a alma das canções foi revelada em sua essência nua. 
-            Antes do ritual, houve a semente com os singles <strong><em>Depressa, TOQES, OTT, Há Mar.</em></strong>
+            A trajetória da musicalidade de pøliva tem como base a potência da voz e do violão, onde a alma das canções foi revelada em sua essência nua. 
+            Antes da nova fase do seu rito musical, houve a semente com os singles <strong>Depressa, TOQES, OTT, Há Mar.</strong>
           </p>
         </section>
 
@@ -89,8 +89,14 @@ export default function Singles() {
           <div className="album-art-box reduced interactive-zoom">
             <img src="/polivessense-album.jpg" alt="Álbum Polivessense" className="img-album" />
           </div>
+          {/* TEXTO ATUALIZADO 2 */}
           <p className="desc-justificada">
-            O álbum <strong>pølivessense (2026)</strong> marca o despertar do <strong>Rock Xamânico</strong> no cenário nacional. Este projeto conceitual, fundamentado nos 5 elementos e nas 7 Leis Herméticas, é o ponto onde o misticismo encontra a distorção para criar um "show-portal" visceral. O portal de entrada dessa jornada é o single <strong>"Depressa"</strong>, que personifica o elemento <strong>Éter</strong> e sela o rebranding oficial da artista em uma narrativa de morte do ego e renascimento da alma. Unindo a força dos tambores, a profundidade da poesia e o peso do rock alternativo, o álbum apresenta uma tracklist oficial composta por: <strong>Depressa (Single de Abertura), Se Tiver Vontade, fe-li-ci-da-de, Viver, Sonhos, OTT e Viver - Remix.</strong>
+            O álbum <strong>pølivessense (2026)</strong> marca o despertar do <strong>Rock Xamânico</strong> no cenário nacional. 
+            Este projeto conceitual, fundamentado nos 5 elementos e nas 7 Leis Herméticas, é o ponto onde a energia sutil encontra a distorção 
+            para criar um "show-portal" visceral. O portal de entrada dessa jornada é o single <strong>"Depressa"</strong>, 
+            que personifica o elemento <strong>Éter</strong> e sela o rebranding oficial da artista em uma narrativa de morte e renascimento. 
+            Unindo a força dos tambores, a profundidade da poesia e o peso do rock, o álbum apresenta uma tracklist oficial composta por: 
+            <strong>Depressa, Se Tiver Vontade, fe-li-ci-da-de, Viver, Sonhos, OTT e Viver - Remix.</strong>
           </p>
         </section>
 
@@ -239,7 +245,6 @@ export default function Singles() {
         @keyframes fadeIn { to { opacity: 1; } }
         .interactive-zoom:hover { transform: scale(1.03); filter: brightness(1.1); transition: 0.4s; }
 
-        /* AJUSTES MOBILE CORRIGIDOS */
         .hamburger { display: none; cursor: pointer; z-index: 6000; position: absolute; right: 0; width: 30px; height: 25px; }
         .hamburger span { display: block; width: 100%; height: 2px; background: white; margin: 6px 0; transition: 0.4s; }
 
