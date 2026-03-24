@@ -34,9 +34,14 @@ export default function Contato() {
         <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" />
       </a>
 
-      {/* CAPA PADRONIZADA 65VH - ESPELHANDO O ENQUADRAMENTO DE 'SOBRE' */}
+      {/* CAPA PADRONIZADA 65VH - BLINDAGEM DE EXTENSÃO */}
       <header className="contato-capa anim-fade-in">
-        <img src="/ao-vivo-show.jpg" alt="Pøliva ao vivo" className="img-full" />
+        <img 
+          src="/ao-vivo-show.jpg" 
+          alt="Pøliva ao vivo" 
+          className="img-full" 
+          onError={(e) => { e.target.src = "/ao-vivo-show.JPG" }} // Fallback se falhar minúsculo
+        />
       </header>
 
       <main className="content-wrapper">
@@ -65,16 +70,13 @@ export default function Contato() {
                 required
               ></textarea>
 
-              {/* Redirecionamento após o envio (opcional, aponta para a home) */}
-              <input type="hidden" name="_next" value="https://poliva-site.vercel.app/" />
-              
               <button type="submit" className="enviar-btn">enviar portal</button>
             </form>
           </div>
         </section>
       </main>
 
-      {/* RODAPÉ PADRÃO DA HOME */}
+      {/* RODAPÉ PADRÃO */}
       <footer className="footer-black">
         <div className="footer-content anim-fade-up">
           <h4 className="footer-heading">cøntatø</h4>
@@ -127,12 +129,7 @@ export default function Contato() {
           outline: none;
         }
 
-        input:focus, textarea:focus { 
-          border-color: #a855f7; 
-          background: rgba(168, 85, 247, 0.05);
-          box-shadow: 0 0 15px rgba(168, 85, 247, 0.1);
-        }
-
+        input:focus, textarea:focus { border-color: #a855f7; background: rgba(168, 85, 247, 0.05); }
         textarea { height: 220px; resize: none; }
 
         .enviar-btn {
@@ -142,22 +139,17 @@ export default function Contato() {
           padding: 18px;
           font-weight: bold;
           text-transform: lowercase;
-          letter-spacing: 0.1em;
           cursor: pointer;
           transition: 0.5s;
           margin-top: 10px;
         }
 
-        .enviar-btn:hover { 
-          background: #a855f7; 
-          color: black; 
-          box-shadow: 0 0 30px rgba(168, 85, 247, 0.5); 
-        }
+        .enviar-btn:hover { background: #a855f7; color: black; box-shadow: 0 0 30px rgba(168, 85, 247, 0.5); }
 
         .footer-black { background: black; border-top: 1px solid #111; padding: 80px 20px 120px; text-align: center; margin-top: 50px; }
         .footer-heading { font-size: 22px; font-weight: bold; text-transform: uppercase; margin-bottom: 25px; letter-spacing: 0.2em; }
         .footer-details p { font-size: 13px; opacity: 0.7; margin: 8px 0; text-transform: lowercase; }
-        .copyright-line { margin-top: 50px; font-size: 10px; color: #444; letter-spacing: 0.1em; }
+        .copyright-line { margin-top: 50px; font-size: 10px; color: #444; }
 
         .hamburger { display: none; cursor: pointer; z-index: 6000; position: absolute; right: 0; width: 30px; height: 25px; }
         .hamburger span { display: block; width: 100%; height: 2px; background: white; margin: 6px 0; transition: 0.4s; }
