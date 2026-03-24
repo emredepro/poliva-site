@@ -6,10 +6,10 @@ export default function Singles() {
   const [currentSlide, setCurrentSlide] = useState(0);
 
   const singlesData = [
-    { title: "Depressa", img: "singles-depressa.jpg", link: "https://open.spotify.com/intl-pt/track/1SP07UiCSS9BOqWbHG0nSI?si=b732588566094064 " },
-    { title: "TOQES", img: "singles-toqes.jpg", link: "https://open.spotify.com/intl-pt/track/6rXLgOVJJMYamEVPW6V45N?si=c24b3f16b407463e " },
-    { title: "OTT", img: "singles-ott.jpg", link: "https://open.spotify.com/intl-pt/track/7ev9TpcSvAXkjrNmZ9qMyr?si=2a040ef2f16b4795 " },
-    { title: "Há Mar", img: "singles-ha-mar.jpg", link: "https://open.spotify.com/intl-pt/track/5tkFsijUJp5Ml5Kr6tnIgq?si=1bbda7e12f7c4beb " }
+    { title: "Depressa", img: "singles-depressa.jpg", link: "https://open.spotify.com/intl-pt/track/1SP07UiCSS9BOqWbHG0nSI?si=b732588566094064" },
+    { title: "TOQES", img: "singles-toqes.jpg", link: "https://open.spotify.com/intl-pt/track/6rXLgOVJJMYamEVPW6V45N?si=c24b3f16b407463e" },
+    { title: "OTT", img: "singles-ott.jpg", link: "https://open.spotify.com/intl-pt/track/7ev9TpcSvAXkjrNmZ9qMyr?si=2a040ef2f16b4795" },
+    { title: "Há Mar", img: "singles-ha-mar.jpg", link: "https://open.spotify.com/intl-pt/track/5tkFsijUJp5Ml5Kr6tnIgq?si=1bbda7e12f7c4beb" }
   ];
 
   useEffect(() => {
@@ -17,7 +17,7 @@ export default function Singles() {
       setCurrentSlide((prev) => (prev + 1) % singlesData.length);
     }, 3000);
     return () => clearInterval(timer);
-  }, []);
+  }, [singlesData.length]);
 
   return (
     <div className="singles-page">
@@ -28,16 +28,19 @@ export default function Singles() {
       <nav className="navbar">
         <div className="nav-container">
           <img src="/logo-poliva.png" alt="Logo" className="nav-logo" />
+          
+          {/* HAMBURGER CORRIGIDO */}
           <div className={`hamburger ${isMenuOpen ? 'open' : ''}`} onClick={() => setIsMenuOpen(!isMenuOpen)}>
             <span></span><span></span><span></span>
           </div>
+
           <div className={`nav-links ${isMenuOpen ? 'active' : ''}`}>
-            <a href="/" className="nav-item">iníciø</a>
-            <a href="/sobre" className="nav-item">søbre pøliva</a>
-            <a href="/shows-ao-vivo" className="nav-item">shøws aø vivø</a>
-            <a href="/singles" className="nav-item active-link">singles & álbuns</a>
-            <a href="#" className="nav-item">agenda</a>
-            <a href="#" className="nav-item">cøntatø</a>
+            <a href="/" className="nav-item" onClick={() => setIsMenuOpen(false)}>iníciø</a>
+            <a href="/sobre" className="nav-item" onClick={() => setIsMenuOpen(false)}>søbre pøliva</a>
+            <a href="/shows-ao-vivo" className="nav-item" onClick={() => setIsMenuOpen(false)}>shøws aø vivø</a>
+            <a href="/singles" className="nav-item active-link" onClick={() => setIsMenuOpen(false)}>singles & álbuns</a>
+            <a href="#" className="nav-item" onClick={() => setIsMenuOpen(false)}>agenda</a>
+            <a href="#" className="nav-item" onClick={() => setIsMenuOpen(false)}>cøntatø</a>
           </div>
         </div>
       </nav>
@@ -188,7 +191,7 @@ export default function Singles() {
         .nav-container { max-width: 1400px; margin: 0 auto; display: flex; justify-content: center; align-items: center; position: relative; min-height: 50px; }
         .nav-logo { width: 110px; position: absolute; left: 0; }
         .nav-links { display: flex; gap: 40px; font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; font-weight: bold; }
-        .nav-item { color: white; text-decoration: none; transition: 0.3s ease; }
+        .nav-item { color: white; text-decoration: none; transition: 0.3s ease; cursor: pointer; }
         .nav-item:hover, .active-link { color: #a855f7 !important; }
 
         .main-capa-ajustada { width: 100%; height: 65vh; overflow: hidden; margin-top: 80px; }
@@ -223,7 +226,6 @@ export default function Singles() {
         .letra-bloco h3 { font-size: 20px; color: #a855f7; margin-bottom: 30px; text-transform: none; font-weight: bold; }
         .letra-bloco pre { font-family: inherit; font-size: 16px; line-height: 1.8; color: #aaa; white-space: pre-wrap; transition: 0.4s ease; }
         
-        /* JUSTIFICADO AO MEIO + EFEITO INTERATIVO */
         .letra-justificada-centro { text-align: justify; text-align-last: center; max-width: 800px; margin: 0 auto; }
         .interactive-lyric:hover { transform: scale(1.02); color: #fff; filter: brightness(1.2); }
         
@@ -237,9 +239,21 @@ export default function Singles() {
         @keyframes fadeIn { to { opacity: 1; } }
         .interactive-zoom:hover { transform: scale(1.03); filter: brightness(1.1); transition: 0.4s; }
 
+        /* AJUSTES MOBILE CORRIGIDOS */
+        .hamburger { display: none; cursor: pointer; z-index: 6000; position: absolute; right: 0; width: 30px; height: 25px; }
+        .hamburger span { display: block; width: 100%; height: 2px; background: white; margin: 6px 0; transition: 0.4s; }
+
         @media (max-width: 1024px) {
           .hamburger { display: block; }
-          .nav-links { position: fixed; top: 0; right: -100%; width: 100%; height: 100vh; background: black; flex-direction: column; align-items: center; justify-content: center; transition: 0.5s; }
+          .hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 6px); }
+          .hamburger.open span:nth-child(2) { opacity: 0; }
+          .hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -6px); }
+
+          .nav-links { 
+            position: fixed; top: 0; right: -100%; width: 100%; height: 100vh; 
+            background: black; flex-direction: column; align-items: center; 
+            justify-content: center; transition: 0.5s; z-index: 5500;
+          }
           .nav-links.active { right: 0; }
           .nav-btn { display: none; }
           .carousel-full-width { padding: 40px 0; }
