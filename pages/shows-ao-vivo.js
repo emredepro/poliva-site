@@ -30,17 +30,19 @@ export default function Shows() {
       <nav className="navbar">
         <div className="nav-container">
           <img src="/logo-poliva.png" alt="Logo" className="nav-logo" />
+          
+          {/* HAMBURGER CORRIGIDO COM Z-INDEX ALTO */}
           <div className={`hamburger ${isMenuOpen ? 'open' : ''}`} onClick={() => setIsMenuOpen(!isMenuOpen)}>
             <span></span><span></span><span></span>
           </div>
+
           <div className={`nav-links ${isMenuOpen ? 'active' : ''}`}>
-            <a href="/" className="nav-item">iníciø</a>
-            <a href="/sobre" className="nav-item">søbre pøliva</a>
-            <a href="/shows" className="nav-item active-link">shøws aø vivø</a>
-            {/* ATUALIZADO: LINK PARA /singles */}
-            <a href="/singles" className="nav-item">singles & álbuns</a>
-            <a href="#" className="nav-item">agenda</a>
-            <a href="#" className="nav-item">cøntatø</a>
+            <a href="/" className="nav-item" onClick={() => setIsMenuOpen(false)}>iníciø</a>
+            <a href="/sobre" className="nav-item" onClick={() => setIsMenuOpen(false)}>søbre pøliva</a>
+            <a href="/shows" className="nav-item active-link" onClick={() => setIsMenuOpen(false)}>shøws aø vivø</a>
+            <a href="/singles" className="nav-item" onClick={() => setIsMenuOpen(false)}>singles & álbuns</a>
+            <a href="#" className="nav-item" onClick={() => setIsMenuOpen(false)}>agenda</a>
+            <a href="#" className="nav-item" onClick={() => setIsMenuOpen(false)}>cøntatø</a>
           </div>
         </div>
       </nav>
@@ -139,7 +141,6 @@ export default function Shows() {
           z-index: 1;
         }
 
-        /* TEXTURA DE FUNDØ 0.1 */
         .shows-page::before {
           content: "";
           position: fixed;
@@ -158,7 +159,7 @@ export default function Shows() {
         .nav-container { max-width: 1400px; margin: 0 auto; display: flex; justify-content: center; align-items: center; position: relative; min-height: 50px; }
         .nav-logo { width: 110px; position: absolute; left: 0; }
         .nav-links { display: flex; gap: 40px; font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; font-weight: bold; }
-        .nav-item { color: white; text-decoration: none; transition: 0.3s ease; }
+        .nav-item { color: white; text-decoration: none; transition: 0.3s ease; cursor: pointer; }
         .nav-item:hover, .active-link { color: #a855f7 !important; }
         
         .wa-global { position: fixed; bottom: 120px; right: 30px; z-index: 5000; width: 50px; }
@@ -168,7 +169,6 @@ export default function Shows() {
         
         .content-wrapper { max-width: 1000px; margin: 0 auto; padding: 0 20px; position: relative; z-index: 10; }
         
-        /* TEXTØ JUSTIFICADØ */
         .desc-ajustado { 
           font-size: 18px; 
           line-height: 1.6; 
@@ -187,7 +187,6 @@ export default function Shows() {
         .brutal-header h2 { font-size: 25.5px; font-weight: bold; text-transform: lowercase; color: white; }
         .spacer-void { margin-top: 100px; margin-bottom: 40px; }
         
-        /* CARDS BRANCØS SLIM 120PX */
         .feed-grid-cards { 
           display: grid; 
           grid-template-columns: 1fr 1fr; 
@@ -215,7 +214,6 @@ export default function Shows() {
           object-fit: contain; 
         }
         
-        /* REELS ALTURA 1.5CM */
         .reels-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5cm 1.5cm; max-width: 900px; margin: 0 auto; }
         .reel-box { width: 100%; aspect-ratio: 9/16; background: #050505; border: 1px solid #111; overflow: hidden; }
         .reel-box iframe { width: 100%; height: 100%; }
@@ -223,17 +221,27 @@ export default function Shows() {
         .registros-list { display: flex; flex-direction: column; align-items: center; gap: 40px; }
         .registro-img { width: 100%; max-width: 800px; height: auto; border: 1px solid #111; display: block; }
         
-        .hamburger { display: none; cursor: pointer; z-index: 4000; position: absolute; right: 0; }
-        .hamburger span { display: block; width: 25px; height: 2px; background: white; margin: 5px 0; transition: 0.4s; }
+        /* HAMBURGER MOBILE CORRIGIDO */
+        .hamburger { display: none; cursor: pointer; z-index: 6000; position: absolute; right: 0; width: 30px; height: 25px; }
+        .hamburger span { display: block; width: 100%; height: 2px; background: white; margin: 6px 0; transition: 0.4s; }
         
         @media (max-width: 1024px) {
           .hamburger { display: block; }
-          .nav-links { position: fixed; top: 0; right: -100%; width: 100%; height: 100vh; background: black; flex-direction: column; align-items: center; justify-content: center; transition: 0.5s; }
+          .hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 6px); }
+          .hamburger.open span:nth-child(2) { opacity: 0; }
+          .hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -6px); }
+
+          .nav-links { 
+            position: fixed; top: 0; right: -100%; width: 100%; height: 100vh; 
+            background: black; flex-direction: column; align-items: center; 
+            justify-content: center; transition: 0.5s; z-index: 5500;
+          }
           .nav-links.active { right: 0; }
           .feed-grid-cards, .reels-grid { grid-template-columns: 1fr; gap: 20px; }
           .white-card-slim { height: 100px; }
           .cta-buttons { flex-direction: column; align-items: center; }
-          .desc-ajustado { text-align: left; }
+          /* TEXTO MANTIDO JUSTIFICADO NO MOBILE */
+          .desc-ajustado { text-align: justify; }
         }
         
         .interactive-zoom:hover { transform: scale(1.02); filter: brightness(1.1); transition: 0.3s ease; }
