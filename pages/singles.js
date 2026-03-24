@@ -46,7 +46,7 @@ export default function Singles() {
         <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" />
       </a>
 
-      {/* CAPA COM 65VH E POSICIONAMENTO DA IMAGEM EM 55% */}
+      {/* CAPA COM 65VH E POSICIONAMENTO DA IMAGEM EM 70% */}
       <header className="main-capa-ajustada anim-fade-in">
         <img src="/depressa-novo.jpg" alt="Depressa Capa" className="img-crop-ajustada" />
       </header>
@@ -62,7 +62,7 @@ export default function Singles() {
           </p>
         </section>
 
-        {/* CARROSSEL COM TÍTULOS CORRIGIDOS */}
+        {/* CARROSSEL */}
         <section className="carousel-full-width anim-fade-up">
           <div className="carousel-container">
             <button className="nav-btn prev" onClick={() => setCurrentSlide(currentSlide === 0 ? singlesData.length - 1 : currentSlide - 1)}>‹</button>
@@ -194,7 +194,7 @@ export default function Singles() {
         .nav-item:hover, .active-link { color: #a855f7 !important; }
 
         .main-capa-ajustada { width: 100%; height: 65vh; overflow: hidden; margin-top: 80px; }
-        .img-crop-ajustada { width: 100%; height: 100%; object-fit: cover; object-position: center 55%; filter: grayscale(20%); }
+        .img-crop-ajustada { width: 100%; height: 100%; object-fit: cover; object-position: center 70%; filter: grayscale(20%); }
 
         .content-wrapper { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
         .brutal-header h2 { font-size: 32px; font-weight: bold; text-transform: lowercase; margin-top: 80px; margin-bottom: 30px; }
