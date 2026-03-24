@@ -46,7 +46,7 @@ export default function Singles() {
         <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" />
       </a>
 
-      {/* CAPA AJUSTADA PARA 65% DA ALTURA DA TELA (65vh) */}
+      {/* CAPA COM 65VH E POSICIONAMENTO SUBIDO (60%) */}
       <header className="main-capa-ajustada anim-fade-in">
         <img src="/depressa-novo.jpg" alt="Depressa Capa" className="img-crop-ajustada" />
       </header>
@@ -164,7 +164,7 @@ export default function Singles() {
               Só senta em seu sofá, esquece e assiste a TV<br/><br/>
               Toda vez que o hoje do hoje chegar, faça diferente do ontem que já foi<br/>
               E quem sabe o hoje de amanhã, não te fará sorrir bem mais, ser feliz e aproveitar?<br/><br/>
-              Passa, jura, deseja, planeja, mas não corre atrás, not cumpre mais.<br/>
+              Passa, jura, deseja, planeja, mas não corre atrás, não cumpre mais.<br/>
               Não alcança e faz, não realiza e traz.<br/><br/>
               O Universo, então, te dá em troca o que você oferecer.<br/>
               Enquanto você perde seu tempo esperando, faça ele acontecer.
@@ -205,7 +205,7 @@ export default function Singles() {
         .wa-global { position: fixed; bottom: 120px; right: 30px; z-index: 5000; width: 50px; }
 
         .main-capa-ajustada { width: 100%; height: 65vh; overflow: hidden; margin-top: 80px; }
-        .img-crop-ajustada { width: 100%; height: 100%; object-fit: cover; object-position: center 40%; filter: grayscale(20%); }
+        .img-crop-ajustada { width: 100%; height: 100%; object-fit: cover; object-position: center 60%; filter: grayscale(20%); }
 
         .content-wrapper { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
         
