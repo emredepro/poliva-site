@@ -1,4 +1,4 @@
-// POLIVESSENSE VERSION 2.6.6 - STABLE HD + FAST PRELOADER (30ms)
+// POLIVESSENSE VERSION 2.6.7 - STABLE HD + FAST PRELOADER (30ms)
 import React, { useState, useEffect } from 'react';
 import Head from 'next/head';
 
@@ -25,7 +25,7 @@ export default function Inicio({ nextTrack, prevTrack }) {
         }
         return prev + 2;
       });
-    }, 30); // VELOCIDADE RESTAURADA PARA 30ms
+    }, 30); 
     return () => clearInterval(interval);
   }, []);
 
@@ -145,7 +145,6 @@ export default function Inicio({ nextTrack, prevTrack }) {
             <h4 className="footer-heading">cøntatø</h4>
             <div className="footer-details">
               <p>para shøws e parcerias</p>
-              <p>e-mail: contato@polivaoficial.com.br</p>
               <p>redes sociais: @polivaoficial</p>
               <p className="phone-line">telefone: 22 98802-3803</p>
             </div>
