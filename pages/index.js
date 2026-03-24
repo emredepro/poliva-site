@@ -1,4 +1,4 @@
-// POLIVESSENSE VERSION 2.5.5 - STABLE HD + SHORT FOOTER + MOBILE HAMBURGER (HOME COMPONENT)
+// POLIVESSENSE VERSION 2.5.7 - STABLE HD + TEXTURE BG + FULL NAV SYNC
 import React, { useState, useEffect } from 'react';
 import Head from 'next/head';
 
@@ -33,7 +33,7 @@ export default function Inicio({ nextTrack, prevTrack }) {
   }, [playlists.length]);
 
   return (
-    <div style={{ backgroundColor: 'black', minHeight: '100vh', color: 'white', overflowX: 'hidden', fontFamily: "'Avant Garde', sans-serif" }}>
+    <div className="home-wrapper">
       <Head>
         <title>pøliva | pølivessense</title>
         <link rel="icon" href={`/favicon.ico?v=${new Date().getTime()}`} />
@@ -49,6 +49,7 @@ export default function Inicio({ nextTrack, prevTrack }) {
         </div>
       )}
 
+      {/* VIDEO DE FUNDO */}
       <div style={{ position: 'fixed', inset: 0, zIndex: 0 }}>
         <video autoPlay muted loop playsInline style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 0.35 }}>
           <source src="/video-home-loop.mp4" type="video/mp4" />
@@ -65,10 +66,10 @@ export default function Inicio({ nextTrack, prevTrack }) {
             </div>
 
             <div className={`nav-links ${isMenuOpen ? 'active' : ''}`}>
-             <a href="/" className="nav-item" onClick={() => setIsMenuOpen(false)}>iníciø</a>
+              <a href="/" className="nav-item" onClick={() => setIsMenuOpen(false)}>iníciø</a>
               <a href="/sobre" className="nav-item" onClick={() => setIsMenuOpen(false)}>søbre pøliva</a>
               <a href="/shows" className="nav-item" onClick={() => setIsMenuOpen(false)}>shøws aø vivø</a>
-              <a href="#" className="nav-item" onClick={() => setIsMenuOpen(false)}>singles & álbuns</a>
+              <a href="/singles" className="nav-item" onClick={() => setIsMenuOpen(false)}>singles & álbuns</a>
               <a href="#" className="nav-item" onClick={() => setIsMenuOpen(false)}>agenda</a>
               <a href="#" className="nav-item" onClick={() => setIsMenuOpen(false)}>cøntatø</a>
             </div>
@@ -110,7 +111,7 @@ export default function Inicio({ nextTrack, prevTrack }) {
 
           <section className="section-block spacer-lg" style={{ marginBottom: '100px' }}>
              <div className="brutal-header mobile-boost anim-fade-up">
-                <h3>playlists para as melhores ocasiões:</h3>
+               <h3>playlists para as melhores ocasiões:</h3>
                 <p className="bold-sub">o que o seu momento pede?</p>
              </div>
              <div className="carousel-main">
@@ -151,6 +152,28 @@ export default function Inicio({ nextTrack, prevTrack }) {
       </div>
 
       <style jsx global>{`
+        .home-wrapper { 
+          background: black; 
+          min-height: 100vh; 
+          color: white; 
+          overflow-x: hidden; 
+          font-family: 'Avant Garde', sans-serif;
+          position: relative;
+        }
+
+        /* TEXTURA DE FUNDO 0.1 */
+        .home-wrapper::before {
+          content: "";
+          position: fixed;
+          top: 0; left: 0; width: 100%; height: 100%;
+          background-image: url('/patterns_poliva_simbolos-07.jpg');
+          background-size: cover;
+          background-position: center;
+          opacity: 0.1;
+          z-index: 1;
+          pointer-events: none;
+        }
+
         .preloader { position: fixed; inset: 0; background: black; z-index: 9999; display: flex; align-items: center; justify-content: center; }
         .loader-box { width: 220px; text-align: center; display: flex; flex-direction: column; align-items: center; }
         .bar-bg { width: 100%; height: 2px; background: #111; margin: 15px 0; }
@@ -162,7 +185,7 @@ export default function Inicio({ nextTrack, prevTrack }) {
         .page-content { position: relative; z-index: 10; transition: opacity 1.5s ease; }
         .page-content.hidden { opacity: 0; }
 
-        .navbar { position: fixed; top: 0; width: 100%; background: rgba(0,0,0,0.95); padding: 25px 40px; z-index: 3000; border-bottom: 1px solid #111; }
+        .navbar { position: fixed; top: 0; width: 100%; background: rgba(0,0,0,0.95); padding: 25px 40px; z-index: 4000; border-bottom: 1px solid #111; }
         .nav-container { max-width: 1400px; margin: 0 auto; display: flex; justify-content: center; align-items: center; position: relative; min-height: 50px; }
         .nav-logo { width: 110px; position: absolute; left: 0; }
         .nav-links { display: flex; gap: 40px; font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; font-weight: bold; }
@@ -171,7 +194,7 @@ export default function Inicio({ nextTrack, prevTrack }) {
         .nav-item:hover { color: #a855f7 !important; }
         .nav-item:active { color: white !important; transform: scale(0.95); }
 
-        .hamburger { display: none; cursor: pointer; z-index: 4000; position: absolute; right: 0; }
+        .hamburger { display: none; cursor: pointer; z-index: 4500; position: absolute; right: 0; }
         .hamburger span { display: block; width: 25px; height: 2px; background: white; margin: 5px 0; transition: 0.4s; }
 
         @media (max-width: 1024px) {
@@ -217,7 +240,7 @@ export default function Inicio({ nextTrack, prevTrack }) {
         .copyright-line { margin-top: 40px; font-size: 10px; color: #444; }
 
         .wa-btn { position: fixed; bottom: 120px; right: 30px; width: 50px; z-index: 1000; transition: 0.3s ease; }
-        .anim-fade-up { opacity: 0; transform: translateY(40px); animation: revealStay 0.4s ease-out forwards; }
+        .anim-fade-up { opacity: 0; transform: translateY(30px); animation: revealStay 0.4s ease-out forwards; }
         @keyframes revealStay { to { opacity: 1; transform: translateY(0); } }
         .interactive-zoom:hover { transform: scale(1.08); filter: brightness(1.2); }
         .video-player.interactive-zoom:hover { transform: scale(1.03); }
