@@ -26,11 +26,11 @@ export default function Sobre() {
         <title>søbre | pølivessense</title>
       </Head>
 
+      {/* NAVBAR UNIFICADA */}
       <nav className="navbar">
         <div className="nav-container">
           <img src="/logo-poliva.png" alt="Logo" className="nav-logo" />
           
-          {/* HAMBURGER CORRIGIDO */}
           <div className={`hamburger ${isMenuOpen ? 'open' : ''}`} onClick={() => setIsMenuOpen(!isMenuOpen)}>
             <span></span><span></span><span></span>
           </div>
@@ -40,8 +40,8 @@ export default function Sobre() {
             <a href="/sobre" className="nav-item active-link" onClick={() => setIsMenuOpen(false)}>søbre pøliva</a>
             <a href="/shows-ao-vivo" className="nav-item" onClick={() => setIsMenuOpen(false)}>shøws aø vivø</a>
             <a href="/singles" className="nav-item" onClick={() => setIsMenuOpen(false)}>singles & álbuns</a>
-            <a href="#" className="nav-item" onClick={() => setIsMenuOpen(false)}>agenda</a>
-            <a href="#" className="nav-item" onClick={() => setIsMenuOpen(false)}>cøntatø</a>
+            <a href="/agenda" className="nav-item" onClick={() => setIsMenuOpen(false)}>agenda</a>
+            <a href="/contato" className="nav-item" onClick={() => setIsMenuOpen(false)}>cøntatø</a>
           </div>
         </div>
       </nav>
@@ -177,7 +177,6 @@ export default function Sobre() {
         .player-box { width: 100%; aspect-ratio: 16/9; background: #050505; border: 1px solid #111; }
         .player-box iframe { width: 100%; height: 100%; }
 
-        /* HAMBURGER MOBILE CORRIGIDO */
         .hamburger { display: none; cursor: pointer; z-index: 6000; position: absolute; right: 0; width: 30px; height: 25px; }
         .hamburger span { display: block; width: 100%; height: 2px; background: white; margin: 6px 0; transition: 0.4s; }
 
@@ -196,7 +195,6 @@ export default function Sobre() {
           .players-grid { grid-template-columns: 1fr; }
           .spacer-vøid { margin-top: 60px; }
           .sobre-capa { height: 50vh; margin-top: 70px; }
-          /* TEXTO MANTIDO JUSTIFICADO NO MOBILE */
           .desc-unificada, .marco-item p { text-align: justify; }
         }
 
