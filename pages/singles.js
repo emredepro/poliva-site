@@ -46,7 +46,7 @@ export default function Singles() {
         <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" />
       </a>
 
-      {/* CAPA COM 65VH E POSICIONAMENTO SUBIDO (80%) */}
+      {/* CAPA AJUSTADA PARA 65% DA ALTURA DA TELA (65vh) */}
       <header className="main-capa-ajustada anim-fade-in">
         <img src="/depressa-novo.jpg" alt="Depressa Capa" className="img-crop-ajustada" />
       </header>
@@ -85,6 +85,7 @@ export default function Singles() {
           <div className="brutal-header center">
             <h2>Álbum</h2>
           </div>
+          {/* IMAGEM DO ÁLBUM TAMANHO PADRÃO (480px) */}
           <div className="album-art-box reduced interactive-zoom">
             <img src="/polivessense-album.jpg" alt="Álbum Polivessense" className="img-album" />
           </div>
@@ -102,9 +103,11 @@ export default function Singles() {
           <div className="brutal-header center">
             <h2>Depressa</h2>
           </div>
-          <div className="album-art-box interactive-zoom">
+          {/* IMAGEM DO SINGLE DEPRESSA NO MESMO TAMANHO QUE POLIVESSENSE (480px) */}
+          <div className="album-art-box reduced interactive-zoom">
             <img src="/depressa-2026.jpg" alt="Depressa 2026" className="img-album" />
           </div>
+          {/* BOTAO CENTRALIZADO */}
           <div style={{ textAlign: 'center', marginTop: '30px' }}>
             <a href="#" className="ouca-btn-anim">Pré Save Aqui</a>
           </div>
@@ -117,7 +120,8 @@ export default function Singles() {
 
           <div className="letra-bloco">
             <h3>Depressa</h3>
-            <pre className="letra-justificada">
+            {/* LETRAS JUSTIFICADAS AO MEIO */}
+            <pre className="letra-justificada-centro">
               Dentro de mim sinto o tempo correr e a vontade de ver seu sorriso aqui.<br/>
               Perto de mim sinto o amor crescer e que pena não ter essa loucura em mim.<br/><br/>
               Sinto que vou precisar pousar em algum lugar e preciso ver você lá<br/><br/>
@@ -130,7 +134,7 @@ export default function Singles() {
 
           <div className="letra-bloco">
             <h3>TOQES</h3>
-            <pre className="letra-justificada">
+            <pre className="letra-justificada-centro">
               Se isso é tudo o que você precisa, será tudo o que eu serei.<br/>
               Só não chore quando anoitecer<br/><br/>
               Nessa distância de olhares, o sol nos une quando ele nasce<br/>
@@ -153,23 +157,24 @@ export default function Singles() {
 
           <div className="letra-bloco">
             <h3>OTT</h3>
-            <pre className="letra-justificada">
+            <pre className="letra-justificada-centro">
               Você passa o tempo todo querendo entender o sorriso, mas não quer sorrir.<br/>
               Só dá meia volta e espera ter o que eles tem.<br/><br/>
               Você jura o tempo todo que a felicidade convém, mas o sossego lhe serve bem.<br/>
               Só senta em seu sofá, esquece e assiste a TV<br/><br/>
               Toda vez que o hoje do hoje chegar, faça diferente do ontem que já foi<br/>
               E quem sabe o hoje de amanhã, não te fará sorrir bem mais, ser feliz e aproveitar?<br/><br/>
-              Passa, jura, deseja, planeja, mas não corre atrás, não cumpre mais.<br/>
+              Passa, jura, deseja, planeja, mas não corre atrás, not cumpre mais.<br/>
               Não alcança e faz, não realiza e traz.<br/><br/>
               O Universo, então, te dá em troca o que você oferecer.<br/>
               Enquanto você perde seu tempo esperando, faça ele acontecer.
             </pre>
           </div>
 
-          <div className="letra-bloco" style={{ paddingBottom: '200px' }}>
+          {/* ESPAÇO ADICIONAL ANTES DO FINAL (padding-bottom aumentado) */}
+          <div className="letra-bloco" style={{ paddingBottom: '250px' }}>
             <h3>Há Mar</h3>
-            <pre className="letra-justificada">
+            <pre className="letra-justificada-centro">
               Não há clichê. Não há talvez um só lugar. Te vejo no céu, sinto no ar e em todas as partes que eu lembrar você. Que lembrar você.<br/><br/>
               Vejo o mar e o seu brilho em um pôr do sol me lembra o seu olhar.<br/>
               É entender que nessa liberdade só existe um lugar, onde o amor não é o possuir.<br/><br/>
@@ -200,7 +205,7 @@ export default function Singles() {
         .wa-global { position: fixed; bottom: 120px; right: 30px; z-index: 5000; width: 50px; }
 
         .main-capa-ajustada { width: 100%; height: 65vh; overflow: hidden; margin-top: 80px; }
-        .img-crop-ajustada { width: 100%; height: 100%; object-fit: cover; object-position: center 80%; filter: grayscale(20%); }
+        .img-crop-ajustada { width: 100%; height: 100%; object-fit: cover; object-position: center 40%; filter: grayscale(20%); }
 
         .content-wrapper { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
         
@@ -226,16 +231,19 @@ export default function Singles() {
         .prev { left: 50px; }
         .next { right: 50px; }
 
-        /* ALBUM */
+        /* ALBUM E CAPAS IGUALADAS */
         .album-art-box { width: 100%; max-width: 600px; margin: 40px auto; border: 1px solid #222; transition: 0.4s; }
-        .album-art-box.reduced { max-width: 480px; } 
+        .album-art-box.reduced { max-width: 480px; } /* REDUZIDO EM 20% PARA IGUALAR DEPRESSA (600 - 120 = 480) */
         .img-album { width: 100%; display: block; }
 
         /* LETRAS */
         .letra-bloco { margin-bottom: 80px; text-align: center; }
         .letra-bloco h3 { font-size: 20px; color: #a855f7; margin-bottom: 30px; text-transform: none; font-weight: bold; }
         .letra-bloco pre { font-family: inherit; font-size: 16px; line-height: 1.8; color: #aaa; white-space: pre-wrap; }
-        .letra-justificada { text-align: justify; max-width: 800px; margin: 0 auto; }
+        
+        /* JUSTIFICADO AO MEIO */
+        .letra-justificada-centro { text-align: justify; text-align-last: center; max-width: 800px; margin: 0 auto; }
+        
         .spacer-lg { margin-top: 150px; }
         .title-gold { color: #fff; border-bottom: 1px solid #a855f7; display: inline-block; padding-bottom: 10px; }
 
@@ -243,7 +251,7 @@ export default function Singles() {
         .anim-fade-in { opacity: 0; animation: fadeIn 1.2s forwards; }
         @keyframes revealUp { to { opacity: 1; transform: translateY(0); } }
         @keyframes fadeIn { to { opacity: 1; } }
-        .interactive-zoom:hover { transform: scale(1.03); filter: brightness(1.1); }
+        .interactive-zoom:hover { transform: scale(1.03); filter: brightness(1.1); transition: 0.4s; }
 
         @media (max-width: 1024px) {
           .hamburger { display: block; }
@@ -252,7 +260,7 @@ export default function Singles() {
           .nav-btn { display: none; }
           .carousel-full-width { padding: 40px 0; }
           .capa-wrapper { width: 250px; }
-          .letra-justificada { text-align: left; }
+          .letra-justificada-centro { text-align: center; text-align-last: center; }
         }
       `}</style>
     </div>
