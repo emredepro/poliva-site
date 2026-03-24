@@ -13,19 +13,25 @@ export default function Agenda() {
       <nav className="navbar">
         <div className="nav-container">
           <img src="/logo-poliva.png" alt="Logo" className="nav-logo" />
+          
           <div className={`hamburger ${isMenuOpen ? 'open' : ''}`} onClick={() => setIsMenuOpen(!isMenuOpen)}>
             <span></span><span></span><span></span>
           </div>
+
           <div className={`nav-links ${isMenuOpen ? 'active' : ''}`}>
-            <a href="/" className="nav-item">iníciø</a>
-            <a href="/sobre" className="nav-item">søbre pøliva</a>
-            <a href="/shows-ao-vivo" className="nav-item">shøws aø vivø</a>
-            <a href="/singles" className="nav-item">singles & álbuns</a>
-            <a href="/agenda" className="nav-item active-link">agenda</a>
-            <a href="#" className="nav-item">cøntatø</a>
+            <a href="/" className="nav-item" onClick={() => setIsMenuOpen(false)}>iníciø</a>
+            <a href="/sobre" className="nav-item" onClick={() => setIsMenuOpen(false)}>søbre pøliva</a>
+            <a href="/shows-ao-vivo" className="nav-item" onClick={() => setIsMenuOpen(false)}>shøws aø vivø</a>
+            <a href="/singles" className="nav-item" onClick={() => setIsMenuOpen(false)}>singles & álbuns</a>
+            <a href="/agenda" className="nav-item active-link" onClick={() => setIsMenuOpen(false)}>agenda</a>
+            <a href="/contato" className="nav-item" onClick={() => setIsMenuOpen(false)}>cøntatø</a>
           </div>
         </div>
       </nav>
+
+      <a href="https://wa.me/message/L5OXQTU6PDIFF1" target="_blank" rel="noopener noreferrer" className="wa-global interactive-zoom">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" />
+      </a>
 
       {/* CAPA PADRONIZADA 65VH / CROP 60% */}
       <header className="agenda-capa anim-fade-in">
@@ -38,17 +44,16 @@ export default function Agenda() {
             <h2>Atualizando</h2>
           </div>
           
-          {/* MAPA INTERATIVO SUDESTE */}
-          <div className="mapa-container interactive-zoom">
+          {/* MAPA INTERATIVO SUDESTE COM BRILHO SELETIVØ */}
+          <div className="mapa-container">
             <img 
               src="/mapa-sudeste.png" 
               alt="Mapa Brasil Sudeste" 
               className="mapa-imagem" 
             />
-            <div className="mapa-overlay"></div>
           </div>
           
-          <p className="citacao-it-branca" style={{ marginTop: '40px' }}>
+          <p className="citacao-it-branca" style={{ marginTop: '60px' }}>
             novos portais se abrindo em breve.
           </p>
         </section>
@@ -66,7 +71,7 @@ export default function Agenda() {
         .nav-container { max-width: 1400px; margin: 0 auto; display: flex; justify-content: center; align-items: center; position: relative; min-height: 50px; }
         .nav-logo { width: 110px; position: absolute; left: 0; }
         .nav-links { display: flex; gap: 40px; font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; font-weight: bold; }
-        .nav-item { color: white; text-decoration: none; transition: 0.3s ease; }
+        .nav-item { color: white; text-decoration: none; transition: 0.3s ease; cursor: pointer; }
         .nav-item:hover, .active-link { color: #a855f7 !important; }
 
         .agenda-capa { width: 100%; height: 65vh; overflow: hidden; margin-top: 80px; }
@@ -74,25 +79,32 @@ export default function Agenda() {
 
         .content-wrapper { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
         .brutal-header h2 { font-size: 25.5px; font-weight: bold; text-transform: lowercase; color: white; text-align: center; }
-        .spacer-void { margin-top: 80px; margin-bottom: 60px; }
+        
+        /* ESPAÇO AMPLIADO ENTRE TITULO E MAPA */
+        .spacer-void { margin-top: 100px; margin-bottom: 120px; }
 
-        /* LOGICA DO MAPA */
         .mapa-container { 
-          width: 100%; max-width: 700px; margin: 0 auto; 
-          position: relative; cursor: pointer;
-          transition: 0.5s ease;
+          width: 100%; max-width: 750px; margin: 0 auto; 
+          position: relative; 
+          display: flex;
+          justify-content: center;
         }
+
         .mapa-imagem { 
           width: 100%; height: auto; 
-          filter: grayscale(100%) opacity(0.5); 
-          transition: 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+          filter: grayscale(100%) brightness(0.4) opacity(0.6); 
+          transition: 1.2s cubic-bezier(0.23, 1, 0.32, 1);
         }
+
+        /* EFEITO DE ACENDER AS PARTES PINTADAS */
         .mapa-container:hover .mapa-imagem { 
-          filter: grayscale(0%) opacity(1) drop-shadow(0 0 15px rgba(168, 85, 247, 0.4)); 
-          transform: scale(1.02);
+          filter: grayscale(0%) brightness(1.3) drop-shadow(0 0 25px rgba(168, 85, 247, 0.6)); 
+          transform: scale(1.03);
         }
 
         .citacao-it-branca { font-size: 15px; font-style: italic; color: white; opacity: 0.7; text-align: center; display: block; }
+
+        .wa-global { position: fixed; bottom: 120px; right: 30px; z-index: 5000; width: 50px; }
 
         .hamburger { display: none; cursor: pointer; z-index: 6000; position: absolute; right: 0; width: 30px; height: 25px; }
         .hamburger span { display: block; width: 100%; height: 2px; background: white; margin: 6px 0; transition: 0.4s; }
@@ -109,6 +121,9 @@ export default function Agenda() {
           }
           .nav-links.active { right: 0; }
           .agenda-capa { height: 50vh; }
+          .spacer-void { margin-top: 60px; margin-bottom: 60px; }
+          /* No mobile, o brilho é ativado pelo toque */
+          .mapa-imagem { filter: grayscale(0%) brightness(1.1); opacity: 1; }
         }
 
         .anim-fade-up { opacity: 0; transform: translateY(30px); animation: revealUp 0.6s forwards; }
