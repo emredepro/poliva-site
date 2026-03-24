@@ -30,18 +30,18 @@ export default function Sobre() {
         <div className="nav-container">
           <img src="/logo-poliva.png" alt="Logo" className="nav-logo" />
           
+          {/* HAMBURGER CORRIGIDO */}
           <div className={`hamburger ${isMenuOpen ? 'open' : ''}`} onClick={() => setIsMenuOpen(!isMenuOpen)}>
             <span></span><span></span><span></span>
           </div>
 
           <div className={`nav-links ${isMenuOpen ? 'active' : ''}`}>
-            <a href="/" className="nav-item">iníciø</a>
-            <a href="/sobre" className="nav-item active-link">søbre pøliva</a>
-            {/* ATUALIZADO: LINK PARA /shows-ao-vivo */}
-            <a href="/shows-ao-vivo" className="nav-item">shøws aø vivø</a>
-            <a href="/singles" className="nav-item">singles & álbuns</a>
-            <a href="#" className="nav-item">agenda</a>
-            <a href="#" className="nav-item">cøntatø</a>
+            <a href="/" className="nav-item" onClick={() => setIsMenuOpen(false)}>iníciø</a>
+            <a href="/sobre" className="nav-item active-link" onClick={() => setIsMenuOpen(false)}>søbre pøliva</a>
+            <a href="/shows-ao-vivo" className="nav-item" onClick={() => setIsMenuOpen(false)}>shøws aø vivø</a>
+            <a href="/singles" className="nav-item" onClick={() => setIsMenuOpen(false)}>singles & álbuns</a>
+            <a href="#" className="nav-item" onClick={() => setIsMenuOpen(false)}>agenda</a>
+            <a href="#" className="nav-item" onClick={() => setIsMenuOpen(false)}>cøntatø</a>
           </div>
         </div>
       </nav>
@@ -114,7 +114,6 @@ export default function Sobre() {
           z-index: 1;
         }
 
-        /* TEXTURA DE FUNDØ 0.1 */
         .sobre-page::before {
           content: "";
           position: fixed;
@@ -129,7 +128,7 @@ export default function Sobre() {
           filter: grayscale(100%);
         }
 
-        .navbar { position: fixed; top: 0; width: 100%; background: rgba(0,0,0,0.95); padding: 25px 40px; z-index: 3000; border-bottom: 1px solid #111; }
+        .navbar { position: fixed; top: 0; width: 100%; background: rgba(0,0,0,0.95); padding: 25px 40px; z-index: 4000; border-bottom: 1px solid #111; }
         .nav-container { max-width: 1400px; margin: 0 auto; display: flex; justify-content: center; align-items: center; position: relative; min-height: 50px; }
         .nav-logo { width: 110px; position: absolute; left: 0; }
         .nav-links { display: flex; gap: 40px; font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; font-weight: bold; }
@@ -143,7 +142,6 @@ export default function Sobre() {
 
         .content-wrapper { max-width: 1000px; margin: 0 auto; padding: 0 20px; position: relative; z-index: 10; }
         
-        /* TEXTO JUSTIFICADO */
         .desc-unificada { 
           font-size: 18px; 
           line-height: 1.6; 
@@ -167,7 +165,6 @@ export default function Sobre() {
         .marco-item { display: flex; gap: 15px; margin-bottom: 20px; align-items: flex-start; transition: 0.3s; padding: 5px; }
         .bullet { color: #a855f7; font-weight: bold; font-size: 18px; }
         
-        /* MARCOS JUSTIFICADOS */
         .marco-item p { 
           font-size: 16px; 
           line-height: 1.5; 
@@ -180,21 +177,27 @@ export default function Sobre() {
         .player-box { width: 100%; aspect-ratio: 16/9; background: #050505; border: 1px solid #111; }
         .player-box iframe { width: 100%; height: 100%; }
 
-        .hamburger { display: none; cursor: pointer; z-index: 4000; position: absolute; right: 0; }
-        .hamburger span { display: block; width: 25px; height: 2px; background: white; margin: 5px 0; transition: 0.4s; }
+        /* HAMBURGER MOBILE CORRIGIDO */
+        .hamburger { display: none; cursor: pointer; z-index: 6000; position: absolute; right: 0; width: 30px; height: 25px; }
+        .hamburger span { display: block; width: 100%; height: 2px; background: white; margin: 6px 0; transition: 0.4s; }
 
         @media (max-width: 1024px) {
           .hamburger { display: block; }
+          .hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 6px); }
+          .hamburger.open span:nth-child(2) { opacity: 0; }
+          .hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -6px); }
+
           .nav-links { 
             position: fixed; top: 0; right: -100%; width: 100%; height: 100vh; 
             background: black; flex-direction: column; align-items: center; 
-            justify-content: center; transition: 0.5s; 
+            justify-content: center; transition: 0.5s; z-index: 5500;
           }
           .nav-links.active { right: 0; }
           .players-grid { grid-template-columns: 1fr; }
           .spacer-vøid { margin-top: 60px; }
           .sobre-capa { height: 50vh; margin-top: 70px; }
-          .desc-unificada, .marco-item p { text-align: left; }
+          /* TEXTO MANTIDO JUSTIFICADO NO MOBILE */
+          .desc-unificada, .marco-item p { text-align: justify; }
         }
 
         .interactive-zoom:hover { transform: scale(1.02); filter: brightness(1.1); transition: 0.3s ease; }
