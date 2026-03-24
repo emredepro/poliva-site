@@ -1,4 +1,4 @@
-// POLIVESSENSE VERSION 2.6.5 - STABLE HD + FINAL NAV UNIFICATION
+// POLIVESSENSE VERSION 2.6.6 - STABLE HD + FAST PRELOADER (30ms)
 import React, { useState, useEffect } from 'react';
 import Head from 'next/head';
 
@@ -18,10 +18,14 @@ export default function Inicio({ nextTrack, prevTrack }) {
   useEffect(() => {
     const interval = setInterval(() => {
       setProgress(prev => {
-        if (prev >= 100) { clearInterval(interval); setTimeout(() => setLoading(false), 800); return 100; }
+        if (prev >= 100) { 
+          clearInterval(interval); 
+          setTimeout(() => setLoading(false), 800); 
+          return 100; 
+        }
         return prev + 2;
       });
-    }, 300);
+    }, 30); // VELOCIDADE RESTAURADA PARA 30ms
     return () => clearInterval(interval);
   }, []);
 
@@ -56,7 +60,6 @@ export default function Inicio({ nextTrack, prevTrack }) {
       </div>
 
       <div className={`page-content ${loading ? 'hidden' : 'visible'}`}>
-        {/* NAVBAR UNIFICADA */}
         <nav className="navbar">
           <div className="nav-container">
             <img src="/logo-poliva.png" alt="Logo" className="nav-logo" />
