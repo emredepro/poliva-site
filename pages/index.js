@@ -1,4 +1,4 @@
-// POLIVESSENSE VERSION 2.5.5 - STABLE HD + SHORT FOOTER + MOBILE HAMBURGER (HOME COMPONENT)
+// POLIVESSENSE VERSION 2.5.6 - STABLE HD + TEXTURE BG + UPDATED NAV
 import React, { useState, useEffect } from 'react';
 import Head from 'next/head';
 
@@ -33,7 +33,7 @@ export default function Inicio({ nextTrack, prevTrack }) {
   }, [playlists.length]);
 
   return (
-    <div style={{ backgroundColor: 'black', minHeight: '100vh', color: 'white', overflowX: 'hidden', fontFamily: "'Avant Garde', sans-serif" }}>
+    <div className="home-container">
       <Head>
         <title>pøliva | pølivessense</title>
         <link rel="icon" href={`/favicon.ico?v=${new Date().getTime()}`} />
@@ -49,6 +49,7 @@ export default function Inicio({ nextTrack, prevTrack }) {
         </div>
       )}
 
+      {/* VIDEO DE FUNDO */}
       <div style={{ position: 'fixed', inset: 0, zIndex: 0 }}>
         <video autoPlay muted loop playsInline style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 0.35 }}>
           <source src="/video-home-loop.mp4" type="video/mp4" />
@@ -65,10 +66,11 @@ export default function Inicio({ nextTrack, prevTrack }) {
             </div>
 
             <div className={`nav-links ${isMenuOpen ? 'active' : ''}`}>
-             <a href="/" className="nav-item" onClick={() => setIsMenuOpen(false)}>iníciø</a>
+              <a href="/" className="nav-item" onClick={() => setIsMenuOpen(false)}>iníciø</a>
               <a href="/sobre" className="nav-item" onClick={() => setIsMenuOpen(false)}>søbre pøliva</a>
               <a href="/shows" className="nav-item" onClick={() => setIsMenuOpen(false)}>shøws aø vivø</a>
-              <a href="#" className="nav-item" onClick={() => setIsMenuOpen(false)}>singles & álbuns</a>
+              {/* LINK ATUALIZADO PARA /singles */}
+              <a href="/singles" className="nav-item" onClick={() => setIsMenuOpen(false)}>singles & álbuns</a>
               <a href="#" className="nav-item" onClick={() => setIsMenuOpen(false)}>agenda</a>
               <a href="#" className="nav-item" onClick={() => setIsMenuOpen(false)}>cøntatø</a>
             </div>
@@ -110,7 +112,7 @@ export default function Inicio({ nextTrack, prevTrack }) {
 
           <section className="section-block spacer-lg" style={{ marginBottom: '100px' }}>
              <div className="brutal-header mobile-boost anim-fade-up">
-                <h3>playlists para as melhores ocasiões:</h3>
+               <h3>playlists para as melhores ocasiões:</h3>
                 <p className="bold-sub">o que o seu momento pede?</p>
              </div>
              <div className="carousel-main">
@@ -151,6 +153,28 @@ export default function Inicio({ nextTrack, prevTrack }) {
       </div>
 
       <style jsx global>{`
+        .home-container { 
+          background: black; 
+          min-height: 100vh; 
+          color: white; 
+          overflow-x: hidden; 
+          font-family: 'Avant Garde', sans-serif;
+          position: relative;
+        }
+
+        /* TEXTURA DE FUNDO 0.1 */
+        .home-container::before {
+          content: "";
+          position: fixed;
+          top: 0; left: 0; width: 100%; height: 100%;
+          background-image: url('/patterns_poliva_simbolos-07.jpg');
+          background-size: cover;
+          background-position: center;
+          opacity: 0.1;
+          z-index: 1;
+          pointer-events: none;
+        }
+
         .preloader { position: fixed; inset: 0; background: black; z-index: 9999; display: flex; align-items: center; justify-content: center; }
         .loader-box { width: 220px; text-align: center; display: flex; flex-direction: column; align-items: center; }
         .bar-bg { width: 100%; height: 2px; background: #111; margin: 15px 0; }
