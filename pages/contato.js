@@ -34,13 +34,13 @@ export default function Contato() {
         <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" />
       </a>
 
-      {/* CAPA PADRONIZADA 65VH - BLINDAGEM DE EXTENSÃO */}
+      {/* CAPA PADRONIZADA 65VH */}
       <header className="contato-capa anim-fade-in">
         <img 
           src="/ao-vivo-show.jpg" 
           alt="Pøliva ao vivo" 
           className="img-full" 
-          onError={(e) => { e.target.src = "/ao-vivo-show.JPG" }} // Fallback se falhar minúsculo
+          onError={(e) => { e.target.src = "/ao-vivo-show.JPG" }} 
         />
       </header>
 
@@ -51,7 +51,7 @@ export default function Contato() {
           </div>
 
           <div className="form-container">
-            {/* ID DO FORMSPREE INTEGRADO: mwvwevqp */}
+            {/* ID DO FORMSPREE: mwvwevqp */}
             <form action="https://formspree.io/f/mwvwevqp" method="POST" className="contato-form">
               <div className="form-row">
                 <input type="text" name="nome" placeholder="nome" required />
@@ -76,13 +76,12 @@ export default function Contato() {
         </section>
       </main>
 
-      {/* RODAPÉ PADRÃO */}
+      {/* RODAPÉ ATUALIZADO (SEM E-MAIL) */}
       <footer className="footer-black">
         <div className="footer-content anim-fade-up">
           <h4 className="footer-heading">cøntatø</h4>
           <div className="footer-details">
             <p>para shøws e parcerias</p>
-            <p>e-mail: contato@polivaoficial.com.br</p>
             <p>redes sociais: @polivaoficial</p>
             <p className="phone-line">telefone: 22 98802-3803</p>
           </div>
