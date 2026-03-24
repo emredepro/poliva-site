@@ -34,7 +34,8 @@ export default function Singles() {
           <div className={`nav-links ${isMenuOpen ? 'active' : ''}`}>
             <a href="/" className="nav-item">iníciø</a>
             <a href="/sobre" className="nav-item">søbre pøliva</a>
-            <a href="/shows" className="nav-item">shøws aø vivø</a>
+            {/* ATUALIZADO: LINK PARA /shows-ao-vivo */}
+            <a href="/shows-ao-vivo" className="nav-item">shøws aø vivø</a>
             <a href="/singles" className="nav-item active-link">singles & álbuns</a>
             <a href="#" className="nav-item">agenda</a>
             <a href="#" className="nav-item">cøntatø</a>
