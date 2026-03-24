@@ -29,10 +29,12 @@ export default function Agenda() {
         </div>
       </nav>
 
+      {/* WHATSAPP CONFIGURADO */}
       <a href="https://wa.me/message/L5OXQTU6PDIFF1" target="_blank" rel="noopener noreferrer" className="wa-global interactive-zoom">
         <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" />
       </a>
 
+      {/* CAPA COM ENQUADRAMENTO EM 45% */}
       <header className="agenda-capa anim-fade-in">
         <img src="/publico-show.JPG" alt="Público Pøliva" className="img-full" />
       </header>
@@ -43,8 +45,8 @@ export default function Agenda() {
             <h2>Atualizando</h2>
           </div>
           
+          {/* MAPA PADRÃO BRASIL - UNIFICADO */}
           <div className="mapa-container interactive-zoom">
-            {/* Forçando o caminho exato que você confirmou */}
             <img 
               src="/mapa-brasil.png" 
               alt="Mapa Brasil" 
@@ -80,9 +82,15 @@ export default function Agenda() {
 
         .content-wrapper { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
         .brutal-header h2 { font-size: 25.5px; font-weight: bold; text-transform: lowercase; color: white; text-align: center; }
+        
         .spacer-void { margin-top: 100px; margin-bottom: 40px; }
 
-        .mapa-container { width: 100%; max-width: 650px; margin: 0 auto; transition: 0.5s ease; cursor: pointer; }
+        .mapa-container { 
+          width: 100%; max-width: 650px; margin: 0 auto; 
+          transition: 0.5s ease;
+          cursor: pointer;
+        }
+
         .mapa-imagem { 
           width: 100%; height: auto; 
           filter: grayscale(100%) brightness(0.4) opacity(0.5); 
@@ -102,15 +110,24 @@ export default function Agenda() {
 
         @media (max-width: 1024px) {
           .hamburger { display: block; }
-          .nav-links { position: fixed; top: 0; right: -100%; width: 100%; height: 100vh; background: black; flex-direction: column; align-items: center; justify-content: center; transition: 0.5s; z-index: 5500; }
+          .hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 6px); }
+          .hamburger.open span:nth-child(2) { opacity: 0; }
+          .hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -6px); }
+          .nav-links { 
+            position: fixed; top: 0; right: -100%; width: 100%; height: 100vh; 
+            background: black; flex-direction: column; align-items: center; 
+            justify-content: center; transition: 0.5s; z-index: 5500;
+          }
           .nav-links.active { right: 0; }
           .agenda-capa { height: 50vh; }
+          .mapa-imagem { filter: grayscale(0%) brightness(1); opacity: 0.9; }
         }
 
         .anim-fade-up { opacity: 0; transform: translateY(30px); animation: revealUp 0.6s forwards; }
         .anim-fade-in { opacity: 0; animation: fadeIn 1.2s forwards; }
         @keyframes revealUp { to { opacity: 1; transform: translateY(0); } }
         @keyframes fadeIn { to { opacity: 1; } }
+        .interactive-zoom:hover { transform: scale(1.03); filter: brightness(1.1); transition: 0.4s; }
       `}</style>
     </div>
   );
