@@ -29,7 +29,7 @@ export default function Agenda() {
         </div>
       </nav>
 
-      {/* WHATSAPP RECUPERADO */}
+      {/* WHATSAPP CONFIGURADO */}
       <a href="https://wa.me/message/L5OXQTU6PDIFF1" target="_blank" rel="noopener noreferrer" className="wa-global interactive-zoom">
         <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" />
       </a>
@@ -45,15 +45,16 @@ export default function Agenda() {
             <h2>Atualizando</h2>
           </div>
           
-          {/* MAPA COM LÓGICA DE CLIQUE ISOLADO */}
-          <div className="mapa-sudeste-stack">
-            <img src="/sp.png" alt="São Paulo" className="estado-camada" />
-            <img src="/rj.png" alt="Rio de Janeiro" className="estado-camada" />
-            <img src="/mg.png" alt="Minas Gerais" className="estado-camada" />
-            <img src="/es.png" alt="Espírito Santo" className="estado-camada" />
+          {/* MAPA PADRÃO BRASIL */}
+          <div className="mapa-container interactive-zoom">
+            <img 
+              src="/mapa-brasil.png" 
+              alt="Mapa Brasil" 
+              className="mapa-imagem" 
+            />
           </div>
           
-          <p className="citacao-it-branca" style={{ marginTop: '80px' }}>
+          <p className="citacao-it-branca" style={{ marginTop: '60px' }}>
             novos portais se abrindo em breve.
           </p>
         </section>
@@ -81,33 +82,24 @@ export default function Agenda() {
 
         .content-wrapper { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
         .brutal-header h2 { font-size: 25.5px; font-weight: bold; text-transform: lowercase; color: white; text-align: center; }
+        
         .spacer-void { margin-top: 100px; margin-bottom: 40px; }
 
-        .mapa-sudeste-stack {
-          position: relative;
-          width: 100%;
-          max-width: 600px;
-          margin: 60px auto;
-          aspect-ratio: 1/1;
-          pointer-events: none; /* Faz o container ignorar o mouse, focando só nos elementos internos */
-        }
-
-        .estado-camada {
-          position: absolute;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: auto;
-          filter: grayscale(100%) brightness(0.4) opacity(0.5);
-          transition: 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+        .mapa-container { 
+          width: 100%; max-width: 650px; margin: 0 auto; 
+          transition: 0.5s ease;
           cursor: pointer;
-          pointer-events: auto; /* Reativa o mouse apenas na imagem do estado */
         }
 
-        .estado-camada:hover {
-          filter: grayscale(0%) brightness(1.2) drop-shadow(0 0 20px rgba(168, 85, 247, 0.7));
+        .mapa-imagem { 
+          width: 100%; height: auto; 
+          filter: grayscale(100%) brightness(0.4) opacity(0.5); 
+          transition: 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .mapa-container:hover .mapa-imagem { 
+          filter: grayscale(0%) brightness(1.1) drop-shadow(0 0 20px rgba(168, 85, 247, 0.5)); 
           transform: scale(1.02);
-          z-index: 100; /* Traz o estado focado para a frente de todos */
           opacity: 1;
         }
 
@@ -128,7 +120,7 @@ export default function Agenda() {
           }
           .nav-links.active { right: 0; }
           .agenda-capa { height: 50vh; }
-          .estado-camada { filter: grayscale(0%) brightness(1); opacity: 0.9; pointer-events: auto; }
+          .mapa-imagem { filter: grayscale(0%) brightness(1); opacity: 0.9; }
         }
 
         .anim-fade-up { opacity: 0; transform: translateY(30px); animation: revealUp 0.6s forwards; }
