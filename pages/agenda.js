@@ -13,11 +13,9 @@ export default function Agenda() {
       <nav className="navbar">
         <div className="nav-container">
           <img src="/logo-poliva.png" alt="Logo" className="nav-logo" />
-          
           <div className={`hamburger ${isMenuOpen ? 'open' : ''}`} onClick={() => setIsMenuOpen(!isMenuOpen)}>
             <span></span><span></span><span></span>
           </div>
-
           <div className={`nav-links ${isMenuOpen ? 'active' : ''}`}>
             <a href="/" className="nav-item" onClick={() => setIsMenuOpen(false)}>iníciø</a>
             <a href="/sobre" className="nav-item" onClick={() => setIsMenuOpen(false)}>søbre pøliva</a>
@@ -28,6 +26,11 @@ export default function Agenda() {
           </div>
         </div>
       </nav>
+
+      {/* WHATSAPP REINSERIDO */}
+      <a href="https://wa.me/message/L5OXQTU6PDIFF1" target="_blank" rel="noopener noreferrer" className="wa-global interactive-zoom">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" />
+      </a>
 
       {/* CAPA COM ENQUADRAMENTO EM 45% */}
       <header className="agenda-capa anim-fade-in">
@@ -40,16 +43,16 @@ export default function Agenda() {
             <h2>Atualizando</h2>
           </div>
           
-          {/* CONTAINER DO MAPA (AGUARDANDO SVG OU PNGS SEPARADOS) */}
-          <div className="mapa-container">
-             <img 
-              src="/mapa-sudeste.png" 
-              alt="Mapa Sudeste" 
-              className="mapa-placeholder" 
+          {/* MAPA ÚNICO (DÊ UM ESPAÇO MAIOR AQUI) */}
+          <div className="mapa-container interactive-zoom" style={{ marginTop: '40px' }}>
+            <img
+              src="/mapa-brasil.png"
+              alt="Mapa Brasil"
+              className="mapa-imagem"
             />
           </div>
           
-          <p className="citacao-it-branca" style={{ marginTop: '60px' }}>
+          <p className="citacao-it-branca" style={{ marginTop: '80px' }}>
             novos portais se abrindo em breve.
           </p>
         </section>
@@ -70,19 +73,33 @@ export default function Agenda() {
         .nav-item { color: white; text-decoration: none; transition: 0.3s ease; cursor: pointer; }
         .nav-item:hover, .active-link { color: #a855f7 !important; }
 
-        /* CAPA AJUSTADA PARA 45% */
+        .wa-global { position: fixed; bottom: 120px; right: 30px; z-index: 5000; width: 50px; transition: 0.3s; }
+
+        /* AJUSTE DE CAPA - 45% */
         .agenda-capa { width: 100%; height: 65vh; overflow: hidden; margin-top: 80px; }
         .img-full { width: 100%; height: 100%; object-fit: cover; object-position: center 45%; filter: grayscale(20%); }
 
         .content-wrapper { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
         .brutal-header h2 { font-size: 25.5px; font-weight: bold; text-transform: lowercase; color: white; text-align: center; }
+        
+        /* ESPAÇO ENTRE TÍTULO E MAPA */
         .spacer-void { margin-top: 100px; margin-bottom: 80px; }
 
-        .mapa-container { 
-          width: 100%; max-width: 600px; margin: 0 auto; 
-          text-align: center;
+        .mapa-container {
+          width: 100%; max-width: 650px; margin: 0 auto;
+          position: relative; cursor: pointer;
+          transition: 0.5s ease;
         }
-        .mapa-placeholder { width: 100%; opacity: 0.4; filter: grayscale(100%); }
+        .mapa-imagem {
+          width: 100%; height: auto;
+          filter: grayscale(100%) brightness(0.5) opacity(0.6);
+          transition: 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .mapa-container:hover .mapa-imagem {
+          filter: grayscale(0%) brightness(1.1) drop-shadow(0 0 20px rgba(168, 85, 247, 0.5));
+          transform: scale(1.02);
+          opacity: 1;
+        }
 
         .citacao-it-branca { font-size: 15px; font-style: italic; color: white; opacity: 0.7; text-align: center; display: block; }
 
@@ -94,19 +111,21 @@ export default function Agenda() {
           .hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 6px); }
           .hamburger.open span:nth-child(2) { opacity: 0; }
           .hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -6px); }
-          .nav-links { 
-            position: fixed; top: 0; right: -100%; width: 100%; height: 100vh; 
-            background: black; flex-direction: column; align-items: center; 
+          .nav-links {
+            position: fixed; top: 0; right: -100%; width: 100%; height: 100vh;
+            background: black; flex-direction: column; align-items: center;
             justify-content: center; transition: 0.5s; z-index: 5500;
           }
           .nav-links.active { right: 0; }
           .agenda-capa { height: 50vh; }
+          .mapa-imagem { filter: grayscale(0%) brightness(1); opacity: 0.9; }
         }
 
         .anim-fade-up { opacity: 0; transform: translateY(30px); animation: revealUp 0.6s forwards; }
         .anim-fade-in { opacity: 0; animation: fadeIn 1.2s forwards; }
         @keyframes revealUp { to { opacity: 1; transform: translateY(0); } }
         @keyframes fadeIn { to { opacity: 1; } }
+        .interactive-zoom:hover { transform: scale(1.03); filter: brightness(1.1); }
       `}</style>
     </div>
   );
