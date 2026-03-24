@@ -38,7 +38,8 @@ export default function Sobre() {
             <a href="/" className="nav-item">iníciø</a>
             <a href="/sobre" className="nav-item active-link">søbre pøliva</a>
             <a href="/shows" className="nav-item">shøws aø vivø</a>
-            <a href="#" className="nav-item">singles & álbuns</a>
+            {/* ATUALIZADO: LINK PARA /singles */}
+            <a href="/singles" className="nav-item">singles & álbuns</a>
             <a href="#" className="nav-item">agenda</a>
             <a href="#" className="nav-item">cøntatø</a>
           </div>
