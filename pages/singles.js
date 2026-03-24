@@ -60,7 +60,7 @@ export default function Singles() {
           {/* TEXTO ATUALIZADO 1 */}
           <p className="desc-justificada">
             A trajetória da musicalidade de pøliva tem como base a potência da voz e do violão, onde a alma das canções foi revelada em sua essência nua. 
-            Antes da nova fase do seu rito musical, houve a semente com os singles <strong>Depressa, TOQES, OTT, Há Mar.</strong>
+            Antes da nova fase do seu rito musical, houve a semente com os singles: <strong>Depressa, TOQES, OTT, Há Mar.</strong>
           </p>
         </section>
 
@@ -91,12 +91,7 @@ export default function Singles() {
           </div>
           {/* TEXTO ATUALIZADO 2 */}
           <p className="desc-justificada">
-            O álbum <strong>pølivessense (2026)</strong> marca o despertar do <strong>Rock Xamânico</strong> no cenário nacional. 
-            Este projeto conceitual, fundamentado nos 5 elementos e nas 7 Leis Herméticas, é o ponto onde a energia sutil encontra a distorção 
-            para criar um "show-portal" visceral. O portal de entrada dessa jornada é o single <strong>"Depressa"</strong>, 
-            que personifica o elemento <strong>Éter</strong> e sela o rebranding oficial da artista em uma narrativa de morte e renascimento. 
-            Unindo a força dos tambores, a profundidade da poesia e o peso do rock, o álbum apresenta uma tracklist oficial composta por: 
-            <strong>Depressa, Se Tiver Vontade, fe-li-ci-da-de, Viver, Sonhos, OTT e Viver - Remix.</strong>
+            O álbum <strong>pølivessense (2026)</strong> marca o despertar do <strong>Rock Xamânico</strong> no cenário nacional. Este projeto conceitual, fundamentado nos 5 elementos e nas 7 Leis Herméticas, é o ponto onde a energia sutil encontra a distorção para criar um "show-portal" visceral. O portal de entrada dessa jornada é o single <strong>"Depressa"</strong>, que personifica o elemento <strong>Éter</strong> e sela o rebranding oficial da artista em uma narrativa de morte e renascimento. Unindo a força dos tambores, a profundidade da poesia e o peso do rock, o álbum apresenta uma tracklist oficial composta por: <strong>Depressa, Se Tiver Vontade, fe-li-ci-da-de, Viver, Sonhos, OTT e Viver - Remix.</strong>
           </p>
         </section>
 
@@ -180,7 +175,7 @@ export default function Singles() {
               É entender que nessa liberdade só existe um lugar, onde o amor não é o possuir.<br/><br/>
               É o admirar, no outro se encontrar, se apaixonar, plantar e cuidar.<br/><br/>
               É o admirar, no outro se encontrar, se apaixonar, plantar e cuidar.<br/><br/>
-              E se eu for para onde quer que eu vá, sei que haverá motivos pra voltar. E o que importa nessa direção é que sempre haverá um mar no caminho.<br/><br/>
+              E se eu for para onde quer que eu vá, sei que haverá motivos pra voltar. E o que importa nessa direção e que sempre haverá um mar no caminho.<br/><br/>
               E se eu for para onde quer que eu vá, sempre haverá motivos pra voltar. E o que importa nessa direção é que sempre haverá um mar no caminho.<br/><br/>
               Vejo o mar e o seu brilho em um pôr do sol me lembra o seu olhar.<br/>
               É entender que nessa liberdade só existe um lugar. Onde o amor não é o possuir.
