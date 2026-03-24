@@ -45,7 +45,7 @@ export default function Agenda() {
             <h2>Atualizando</h2>
           </div>
           
-          {/* MAPA COM LÓGICA DE TRANSPARÊNCIA ATRAVESSÁVEL */}
+          {/* MAPA COM LÓGICA DE CLIQUE ISOLADO */}
           <div className="mapa-sudeste-stack">
             <img src="/sp.png" alt="São Paulo" className="estado-camada" />
             <img src="/rj.png" alt="Rio de Janeiro" className="estado-camada" />
@@ -89,6 +89,7 @@ export default function Agenda() {
           max-width: 600px;
           margin: 60px auto;
           aspect-ratio: 1/1;
+          pointer-events: none; /* Faz o container ignorar o mouse, focando só nos elementos internos */
         }
 
         .estado-camada {
@@ -100,14 +101,13 @@ export default function Agenda() {
           filter: grayscale(100%) brightness(0.4) opacity(0.5);
           transition: 0.6s cubic-bezier(0.23, 1, 0.32, 1);
           cursor: pointer;
-          /* O segredo para clicar através da transparência */
-          pointer-events: visiblePainted; 
+          pointer-events: auto; /* Reativa o mouse apenas na imagem do estado */
         }
 
         .estado-camada:hover {
           filter: grayscale(0%) brightness(1.2) drop-shadow(0 0 20px rgba(168, 85, 247, 0.7));
           transform: scale(1.02);
-          z-index: 10;
+          z-index: 100; /* Traz o estado focado para a frente de todos */
           opacity: 1;
         }
 
@@ -128,7 +128,7 @@ export default function Agenda() {
           }
           .nav-links.active { right: 0; }
           .agenda-capa { height: 50vh; }
-          .estado-camada { filter: grayscale(0%) brightness(1); opacity: 0.9; }
+          .estado-camada { filter: grayscale(0%) brightness(1); opacity: 0.9; pointer-events: auto; }
         }
 
         .anim-fade-up { opacity: 0; transform: translateY(30px); animation: revealUp 0.6s forwards; }
