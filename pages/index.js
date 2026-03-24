@@ -1,4 +1,4 @@
-// POLIVESSENSE VERSION 2.6.0 - STABLE HD + MOBILE NAV FIX + JUSTIFIED TEXT
+// POLIVESSENSE VERSION 2.6.5 - STABLE HD + FINAL NAV UNIFICATION
 import React, { useState, useEffect } from 'react';
 import Head from 'next/head';
 
@@ -21,7 +21,7 @@ export default function Inicio({ nextTrack, prevTrack }) {
         if (prev >= 100) { clearInterval(interval); setTimeout(() => setLoading(false), 800); return 100; }
         return prev + 2;
       });
-    }, 30);
+    }, 300);
     return () => clearInterval(interval);
   }, []);
 
@@ -56,22 +56,22 @@ export default function Inicio({ nextTrack, prevTrack }) {
       </div>
 
       <div className={`page-content ${loading ? 'hidden' : 'visible'}`}>
+        {/* NAVBAR UNIFICADA */}
         <nav className="navbar">
           <div className="nav-container">
             <img src="/logo-poliva.png" alt="Logo" className="nav-logo" />
            
-            {/* HAMBURGER CORRIGIDO COM Z-INDEX ALTO */}
             <div className={`hamburger ${isMenuOpen ? 'open' : ''}`} onClick={() => setIsMenuOpen(!isMenuOpen)}>
               <span></span><span></span><span></span>
             </div>
 
             <div className={`nav-links ${isMenuOpen ? 'active' : ''}`}>
-              <a href="/" className="nav-item" onClick={() => setIsMenuOpen(false)}>iníciø</a>
+              <a href="/" className="nav-item active-link" onClick={() => setIsMenuOpen(false)}>iníciø</a>
               <a href="/sobre" className="nav-item" onClick={() => setIsMenuOpen(false)}>søbre pøliva</a>
               <a href="/shows-ao-vivo" className="nav-item" onClick={() => setIsMenuOpen(false)}>shøws aø vivø</a>
               <a href="/singles" className="nav-item" onClick={() => setIsMenuOpen(false)}>singles & álbuns</a>
-              <a href="#" className="nav-item" onClick={() => setIsMenuOpen(false)}>agenda</a>
-              <a href="#" className="nav-item" onClick={() => setIsMenuOpen(false)}>cøntatø</a>
+              <a href="/agenda" className="nav-item" onClick={() => setIsMenuOpen(false)}>agenda</a>
+              <a href="/contato" className="nav-item" onClick={() => setIsMenuOpen(false)}>cøntatø</a>
             </div>
           </div>
         </nav>
@@ -169,9 +169,8 @@ export default function Inicio({ nextTrack, prevTrack }) {
         .nav-links { display: flex; gap: 40px; font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; font-weight: bold; }
        
         .nav-item { color: white; text-decoration: none; transition: 0.3s ease; cursor: pointer; }
-        .nav-item:hover { color: #a855f7 !important; }
+        .nav-item:hover, .active-link { color: #a855f7 !important; }
 
-        /* HAMBURGER MOBILE CORRIGIDO */
         .hamburger { display: none; cursor: pointer; z-index: 6000; position: absolute; right: 0; width: 30px; height: 25px; }
         .hamburger span { display: block; width: 100%; height: 2px; background: white; margin: 6px 0; transition: 0.4s; }
 
@@ -192,7 +191,6 @@ export default function Inicio({ nextTrack, prevTrack }) {
         .main-scroll { padding-top: 250px; text-align: center; max-width: 1200px; margin: 0 auto; }
         .hero-title { font-size: clamp(2.2rem, 8vw, 4.5rem); font-weight: bold; line-height: 1.1; }
         
-        /* CITAÇÃO JUSTIFICADA AO MEIO */
         .justified-center-text { 
           text-align: justify; 
           text-align-last: center; 
@@ -243,7 +241,7 @@ export default function Inicio({ nextTrack, prevTrack }) {
         @media (max-width: 480px) {
           .main-scroll { padding-top: 150px; }
           .citation.responsiva { padding-left: 20px; }
-          .justified-center-text { text-align: center; } /* Em telas muito pequenas o justify pode criar espaços estranhos */
+          .justified-center-text { text-align: center; }
         }
       `}</style>
     </div>
