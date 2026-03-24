@@ -27,11 +27,11 @@ export default function Shows() {
         <title>shøws aø vivø | pølivessense</title>
       </Head>
 
+      {/* NAVBAR UNIFICADA */}
       <nav className="navbar">
         <div className="nav-container">
           <img src="/logo-poliva.png" alt="Logo" className="nav-logo" />
           
-          {/* HAMBURGER CORRIGIDO COM Z-INDEX ALTO */}
           <div className={`hamburger ${isMenuOpen ? 'open' : ''}`} onClick={() => setIsMenuOpen(!isMenuOpen)}>
             <span></span><span></span><span></span>
           </div>
@@ -39,10 +39,10 @@ export default function Shows() {
           <div className={`nav-links ${isMenuOpen ? 'active' : ''}`}>
             <a href="/" className="nav-item" onClick={() => setIsMenuOpen(false)}>iníciø</a>
             <a href="/sobre" className="nav-item" onClick={() => setIsMenuOpen(false)}>søbre pøliva</a>
-            <a href="/shows" className="nav-item active-link" onClick={() => setIsMenuOpen(false)}>shøws aø vivø</a>
+            <a href="/shows-ao-vivo" className="nav-item active-link" onClick={() => setIsMenuOpen(false)}>shøws aø vivø</a>
             <a href="/singles" className="nav-item" onClick={() => setIsMenuOpen(false)}>singles & álbuns</a>
-            <a href="#" className="nav-item" onClick={() => setIsMenuOpen(false)}>agenda</a>
-            <a href="#" className="nav-item" onClick={() => setIsMenuOpen(false)}>cøntatø</a>
+            <a href="/agenda" className="nav-item" onClick={() => setIsMenuOpen(false)}>agenda</a>
+            <a href="/contato" className="nav-item" onClick={() => setIsMenuOpen(false)}>cøntatø</a>
           </div>
         </div>
       </nav>
@@ -221,7 +221,6 @@ export default function Shows() {
         .registros-list { display: flex; flex-direction: column; align-items: center; gap: 40px; }
         .registro-img { width: 100%; max-width: 800px; height: auto; border: 1px solid #111; display: block; }
         
-        /* HAMBURGER MOBILE CORRIGIDO */
         .hamburger { display: none; cursor: pointer; z-index: 6000; position: absolute; right: 0; width: 30px; height: 25px; }
         .hamburger span { display: block; width: 100%; height: 2px; background: white; margin: 6px 0; transition: 0.4s; }
         
@@ -240,7 +239,6 @@ export default function Shows() {
           .feed-grid-cards, .reels-grid { grid-template-columns: 1fr; gap: 20px; }
           .white-card-slim { height: 100px; }
           .cta-buttons { flex-direction: column; align-items: center; }
-          /* TEXTO MANTIDO JUSTIFICADO NO MOBILE */
           .desc-ajustado { text-align: justify; }
         }
         
