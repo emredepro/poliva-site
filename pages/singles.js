@@ -34,7 +34,6 @@ export default function Singles() {
           <div className={`nav-links ${isMenuOpen ? 'active' : ''}`}>
             <a href="/" className="nav-item">iníciø</a>
             <a href="/sobre" className="nav-item">søbre pøliva</a>
-            {/* ATUALIZADO: LINK PARA /shows-ao-vivo */}
             <a href="/shows-ao-vivo" className="nav-item">shøws aø vivø</a>
             <a href="/singles" className="nav-item active-link">singles & álbuns</a>
             <a href="#" className="nav-item">agenda</a>
@@ -47,14 +46,14 @@ export default function Singles() {
         <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" />
       </a>
 
-      {/* CAPA 80% */}
-      <header className="main-capa anim-fade-in">
-        <img src="/depressa-novo.jpg" alt="Depressa Capa" className="img-capa-full" />
+      {/* CAPA COM 65VH E POSICIONAMENTO SUBIDO (80%) */}
+      <header className="main-capa-ajustada anim-fade-in">
+        <img src="/depressa-novo.jpg" alt="Depressa Capa" className="img-crop-ajustada" />
       </header>
 
       <main className="content-wrapper">
         <section className="intro-section anim-fade-up">
-          <div className="brutal-header">
+          <div className="brutal-header center">
             <h2>Singles</h2>
           </div>
           <p className="desc-justificada">
@@ -63,7 +62,7 @@ export default function Singles() {
           </p>
         </section>
 
-        {/* CARROSSEL DE PONTA A PONTA */}
+        {/* CARROSSEL */}
         <section className="carousel-full-width anim-fade-up">
           <div className="carousel-container">
             <button className="nav-btn prev" onClick={() => setCurrentSlide(currentSlide === 0 ? singlesData.length - 1 : currentSlide - 1)}>‹</button>
@@ -86,7 +85,7 @@ export default function Singles() {
           <div className="brutal-header center">
             <h2>Álbum</h2>
           </div>
-          <div className="album-art-box interactive-zoom">
+          <div className="album-art-box reduced interactive-zoom">
             <img src="/polivessense-album.jpg" alt="Álbum Polivessense" className="img-album" />
           </div>
           <p className="desc-justificada">
@@ -103,13 +102,14 @@ export default function Singles() {
           <div className="brutal-header center">
             <h2>Depressa</h2>
           </div>
-          <a href="#" className="ouca-btn-anim margin-v">Pré Save Aqui</a>
           <div className="album-art-box interactive-zoom">
             <img src="/depressa-2026.jpg" alt="Depressa 2026" className="img-album" />
           </div>
+          <div style={{ textAlign: 'center', marginTop: '30px' }}>
+            <a href="#" className="ouca-btn-anim">Pré Save Aqui</a>
+          </div>
         </section>
 
-        {/* LETRAS */}
         <section className="letras-section anim-fade-up">
           <div className="brutal-header center spacer-lg">
             <h2 className="title-gold">Letras</h2>
@@ -117,7 +117,7 @@ export default function Singles() {
 
           <div className="letra-bloco">
             <h3>Depressa</h3>
-            <pre>
+            <pre className="letra-justificada">
               Dentro de mim sinto o tempo correr e a vontade de ver seu sorriso aqui.<br/>
               Perto de mim sinto o amor crescer e que pena não ter essa loucura em mim.<br/><br/>
               Sinto que vou precisar pousar em algum lugar e preciso ver você lá<br/><br/>
@@ -130,7 +130,7 @@ export default function Singles() {
 
           <div className="letra-bloco">
             <h3>TOQES</h3>
-            <pre>
+            <pre className="letra-justificada">
               Se isso é tudo o que você precisa, será tudo o que eu serei.<br/>
               Só não chore quando anoitecer<br/><br/>
               Nessa distância de olhares, o sol nos une quando ele nasce<br/>
@@ -153,7 +153,7 @@ export default function Singles() {
 
           <div className="letra-bloco">
             <h3>OTT</h3>
-            <pre>
+            <pre className="letra-justificada">
               Você passa o tempo todo querendo entender o sorriso, mas não quer sorrir.<br/>
               Só dá meia volta e espera ter o que eles tem.<br/><br/>
               Você jura o tempo todo que a felicidade convém, mas o sossego lhe serve bem.<br/>
@@ -167,9 +167,9 @@ export default function Singles() {
             </pre>
           </div>
 
-          <div className="letra-bloco">
+          <div className="letra-bloco" style={{ paddingBottom: '200px' }}>
             <h3>Há Mar</h3>
-            <pre>
+            <pre className="letra-justificada">
               Não há clichê. Não há talvez um só lugar. Te vejo no céu, sinto no ar e em todas as partes que eu lembrar você. Que lembrar você.<br/><br/>
               Vejo o mar e o seu brilho em um pôr do sol me lembra o seu olhar.<br/>
               É entender que nessa liberdade só existe um lugar, onde o amor não é o possuir.<br/><br/>
@@ -199,8 +199,8 @@ export default function Singles() {
         .nav-item:hover, .active-link { color: #a855f7 !important; }
         .wa-global { position: fixed; bottom: 120px; right: 30px; z-index: 5000; width: 50px; }
 
-        .main-capa { width: 100%; height: 65vh; overflow: hidden; margin-top: 80px; }
-        .img-capa-full { width: 100%; height: 100%; object-fit: cover; object-position: center 40%; filter: grayscale(20%); }
+        .main-capa-ajustada { width: 100%; height: 65vh; overflow: hidden; margin-top: 80px; }
+        .img-crop-ajustada { width: 100%; height: 100%; object-fit: cover; object-position: center 80%; filter: grayscale(20%); }
 
         .content-wrapper { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
         
@@ -218,9 +218,8 @@ export default function Singles() {
         .capa-wrapper { width: 300px; aspect-ratio: 1/1; margin-bottom: 30px; box-shadow: 0 20px 50px rgba(0,0,0,0.5); }
         .capa-img { width: 100%; height: 100%; object-fit: cover; }
         
-        .ouca-btn-anim { background: none; border: 1px solid #a855f7; color: #a855f7; padding: 12px 35px; font-weight: bold; text-decoration: none; text-transform: lowercase; transition: 0.4s; }
+        .ouca-btn-anim { display: inline-block; background: none; border: 1px solid #a855f7; color: #a855f7; padding: 12px 35px; font-weight: bold; text-decoration: none; text-transform: lowercase; transition: 0.4s; }
         .ouca-btn-anim:hover { background: #a855f7; color: black; transform: scale(1.1); box-shadow: 0 0 20px rgba(168, 85, 247, 0.4); }
-        .margin-v { display: inline-block; margin-bottom: 40px; }
 
         .nav-btn { position: absolute; top: 50%; transform: translateY(-50%); background: none; border: none; color: white; font-size: 60px; cursor: pointer; z-index: 100; opacity: 0.3; transition: 0.3s; }
         .nav-btn:hover { opacity: 1; color: #a855f7; }
@@ -228,13 +227,15 @@ export default function Singles() {
         .next { right: 50px; }
 
         /* ALBUM */
-        .album-art-box { width: 100%; max-width: 600px; margin: 40px auto; border: 1px solid #222; }
+        .album-art-box { width: 100%; max-width: 600px; margin: 40px auto; border: 1px solid #222; transition: 0.4s; }
+        .album-art-box.reduced { max-width: 480px; } 
         .img-album { width: 100%; display: block; }
 
         /* LETRAS */
         .letra-bloco { margin-bottom: 80px; text-align: center; }
-        .letra-bloco h3 { font-size: 20px; color: #a855f7; margin-bottom: 30px; text-transform: lowercase; font-weight: bold; }
+        .letra-bloco h3 { font-size: 20px; color: #a855f7; margin-bottom: 30px; text-transform: none; font-weight: bold; }
         .letra-bloco pre { font-family: inherit; font-size: 16px; line-height: 1.8; color: #aaa; white-space: pre-wrap; }
+        .letra-justificada { text-align: justify; max-width: 800px; margin: 0 auto; }
         .spacer-lg { margin-top: 150px; }
         .title-gold { color: #fff; border-bottom: 1px solid #a855f7; display: inline-block; padding-bottom: 10px; }
 
@@ -242,7 +243,7 @@ export default function Singles() {
         .anim-fade-in { opacity: 0; animation: fadeIn 1.2s forwards; }
         @keyframes revealUp { to { opacity: 1; transform: translateY(0); } }
         @keyframes fadeIn { to { opacity: 1; } }
-        .interactive-zoom:hover { transform: scale(1.03); filter: brightness(1.1); transition: 0.4s; }
+        .interactive-zoom:hover { transform: scale(1.03); filter: brightness(1.1); }
 
         @media (max-width: 1024px) {
           .hamburger { display: block; }
@@ -251,6 +252,7 @@ export default function Singles() {
           .nav-btn { display: none; }
           .carousel-full-width { padding: 40px 0; }
           .capa-wrapper { width: 250px; }
+          .letra-justificada { text-align: left; }
         }
       `}</style>
     </div>
