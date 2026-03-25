@@ -34,19 +34,19 @@ export default function Agenda() {
         <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" />
       </a>
 
-      {/* CAPA */}
+      {/* CAPA - ENQUADRAMENTO 45% */}
       <header className="agenda-capa anim-fade-in">
         <img src="/publico-show.jpg" alt="Público Pøliva" className="img-full" />
       </header>
 
       <main className="content-wrapper">
         <section className="section-block anim-fade-up">
-          {/* TITULO NO PADRÃO SOBRE */}
+          {/* TÍTULO NO PADRÃO SOBRE */}
           <div className="brutal-header center spacer-void">
             <h2>pølivessense, o show - turnê 2026</h2>
           </div>
           
-          {/* IMAGEM PEQUENA COM BORDA ARREDONDADA */}
+          {/* IMAGEM PEQUENA ARREDONDADA */}
           <div className="show-image-container center">
             <img 
               src="/quadrado-show.png" 
@@ -55,9 +55,9 @@ export default function Agenda() {
             />
           </div>
           
-          {/* ATUALIZANDO EM ITALICO SEM NEGRITO */}
+          {/* PALAVRA ATUALIZANDO EM ITÁLICO */}
           <p className="atualizando-text">
-            atualizando...
+            <em>atualizando...</em>
           </p>
         </section>
       </main>
@@ -83,37 +83,36 @@ export default function Agenda() {
         .img-full { width: 100%; height: 100%; object-fit: cover; object-position: center 45%; filter: grayscale(20%); }
 
         .content-wrapper { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
+        
+        /* TÍTULO PADRÃO SOBRE */
         .brutal-header h2 { font-size: 32px; font-weight: bold; text-transform: lowercase; color: white; text-align: center; }
-        .spacer-void { margin-top: 100px; margin-bottom: 50px; }
+        .spacer-void { margin-top: 100px; margin-bottom: 40px; }
 
         .center { text-align: center; }
-        
+
         /* ESTILO DA IMAGEM PEQUENA ARREDONDADA */
         .show-image-container { width: 100%; margin-bottom: 30px; }
         .show-thumb { 
           width: 300px; 
           height: auto; 
           border-radius: 20px; 
-          box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+          box-shadow: 0 15px 40px rgba(0,0,0,0.6);
           transition: 0.4s ease;
         }
 
-        /* ESTILO DO TEXTO ATUALIZANDO */
+        /* TEXTO ATUALIZANDO */
         .atualizando-text { 
           font-size: 18px; 
-          font-style: italic; 
-          font-weight: normal; 
           color: white; 
-          opacity: 0.8; 
+          opacity: 0.7; 
           text-align: center; 
-          display: block; 
-          margin-top: 20px;
+          font-weight: normal;
         }
 
         .hamburger { display: none; cursor: pointer; z-index: 6000; position: absolute; right: 0; width: 30px; height: 25px; }
         .hamburger span { display: block; width: 100%; height: 2px; background: white; margin: 6px 0; transition: 0.4s; }
 
-        .interactive-zoom:hover { transform: scale(1.03); filter: brightness(1.1); }
+        .interactive-zoom:hover { transform: scale(1.03); filter: brightness(1.1); transition: 0.4s; }
 
         @media (max-width: 1024px) {
           .hamburger { display: block; }
@@ -124,6 +123,7 @@ export default function Agenda() {
           .nav-links.active { right: 0; }
           .agenda-capa { height: 50vh; }
           .show-thumb { width: 250px; }
+          .brutal-header h2 { font-size: 26px; }
         }
 
         .anim-fade-up { opacity: 0; transform: translateY(30px); animation: revealUp 0.6s forwards; }
