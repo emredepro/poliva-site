@@ -4,112 +4,156 @@ import Head from 'next/head';
 export default function MapaCultural() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  // Simulando a "Base de Dados" dos parceiros para fácil gestão
+  // BASE DE DADOS DOS PARCEIROS (Exemplo para teste)
   const parceiros = {
     diamond: [
-      { id: 1, nome: "Nome da Marca Diamond", img: "/diamond-exemplo.jpg", link: "#", bio: "Onde o Rock encontra o sabor em Cabo Frio." }
+      { id: 1, nome: "EXEMPLO DIAMOND", img: "/publico-show.jpg", link: "https://wa.me/seunumerogrupo", bio: "O ponto de encontro oficial da cena autoral. Use o cupom POLIVA no balcão.", bairro: "Passagem" }
     ],
     gold: [
-      { id: 2, nome: "Loja Gold 01", img: "/gold-thumb.jpg", link: "#", bairro: "Passagem" }
+      { id: 2, nome: "CAFÉ DO ROCK", img: "/quadrado-show.png", link: "#", bairro: "Centro", benefício: "Shot de Café Grátis" },
+      { id: 3, nome: "LOJA VIBE", img: "/patterns_poliva_simbolos-07.jpg", link: "#", bairro: "Vila Nova", benefício: "15% OFF" }
     ],
     silver: [
-      { id: 3, nome: "Café Silver", bairro: "Centro", benefício: "10% OFF" }
+      { id: 4, nome: "Bistrô da Vila", bairro: "Braga", benefício: "Sobremesa Cortesia" },
+      { id: 5, nome: "Surf Shop CF", bairro: "Peró", benefício: "Sorteio Mensal" }
     ]
   };
 
   return (
     <div className="mapa-page">
       <Head>
-        <title>mapa cultural | pøliva cf</title>
+        <title>mapa cultural | pølivessense</title>
       </Head>
 
-      {/* NAVBAR (A mesma das outras páginas) */}
-      <nav className="navbar">
-        <div className="nav-container">
-          <img src="/logo-poliva.png" alt="Logo" className="nav-logo" />
-          <div className={`nav-links ${isMenuOpen ? 'active' : ''}`}>
-             {/* Links aqui... */}
-          </div>
-        </div>
-      </nav>
-
-      <main className="mapa-content">
+      <main className="mapa-container">
+        {/* HEADER BRUTALISTA */}
         <header className="mapa-header anim-fade-in">
-          <h1 className="glitch-text">MAPA CULTURAL PØLIVA</h1>
-          <p className="subtitle">CABO FRIO: O EPICENTRO DO NOVO ROCK</p>
+          <div className="voltar-btn"><a href="/">← vøltar</a></div>
+          <h1 className="title-glitch">MAPA CULTURAL PØLIVA</h1>
+          <p className="subtitle">CABO FRIO: O EPICENTRO DO NOVO ROCK AUTORAL</p>
+          <div className="divider-neon"></div>
         </header>
 
-        {/* ÁREA DO MAPA INTERATIVO (Futuro Iframe do Google Maps Custom) */}
-        <section className="map-display anim-fade-up">
-           <div className="map-placeholder">
-             <p>[ MAPA INTERATIVO DARK MODE ]</p>
-             <span>Os portais de Cabo Frio estão sendo mapeados...</span>
-           </div>
+        {/* SEÇÃO DIAMOND - O TOPO DA CADEIA */}
+        <section className="section-tier diamond-section anim-fade-up">
+          <h3 className="label-tier diamond-text">✦ EMBAIXADOR DIAMOND ✦</h3>
+          {parceiros.diamond.map(p => (
+            <div key={p.id} className="diamond-card-brutal">
+              <div className="img-wrapper">
+                <img src={p.img} alt={p.nome} />
+                <div className="badge-bairro">{p.bairro}</div>
+              </div>
+              <div className="content-card">
+                <h2>{p.nome}</h2>
+                <p className="bio-diamond">{p.bio}</p>
+                <a href={p.link} className="btn-resgate-diamond">RESGATAR BENEFÍCIO NO WHATSAPP</a>
+              </div>
+            </div>
+          ))}
         </section>
 
-        {/* VITRINE DE PARCEIROS POR COTAS */}
-        <section className="vitrine-container">
-          
-          {/* DIAMOND: Banner de Topo com Luxo */}
-          <div className="diamond-zone anim-fade-up">
-            <h3 className="tier-label">✦ DIAMOND ✦</h3>
-            {parceiros.diamond.map(p => (
-              <div key={p.id} className="diamond-card interactive-zoom">
-                <img src={p.img} alt={p.nome} />
-                <div className="card-info">
-                  <h4>{p.nome}</h4>
-                  <p>{p.bio}</p>
-                  <a href={p.link} className="btn-portal">RESGATAR BENEFÍCIO VIP</a>
+        {/* SEÇÃO GOLD - CARDS ESTILO LINE-UP */}
+        <section className="section-tier gold-section anim-fade-up">
+          <h3 className="label-tier gold-text">✧ PARCEIROS GOLD ✧</h3>
+          <div className="gold-grid">
+            {parceiros.gold.map(p => (
+              <div key={p.id} className="gold-card-brutal">
+                <div className="gold-img-box">
+                    <img src={p.img} alt={p.nome} />
+                    <div className="gold-benefit">{p.benefício}</div>
                 </div>
+                <h4>{p.nome}</h4>
+                <p>{p.bairro}</p>
+                <a href={p.link} className="btn-gold-link">VER PORTAL</a>
               </div>
             ))}
           </div>
-
-          {/* GOLD: Cards Dinâmicos */}
-          <div className="gold-zone anim-fade-up">
-            <h3 className="tier-label">✧ GOLD ✧</h3>
-            <div className="gold-grid">
-               {parceiros.gold.map(p => (
-                 <div key={p.id} className="gold-card">
-                   <img src={p.img} alt={p.nome} />
-                   <h5>{p.nome}</h5>
-                   <span>{p.bairro}</span>
-                 </div>
-               ))}
-            </div>
-          </div>
-
         </section>
+
+        {/* SEÇÃO SILVER - LISTA TIPO FLYER DE SHOW */}
+        <section className="section-tier silver-section anim-fade-up">
+          <h3 className="label-tier silver-text">⬦ ROTA SILVER ⬦</h3>
+          <div className="silver-list">
+            {parceiros.silver.map(p => (
+              <div key={p.id} className="silver-item">
+                <span className="silver-nome">{p.nome}</span>
+                <span className="silver-divider"></span>
+                <span className="silver-bairro">{p.bairro}</span>
+                <span className="silver-tag">{p.benefício}</span>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <footer className="mapa-footer">
+            <p>QUER SER UM PONTO OFICIAL? <a href="/contato">FALE COM O PORTAL</a></p>
+        </footer>
       </main>
 
       <style jsx>{`
-        .mapa-page { background: #050505; min-height: 100vh; color: white; }
+        .mapa-page { background: #000; min-height: 100vh; color: #fff; font-family: inherit; padding-bottom: 100px; }
+        .mapa-container { max-width: 1100px; margin: 0 auto; padding: 20px; }
         
-        .mapa-header { padding: 150px 20px 50px; text-align: center; }
-        .glitch-text { font-size: 45px; letter-spacing: 5px; color: #a855f7; text-shadow: 0 0 15px rgba(168, 85, 247, 0.5); }
-        .subtitle { opacity: 0.6; font-size: 14px; margin-top: 10px; }
+        .voltar-btn { margin-bottom: 40px; }
+        .voltar-btn a { color: #a855f7; text-decoration: none; font-size: 12px; text-transform: uppercase; letter-spacing: 2px; }
 
-        .map-display { width: 90%; max-width: 1200px; margin: 0 auto; height: 450px; background: #111; border: 1px solid #222; position: relative; }
-        .map-placeholder { display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; color: #444; }
+        .mapa-header { text-align: center; padding-top: 60px; margin-bottom: 80px; }
+        .title-glitch { font-size: clamp(32px, 8vw, 60px); font-weight: 900; letter-spacing: -2px; line-height: 0.9; margin-bottom: 15px; }
+        .subtitle { font-size: 12px; letter-spacing: 4px; opacity: 0.6; text-transform: uppercase; }
+        .divider-neon { width: 60px; height: 4px; background: #a855f7; margin: 30px auto; box-shadow: 0 0 15px #a855f7; }
 
-        .tier-label { text-align: center; margin: 80px 0 40px; font-size: 12px; letter-spacing: 4px; color: #a855f7; }
+        .section-tier { margin-bottom: 120px; }
+        .label-tier { text-align: center; font-size: 11px; letter-spacing: 5px; margin-bottom: 40px; text-transform: uppercase; }
+        .diamond-text { color: #a855f7; }
+        .gold-text { color: #d4af37; }
+        .silver-text { color: #aaa; }
 
-        .diamond-card { background: #111; border: 1px solid #a855f7; display: flex; overflow: hidden; max-width: 900px; margin: 0 auto; }
-        .diamond-card img { width: 50%; object-fit: cover; }
-        .card-info { padding: 40px; display: flex; flex-direction: column; justify-content: center; }
-        
-        .btn-portal { border: 1px solid #a855f7; color: #a855f7; padding: 15px; text-align: center; text-decoration: none; margin-top: 20px; font-weight: bold; transition: 0.4s; }
-        .btn-portal:hover { background: #a855f7; color: black; box-shadow: 0 0 20px rgba(168, 85, 247, 0.4); }
+        /* DIAMOND CARD BRUTAL */
+        .diamond-card-brutal { display: grid; grid-template-columns: 1.2fr 1fr; border: 1px solid #a855f7; background: #080808; position: relative; box-shadow: 0 0 40px rgba(168, 85, 247, 0.1); }
+        .img-wrapper { position: relative; height: 450px; overflow: hidden; }
+        .img-wrapper img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(40%); transition: 0.6s; }
+        .diamond-card-brutal:hover .img-wrapper img { filter: grayscale(0%); transform: scale(1.05); }
+        .badge-bairro { position: absolute; bottom: 20px; left: 20px; background: #a855f7; color: #000; padding: 5px 15px; font-weight: 900; font-size: 12px; text-transform: uppercase; }
+        .content-card { padding: 50px; display: flex; flex-direction: column; justify-content: center; }
+        .content-card h2 { font-size: 40px; margin-bottom: 20px; letter-spacing: -1px; }
+        .bio-diamond { color: #ccc; line-height: 1.6; margin-bottom: 30px; font-size: 18px; }
+        .btn-resgate-diamond { background: #a855f7; color: #000; padding: 20px; text-align: center; font-weight: 900; text-decoration: none; transition: 0.4s; }
+        .btn-resgate-diamond:hover { background: #fff; transform: translateY(-3px); box-shadow: 0 10px 30px rgba(168, 85, 247, 0.4); }
 
-        .gold-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; max-width: 1000px; margin: 0 auto; }
-        .gold-card { background: #111; padding: 15px; border: 1px solid #222; text-align: center; transition: 0.3s; }
-        .gold-card:hover { border-color: #a855f7; transform: translateY(-5px); }
-        .gold-card img { width: 100%; border-radius: 5px; margin-bottom: 15px; }
+        /* GOLD GRID */
+        .gold-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; }
+        .gold-card-brutal { border: 1px solid #333; padding: 20px; background: #050505; transition: 0.4s; }
+        .gold-card-brutal:hover { border-color: #d4af37; background: #080808; }
+        .gold-img-box { position: relative; height: 250px; margin-bottom: 20px; overflow: hidden; }
+        .gold-img-box img { width: 100%; height: 100%; object-fit: cover; }
+        .gold-benefit { position: absolute; top: 10px; right: 10px; background: #d4af37; color: #000; padding: 5px 10px; font-size: 10px; font-weight: 900; }
+        .gold-card-brutal h4 { font-size: 22px; margin-bottom: 5px; }
+        .gold-card-brutal p { font-size: 12px; color: #666; margin-bottom: 20px; text-transform: uppercase; }
+        .btn-gold-link { color: #d4af37; text-decoration: none; font-weight: bold; font-size: 12px; border-bottom: 1px solid #d4af37; padding-bottom: 5px; }
 
-        @media (max-width: 768px) {
-          .diamond-card { flex-direction: column; }
-          .diamond-card img { width: 100%; height: 250px; }
+        /* SILVER LIST */
+        .silver-list { border-top: 1px solid #222; }
+        .silver-item { display: flex; align-items: center; padding: 25px 0; border-bottom: 1px solid #222; }
+        .silver-nome { font-size: 20px; font-weight: bold; min-width: 200px; }
+        .silver-divider { flex-grow: 1; border-bottom: 1px dotted #333; margin: 0 20px; }
+        .silver-bairro { font-size: 12px; color: #666; text-transform: uppercase; margin-right: 20px; }
+        .silver-tag { font-size: 12px; color: #a855f7; font-weight: bold; }
+
+        .mapa-footer { text-align: center; padding-top: 50px; border-top: 1px solid #222; }
+        .mapa-footer a { color: #a855f7; font-weight: bold; }
+
+        @media (max-width: 900px) {
+          .diamond-card-brutal { grid-template-columns: 1fr; }
+          .img-wrapper { height: 300px; }
+          .content-card { padding: 30px; }
+          .silver-item { flex-direction: column; align-items: flex-start; gap: 10px; }
+          .silver-divider { display: none; }
         }
+
+        .anim-fade-up { opacity: 0; transform: translateY(30px); animation: revealUp 0.6s forwards; }
+        .anim-fade-in { opacity: 0; animation: fadeIn 1.2s forwards; }
+        @keyframes revealUp { to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeIn { to { opacity: 1; } }
       `}</style>
     </div>
   );
