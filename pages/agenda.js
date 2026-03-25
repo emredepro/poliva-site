@@ -34,27 +34,30 @@ export default function Agenda() {
         <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" />
       </a>
 
-      {/* CAPA - ENQUADRAMENTO 45% / EXTENSÃO CORRIGIDA PARA .jpg */}
+      {/* CAPA */}
       <header className="agenda-capa anim-fade-in">
         <img src="/publico-show.jpg" alt="Público Pøliva" className="img-full" />
       </header>
 
       <main className="content-wrapper">
         <section className="section-block anim-fade-up">
+          {/* TITULO NO PADRÃO SOBRE */}
           <div className="brutal-header center spacer-void">
-            <h2>Atualizando</h2>
+            <h2>pølivessense, o show - turnê 2026</h2>
           </div>
           
-          <div className="mapa-container interactive-zoom">
+          {/* IMAGEM PEQUENA COM BORDA ARREDONDADA */}
+          <div className="show-image-container center">
             <img 
-              src="/mapa-brasil.png" 
-              alt="Mapa Brasil" 
-              className="mapa-imagem" 
+              src="/quadrado-show.png" 
+              alt="Show Turnê 2026" 
+              className="show-thumb interactive-zoom" 
             />
           </div>
           
-          <p className="citacao-it-branca" style={{ marginTop: '60px' }}>
-            novos portais se abrindo em breve.
+          {/* ATUALIZANDO EM ITALICO SEM NEGRITO */}
+          <p className="atualizando-text">
+            atualizando...
           </p>
         </section>
       </main>
@@ -80,26 +83,37 @@ export default function Agenda() {
         .img-full { width: 100%; height: 100%; object-fit: cover; object-position: center 45%; filter: grayscale(20%); }
 
         .content-wrapper { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
-        .brutal-header h2 { font-size: 25.5px; font-weight: bold; text-transform: lowercase; color: white; text-align: center; }
-        .spacer-void { margin-top: 100px; margin-bottom: 40px; }
+        .brutal-header h2 { font-size: 32px; font-weight: bold; text-transform: lowercase; color: white; text-align: center; }
+        .spacer-void { margin-top: 100px; margin-bottom: 50px; }
 
-        .mapa-container { width: 100%; max-width: 650px; margin: 0 auto; transition: 0.5s ease; cursor: pointer; }
-        .mapa-imagem { 
-          width: 100%; height: auto; 
-          filter: grayscale(100%) brightness(0.4) opacity(0.5); 
-          transition: 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+        .center { text-align: center; }
+        
+        /* ESTILO DA IMAGEM PEQUENA ARREDONDADA */
+        .show-image-container { width: 100%; margin-bottom: 30px; }
+        .show-thumb { 
+          width: 300px; 
+          height: auto; 
+          border-radius: 20px; 
+          box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+          transition: 0.4s ease;
         }
 
-        .mapa-container:hover .mapa-imagem { 
-          filter: grayscale(0%) brightness(1.1) drop-shadow(0 0 20px rgba(168, 85, 247, 0.5)); 
-          transform: scale(1.02);
-          opacity: 1;
+        /* ESTILO DO TEXTO ATUALIZANDO */
+        .atualizando-text { 
+          font-size: 18px; 
+          font-style: italic; 
+          font-weight: normal; 
+          color: white; 
+          opacity: 0.8; 
+          text-align: center; 
+          display: block; 
+          margin-top: 20px;
         }
-
-        .citacao-it-branca { font-size: 15px; font-style: italic; color: white; opacity: 0.7; text-align: center; display: block; }
 
         .hamburger { display: none; cursor: pointer; z-index: 6000; position: absolute; right: 0; width: 30px; height: 25px; }
         .hamburger span { display: block; width: 100%; height: 2px; background: white; margin: 6px 0; transition: 0.4s; }
+
+        .interactive-zoom:hover { transform: scale(1.03); filter: brightness(1.1); }
 
         @media (max-width: 1024px) {
           .hamburger { display: block; }
@@ -109,7 +123,7 @@ export default function Agenda() {
           .nav-links { position: fixed; top: 0; right: -100%; width: 100%; height: 100vh; background: black; flex-direction: column; align-items: center; justify-content: center; transition: 0.5s; z-index: 5500; }
           .nav-links.active { right: 0; }
           .agenda-capa { height: 50vh; }
-          .mapa-imagem { filter: grayscale(0%) brightness(1); opacity: 0.9; }
+          .show-thumb { width: 250px; }
         }
 
         .anim-fade-up { opacity: 0; transform: translateY(30px); animation: revealUp 0.6s forwards; }
