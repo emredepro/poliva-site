@@ -34,7 +34,7 @@ export default function Contato() {
         <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" />
       </a>
 
-      {/* CAPA PADRONIZADA 65VH */}
+      {/* CAPA PADRONIZADA 65VH COM ENQUADRAMENTO SUBIDO 60% */}
       <header className="contato-capa anim-fade-in">
         <img 
           src="/ao-vivo-show.jpg" 
@@ -76,7 +76,7 @@ export default function Contato() {
         </section>
       </main>
 
-      {/* RODAPÉ ATUALIZADO (SEM E-MAIL) */}
+      {/* RODAPÉ */}
       <footer className="footer-black">
         <div className="footer-content anim-fade-up">
           <h4 className="footer-heading">cøntatø</h4>
@@ -107,7 +107,9 @@ export default function Contato() {
         .wa-global { position: fixed; bottom: 120px; right: 30px; z-index: 5000; width: 50px; }
 
         .contato-capa { width: 100%; height: 65vh; overflow: hidden; margin-top: 80px; border-bottom: 1px solid #111; }
-        .img-full { width: 100%; height: 100%; object-fit: cover; object-position: center center; filter: grayscale(20%); }
+        
+        /* IMAGEM SUBIDA EM 60% NO ENQUADRAMENTO */
+        .img-full { width: 100%; height: 100%; object-fit: cover; object-position: center 60%; filter: grayscale(20%); }
 
         .content-wrapper { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
         .brutal-header h2 { font-size: 25.5px; font-weight: bold; text-transform: lowercase; color: white; text-align: center; }
@@ -117,8 +119,9 @@ export default function Contato() {
         .contato-form { display: flex; flex-direction: column; gap: 20px; }
         .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
         
+        /* AUMENTO DA OPACIDADE EM 15% (DE 0.03 PARA 0.18) */
         input, textarea {
-          background: rgba(255,255,255,0.03);
+          background: rgba(255,255,255,0.18);
           border: 1px solid #222;
           padding: 18px;
           color: white;
@@ -128,7 +131,7 @@ export default function Contato() {
           outline: none;
         }
 
-        input:focus, textarea:focus { border-color: #a855f7; background: rgba(168, 85, 247, 0.05); }
+        input:focus, textarea:focus { border-color: #a855f7; background: rgba(168, 85, 247, 0.1); }
         textarea { height: 220px; resize: none; }
 
         .enviar-btn {
