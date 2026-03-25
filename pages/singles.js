@@ -101,12 +101,12 @@ export default function Singles() {
             <h2>Depressa</h2>
           </div>
           <div className="album-art-box reduced interactive-zoom">
-            {/* NOVA CAPA DO ÁLBUM/SINGLE */}
+            {/* CAPA DO SINGLE ATUALIZADA */}
             <img src="/depressa-2026.jpg" alt="Depressa 2026" className="img-album" />
           </div>
           <div style={{ textAlign: 'center', marginTop: '30px' }}>
             <a href="#" className="ouca-btn-anim">Pré Save Aqui</a>
-            {/* DATA ABAIXO DO BOTÃO */}
+            {/* DATA EM 18PX ABAIXO DO BOTÃO */}
             <p className="data-lancamento"><em>a partir do dia 09/04</em></p>
           </div>
         </section>
@@ -227,8 +227,8 @@ export default function Singles() {
         .album-art-box.reduced { max-width: 480px; } 
         .img-album { width: 100%; display: block; }
 
-        /* ESTILO DA DATA (IGUAL À CITAÇÃO) */
-        .data-lancamento { font-size: 22px; color: #aaa; margin-top: 20px; letter-spacing: 1px; }
+        /* ESTILO DA DATA ATUALIZADO PARA 18PX */
+        .data-lancamento { font-size: 18px; color: #aaa; margin-top: 20px; letter-spacing: 1px; }
 
         .letra-bloco { margin-bottom: 80px; text-align: center; }
         .letra-bloco h3 { font-size: 20px; color: #a855f7; margin-bottom: 30px; text-transform: none; font-weight: bold; }
@@ -266,7 +266,7 @@ export default function Singles() {
           .carousel-full-width { padding: 40px 0; }
           .capa-wrapper { width: 250px; }
           .letra-justificada-centro { text-align: center; text-align-last: center; }
-          .data-lancamento { font-size: 18px; }
+          .data-lancamento { font-size: 16px; }
         }
       `}</style>
     </div>
