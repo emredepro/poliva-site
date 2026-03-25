@@ -108,8 +108,8 @@ export default function Contato() {
 
         .contato-capa { width: 100%; height: 65vh; overflow: hidden; margin-top: 80px; border-bottom: 1px solid #111; }
         
-        /* IMAGEM SUBIDA EM 55% NO ENQUADRAMENTO */
-        .img-full { width: 100%; height: 100%; object-fit: cover; object-position: center 55%; filter: grayscale(20%); }
+        /* IMAGEM SUBIDA EM 65% NO ENQUADRAMENTO */
+        .img-full { width: 100%; height: 100%; object-fit: cover; object-position: center 65%; filter: grayscale(20%); }
 
         .content-wrapper { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
         .brutal-header h2 { font-size: 25.5px; font-weight: bold; text-transform: lowercase; color: white; text-align: center; }
