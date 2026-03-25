@@ -55,7 +55,7 @@ export default function Agenda() {
             />
           </div>
           
-          {/* PALAVRA ATUALIZANDO EM ITÁLICO */}
+          {/* PALAVRA ATUALIZANDO EM ITÁLICO - FORÇANDO VISIBILIDADE */}
           <p className="atualizando-text">
             <em>atualizando...</em>
           </p>
@@ -88,25 +88,29 @@ export default function Agenda() {
         .brutal-header h2 { font-size: 32px; font-weight: bold; text-transform: lowercase; color: white; text-align: center; }
         .spacer-void { margin-top: 100px; margin-bottom: 40px; }
 
-        .center { text-align: center; }
+        .center { text-align: center; display: flex; flex-direction: column; align-items: center; }
 
         /* ESTILO DA IMAGEM PEQUENA ARREDONDADA */
-        .show-image-container { width: 100%; margin-bottom: 30px; }
+        .show-image-container { width: 100%; margin-bottom: 20px; }
         .show-thumb { 
           width: 300px; 
+          max-width: 85%;
           height: auto; 
           border-radius: 20px; 
           box-shadow: 0 15px 40px rgba(0,0,0,0.6);
           transition: 0.4s ease;
+          display: block;
         }
 
-        /* TEXTO ATUALIZANDO */
+        /* TEXTO ATUALIZANDO - GARANTINDO CONTRASTE */
         .atualizando-text { 
           font-size: 18px; 
-          color: white; 
-          opacity: 0.7; 
+          color: #ffffff; 
+          opacity: 1; 
           text-align: center; 
           font-weight: normal;
+          margin-top: 15px;
+          letter-spacing: 0.05em;
         }
 
         .hamburger { display: none; cursor: pointer; z-index: 6000; position: absolute; right: 0; width: 30px; height: 25px; }
@@ -124,6 +128,7 @@ export default function Agenda() {
           .agenda-capa { height: 50vh; }
           .show-thumb { width: 250px; }
           .brutal-header h2 { font-size: 26px; }
+          .atualizando-text { font-size: 16px; }
         }
 
         .anim-fade-up { opacity: 0; transform: translateY(30px); animation: revealUp 0.6s forwards; }
