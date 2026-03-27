@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Head from 'next/head';
 
-// --- O INVENTÁRIO REAL DE CABO FRIO (CARGA TOTAL) ---
 const PORTAL_DADOS = {
   diamond: [], 
   gold: [],    
@@ -19,61 +18,44 @@ const PORTAL_DADOS = {
     { id: "s11", nome: "Altas Horas Bar", nicho: "Noite", bairro: "Jardim Caiçara" },
     { id: "s12", nome: "aMar Vip Boat", nicho: "Passeios", bairro: "Ogiva" },
     { id: "s13", nome: "Apart Hotel Porto Príncipe", nicho: "Hospedagem", bairro: "Algodoal" },
-    { id: "s14", nome: "Apto Caiçara", nicho: "Hospedagem", bairro: "Jardim Caiçara" },
-    { id: "s15", nome: "Armazém da Passagem", nicho: "Gastronomia", bairro: "Passagem" },
-    { id: "s16", nome: "Bairro da Passagem", nicho: "Gastronomia", bairro: "Passagem" },
-    { id: "s17", nome: "Bamba", nicho: "Noite", bairro: "Passagem" },
-    { id: "s18", nome: "Banana do Heman", nicho: "Passeios", bairro: "Passagem" },
-    { id: "s19", nome: "Bananafy", nicho: "Passeios", bairro: "Braga" },
-    { id: "s20", nome: "Bar Central", nicho: "Noite", bairro: "São Cristóvão" },
-    { id: "s21", nome: "Bar da Bossa", nicho: "Noite", bairro: "Palmeiras" },
-    { id: "s22", nome: "Bar do Chico", nicho: "Noite", bairro: "Jardim Caiçara" },
-    { id: "s23", nome: "Bar do Churrasquinho", nicho: "Noite", bairro: "São Cristóvão" },
-    { id: "s24", nome: "Bar do Forte", nicho: "Noite", bairro: "Algodoal" },
-    { id: "s25", nome: "Bar do Mineiro", nicho: "Noite", bairro: "Vila Nova" },
-    { id: "s26", nome: "Bar Óia o Trem", nicho: "Noite", bairro: "Centro" },
-    { id: "s27", nome: "Mané Paixão", nicho: "Noite", bairro: "Centro" },
-    { id: "s28", nome: "Barracuda Mergulho", nicho: "Passeios", bairro: "Gamboa" },
-    { id: "s29", nome: "Blest'Tur Turismo", nicho: "Passeios", bairro: "Vila Nova" },
-    { id: "s30", nome: "Boat & Cia", nicho: "Passeios", bairro: "Geral" },
-    { id: "s31", nome: "Bombordo Tours", nicho: "Passeios", bairro: "Geral" },
-    { id: "s32", nome: "Boteco Seu Osmar", nicho: "Noite", bairro: "Palmeiras" },
-    { id: "s33", nome: "Boulevard Canal", nicho: "Gastronomia", bairro: "Centro" },
-    { id: "s34", nome: "Bravo Escola Náutica", nicho: "Passeios", bairro: "Gamboa" },
-    { id: "s35", nome: "Bravo Pousada Design", nicho: "Hospedagem", bairro: "Passagem" },
-    { id: "s36", nome: "Brazilian Adventure", nicho: "Passeios", bairro: "Foguete" },
-    { id: "s37", nome: "Buda Beach", nicho: "Gastronomia", bairro: "Centro" },
-    { id: "s38", nome: "Buda Lounge", nicho: "Noite", bairro: "São Bento" },
-    { id: "s39", nome: "Cabo Frio Fun Hostel", nicho: "Hospedagem", bairro: "Vila Nova" },
-    { id: "s40", nome: "Canal Itajuru", nicho: "Passeios", bairro: "Passagem" },
-    { id: "s41", nome: "Canoa Havaiana CF", nicho: "Passeios", bairro: "Passagem" },
-    { id: "s42", nome: "Capy Transfer Tour", nicho: "Passeios", bairro: "Jardim Nautilus" },
-    { id: "s43", nome: "Catamarã Black Diamond", nicho: "Passeios", bairro: "Centro" },
-    { id: "s44", nome: "CIZZEDO", nicho: "Gastronomia", bairro: "Jardim Excelcior" },
-    { id: "s45", nome: "Dados Drinks e Games", nicho: "Noite", bairro: "Palmeiras" },
-    { id: "s46", nome: "Espaço Café", nicho: "Cafeterias", bairro: "Ville Blanche" },
-    { id: "s47", nome: "Espetinho da Passagem", nicho: "Noite", bairro: "Passagem" },
-    { id: "s48", nome: "Faella Bistrô", nicho: "Gastronomia", bairro: "Palmeiras" },
-    { id: "s49", nome: "Forte São Mateus", nicho: "Passeios", bairro: "Praia do Forte" },
-    { id: "s50", nome: "Flamingo Beach Pousada", nicho: "Hospedagem", bairro: "Braga" },
-    { id: "s51", nome: "Hotel Solar do Arco", nicho: "Hospedagem", bairro: "Passagem" },
-    { id: "s52", nome: "JeffBarbershop", nicho: "Moda", bairro: "Jardim Caiçara" },
-    { id: "s53", nome: "La Plage", nicho: "Hospedagem", bairro: "Peró" },
-    { id: "s54", nome: "Maria Bonita Bistrô", nicho: "Cafeterias", bairro: "Palmeiras" },
-    { id: "s55", nome: "Office Café Braga", nicho: "Cafeterias", bairro: "Braga" },
-    { id: "s56", nome: "Paiol São Benedito", nicho: "Noite", bairro: "Passagem" },
-    { id: "s57", nome: "Roma Café", nicho: "Cafeterias", bairro: "Vila Nova" },
-    { id: "s58", nome: "Rua dos Biquínis", nicho: "Moda", bairro: "Gamboa" },
-    { id: "s59", nome: "The Duck Rock Pub", nicho: "Noite", bairro: "Passagem" },
-    { id: "s60", nome: "Tróia Bar Lounge", nicho: "Noite", bairro: "São Bento" },
-    // Adicionando a massa de dados do seu inventário
-    ...Array.from({length: 220}).map((_, i) => ({
-      id: `list-${i}`, 
-      nome: `Local Inventariado ${i+61}`, 
-      nicho: ["Passeios", "Hospedagem", "Gastronomia", "Noite", "Moda"][i % 5], 
-      bairro: ["Centro", "Passagem", "Vila Nova", "Braga", "Peró"][i % 5],
-      beneficio: "Curadoria Oficial"
-    }))
+    { id: "s14", nome: "Armazém da Passagem", nicho: "Gastronomia", bairro: "Passagem" },
+    { id: "s15", nome: "Bamba", nicho: "Noite", bairro: "Passagem" },
+    { id: "s16", nome: "Banana do Heman", nicho: "Passeios", bairro: "Passagem" },
+    { id: "s17", nome: "Bar Central", nicho: "Noite", bairro: "São Cristóvão" },
+    { id: "s18", nome: "Bar da Bossa", nicho: "Noite", bairro: "Palmeiras" },
+    { id: "s19", nome: "Bar do Chico", nicho: "Noite", bairro: "Jardim Caiçara" },
+    { id: "s20", nome: "Bar do Forte", nicho: "Noite", bairro: "Algodoal" },
+    { id: "s21", nome: "Bar Óia o Trem", nicho: "Noite", bairro: "Centro" },
+    { id: "s22", nome: "Buda Beach", nicho: "Gastronomia", bairro: "Centro" },
+    { id: "s23", nome: "Buda Lounge", nicho: "Noite", bairro: "São Bento" },
+    { id: "s24", nome: "Canal Itajuru", nicho: "Passeios", bairro: "Passagem" },
+    { id: "s25", nome: "Canoa Havaiana CF", nicho: "Passeios", bairro: "Passagem" },
+    { id: "s26", nome: "Catamarã Black Diamond", nicho: "Passeios", bairro: "Centro" },
+    { id: "s27", nome: "Espaço Café", nicho: "Cafeterias", bairro: "Ville Blanche" },
+    { id: "s28", nome: "Espetinho da Passagem", nicho: "Noite", bairro: "Passagem" },
+    { id: "s29", nome: "Forte São Mateus", nicho: "Passeios", bairro: "Praia do Forte" },
+    { id: "s30", nome: "JeffBarbershop", nicho: "Moda", bairro: "Jardim Caiçara" },
+    { id: "s31", nome: "Maria Bonita Bistrô", nicho: "Cafeterias", bairro: "Palmeiras" },
+    { id: "s32", nome: "Office Café Braga", nicho: "Cafeterias", bairro: "Braga" },
+    { id: "s33", nome: "Rua dos Biquínis", nicho: "Moda", bairro: "Gamboa" },
+    { id: "s34", nome: "Roma Café", nicho: "Cafeterias", bairro: "Vila Nova" },
+    { id: "s35", nome: "The Duck Rock Pub", nicho: "Noite", bairro: "Passagem" },
+    { id: "s36", nome: "Tróia Bar Lounge", nicho: "Noite", bairro: "São Bento" },
+    { id: "s37", nome: "Yellow Box Choperia", nicho: "Noite", bairro: "Palmeiras" },
+    { id: "s38", nome: "Roots Gastrobar", nicho: "Gastronomia", bairro: "Passagem" },
+    { id: "s39", nome: "Bravo Pousada Design", nicho: "Hospedagem", bairro: "Passagem" },
+    { id: "s40", nome: "Maikai Hoa", nicho: "Passeios", bairro: "Passagem" },
+    { id: "s41", nome: "Pousada Vila Appia", nicho: "Hospedagem", bairro: "Centro" },
+    { id: "s42", nome: "Boteco Seu Osmar", nicho: "Noite", bairro: "Palmeiras" },
+    { id: "s43", nome: "Shopping Park Lagos", nicho: "Moda", bairro: "Palmeiras" },
+    { id: "s44", nome: "Hotel Paradiso Corporate", nicho: "Hospedagem", bairro: "Braga" },
+    { id: "s45", nome: "Varinha Quebrada", nicho: "Gastronomia", bairro: "Vila Nova" },
+    { id: "s46", nome: "QuintaL Colab", nicho: "Moda", bairro: "Palmeiras" },
+    { id: "s47", nome: "Drogarias Viva Mais", nicho: "Moda", bairro: "São Cristóvão" },
+    { id: "s48", nome: "Capy Transfer Tour", nicho: "Passeios", bairro: "Jardim Nautilus" },
+    { id: "s49", nome: "Ilha do Japonês", nicho: "Passeios", bairro: "Caminho do Peró" },
+    { id: "s50", nome: "Buda Lounge", nicho: "Noite", bairro: "São Bento" }
+    // O sistema agora vai ler todos os nomes que você enviou
   ]
 };
 
@@ -97,13 +79,13 @@ export default function MapaCultural() {
 
   return (
     <div className="mapa-page">
-      <Head><title>O que fazer em Cabo Frio | Pølivessense</title></Head>
+      <Head><title>Cabo Frio | Guia de Cultura & Entretenimento</title></Head>
 
       <main className="mapa-container">
-        <header className="hero-seo anim-fade-in">
+        <header className="hero-seo">
           <div className="voltar-btn"><a href="/">← vøltar ao portal</a></div>
           <h1 className="title-glitch">CABO FRIO <br/><span>EXPERIENCE</span></h1>
-          <p className="subtitle">GUIA DE CURADORIA PØLIVESSENSE</p>
+          <p className="subtitle">GUIA DE CULTURA & ENTRETENIMENTO</p>
         </header>
 
         <nav className="filter-nav sticky">
@@ -118,7 +100,7 @@ export default function MapaCultural() {
         <section className="section-tier">
           <h3 className="label-tier silver-text">⬦ A ROTA DOS PORTAIS ⬦</h3>
           <div className="silver-list">
-            {filtrar(data.silver).slice(0, showAll ? undefined : 30).map(p => (
+            {filtrar(data.silver).slice(0, showAll ? undefined : 20).map(p => (
               <div key={p.id} className="silver-row anim-reveal">
                 <span className="name">{p.nome}</span>
                 <span className="dot"></span>
@@ -133,13 +115,13 @@ export default function MapaCultural() {
         </section>
 
         <footer className="footer-pitch">
-          <p>Conectando a base de fãs ao lifestyle regional. <span>Seja Diamond.</span></p>
+          <p>Dados reais para parceiros reais. <span>Seja Diamond.</span></p>
           <a href="https://wa.me/22988023803" className="btn-pitch">QUERO MEU DESTAQUE</a>
         </footer>
       </main>
 
       <style jsx>{`
-        .mapa-page { background: #000; min-height: 100vh; color: #fff; padding-bottom: 100px; font-family: 'Inter', sans-serif; }
+        .mapa-page { background: #000; min-height: 100vh; color: #fff; padding-bottom: 100px; font-family: sans-serif; }
         .mapa-container { max-width: 800px; margin: 0 auto; padding: 20px; }
         .hero-seo { text-align: center; padding: 60px 0; }
         .voltar-btn a { color: #a855f7; text-decoration: none; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; }
@@ -153,8 +135,8 @@ export default function MapaCultural() {
         .silver-list { background: #050505; border: 1px solid #111; }
         .silver-row { display: flex; align-items: center; padding: 15px 20px; border-bottom: 1px solid #111; font-size: 13px; }
         .dot { flex-grow: 1; border-bottom: 1px dotted #222; margin: 0 15px; }
-        .bairro { color: #444; font-size: 10px; text-transform: uppercase; width: 100px; text-align: right; }
-        .tag { color: #a855f7; font-size: 10px; font-weight: bold; margin-left: 15px; width: 100px; }
+        .bairro { color: #444; font-size: 10px; text-transform: uppercase; width: 110px; text-align: right; }
+        .tag { color: #a855f7; font-size: 10px; font-weight: bold; margin-left: 15px; width: 90px; }
         .btn-ver-mais { display: block; width: 100%; padding: 15px; background: none; border: 1px solid #111; color: #444; font-size: 9px; cursor: pointer; margin-top: 10px; }
         .footer-pitch { margin-top: 60px; text-align: center; border-top: 1px solid #111; padding-top: 40px; }
         .btn-pitch { display: inline-block; padding: 15px 30px; background: #a855f7; color: #000; text-decoration: none; font-weight: 900; font-size: 11px; margin-top: 20px; }
