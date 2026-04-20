@@ -6,7 +6,7 @@ export default function Singles() {
   const [currentSlide, setCurrentSlide] = useState(0);
 
   const singlesData = [
-    { title: "Depressa", img: "singles-depressa.jpg", link: "https://open.spotify.com/intl-pt/track/1SP07UiCSS9BOqWbHG0nSI?si=b732588566094064" },
+    { title: "Depressa", img: "singles-depressa.jpg", link: "https://musicpro.live/s/7900279732349" },
     { title: "TOQES", img: "singles-toqes.jpg", link: "https://open.spotify.com/intl-pt/track/6rXLgOVJJMYamEVPW6V45N?si=c24b3f16b407463e" },
     { title: "OTT", img: "singles-ott.jpg", link: "https://open.spotify.com/intl-pt/track/7ev9TpcSvAXkjrNmZ9qMyr?si=2a040ef2f16b4795" },
     { title: "Há Mar", img: "singles-ha-mar.jpg", link: "https://open.spotify.com/intl-pt/track/5tkFsijUJp5Ml5Kr6tnIgq?si=1bbda7e12f7c4beb" }
@@ -49,7 +49,7 @@ export default function Singles() {
         <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" />
       </a>
 
-      {/* CAPA TOPO - MANTIDA A ORIGINAL */}
+      {/* CAPA TOPO */}
       <header className="main-capa-ajustada anim-fade-in">
         <img src="/depressa-novo.jpg" alt="Depressa Capa" className="img-crop-ajustada" />
       </header>
@@ -95,19 +95,16 @@ export default function Singles() {
           </p>
         </section>
 
-        {/* SEÇÃO DEPRESSA - ATUALIZADA */}
+        {/* SEÇÃO DEPRESSA - AGORA COMO OUÇA JÁ */}
         <section className="depressa-2026 anim-fade-up">
           <div className="brutal-header center">
             <h2>Depressa</h2>
           </div>
           <div className="album-art-box reduced interactive-zoom">
-            {/* CAPA DO SINGLE ATUALIZADA */}
             <img src="/depressa-2026.jpg" alt="Depressa 2026" className="img-album" />
           </div>
           <div style={{ textAlign: 'center', marginTop: '30px' }}>
-            <a href="#" className="ouca-btn-anim">Pré Save Aqui</a>
-            {/* DATA EM 18PX ABAIXO DO BOTÃO */}
-            <p className="data-lancamento"><em>a partir do dia 09/04</em></p>
+            <a href="https://musicpro.live/s/7900279732349" target="_blank" rel="noopener noreferrer" className="ouca-btn-anim">Ouça 'Depressa'</a>
           </div>
         </section>
 
@@ -149,22 +146,6 @@ export default function Singles() {
               Sinta como eu sinto muito, mas seja menos que uma fase e volte para casa a me encontrar<br/><br/>
               E quando a gente quer muito alguma coisa o universo conspira ao nosso favor<br/>
               Então diga, pare com isso coração. Pare de sentir o que você não sente, se você tiver que chorar
-            </pre>
-          </div>
-
-          <div className="letra-bloco">
-            <h3>OTT</h3>
-            <pre className="letra-justificada-centro interactive-lyric">
-              Você passa o tempo todo querendo entender o sorriso, mas não quer sorrir.<br/>
-              Só dá meia volta e espera ter o que eles tem.<br/><br/>
-              Você jura o tempo todo que a felicidade convém, mas o sossego lhe serve bem.<br/>
-              Só senta em seu sofá, esquece e assiste a TV<br/><br/>
-              Toda vez que o hoje do hoje chegar, faça diferente do ontem que já foi<br/>
-              E quem sabe o hoje de amanhã, não te fará sorrir bem mais, ser feliz e aproveitar?<br/><br/>
-              Passa, jura, deseja, planeja, mas não corre atrás, não cumpre mais.<br/>
-              Não alcança e faz, não realiza e traz.<br/><br/>
-              O Universo, então, te dá em troca o que você oferecer.<br/>
-              Enquanto você perde seu tempo esperando, faça ele acontecer.
             </pre>
           </div>
 
@@ -227,9 +208,6 @@ export default function Singles() {
         .album-art-box.reduced { max-width: 480px; } 
         .img-album { width: 100%; display: block; }
 
-        /* ESTILO DA DATA ATUALIZADO PARA 18PX */
-        .data-lancamento { font-size: 18px; color: #aaa; margin-top: 20px; letter-spacing: 1px; }
-
         .letra-bloco { margin-bottom: 80px; text-align: center; }
         .letra-bloco h3 { font-size: 20px; color: #a855f7; margin-bottom: 30px; text-transform: none; font-weight: bold; }
         .letra-bloco pre { font-family: inherit; font-size: 16px; line-height: 1.8; color: #aaa; white-space: pre-wrap; transition: 0.4s ease; }
@@ -266,7 +244,6 @@ export default function Singles() {
           .carousel-full-width { padding: 40px 0; }
           .capa-wrapper { width: 250px; }
           .letra-justificada-centro { text-align: center; text-align-last: center; }
-          .data-lancamento { font-size: 16px; }
         }
       `}</style>
     </div>
