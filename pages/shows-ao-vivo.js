@@ -58,27 +58,55 @@ export default function Shows() {
       <main className="content-wrapper">
         <section className="section-text anim-fade-up">
           <p className="desc-ajustado">
-            <strong style={{ color: 'white' }}>O SHOW: COM ATÉ 2 HORAS DE VOLTAGEM MÁXIMA</strong>, é desenhado em experiência contínua e explosiva em um fluxo de energia implacável, onde o ritmo dita a regra e o envolvimento do público não tem trégua. É intensidade do primeiro ao último acorde.
+            <strong style={{ color: 'white' }}>O SHOW: Com até 2 horas de pura energia</strong>, é desenhado para uma experiência contínua e explosiva em um fluxo musical implacável, onde o ritmo dita a regra e o envolvimento do público não tem trégua. É intensidade do primeiro ao último acorde.
           </p>
 
           <p className="desc-ajustado">
-            Como uma legítima sommelier de hits que eletrizam o palco, pøliva entrega um show energético, festivo, intenso e explosivo, que carrega o rock na veia. Reunindo em seu repertório influências marcantes de artistas como Pitty, Pearl Jam, AC/DC, Paralamas do Sucesso, Kings Of Leon, Paramore, Rita Lee, Amy Winehouse, Beatles, Raul Seixas, Evanescense, Foo Fighters, Charlie Brown Jr., Deep Purple, Bon Jovi e muito mais! 
+            <strong style={{ color: 'white', textTransform: 'uppercase', letterSpacing: '2px' }}>Direção Artística e Curadoria Estratégica</strong>
           </p>
 
           <p className="desc-ajustado">
-            Um projeto flexível, adaptável a qualquer espaço que suporte a pressão. No formato principal, chega com o time completo: voz, violão, guitarras cortantes, baixo pulsante e bateria de alto impacto.
+            Como uma legítima sommelier de hits, pøliva não executa apenas clássicos; <strong style={{ color: 'white' }}>ela canta trilhas sonoras que o tempo não apaga</strong> e transforma a atmosfera do seu evento. Através de uma curadoria estratégica, o repertório é calibrado para transformar grandes hinos em confissões gritadas a plenos pulmões.
           </p>
 
           <p className="desc-ajustado">
-            Transformando clássicos em confissões gritadas a plenos pulmões. É a trilha sonora perfeita para quem busca experiências intensas e não apenas entretenimento raso.
+            Para garantir a sintonia total com cada palco, o show se divide em 05 direções artísticas:
           </p>
 
           <p className="desc-ajustado">
-            O público não vai para o evento para ser espectador. Ele vai para sentir, vibrar, gritar e silenciar. Sai do show diferente de como entrou.
+            <strong style={{ color: 'white' }}>Rock Alta Voltagem:</strong> O DNA do rock mundial, dos riffs clássicos de 70 à pressão moderna de 2010.
           </p>
 
           <p className="desc-ajustado">
-            De festivais a ambientes de motociclistas, de palcos urbanos a refúgios culturais. Onde houver necessidade de força, expressão e transformação através da música, a pøliva cria o encontro.
+            <strong style={{ color: 'white' }}>Hinos 90’s e 00’s:</strong> A energia da geração MTV e os refrões que definiram uma era.
+          </p>
+
+          <p className="desc-ajustado">
+            <strong style={{ color: 'white' }}>Rock & Soul Classics:</strong> Onde o peso encontra o groove do Soul e a elegância do Jazz.
+          </p>
+
+          <p className="desc-ajustado">
+            <strong style={{ color: 'white' }}>Acústico & Íntimo:</strong> Voz, instrumento e a memória afetiva em sua forma mais pura.
+          </p>
+
+          <p className="desc-ajustado">
+            <strong style={{ color: 'white' }}>Brasil Retrô:</strong> A força do nosso rock fundida à malemolência solar da MPB contemporânea.
+          </p>
+
+          <p className="desc-ajustado">
+            <strong style={{ color: 'white', textTransform: 'uppercase', letterSpacing: '2px' }}>Versatilidade e Pressão</strong>
+          </p>
+
+          <p className="desc-ajustado">
+            Um projeto flexível, desenhado para qualquer espaço que suporte a pressão. No formato principal, pøliva entrega o time completo: voz e violão, guitarras, baixo e bateria.
+          </p>
+
+          <p className="desc-ajustado">
+            <strong style={{ color: 'white', textTransform: 'uppercase', letterSpacing: '2px' }}>Mais que Entretenimento, Transformação</strong>
+          </p>
+
+          <p className="desc-ajustado">
+            O público não vai ao show para ser apenas espectador. Ele vai para sentir, vibrar, gesticular e se divertir. É a escolha perfeita para quem busca experiências intensas e recusa o entretenimento raso. Onde houver necessidade de força e expressão, pøliva cria o encontro.
           </p>
         </section>
 
@@ -172,7 +200,7 @@ export default function Shows() {
         .desc-ajustado { 
           font-size: 18px; 
           line-height: 1.6; 
-          margin-bottom: 45px; 
+          margin-bottom: 25px; 
           font-weight: 300; 
           color: #ccc; 
           text-align: justify; 
