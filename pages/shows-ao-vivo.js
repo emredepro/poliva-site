@@ -58,15 +58,15 @@ export default function Shows() {
       <main className="content-wrapper">
         <section className="section-text anim-fade-up">
           <p className="desc-ajustado">
-            <strong style={{ color: 'white' }}>O SHOW: Com até 2 horas de pura energia</strong>, é desenhado para uma experiência contínua e explosiva em um fluxo musical implacável, onde o ritmo dita a regra e o envolvimento do público não tem trégua. É intensidade do primeiro ao último acorde.
+            <strong>O SHOW: Com até 2 horas de pura energia</strong>, é desenhado para uma experiência contínua e explosiva em um fluxo musical implacável, onde o ritmo dita a regra e o envolvimento do público não tem trégua. É intensidade do primeiro ao último acorde.
           </p>
 
           <p className="desc-ajustado">
-            <strong style={{ color: 'white', textTransform: 'uppercase', letterSpacing: '2px' }}>Direção Artística e Curadoria Estratégica</strong>
+            <strong>Direção Artística e Curadoria Estratégica</strong>
           </p>
 
           <p className="desc-ajustado">
-            Como uma legítima sommelier de hits, pøliva não executa apenas clássicos; <strong style={{ color: 'white' }}>ela canta trilhas sonoras que o tempo não apaga</strong> e transforma a atmosfera do seu evento. Através de uma curadoria estratégica, o repertório é calibrado para transformar grandes hinos em confissões gritadas a plenos pulmões.
+            Como uma legítima sommelier de hits, pøliva não executa apenas clássicos; <strong>ela canta trilhas sonoras que o tempo não apaga</strong> e transforma a atmosfera do seu evento. Através de uma curadoria estratégica, o repertório é calibrado para transformar grandes hinos em confissões gritadas a plenos pulmões.
           </p>
 
           <p className="desc-ajustado">
@@ -74,27 +74,27 @@ export default function Shows() {
           </p>
 
           <p className="desc-ajustado">
-            <strong style={{ color: 'white' }}>Rock Alta Voltagem:</strong> O DNA do rock mundial, dos riffs clássicos de 70 à pressão moderna de 2010.
+            <strong>Rock Alta Voltagem:</strong> O DNA do rock mundial, dos riffs clássicos de 70 à pressão moderna de 2010.
           </p>
 
           <p className="desc-ajustado">
-            <strong style={{ color: 'white' }}>Hinos 90’s e 00’s:</strong> A energia da geração MTV e os refrões que definiram uma era.
+            <strong>Hinos 90’s e 00’s:</strong> A energia da geração MTV e os refrões que definiram uma era.
           </p>
 
           <p className="desc-ajustado">
-            <strong style={{ color: 'white' }}>Rock & Soul Classics:</strong> Onde o peso encontra o groove do Soul e a elegância do Jazz.
+            <strong>Rock & Soul Classics:</strong> Onde o peso encontra o groove do Soul e a elegância do Jazz.
           </p>
 
           <p className="desc-ajustado">
-            <strong style={{ color: 'white' }}>Acústico & Íntimo:</strong> Voz, instrumento e a memória afetiva em sua forma mais pura.
+            <strong>Acústico & Íntimo:</strong> Voz, instrumento e a memória afetiva em sua forma mais pura.
           </p>
 
           <p className="desc-ajustado">
-            <strong style={{ color: 'white' }}>Brasil Retrô:</strong> A força do nosso rock fundida à malemolência solar da MPB contemporânea.
+            <strong>Brasil Retrô:</strong> A força do nosso rock fundida à malemolência solar da MPB contemporânea.
           </p>
 
           <p className="desc-ajustado">
-            <strong style={{ color: 'white', textTransform: 'uppercase', letterSpacing: '2px' }}>Versatilidade e Pressão</strong>
+            <strong>Versatilidade e Pressão</strong>
           </p>
 
           <p className="desc-ajustado">
@@ -102,7 +102,7 @@ export default function Shows() {
           </p>
 
           <p className="desc-ajustado">
-            <strong style={{ color: 'white', textTransform: 'uppercase', letterSpacing: '2px' }}>Mais que Entretenimento, Transformação</strong>
+            <strong>Mais que Entretenimento, Transformação</strong>
           </p>
 
           <p className="desc-ajustado">
@@ -176,8 +176,6 @@ export default function Shows() {
           background-image: url('/patterns_poliva_simbolos-07.jpg');
           background-size: cover;
           background-position: center;
-          background-repeat: no-repeat;
-          background-attachment: fixed;
           opacity: 0.1;
           z-index: -1;
           filter: grayscale(100%);
@@ -200,11 +198,16 @@ export default function Shows() {
         .desc-ajustado { 
           font-size: 18px; 
           line-height: 1.6; 
-          margin-bottom: 25px; 
+          margin-bottom: 30px; 
           font-weight: 300; 
           color: #ccc; 
           text-align: justify; 
           hyphens: auto; 
+        }
+
+        .desc-ajustado strong {
+          color: #fff;
+          font-weight: 700;
         }
         
         .cta-buttons { display: flex; justify-content: center; gap: 30px; margin: 50px 0 80px; }
@@ -221,7 +224,6 @@ export default function Shows() {
           gap: 15px 10px; 
           max-width: 800px; 
           margin: 0 auto; 
-          align-items: start;
         }
         
         .white-card-slim { 
@@ -265,9 +267,7 @@ export default function Shows() {
           }
           .nav-links.active { right: 0; }
           .feed-grid-cards, .reels-grid { grid-template-columns: 1fr; gap: 20px; }
-          .white-card-slim { height: 100px; }
           .cta-buttons { flex-direction: column; align-items: center; }
-          .desc-ajustado { text-align: justify; }
         }
         
         .interactive-zoom:hover { transform: scale(1.02); filter: brightness(1.1); transition: 0.3s ease; }
